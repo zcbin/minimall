@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/minimall.iml" filepath="$PROJECT_DIR$/minimall.iml" />
+      <module fileurl="file://$PROJECT_DIR$/minimall-admin-api/minimall-admin-api.iml" filepath="$PROJECT_DIR$/minimall-admin-api/minimall-admin-api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/minimall-core/minimall-core.iml" filepath="$PROJECT_DIR$/minimall-core/minimall-core.iml" />
+      <module fileurl="file://$PROJECT_DIR$/minimall-db/minimall-db.iml" filepath="$PROJECT_DIR$/minimall-db/minimall-db.iml" />
+      <module fileurl="file://$PROJECT_DIR$/minimall-wx-api/minimall-wx-api.iml" filepath="$PROJECT_DIR$/minimall-wx-api/minimall-wx-api.iml" />
+    </modules>
+  </component>
+</project>

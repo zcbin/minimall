@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="minimall" />
+        <module name="minimall-admin-api" />
+        <module name="minimall-core" />
+        <module name="minimall-db" />
+        <module name="minimall-wx-api" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="minimall" target="1.8" />
+      <module name="minimall-admin-api" target="1.8" />
+      <module name="minimall-core" target="1.8" />
+      <module name="minimall-db" target="1.8" />
+      <module name="minimall-wx-api" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="minimall" options="-parameters" />
+      <module name="minimall-admin-api" options="-parameters" />
+      <module name="minimall-core" options="-parameters" />
+      <module name="minimall-db" options="-parameters" />
+      <module name="minimall-wx-api" options="-parameters" />
+    </option>
+  </component>
+</project>

@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="minimall-admin-api:war">
+    <output-path>$PROJECT_DIR$/minimall-admin-api/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>minimall-admin-api</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="minimall-admin-api-0.0.1-SNAPSHOT.war">
+      <element id="artifact" artifact-name="minimall-admin-api:war exploded" />
+    </root>
+  </artifact>
+</component>
