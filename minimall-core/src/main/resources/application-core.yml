@@ -1,0 +1,9 @@
+wx:
+ # appid	是	小程序唯一标识
+ # secret	是	小程序的 app secret
+ # js_code	是	登录时获取的 code
+ # grant_type	是	填写为 authorization_code
+  miniapp:
+    appid: wx74afe1ecfc6446ca
+    secret: 227a4a5734f93918493bd080b376862d
+    grant_type: authorization_code

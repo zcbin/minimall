@@ -1,25 +1,12 @@
 <component name="ArtifactManager">
-  <artifact type="exploded-war" name="minimall-wx-api:war exploded">
-    <output-path>$PROJECT_DIR$/minimall-wx-api/target/minimall-wx-api-0.0.1-SNAPSHOT</output-path>
-    <properties id="maven-jee-properties">
-      <options>
-        <exploded>true</exploded>
-        <module>minimall-wx-api</module>
-        <packaging>war</packaging>
-      </options>
-    </properties>
+  <artifact type="exploded-war" name="minimall-wx-api:war exploded2">
+    <output-path>$PROJECT_DIR$/out/artifacts/minimall_wx_api_war_exploded2</output-path>
     <root id="root">
       <element id="directory" name="WEB-INF">
         <element id="directory" name="classes">
           <element id="module-output" name="minimall-wx-api" />
         </element>
         <element id="directory" name="lib">
-          <element id="archive" name="minimall-core-0.0.1-SNAPSHOT.jar">
-            <element id="module-output" name="minimall-core" />
-          </element>
-          <element id="archive" name="minimall-db-0.0.1-SNAPSHOT.jar">
-            <element id="module-output" name="minimall-db" />
-          </element>
           <element id="library" level="project" name="Maven: org.springframework.boot:spring-boot-starter-web:2.1.4.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework.boot:spring-boot-starter-json:2.1.4.RELEASE" />
           <element id="library" level="project" name="Maven: com.fasterxml.jackson.core:jackson-databind:2.9.8" />
@@ -80,9 +67,6 @@
           <element id="library" level="project" name="Maven: org.dom4j:dom4j:2.0.0" />
           <element id="library" level="project" name="Maven: jaxen:jaxen:1.1.6" />
         </element>
-      </element>
-      <element id="directory" name="META-INF">
-        <element id="file-copy" path="$PROJECT_DIR$/minimall-wx-api/target/minimall-wx-api-0.0.1-SNAPSHOT/META-INF/MANIFEST.MF" />
       </element>
       <element id="javaee-facet-resources" facet="minimall-wx-api/web/Web" />
     </root>

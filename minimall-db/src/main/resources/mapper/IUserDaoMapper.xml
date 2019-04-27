@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zcb.minimalldb.dao.IUserDao">
+
+
+    <select id="getUserInfoList" resultType="com.zcb.minimalldb.domain.UserInfo">
+        select * from (select b.* from user a,user_info b where a.studentid=b.studentid and a.enable='Y' <if
+            test="studentid != null and studentid != ''">and a.studentid=#{studentid}</if>) users limit #{column},#{rows}
+    </select>
+
+
+</mapper>

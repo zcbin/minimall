@@ -1,0 +1,6 @@
+spring:
+  profiles:
+    active: db, core
+  messages:
+    encoding: UTF-8
+
