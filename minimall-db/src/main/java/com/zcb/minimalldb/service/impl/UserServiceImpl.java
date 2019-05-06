@@ -1,29 +1,39 @@
 package com.zcb.minimalldb.service.impl;
 
 
-import com.zcb.minimalldb.dao.IUserDao;
+import com.zcb.minimalldb.dao.UserMapper;
 import com.zcb.minimalldb.domain.User;
-import com.zcb.minimalldb.domain.UserInfo;
+import com.zcb.minimalldb.domain.UserExample;
 import com.zcb.minimalldb.service.IUserService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-import java.util.Set;
+import javax.annotation.Resource;
+import java.time.LocalDateTime;
 
 
 @Service
 public class UserServiceImpl implements IUserService {
 
-    @Autowired
-    private IUserDao userDao;
-
-
+    @Resource
+    private UserMapper userMapper;
 
     @Override
-    public List<UserInfo> getUserInfoList(String studentid, Integer column, Integer rows) {
-        return userDao.getUserInfoList(studentid, column, rows);
+    public User queryByOpenid(String openId) {
+        UserExample example = new UserExample();
+        example.or().andWeixinOpenidEqualTo(openId).andDeletedEqualTo(false);
+        return userMapper.selectOneByExample(example);
     }
 
+    @Override
+    public void add(User user) {
+        user.setAddTime(LocalDateTime.now());
+        user.setUpdateTime(LocalDateTime.now());
+        userMapper.insertSelective(user);
+    }
 
+    @Override
+    public int updateById(User user) {
+        user.setUpdateTime(LocalDateTime.now());
+        return userMapper.updateByPrimaryKeySelective(user);
+    }
 }

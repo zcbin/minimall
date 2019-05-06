@@ -10,7 +10,7 @@ import org.springframework.context.annotation.ComponentScan;
 
 
 @SpringBootApplication(scanBasePackages = {"com.zcb.minimalldb"})
-//@MapperScan("com.zcb.minimalldb.dao") //mybatis dao
+@MapperScan("com.zcb.minimalldb.dao") //mybatis dao
 //@ComponentScan("com.zcb")
 public class MinimallDbApplication {
 

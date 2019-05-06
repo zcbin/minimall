@@ -2,15 +2,14 @@ package com.zcb.minimallwxapi.controller;
 
 import cn.binarywang.wx.miniapp.api.WxMaService;
 import cn.binarywang.wx.miniapp.bean.WxMaJscode2SessionResult;
-import cn.binarywang.wx.miniapp.config.WxMaConfig;
 import com.alibaba.fastjson.JSONObject;
-import com.zcb.minimallcore.config.WxConfig;
+import com.zcb.minimallcore.util.IpUtil;
 import com.zcb.minimallcore.util.LogUtil;
 import com.zcb.minimallcore.util.ResponseUtil;
+import com.zcb.minimalldb.domain.User;
+import com.zcb.minimalldb.service.impl.UserServiceImpl;
 import com.zcb.minimallwxapi.dto.UserInfo;
 import com.zcb.minimallwxapi.dto.WxLoginInfo;
-import me.chanjar.weixin.common.bean.WxAccessToken;
-import me.chanjar.weixin.common.util.http.apache.ApacheHttpClientBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -18,7 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.concurrent.locks.Lock;
+import java.time.LocalDateTime;
 
 @RestController //@ResponseBody + @Controller
 
@@ -27,6 +26,8 @@ public class WxAuthController {
     @Autowired
     private WxMaService wxMaService;
 
+    @Autowired
+    private UserServiceImpl userService;
     /**
      * 微信登录接口
      *  @param wxLoginInfo
@@ -36,169 +37,54 @@ public class WxAuthController {
     public JSONObject loginWx(@RequestBody WxLoginInfo wxLoginInfo, HttpServletRequest request) {
         String code = wxLoginInfo.getCode();
         UserInfo userInfo = wxLoginInfo.getUserInfo();
-
-        LogUtil.info("code="+code);
-
-        LogUtil.info("userInfo="+userInfo.toString());
         if (code == null || userInfo == null) {
+            LogUtil.error("code is null");
             return ResponseUtil.badArgument(); //参数值错误
         }
         String sessionKey = null;
         String openId = null;
         try {
-//            WxMaConfig wxMaConfig = new WxMaConfig() {
-//                @Override
-//                public String getAccessToken() {
-//                    return null;
-//                }
-//
-//                @Override
-//                public Lock getAccessTokenLock() {
-//                    return null;
-//                }
-//
-//                @Override
-//                public boolean isAccessTokenExpired() {
-//                    return false;
-//                }
-//
-//                @Override
-//                public void expireAccessToken() {
-//
-//                }
-//
-//                @Override
-//                public void updateAccessToken(WxAccessToken wxAccessToken) {
-//
-//                }
-//
-//                @Override
-//                public void updateAccessToken(String s, int i) {
-//
-//                }
-//
-//                @Override
-//                public String getJsapiTicket() {
-//                    return null;
-//                }
-//
-//                @Override
-//                public Lock getJsapiTicketLock() {
-//                    return null;
-//                }
-//
-//                @Override
-//                public boolean isJsapiTicketExpired() {
-//                    return false;
-//                }
-//
-//                @Override
-//                public void expireJsapiTicket() {
-//
-//                }
-//
-//                @Override
-//                public void updateJsapiTicket(String s, int i) {
-//
-//                }
-//
-//                @Override
-//                public String getCardApiTicket() {
-//                    return null;
-//                }
-//
-//                @Override
-//                public Lock getCardApiTicketLock() {
-//                    return null;
-//                }
-//
-//                @Override
-//                public boolean isCardApiTicketExpired() {
-//                    return false;
-//                }
-//
-//                @Override
-//                public void expireCardApiTicket() {
-//
-//                }
-//
-//                @Override
-//                public void updateCardApiTicket(String s, int i) {
-//
-//                }
-//
-//                @Override
-//                public String getAppid() {
-//                    return "wx74afe1ecfc6446ca";
-//                }
-//
-//                @Override
-//                public String getSecret() {
-//                    return "227a4a5734f93918493bd080b376862d";
-//                }
-//
-//                @Override
-//                public String getToken() {
-//                    return null;
-//                }
-//
-//                @Override
-//                public String getAesKey() {
-//                    return null;
-//                }
-//
-//                @Override
-//                public String getMsgDataFormat() {
-//                    return null;
-//                }
-//
-//                @Override
-//                public long getExpiresTime() {
-//                    return 0;
-//                }
-//
-//                @Override
-//                public String getHttpProxyHost() {
-//                    return null;
-//                }
-//
-//                @Override
-//                public int getHttpProxyPort() {
-//                    return 0;
-//                }
-//
-//                @Override
-//                public String getHttpProxyUsername() {
-//                    return null;
-//                }
-//
-//                @Override
-//                public String getHttpProxyPassword() {
-//                    return null;
-//                }
-//
-//                @Override
-//                public ApacheHttpClientBuilder getApacheHttpClientBuilder() {
-//                    return null;
-//                }
-//
-//                @Override
-//                public boolean autoRefreshToken() {
-//                    return false;
-//                }
-//            };
-//            this.wxMaService.setWxMaConfig(wxMaConfig);
             WxMaJscode2SessionResult result = this.wxMaService.getUserService().getSessionInfo(code);
             sessionKey = result.getSessionKey();
             openId = result.getOpenid();
         } catch (Exception e) {
             e.printStackTrace();
         }
-        System.out.println(sessionKey + "   " + openId);
         if (sessionKey == null || openId == null) {
-            return ResponseUtil.fail();
+            return ResponseUtil.fail(); //登录失败
         }
-
-        return null;
+        //是否第一次登录
+        User user = userService.queryByOpenid(openId);
+        if (user == null) { //第一次登录 注册
+            user = new User();
+            user.setUsername(openId);
+            user.setPassword(openId);
+            user.setWeixinOpenid(openId);
+            user.setAvatar(userInfo.getAvatarUrl());
+            user.setNickname(userInfo.getNickName());
+            user.setGender(userInfo.getGender());
+            user.setUserLevel((byte) 0);
+            user.setStatus((byte) 0);
+            user.setLastLoginTime(LocalDateTime.now());
+            user.setLastLoginIp(IpUtil.getIpAddr(request));
+            user.setSessionKey(sessionKey);
+            LogUtil.info("注册 " + user.toString());
+            userService.add(user);
+        } else {
+            user.setLastLoginTime(LocalDateTime.now());
+            user.setLastLoginIp(IpUtil.getIpAddr(request));
+            user.setSessionKey(sessionKey);
+            LogUtil.info("登录 " + user.toString());
+            if (userService.updateById(user) == 0) {
+                LogUtil.error("登录失败");
+                return ResponseUtil.updatedDataFailed();
+            }
+        }
+        JSONObject jsonObject = new JSONObject();
+        //生成token
+        jsonObject.put("token", "token");
+        jsonObject.put("userInfo", userInfo);
+        LogUtil.info(jsonObject);
+        return ResponseUtil.ok(jsonObject);
     }
 }

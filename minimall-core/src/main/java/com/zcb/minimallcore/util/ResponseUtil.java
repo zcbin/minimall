@@ -80,31 +80,31 @@ public class ResponseUtil {
         return fail(401, "参数不对");
     }
 
-    public static Object badArgumentValue() {
+    public static JSONObject badArgumentValue() {
         return fail(402, "参数值不对");
     }
 
-    public static Object unlogin() {
+    public static JSONObject unlogin() {
         return fail(501, "请登录");
     }
 
-    public static Object serious() {
+    public static JSONObject serious() {
         return fail(502, "系统内部错误");
     }
 
-    public static Object unsupport() {
+    public static JSONObject unsupport() {
         return fail(503, "业务不支持");
     }
 
-    public static Object updatedDateExpired() {
+    public static JSONObject updatedDateExpired() {
         return fail(504, "更新数据已经失效");
     }
 
-    public static Object updatedDataFailed() {
+    public static JSONObject updatedDataFailed() {
         return fail(505, "更新数据失败");
     }
 
-    public static Object unauthz() {
+    public static JSONObject unauthz() {
         return fail(506, "无操作权限");
     }
 }
