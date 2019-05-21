@@ -47,7 +47,6 @@
           <element id="library" level="project" name="Maven: org.slf4j:jul-to-slf4j:1.7.26" />
           <element id="library" level="project" name="Maven: org.yaml:snakeyaml:1.23" />
           <element id="library" level="project" name="Maven: com.alibaba:fastjson:1.2.47" />
-          <element id="library" level="project" name="Maven: log4j:log4j:1.2.17" />
           <element id="library" level="project" name="Maven: com.github.binarywang:weixin-java-miniapp:3.3.0" />
           <element id="library" level="project" name="Maven: com.github.binarywang:weixin-java-common:3.3.0" />
           <element id="library" level="project" name="Maven: com.thoughtworks.xstream:xstream:1.4.10" />

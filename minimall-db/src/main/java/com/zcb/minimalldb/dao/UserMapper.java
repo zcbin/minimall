@@ -3,6 +3,8 @@ package com.zcb.minimalldb.dao;
 import com.zcb.minimalldb.domain.User;
 import com.zcb.minimalldb.domain.UserExample;
 import java.util.List;
+import java.util.Set;
+
 import org.apache.ibatis.annotations.Param;
 
 public interface UserMapper {
@@ -156,4 +158,18 @@ public interface UserMapper {
      * @project https://github.com/itfsw/mybatis-generator-plugin
      */
     int logicalDeleteByPrimaryKey(Integer id);
+
+    /**
+     * 根据username查找角色
+     * @param userName
+     * @return
+     */
+    Set<String> getRoles(String userName);
+
+    /**
+     * 根据username查找权限
+     * @param userName
+     * @return
+     */
+    Set<String> getPermissions(String userName);
 }

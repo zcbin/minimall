@@ -19,6 +19,7 @@
     </properties>
 
     <dependencies>
+
         <dependency>
             <groupId>com.zcb</groupId>
             <artifactId>minimall-core</artifactId>

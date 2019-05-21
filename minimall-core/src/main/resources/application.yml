@@ -3,3 +3,4 @@ spring:
     active: core, db
   messages:
     encoding: UTF-8
+

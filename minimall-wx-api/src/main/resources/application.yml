@@ -4,3 +4,5 @@ spring:
   messages:
     encoding: UTF-8
 
+#logging:
+ # config: classpath:log4j2.xml

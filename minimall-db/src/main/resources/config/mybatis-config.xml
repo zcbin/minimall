@@ -5,7 +5,7 @@
 <configuration>
     <!-- 配置全局属性 -->
     <settings>
-        <setting name="logImpl" value="LOG4J"></setting>
+        <setting name="logImpl" value="LOG4J2"></setting>
 
         <!-- 使用jdbc的getGeneratedKeys获取数据库自增主键值 -->
         <setting name="useGeneratedKeys" value="true" />

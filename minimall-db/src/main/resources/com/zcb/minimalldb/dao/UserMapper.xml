@@ -23,6 +23,7 @@
     <result column="add_time" jdbcType="TIMESTAMP" property="addTime" />
     <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
     <result column="deleted" jdbcType="BIT" property="deleted" />
+    <result column="roleid" jdbcType="VARCHAR" property="roleid" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <!--
@@ -97,7 +98,7 @@
     -->
     id, username, `password`, gender, birthday, last_login_time, last_login_ip, user_level, 
     nickname, mobile, avatar, weixin_openid, session_key, `status`, add_time, update_time, 
-    deleted
+    deleted, roleid
   </sql>
   <select id="selectByExample" parameterType="com.zcb.minimalldb.domain.UserExample" resultMap="BaseResultMap">
     <!--
@@ -128,7 +129,7 @@
       distinct
     </if>
     <choose>
-      <when test="selective != null and selective.length > 0">
+      <when test="selective != null and selective.length &gt; 0">
         <foreach collection="selective" item="column" separator=",">
           ${column.escapedColumnName}
         </foreach>
@@ -136,7 +137,7 @@
       <otherwise>
         id, username, `password`, gender, birthday, last_login_time, last_login_ip, user_level, 
           nickname, mobile, avatar, weixin_openid, session_key, `status`, add_time, update_time, 
-          deleted
+          deleted, roleid
       </otherwise>
     </choose>
     from user
@@ -189,7 +190,7 @@
     -->
     select
     <choose>
-      <when test="selective != null and selective.length > 0">
+      <when test="selective != null and selective.length &gt; 0">
         <foreach collection="selective" item="column" separator=",">
           ${column.escapedColumnName}
         </foreach>
@@ -197,7 +198,7 @@
       <otherwise>
         id, username, `password`, gender, birthday, last_login_time, last_login_ip, user_level, 
           nickname, mobile, avatar, weixin_openid, session_key, `status`, add_time, update_time, 
-          deleted
+          deleted, roleid
       </otherwise>
     </choose>
     from user
@@ -234,13 +235,13 @@
       user_level, nickname, mobile, 
       avatar, weixin_openid, session_key, 
       `status`, add_time, update_time, 
-      deleted)
+      deleted, roleid)
     values (#{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{gender,jdbcType=TINYINT}, 
       #{birthday,jdbcType=DATE}, #{lastLoginTime,jdbcType=TIMESTAMP}, #{lastLoginIp,jdbcType=VARCHAR}, 
       #{userLevel,jdbcType=TINYINT}, #{nickname,jdbcType=VARCHAR}, #{mobile,jdbcType=VARCHAR}, 
       #{avatar,jdbcType=VARCHAR}, #{weixinOpenid,jdbcType=VARCHAR}, #{sessionKey,jdbcType=VARCHAR}, 
       #{status,jdbcType=TINYINT}, #{addTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, 
-      #{deleted,jdbcType=BIT})
+      #{deleted,jdbcType=BIT}, #{roleid,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.zcb.minimalldb.domain.User">
     <!--
@@ -300,6 +301,9 @@
       <if test="deleted != null">
         deleted,
       </if>
+      <if test="roleid != null">
+        roleid,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="username != null">
@@ -349,6 +353,9 @@
       </if>
       <if test="deleted != null">
         #{deleted,jdbcType=BIT},
+      </if>
+      <if test="roleid != null">
+        #{roleid,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -420,6 +427,9 @@
       <if test="record.deleted != null">
         deleted = #{record.deleted,jdbcType=BIT},
       </if>
+      <if test="record.roleid != null">
+        roleid = #{record.roleid,jdbcType=VARCHAR},
+      </if>
     </set>
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -447,7 +457,8 @@
       `status` = #{record.status,jdbcType=TINYINT},
       add_time = #{record.addTime,jdbcType=TIMESTAMP},
       update_time = #{record.updateTime,jdbcType=TIMESTAMP},
-      deleted = #{record.deleted,jdbcType=BIT}
+      deleted = #{record.deleted,jdbcType=BIT},
+      roleid = #{record.roleid,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -507,6 +518,9 @@
       <if test="deleted != null">
         deleted = #{deleted,jdbcType=BIT},
       </if>
+      <if test="roleid != null">
+        roleid = #{roleid,jdbcType=VARCHAR},
+      </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
@@ -531,7 +545,8 @@
       `status` = #{status,jdbcType=TINYINT},
       add_time = #{addTime,jdbcType=TIMESTAMP},
       update_time = #{updateTime,jdbcType=TIMESTAMP},
-      deleted = #{deleted,jdbcType=BIT}
+      deleted = #{deleted,jdbcType=BIT},
+      roleid = #{roleid,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
   <select id="selectOneByExample" parameterType="com.zcb.minimalldb.domain.UserExample" resultMap="BaseResultMap">
@@ -559,7 +574,7 @@
     -->
     select
     <choose>
-      <when test="selective != null and selective.length > 0">
+      <when test="selective != null and selective.length &gt; 0">
         <foreach collection="selective" item="column" separator=",">
           ${column.escapedColumnName}
         </foreach>
@@ -567,7 +582,7 @@
       <otherwise>
         id, username, `password`, gender, birthday, last_login_time, last_login_ip, user_level, 
           nickname, mobile, avatar, weixin_openid, session_key, `status`, add_time, update_time, 
-          deleted
+          deleted, roleid
       </otherwise>
     </choose>
     from user
@@ -599,4 +614,12 @@
     update user set deleted = 1
     where id = #{id,jdbcType=INTEGER}
   </update>
+
+  <select id="getRoles" parameterType="String" resultType="String">
+		select r.rolename from user u,role r where u.roleid=r.roleid and u.username=#{userName}
+	</select>
+
+  <select id="getPermissions" parameterType="String" resultType="String">
+		select p.permissionname from user u,role r,permission p where u.roleid=r.roleid and p.roleid=r.roleid and u.username=#{userName}
+	</select>
 </mapper>
