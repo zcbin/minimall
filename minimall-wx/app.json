@@ -15,9 +15,7 @@
     "pages/ucenter/couponSelect/couponSelect",
     "pages/ucenter/collect/collect",
     "pages/auth/login/login",
-    "pages/auth/accountLogin/accountLogin",
-    "pages/auth/register/register",
-    "pages/auth/reset/reset",
+    
     "pages/payResult/payResult",
     "pages/comment/comment",
     "pages/commentPost/commentPost",

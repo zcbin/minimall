@@ -7,7 +7,32 @@
   width: 100%;
   height: 417rpx;
 }
-
+/* 横向导航栏 */
+.ca-menu {
+white-space: nowrap;
+background-color: #fff;
+}
+.ca-menu .item {
+  position: relative;
+  padding: 30rpx 32rpx;
+  color: #999;
+  font-size: 30rpx;
+  cursor: pointer;
+  display: inline-block
+}
+.ca-menu .active {
+  color: #f43838
+}
+.ca-menu .active::after {
+  content:'';
+  position: absolute;
+  left: 32rpx;
+  right: 32rpx;
+  height:0;
+  border-bottom: 4rpx solid #f43838;
+  border-radius: 4rpx;
+  bottom: 18rpx
+}
 .m-menu {
   background: #fff;
   display: flex;
@@ -18,7 +43,7 @@
 }
 
 .m-menu .item {
-  width: 150rpx;
+  width: 20%;
   height: 126rpx;
 }
 

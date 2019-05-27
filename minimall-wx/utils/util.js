@@ -30,10 +30,10 @@ function request(url, data = {}, method = "GET") {
       method: method,
       header: {
         'Content-Type': 'application/json',
-        'X-Litemall-Token': wx.getStorageSync('token')
+        'X-Minimall-Token': wx.getStorageSync('token')
       },
       success: function(res) {
-
+        console.log("request success:"+JSON.stringify(res));
         if (res.statusCode == 200) {
 
           if (res.data.errno == 501) {

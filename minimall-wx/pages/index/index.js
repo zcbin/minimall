@@ -7,6 +7,8 @@ const app = getApp();
 
 Page({
   data: {
+    hotSearch:"",
+    cate: [],
     newGoods: [],
     hotGoods: [],
     topics: [],
@@ -21,8 +23,8 @@ Page({
 
   onShareAppMessage: function() {
     return {
-      title: 'litemall小程序商场',
-      desc: '开源微信小程序商城',
+      title: 'minimall商城',
+      desc: '测试程序',
       path: '/pages/index/index'
     }
   },
@@ -35,6 +37,7 @@ Page({
   },
 
   getIndexData: function() {
+    console.log("getIndexData");
     let that = this;
     util.request(api.IndexUrl).then(function(res) {
       if (res.errno === 0) {
@@ -47,15 +50,21 @@ Page({
           banner: res.data.banner,
           groupons: res.data.grouponList,
           channel: res.data.channel,
+          cate: res.data.category,
           coupon: res.data.couponList
         });
       }
     });
-    util.request(api.GoodsCount).then(function (res) {
+    //最热门搜索
+    util.request(api.HotSearch).then(function (res) {
       that.setData({
-        goodsCount: res.data.goodsCount
+        hotSearch: res.data.hotSearch
       });
     });
+  },
+  swiperNav: function(e) {
+    console.log("active"+e);
+    
   },
   onLoad: function(options) {
 
@@ -110,9 +119,11 @@ Page({
     }
 
     this.getIndexData();
+
   },
   onReady: function() {
     // 页面渲染完成
+    
   },
   onShow: function() {
     // 页面显示
@@ -124,11 +135,11 @@ Page({
     // 页面关闭
   },
   getCoupon(e) {
-    if (!app.globalData.hasLogin) {
-      wx.navigateTo({
-        url: "/pages/auth/login/login"
-      });
-    }
+    // if (!app.globalData.hasLogin) {
+    //   wx.navigateTo({
+    //     url: "/pages/auth/login/login"
+    //   });
+    // }
 
     let couponId = e.currentTarget.dataset.index
     util.request(api.CouponReceive, {

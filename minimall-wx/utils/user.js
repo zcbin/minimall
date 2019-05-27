@@ -25,7 +25,6 @@ function checkSession() {
  * Promise封装wx.login
  */
 function login() {
-  console.log("login")
   return new Promise(function(resolve, reject) {
     wx.login({
       success: function(res) {
@@ -46,7 +45,6 @@ function login() {
  * 调用微信登录
  */
 function loginByWeixin(userInfo) {
-  console.log("login_wx");
   return new Promise(function(resolve, reject) {
     return login().then((res) => {
       //登录远程服务器
@@ -58,7 +56,6 @@ function loginByWeixin(userInfo) {
           //存储用户信息
           wx.setStorageSync('userInfo', res.data.userInfo);
           wx.setStorageSync('token', res.data.token);
-
           resolve(res);
         } else {
           reject(res);
