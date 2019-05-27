@@ -2,14 +2,17 @@ package com.zcb.minimallwxapi.controller;
 
 import com.alibaba.fastjson.JSONObject;
 import com.zcb.minimallcore.util.ResponseUtil;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class AuthController {
+    private static final Logger LOGGER = LogManager.getLogger();
     @RequestMapping(value = "/unauth")
     public JSONObject unauth() {
-        //LogUtil.error("not logged in yet");
+        LOGGER.error("not logged in yet");
         return ResponseUtil.unlogin();
     }
     /**
@@ -18,7 +21,7 @@ public class AuthController {
      */
     @RequestMapping(value = "/unauthorized")
     public JSONObject unauthorized() {
-        //LogUtil.error("no permission");
+        LOGGER.error("no permission");
         return ResponseUtil.unauthz();
     }
 }

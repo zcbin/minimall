@@ -1,4 +1,4 @@
-package com.zcb.minimallcore.realm;
+package com.zcb.minimallwxapi.realm;
 
 import com.zcb.minimalldb.domain.User;
 import com.zcb.minimalldb.service.IUserService;
@@ -16,6 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.Set;
+
 @Component
 public class MyRealm extends AuthorizingRealm {
 

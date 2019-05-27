@@ -1,3 +1,10 @@
+pagehelper:
+  helperDialect:  mysql
+  reasonable: true
+  supportMethodsArguments:  true
+  params: count=countSql
+
+
 # 数据库配置
 spring:
   datasource:

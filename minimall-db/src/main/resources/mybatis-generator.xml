@@ -56,7 +56,7 @@
         <javaClientGenerator type="XMLMAPPER" targetPackage="com.zcb.minimalldb.dao"
                              targetProject="src/main/java"/>
         <!--表名-->
-        <table tableName="user">
+        <!--<table tableName="user">
             <generatedKey column="id" sqlStatement="MySql" identity="true"/>
         </table>
         <table tableName="role">
@@ -64,7 +64,18 @@
         </table>
         <table tableName="permission">
             <generatedKey column="id" sqlStatement="MySql" identity="true"/>
+        </table>-->
+        <!--物品表-->
+        <!--<table tableName="goods">
+            <generatedKey column="id" sqlStatement="MySql" identity="true"/>
+        </table>-->
+        <!--广告表-->
+        <!--<table tableName="ad">
+            <generatedKey column="id" sqlStatement="MySql" identity="true"/>
+        </table>-->
+        <!--分类表-->
+        <table tableName="category">
+            <generatedKey column="id" sqlStatement="MySql" identity="true"/>
         </table>
-
     </context>
 </generatorConfiguration>

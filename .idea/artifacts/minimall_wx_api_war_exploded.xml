@@ -17,19 +17,6 @@
           <element id="archive" name="minimall-core-0.0.1-SNAPSHOT.jar">
             <element id="module-output" name="minimall-core" />
           </element>
-          <element id="library" level="project" name="Maven: org.apache.shiro:shiro-spring:1.4.0" />
-          <element id="library" level="project" name="Maven: org.apache.shiro:shiro-core:1.4.0" />
-          <element id="library" level="project" name="Maven: org.apache.shiro:shiro-lang:1.4.0" />
-          <element id="library" level="project" name="Maven: org.apache.shiro:shiro-cache:1.4.0" />
-          <element id="library" level="project" name="Maven: org.apache.shiro:shiro-crypto-hash:1.4.0" />
-          <element id="library" level="project" name="Maven: org.apache.shiro:shiro-crypto-core:1.4.0" />
-          <element id="library" level="project" name="Maven: org.apache.shiro:shiro-crypto-cipher:1.4.0" />
-          <element id="library" level="project" name="Maven: org.apache.shiro:shiro-config-core:1.4.0" />
-          <element id="library" level="project" name="Maven: org.apache.shiro:shiro-config-ogdl:1.4.0" />
-          <element id="library" level="project" name="Maven: commons-beanutils:commons-beanutils:1.9.3" />
-          <element id="library" level="project" name="Maven: commons-collections:commons-collections:3.2.2" />
-          <element id="library" level="project" name="Maven: org.apache.shiro:shiro-event:1.4.0" />
-          <element id="library" level="project" name="Maven: org.apache.shiro:shiro-web:1.4.0" />
           <element id="archive" name="minimall-db-0.0.1-SNAPSHOT.jar">
             <element id="module-output" name="minimall-db" />
           </element>
@@ -67,14 +54,14 @@
           <element id="library" level="project" name="Maven: org.springframework.boot:spring-boot-starter:2.1.4.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework.boot:spring-boot:2.1.4.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework.boot:spring-boot-autoconfigure:2.1.4.RELEASE" />
-          <element id="library" level="project" name="Maven: org.springframework.boot:spring-boot-starter-logging:2.1.4.RELEASE" />
-          <element id="library" level="project" name="Maven: ch.qos.logback:logback-classic:1.2.3" />
-          <element id="library" level="project" name="Maven: ch.qos.logback:logback-core:1.2.3" />
-          <element id="library" level="project" name="Maven: org.apache.logging.log4j:log4j-to-slf4j:2.11.2" />
-          <element id="library" level="project" name="Maven: org.apache.logging.log4j:log4j-api:2.11.2" />
-          <element id="library" level="project" name="Maven: org.slf4j:jul-to-slf4j:1.7.26" />
           <element id="library" level="project" name="Maven: org.yaml:snakeyaml:1.23" />
           <element id="library" level="project" name="Maven: com.alibaba:fastjson:1.2.47" />
+          <element id="library" level="project" name="Maven: org.springframework.boot:spring-boot-starter-log4j2:2.1.4.RELEASE" />
+          <element id="library" level="project" name="Maven: org.apache.logging.log4j:log4j-slf4j-impl:2.11.2" />
+          <element id="library" level="project" name="Maven: org.apache.logging.log4j:log4j-api:2.11.2" />
+          <element id="library" level="project" name="Maven: org.apache.logging.log4j:log4j-core:2.11.2" />
+          <element id="library" level="project" name="Maven: org.apache.logging.log4j:log4j-jul:2.11.2" />
+          <element id="library" level="project" name="Maven: org.slf4j:jul-to-slf4j:1.7.26" />
           <element id="library" level="project" name="Maven: com.github.binarywang:weixin-java-miniapp:3.3.0" />
           <element id="library" level="project" name="Maven: com.github.binarywang:weixin-java-common:3.3.0" />
           <element id="library" level="project" name="Maven: com.thoughtworks.xstream:xstream:1.4.10" />
@@ -91,6 +78,23 @@
           <element id="library" level="project" name="Maven: com.google.guava:guava:20.0" />
           <element id="library" level="project" name="Maven: org.dom4j:dom4j:2.0.0" />
           <element id="library" level="project" name="Maven: jaxen:jaxen:1.1.6" />
+          <element id="library" level="project" name="Maven: org.apache.shiro:shiro-spring:1.4.0" />
+          <element id="library" level="project" name="Maven: org.apache.shiro:shiro-core:1.4.0" />
+          <element id="library" level="project" name="Maven: org.apache.shiro:shiro-lang:1.4.0" />
+          <element id="library" level="project" name="Maven: org.apache.shiro:shiro-cache:1.4.0" />
+          <element id="library" level="project" name="Maven: org.apache.shiro:shiro-crypto-hash:1.4.0" />
+          <element id="library" level="project" name="Maven: org.apache.shiro:shiro-crypto-core:1.4.0" />
+          <element id="library" level="project" name="Maven: org.apache.shiro:shiro-crypto-cipher:1.4.0" />
+          <element id="library" level="project" name="Maven: org.apache.shiro:shiro-config-core:1.4.0" />
+          <element id="library" level="project" name="Maven: org.apache.shiro:shiro-config-ogdl:1.4.0" />
+          <element id="library" level="project" name="Maven: commons-beanutils:commons-beanutils:1.9.3" />
+          <element id="library" level="project" name="Maven: commons-collections:commons-collections:3.2.2" />
+          <element id="library" level="project" name="Maven: org.apache.shiro:shiro-event:1.4.0" />
+          <element id="library" level="project" name="Maven: org.apache.shiro:shiro-web:1.4.0" />
+          <element id="library" level="project" name="Maven: com.github.pagehelper:pagehelper-spring-boot-starter:1.2.5" />
+          <element id="library" level="project" name="Maven: com.github.pagehelper:pagehelper-spring-boot-autoconfigure:1.2.5" />
+          <element id="library" level="project" name="Maven: com.github.pagehelper:pagehelper:5.1.4" />
+          <element id="library" level="project" name="Maven: com.github.jsqlparser:jsqlparser:1.0" />
         </element>
       </element>
       <element id="directory" name="META-INF">

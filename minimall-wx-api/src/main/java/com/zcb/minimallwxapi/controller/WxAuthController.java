@@ -6,9 +6,12 @@ import com.alibaba.fastjson.JSONObject;
 import com.zcb.minimallcore.util.IpUtil;
 import com.zcb.minimallcore.util.ResponseUtil;
 import com.zcb.minimalldb.domain.User;
+import com.zcb.minimalldb.service.IUserService;
 import com.zcb.minimalldb.service.impl.UserServiceImpl;
 import com.zcb.minimallwxapi.dto.UserInfo;
 import com.zcb.minimallwxapi.dto.WxLoginInfo;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.IncorrectCredentialsException;
 import org.apache.shiro.authc.UnknownAccountException;
@@ -30,11 +33,13 @@ import java.time.LocalDateTime;
 
 @RequestMapping(value = "/wx/auth")
 public class WxAuthController {
+    private static final Logger LOGGER = LogManager.getLogger();
+
     @Autowired
     private WxMaService wxMaService;
 
     @Autowired
-    private UserServiceImpl userService;
+    private IUserService userService;
     /**
      * 微信登录接口
      *  @param wxLoginInfo
@@ -45,7 +50,8 @@ public class WxAuthController {
         String code = wxLoginInfo.getCode();
         UserInfo userInfo = wxLoginInfo.getUserInfo();
         if (code == null || userInfo == null) {
-            //LogUtil.error("code is null");
+            LOGGER.error("code is null");
+
             return ResponseUtil.badArgument(); //参数值错误
         }
         String sessionKey = null;
@@ -55,7 +61,7 @@ public class WxAuthController {
             sessionKey = result.getSessionKey();
             openId = result.getOpenid();
         } catch (Exception e) {
-            //LogUtil.error("login fail by wx");
+            LOGGER.error("login fail by wx");
             e.printStackTrace();
         }
         if (sessionKey == null || openId == null) {
@@ -102,8 +108,10 @@ public class WxAuthController {
             Serializable sessionId = session.getId();
             JSONObject jsonObject = new JSONObject();
             //生成token
+            jsonObject.put("errno","0");
             jsonObject.put("token", sessionId);
             jsonObject.put("userInfo", userInfo);
+            LOGGER.info(jsonObject);
             //LogUtil.info("login success");
             //LogUtil.info(jsonObject);
             return ResponseUtil.ok(jsonObject);
