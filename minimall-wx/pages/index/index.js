@@ -7,6 +7,7 @@ const app = getApp();
 
 Page({
   data: {
+    active:"", //设置选中样式
     hotSearch:"",
     cate: [],
     newGoods: [],
@@ -62,9 +63,9 @@ Page({
       });
     });
   },
+
   swiperNav: function(e) {
-    console.log("active"+e);
-    
+   
   },
   onLoad: function(options) {
 

@@ -1,11 +1,13 @@
 <!--index.wxml-->
 <view class="container">
-<view class="search">
+<!-- 搜索页面 -->
+  <view class="search">
     <navigator url="/pages/search/search" class="input">
       <image class="icon"></image>
       <text class="txt">{{hotSearch}}</text>
     </navigator>
   </view>
+  <!-- 顶部广告播放 -->
   <swiper class="banner" indicator-dots="true" autoplay="true" indicator-color="rgba(0, 0, 0, .1)    "	indicator-active-color="#FF9900" interval="3000" duration="1000">
     <swiper-item wx:for="{{banner}}" wx:key="id">
       <!-- <navigator url="{{item.link}}"> -->
@@ -21,39 +23,39 @@
     </navigator>
   </view>
 
-  <!-- 横向导航栏 
-  -->
-
+  <!-- 横向导航栏 -->
   <scroll-view scroll-x='true' class='ca-menu' bindtap='swiperNav'>
-  <text class='item' wx:for="{{cate}}" wx:key="id">{{item.name}}</text>
+  <text data-i='{{index}}' class='item '  wx:for="{{cate}}" wx:key="id">{{item.name}}</text>
 
   </scroll-view>
 
 
-
-  <view class="a-section a-popular" wx:if="{{hotGoods.length > 0}}">
-    <view class="h">
-      <view>
-        <navigator url="../hotGoods/hotGoods">
-          <text class="txt">人气推荐</text>
-        </navigator>
-      </view>
-    </view>
-    <view class="b">
+<!-- 展示页面  -->
+  <view class="a-popular" wx:if="{{hotGoods.length > 0}}">
       <view class="item" wx:for="{{hotGoods}}" wx:for-index="index" wx:for-item="item" wx:key="id">
+      <!-- 点击进入详情页面 -->
         <navigator url="/pages/goods/goods?id={{item.id}}">
-          <image class="img" src="{{item.picUrl}}" background-size="cover"></image>
-          <view class="right">
+        <!-- 图片显示 -->
+          <view class="top">
+            <image class="img" src="{{item.picUrl}}" background-size="cover"></image>
+          </view>
+          <!-- 介绍 -->
+          <view class="bottom">
             <view class="text">
               <text class="name">{{item.name}}</text>
-              <text class="desc">{{item.brief}}</text>
+              <text class="desc">{{item.brief}}</text>              
               <text class="price">￥{{item.retailPrice}}</text>
             </view>
+            
           </view>
+        </navigator>
+        <!-- 点击加入购物车 -->
+        <navigator url="/page/goods/hotGoods?id={{item.id}}">
+          <image class="cart" src="/static/images/addcart.png"></image>
         </navigator>
       </view>
     </view>
-  </view>
+  
 
   
 </view>

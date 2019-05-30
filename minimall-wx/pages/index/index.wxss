@@ -347,70 +347,90 @@ background-color: #fff;
   font-size: 30rpx;
   color: #ab956d;
 }
-
+/* 商品展示 样式 */
 .a-popular {
-  width: 750rpx;
+  width: 100%;
   height: auto;
   overflow: hidden;
+  background: #f7f7f7;
+  padding: 0rpx 10rpx 0rpx 10rpx;
 }
-
-.a-popular .b .item {
-  border-top: 1px solid #d9d9d9;
-  margin: 0 20rpx;
-  height: 264rpx;
-  width: 710rpx;
-}
-
-.a-popular .b .img {
-  margin-top: 12rpx;
-  margin-right: 12rpx;
+/* 一个 */
+.a-popular  .item {
+  border: 4rpx solid #f7f7f7;
+  border-radius: 20rpx;
+  /* margin: 0 20rpx;
+  height: 264rpx; */
+  width: 50%;
+  box-sizing: border-box;
   float: left;
-  width: 240rpx;
-  height: 240rpx;
+  background: #ffffff;
+  height: 550rpx;
 }
-
-.a-popular .b .right {
-  float: left;
-  height: 264rpx;
-  width: 456rpx;
+/* 上部 图片 */
+.a-popular .top {
+  /* float: left; */
+  height: 350rpx;
+  width: 100%;
+  display: flex;
+  flex-flow: row nowrap;
+}
+/* 下部 文字 */
+.a-popular .bottom {
+  /* float: left; */
+  height: 200rpx;
+  width: 100%;
   display: flex;
   flex-flow: row nowrap;
 }
 
-.a-popular .b .text {
+/* 图片 */
+.a-popular .img {
+  height: 350rpx;
+}
+/* 文字 */
+.a-popular  .text {
   display: flex;
   flex-wrap: nowrap;
   flex-direction: column;
   justify-content: center;
   overflow: hidden;
-  height: 264rpx;
-  width: 456rpx;
+  /* height: 264rpx;
+  width: 456rpx; */
 }
-
-.a-popular .b .name {
-  width: 456rpx;
+/* 名称 */
+.a-popular  .name {
+  /* width: 456rpx; */
   display: block;
   color: #333;
   line-height: 50rpx;
   font-size: 30rpx;
 }
-
-.a-popular .b .desc {
-  width: 456rpx;
+/* 描述 */
+.a-popular  .desc {
+  
   display: block;
   color: #999;
   line-height: 50rpx;
   font-size: 25rpx;
 }
-
-.a-popular .b .price {
-  width: 456rpx;
+/* 价格 */
+.a-popular  .price {
+  width: 70%;
   display: block;
-  color: #ab956d;
+  color: #e7a247;
   line-height: 50rpx;
   font-size: 33rpx;
 }
-
+/* 购物车 */
+.a-popular  .cart {
+position: relative;
+width: 50rpx;
+height: 50rpx;
+right: 10rpx;
+bottom: 75rpx;
+float: right;
+}
 .a-topic .b {
   height: 533rpx;
   width: 750rpx;

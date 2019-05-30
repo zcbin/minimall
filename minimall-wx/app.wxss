@@ -5,6 +5,7 @@
   font-family: PingFangSC-Light, helvetica, 'Heiti SC';
   width: 100%;
   height: 100%;
+  background: #f7f7f7;
 }
 
 view, image, text, navigator {
