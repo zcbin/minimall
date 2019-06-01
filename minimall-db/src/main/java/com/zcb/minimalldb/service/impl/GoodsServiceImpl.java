@@ -37,4 +37,11 @@ public class GoodsServiceImpl implements IGoodsService {
     public List<Goods> queryByCategory(Integer categoryId, int offet, int limit) {
         return null;
     }
+
+    @Override
+    public Goods findById(Integer id) {
+        GoodsExample example = new GoodsExample();
+        example.or().andIdEqualTo(id).andDeletedEqualTo(false);
+        return goodsMapper.selectOneByExampleWithBLOBs(example);
+    }
 }

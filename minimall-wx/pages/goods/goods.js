@@ -129,75 +129,76 @@ Page({
   // 获取商品信息
   getGoodsInfo: function() {
     let that = this;
+   
     util.request(api.GoodsDetail, {
       id: that.data.id
     }).then(function(res) {
       if (res.errno === 0) {
 
-        let _specificationList = res.data.specificationList
-        // 如果仅仅存在一种货品，那么商品页面初始化时默认checked
-        if (_specificationList.length == 1) {
-          if (_specificationList[0].valueList.length == 1) {
-            _specificationList[0].valueList[0].checked = true
+        // let _specificationList = res.data.specificationList
+        // // 如果仅仅存在一种货品，那么商品页面初始化时默认checked
+        // if (_specificationList.length == 1) {
+        //   if (_specificationList[0].valueList.length == 1) {
+        //     _specificationList[0].valueList[0].checked = true
 
-            // 如果仅仅存在一种货品，那么商品价格应该和货品价格一致
-            // 这里检测一下
-            let _productPrice = res.data.productList[0].price;
-            let _goodsPrice = res.data.info.retailPrice;
-            if (_productPrice != _goodsPrice) {
-              console.error('商品数量价格和货品不一致');
-            }
+        //     // 如果仅仅存在一种货品，那么商品价格应该和货品价格一致
+        //     // 这里检测一下
+        //     let _productPrice = res.data.productList[0].price;
+        //     let _goodsPrice = res.data.info.retailPrice;
+        //     if (_productPrice != _goodsPrice) {
+        //       console.error('商品数量价格和货品不一致');
+        //     }
 
-            that.setData({
-              checkedSpecText: _specificationList[0].valueList[0].value,
-              tmpSpecText: '已选择：' + _specificationList[0].valueList[0].value,
-            });
-          }
-        }
+        //     that.setData({
+        //       checkedSpecText: _specificationList[0].valueList[0].value,
+        //       tmpSpecText: '已选择：' + _specificationList[0].valueList[0].value,
+        //     });
+        //   }
+        // }
 
         that.setData({
           goods: res.data.info,
-          attribute: res.data.attribute,
-          issueList: res.data.issue,
-          comment: res.data.comment,
-          brand: res.data.brand,
-          specificationList: res.data.specificationList,
-          productList: res.data.productList,
-          userHasCollect: res.data.userHasCollect,
-          shareImage: res.data.shareImage,
-          checkedSpecPrice: res.data.info.retailPrice,
-          groupon: res.data.groupon
+          // attribute: res.data.attribute,
+          // issueList: res.data.issue,
+          // comment: res.data.comment,
+          // brand: res.data.brand,
+          // specificationList: res.data.specificationList,
+          // productList: res.data.productList,
+          // userHasCollect: res.data.userHasCollect,
+          // shareImage: res.data.shareImage,
+           checkedSpecPrice: res.data.info.retailPrice,
+          // groupon: res.data.groupon
         });
 
         //如果是通过分享的团购参加团购，则团购项目应该与分享的一致并且不可更改
-        if (that.data.isGroupon) {
-          let groupons = that.data.groupon;
-          for (var i = 0; i < groupons.length; i++) {
-            if (groupons[i].id != that.data.grouponLink.rulesId) {
-              groupons.splice(i, 1);
-            }
-          }
-          groupons[0].checked = true;
-          //重设团购规格
-          that.setData({
-            groupon: groupons
-          });
+        // if (that.data.isGroupon) {
+        //   let groupons = that.data.groupon;
+        //   for (var i = 0; i < groupons.length; i++) {
+        //     if (groupons[i].id != that.data.grouponLink.rulesId) {
+        //       groupons.splice(i, 1);
+        //     }
+        //   }
+        //   groupons[0].checked = true;
+        //   //重设团购规格
+        //   that.setData({
+        //     groupon: groupons
+        //   });
 
-        }
+        // }
 
-        if (res.data.userHasCollect == 1) {
-          that.setData({
-            collectImage: that.data.hasCollectImage
-          });
-        } else {
-          that.setData({
-            collectImage: that.data.noCollectImage
-          });
-        }
+        // if (res.data.userHasCollect == 1) {
+        //   that.setData({
+        //     collectImage: that.data.hasCollectImage
+        //   });
+        // } else {
+        //   that.setData({
+        //     collectImage: that.data.noCollectImage
+        //   });
+        // }
 
-        WxParse.wxParse('goodsDetail', 'html', res.data.info.detail, that);
+       // WxParse.wxParse('goodsDetail', 'html', res.data.info.detail, that);
         //获取推荐商品
-        that.getGoodsRelated();
+        //that.getGoodsRelated();
       }
     });
   },

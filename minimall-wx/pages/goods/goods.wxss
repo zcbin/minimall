@@ -11,7 +11,66 @@
   width: 750rpx;
   height: 750rpx;
 }
+/* 价格部分 */
+.goods-price {
+  width: 100%;
+  padding: 10rpx;
+  overflow: hidden;
+  background: #fff;
+}
+/* 价格 */
+.goods-price .price {
+ font-size: 36rpx;
+ padding: 25rpx 0px 20rpx 0rpx;
+  float: left;
+  color: #ff5500;
+}
+/* 已售 */
+.goods-price .sold {
+  padding: 35rpx 0px 20rpx 0rpx;
+  font-size: 23rpx;
+  color: #6a6a6a;
+  float: right;
+}
+/* 名称 分享 */
+.goods-detail {
+  width: 100%;
+  overflow: hidden;
+  background: #fff;
+  padding:10rpx;
 
+}
+/* 介绍部分 */
+.goods-detail .intr {
+  width: 85%;
+  float: left;
+  padding-right: 10rpx;
+}
+.goods-detail .intr .name {
+  font-size: 35rpx;
+  color: #333333;
+}
+.goods-detail .intr .desc {
+  font-size: 23rpx;
+  padding-top: 10rpx;
+  color: #666666;
+}
+/* 分享 */
+.goods-detail .share {
+  padding: 10rpx;
+  width: 15%;
+  float: right;
+  text-align: center;
+}
+.goods-detail .share .title {
+  color: #666666;  
+  font-size: 23rpx;
+}
+.goods-detail .share .img {
+ width: 50rpx;
+ height: 50rpx;
+  
+}
 .commodity_screen {
   width: 100%;
   height: 100%;
@@ -36,26 +95,6 @@
   padding-top: 20rpx;
 }
 
-/* .service-policy {
-  width: 750rpx;
-  height: 73rpx;
-  background: #f4f4f4;
-  padding: 0 31.25rpx;
-  display: flex;
-  flex-flow: row nowrap;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.service-policy .item {
-  background: url(http://nos.netease.com/mailpub/hxm/yanxuan-wap/p/20150730/style/img/icon-normal/servicePolicyRed-518d32d74b.png) 0 center no-repeat;
-  background-size: 10rpx;
-  padding-left: 15rpx;
-  display: flex;
-  align-items: center;
-  font-size: 25rpx;
-  color: #666;
-} */
 
 .goods-info {
   width: 750rpx;

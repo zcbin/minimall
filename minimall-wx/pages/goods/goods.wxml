@@ -1,14 +1,30 @@
 <view class="container">
+  <!-- 图片 -->
   <swiper class="goodsimgs" indicator-dots="true" autoplay="true" interval="3000" duration="1000">
     <swiper-item wx:for="{{goods.gallery}}" wx:key="*this">
       <image src="{{item}}" background-size="cover"></image>
     </swiper-item>
   </swiper>
-  <!-- 分享 -->
-  <view class='goods_name'>
-    <view class='goods_name_left'>{{goods.name}}</view>
-    <view class="goods_name_right" bindtap="shareFriendOrCircle">分享</view>
+  <!-- 价格 -->
+  <view class="goods-price">
+    <view class='price'>￥{{goods.retailPrice}}</view>
+    <view class='sold'>已售10000份</view>
+    
   </view>
+  <!-- 详情 -->
+  <view class='goods-detail'>
+    <view class='intr'>
+      <view class='name'>{{goods.name}}</view>
+      <view class='desc'>{{goods.brief}}</view>
+    </view>
+    <!-- 分享 -->
+    <view class='share'>
+      <image class='img' src='/static/images/share.png' bindtap="shareFriendOrCircle"></image>
+      <view class='title'>分享</view>
+    </view>
+  </view>
+
+  <!-- 分享详细 -->
   <view class="share-pop-box" hidden="{{!openShare}}">
     <view class="share-pop">
       <view class="close" bindtap="closeShare">
@@ -31,21 +47,7 @@
     </view>
   </view>
 
-  <view class="goods-info">
-    <view class="c">
-      <text class="desc">{{goods.goodsBrief}}</text>
-      <view class="price">
-        <view class="counterPrice">原价：￥{{goods.counterPrice}}</view>
-        <view class="retailPrice">现价：￥{{checkedSpecPrice}}</view>
-      </view>
-
-      <view class="brand" wx:if="{{brand.name}}">
-        <navigator url="../brandDetail/brandDetail?id={{brand.id}}">
-          <text>{{brand.name}}</text>
-        </navigator>
-      </view>
-    </view>
-  </view>
+  
   <view class="section-nav section-attr" bindtap="switchAttrPop">
     <view class="t">{{checkedSpecText}}</view>
     <image class="i" src="/static/images/address_right.png" background-size="cover"></image>

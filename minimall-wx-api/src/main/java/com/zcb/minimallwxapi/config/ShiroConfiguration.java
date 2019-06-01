@@ -60,7 +60,7 @@ public class ShiroConfiguration {
         //微信登录 不验证
         map.put("/wx/auth/login_wx", "anon");
         //主页不认证
-        map.put("/wx/home/index", "anon");
+        map.put("/wx/home", "anon");
         //对所有用户认证
         map.put("/**","authc");
         shiroFilterFactoryBean.setFilterChainDefinitionMap(map);

@@ -38,4 +38,11 @@ public interface IGoodsService {
      * @return
      */
     List<Goods> queryByCategory(Integer categoryId, int offet, int limit);
+
+    /**
+     * 根据商品id查找详细信息
+     * @param id
+     * @return
+     */
+    Goods findById(Integer id);
 }

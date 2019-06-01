@@ -65,17 +65,19 @@
         <table tableName="permission">
             <generatedKey column="id" sqlStatement="MySql" identity="true"/>
         </table>-->
-        <!--物品表-->
-        <!--<table tableName="goods">
+        <!--商品表-->
+        <table tableName="goods">
             <generatedKey column="id" sqlStatement="MySql" identity="true"/>
-        </table>-->
+            <columnOverride column="gallery" javaType="java.lang.String[]"
+                            typeHandler="com.zcb.minimalldb.mybatis.JsonStringArrayTypeHandler"/>
+        </table>
         <!--广告表-->
         <!--<table tableName="ad">
             <generatedKey column="id" sqlStatement="MySql" identity="true"/>
         </table>-->
         <!--分类表-->
-        <table tableName="category">
+        <!--<table tableName="category">
             <generatedKey column="id" sqlStatement="MySql" identity="true"/>
-        </table>
+        </table>-->
     </context>
 </generatorConfiguration>

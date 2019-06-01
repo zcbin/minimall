@@ -418,7 +418,7 @@ background-color: #fff;
 .a-popular  .price {
   width: 70%;
   display: block;
-  color: #e7a247;
+  color: #ff5500;
   line-height: 50rpx;
   font-size: 33rpx;
 }
