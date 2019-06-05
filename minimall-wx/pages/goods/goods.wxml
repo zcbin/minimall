@@ -47,11 +47,21 @@
     </view>
   </view>
 
-  
-  <view class="section-nav section-attr" bindtap="switchAttrPop">
-    <view class="t">{{checkedSpecText}}</view>
-    <image class="i" src="/static/images/address_right.png" background-size="cover"></image>
+  <!-- 规格 数量选择 -->
+  <view class="section-nav" >
+    <view class="s">选择</view>
+    <view class='h' bindtap="switchAttrPop">
+      <view class="t">{{checkedSpecText}}</view>
+      <image class="i" src="/static/images/address_right.png" background-size="cover"></image>
+    </view>
+    
   </view>
+  <!-- 送至 -->
+  <!-- <view class='sent'>
+    <text class='text'>送至</text>
+    <view class='address'></view>
+  </view> -->
+  <!-- 评价 -->
   <view class="comments" wx:if="{{comment.count > 0}}">
     <view class="h">
       <navigator url="/pages/comment/comment?valueId={{goods.id}}&type=0">

@@ -46,4 +46,11 @@ public interface IUserService {
      */
     int updateById(User user);
 
+    /**
+     * 根据id查找
+     * @param id
+     * @return
+     */
+    User findById(Integer id);
+
 }

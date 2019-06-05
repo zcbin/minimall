@@ -66,11 +66,11 @@
             <generatedKey column="id" sqlStatement="MySql" identity="true"/>
         </table>-->
         <!--商品表-->
-        <table tableName="goods">
-            <generatedKey column="id" sqlStatement="MySql" identity="true"/>
-            <columnOverride column="gallery" javaType="java.lang.String[]"
-                            typeHandler="com.zcb.minimalldb.mybatis.JsonStringArrayTypeHandler"/>
-        </table>
+        <!--<table tableName="goods">-->
+            <!--<generatedKey column="id" sqlStatement="MySql" identity="true"/>-->
+            <!--<columnOverride column="gallery" javaType="java.lang.String[]"-->
+                            <!--typeHandler="com.zcb.minimalldb.mybatis.JsonStringArrayTypeHandler"/>-->
+        <!--</table>-->
         <!--广告表-->
         <!--<table tableName="ad">
             <generatedKey column="id" sqlStatement="MySql" identity="true"/>
@@ -79,5 +79,13 @@
         <!--<table tableName="category">
             <generatedKey column="id" sqlStatement="MySql" identity="true"/>
         </table>-->
+        <!--收货地址表-->
+        <!--<table tableName="address">-->
+            <!--<generatedKey column="id" sqlStatement="MySql" identity="true"/>-->
+        <!--</table>-->
+        <!--评论表-->
+        <table tableName="comment">
+        <generatedKey column="id" sqlStatement="MySql" identity="true"/>
+        </table>
     </context>
 </generatorConfiguration>

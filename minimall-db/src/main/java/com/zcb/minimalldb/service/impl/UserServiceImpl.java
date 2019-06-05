@@ -59,4 +59,9 @@ public class UserServiceImpl implements IUserService {
         user.setUpdateTime(LocalDateTime.now());
         return userMapper.updateByPrimaryKeySelective(user);
     }
+
+    @Override
+    public User findById(Integer id) {
+        return userMapper.selectByPrimaryKey(id);
+    }
 }

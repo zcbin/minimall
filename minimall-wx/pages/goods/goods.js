@@ -160,7 +160,7 @@ Page({
           goods: res.data.info,
           // attribute: res.data.attribute,
           // issueList: res.data.issue,
-          // comment: res.data.comment,
+           comment: res.data.comment,
           // brand: res.data.brand,
           // specificationList: res.data.specificationList,
           // productList: res.data.productList,
