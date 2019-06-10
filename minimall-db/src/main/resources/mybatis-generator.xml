@@ -84,8 +84,15 @@
             <!--<generatedKey column="id" sqlStatement="MySql" identity="true"/>-->
         <!--</table>-->
         <!--评论表-->
-        <table tableName="comment">
-        <generatedKey column="id" sqlStatement="MySql" identity="true"/>
+        <!--<table tableName="comment">-->
+        <!--<generatedKey column="id" sqlStatement="MySql" identity="true"/>-->
+        <!--<columnOverride column="pic_urls" javaType="java.lang.String[]"-->
+                        <!--typeHandler="com.zcb.minimalldb.mybatis.JsonStringArrayTypeHandler"/>-->
+
+        <!--</table>-->
+        <!--回复表-->
+        <table tableName="reply">
+            <generatedKey column="id" sqlStatement="MySql" identity="true"/>
         </table>
-    </context>
-</generatorConfiguration>
+        </context>
+    </generatorConfiguration>

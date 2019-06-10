@@ -27,8 +27,9 @@ public class CommentServiceImpl implements ICommentService {
     public List<Comment> queryByGid(Integer gid, int offet, int limit) {
         CommentExample example = new CommentExample();
         example.or().andGoodIdEqualTo(gid).andDeletedEqualTo(false);
+
         example.setOrderByClause(Comment.Column.addTime.desc());
-        PageHelper.offsetPage(offet, limit);
+        PageHelper.startPage(offet, limit);
         return commentMapper.selectByExampleSelective(example);
     }
 
@@ -53,5 +54,18 @@ public class CommentServiceImpl implements ICommentService {
     @Override
     public int deleteComment(Integer id) {
         return commentMapper.logicalDeleteByPrimaryKey(id);
+    }
+
+    @Override
+    public List<Comment> query(String type, Integer gid, int offet, int limit) {
+        CommentExample example = new CommentExample();
+        if (!"0".equals(type)) { //查询某一类
+            example.or().andTypeEqualTo(type).andGoodIdEqualTo(gid).andDeletedEqualTo(false);
+        } else {
+            example.or().andGoodIdEqualTo(gid).andDeletedEqualTo(false);
+        }
+
+        PageHelper.startPage(offet, limit);
+        return commentMapper.selectByExample(example);
     }
 }

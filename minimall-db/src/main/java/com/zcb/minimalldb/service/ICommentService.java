@@ -45,4 +45,14 @@ public interface ICommentService {
      * @return
      */
     int deleteComment(Integer id);
+
+    /**
+     * 评论列表
+     * @param type 评论类型 全部，好评差评等
+     * @param gid 物品id
+     * @param offet
+     * @param limit
+     * @return
+     */
+    List<Comment> query(String type, Integer gid, int offet, int limit);
 }

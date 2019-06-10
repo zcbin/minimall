@@ -64,7 +64,7 @@
   <!-- 评价 -->
   <view class="comments" wx:if="{{comment.count > 0}}">
     <view class="h">
-      <navigator url="/pages/comment/comment?valueId={{goods.id}}&type=0">
+      <navigator url="/pages/comment/comment?gid={{goods.id}}&type=0">
         <text class="t">评价({{comment.count > 999 ? '999+' : comment.count}})</text>
         <text class="i">查看全部</text>
       </navigator>

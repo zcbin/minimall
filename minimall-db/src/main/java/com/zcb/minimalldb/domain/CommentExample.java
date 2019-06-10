@@ -198,19 +198,50 @@ public class CommentExample {
      * @mbg.generated
      */
     protected abstract static class GeneratedCriteria {
+        protected List<Criterion> picUrlsCriteria;
+
+        protected List<Criterion> allCriteria;
+
         protected List<Criterion> criteria;
 
         protected GeneratedCriteria() {
             super();
             criteria = new ArrayList<Criterion>();
+            picUrlsCriteria = new ArrayList<Criterion>();
+        }
+
+        public List<Criterion> getPicUrlsCriteria() {
+            return picUrlsCriteria;
+        }
+
+        protected void addPicUrlsCriterion(String condition, Object value, String property) {
+            if (value == null) {
+                throw new RuntimeException("Value for " + property + " cannot be null");
+            }
+            picUrlsCriteria.add(new Criterion(condition, value, "com.zcb.minimalldb.mybatis.JsonStringArrayTypeHandler"));
+            allCriteria = null;
+        }
+
+        protected void addPicUrlsCriterion(String condition, String[] value1, String[] value2, String property) {
+            if (value1 == null || value2 == null) {
+                throw new RuntimeException("Between values for " + property + " cannot be null");
+            }
+            picUrlsCriteria.add(new Criterion(condition, value1, value2, "com.zcb.minimalldb.mybatis.JsonStringArrayTypeHandler"));
+            allCriteria = null;
         }
 
         public boolean isValid() {
-            return criteria.size() > 0;
+            return criteria.size() > 0
+                || picUrlsCriteria.size() > 0;
         }
 
         public List<Criterion> getAllCriteria() {
-            return criteria;
+            if (allCriteria == null) {
+                allCriteria = new ArrayList<Criterion>();
+                allCriteria.addAll(criteria);
+                allCriteria.addAll(picUrlsCriteria);
+            }
+            return allCriteria;
         }
 
         public List<Criterion> getCriteria() {
@@ -222,6 +253,7 @@ public class CommentExample {
                 throw new RuntimeException("Value for condition cannot be null");
             }
             criteria.add(new Criterion(condition));
+            allCriteria = null;
         }
 
         protected void addCriterion(String condition, Object value, String property) {
@@ -229,6 +261,7 @@ public class CommentExample {
                 throw new RuntimeException("Value for " + property + " cannot be null");
             }
             criteria.add(new Criterion(condition, value));
+            allCriteria = null;
         }
 
         protected void addCriterion(String condition, Object value1, Object value2, String property) {
@@ -236,6 +269,7 @@ public class CommentExample {
                 throw new RuntimeException("Between values for " + property + " cannot be null");
             }
             criteria.add(new Criterion(condition, value1, value2));
+            allCriteria = null;
         }
 
         public Criteria andIdIsNull() {
@@ -512,7 +546,7 @@ public class CommentExample {
             return (Criteria) this;
         }
 
-        public Criteria andTypeEqualTo(Byte value) {
+        public Criteria andTypeEqualTo(String value) {
             addCriterion("`type` =", value, "type");
             return (Criteria) this;
         }
@@ -529,7 +563,7 @@ public class CommentExample {
             return (Criteria) this;
         }
 
-        public Criteria andTypeNotEqualTo(Byte value) {
+        public Criteria andTypeNotEqualTo(String value) {
             addCriterion("`type` <>", value, "type");
             return (Criteria) this;
         }
@@ -546,7 +580,7 @@ public class CommentExample {
             return (Criteria) this;
         }
 
-        public Criteria andTypeGreaterThan(Byte value) {
+        public Criteria andTypeGreaterThan(String value) {
             addCriterion("`type` >", value, "type");
             return (Criteria) this;
         }
@@ -563,7 +597,7 @@ public class CommentExample {
             return (Criteria) this;
         }
 
-        public Criteria andTypeGreaterThanOrEqualTo(Byte value) {
+        public Criteria andTypeGreaterThanOrEqualTo(String value) {
             addCriterion("`type` >=", value, "type");
             return (Criteria) this;
         }
@@ -580,7 +614,7 @@ public class CommentExample {
             return (Criteria) this;
         }
 
-        public Criteria andTypeLessThan(Byte value) {
+        public Criteria andTypeLessThan(String value) {
             addCriterion("`type` <", value, "type");
             return (Criteria) this;
         }
@@ -597,7 +631,7 @@ public class CommentExample {
             return (Criteria) this;
         }
 
-        public Criteria andTypeLessThanOrEqualTo(Byte value) {
+        public Criteria andTypeLessThanOrEqualTo(String value) {
             addCriterion("`type` <=", value, "type");
             return (Criteria) this;
         }
@@ -614,22 +648,32 @@ public class CommentExample {
             return (Criteria) this;
         }
 
-        public Criteria andTypeIn(List<Byte> values) {
+        public Criteria andTypeLike(String value) {
+            addCriterion("`type` like", value, "type");
+            return (Criteria) this;
+        }
+
+        public Criteria andTypeNotLike(String value) {
+            addCriterion("`type` not like", value, "type");
+            return (Criteria) this;
+        }
+
+        public Criteria andTypeIn(List<String> values) {
             addCriterion("`type` in", values, "type");
             return (Criteria) this;
         }
 
-        public Criteria andTypeNotIn(List<Byte> values) {
+        public Criteria andTypeNotIn(List<String> values) {
             addCriterion("`type` not in", values, "type");
             return (Criteria) this;
         }
 
-        public Criteria andTypeBetween(Byte value1, Byte value2) {
+        public Criteria andTypeBetween(String value1, String value2) {
             addCriterion("`type` between", value1, value2, "type");
             return (Criteria) this;
         }
 
-        public Criteria andTypeNotBetween(Byte value1, Byte value2) {
+        public Criteria andTypeNotBetween(String value1, String value2) {
             addCriterion("`type` not between", value1, value2, "type");
             return (Criteria) this;
         }
@@ -1050,8 +1094,8 @@ public class CommentExample {
             return (Criteria) this;
         }
 
-        public Criteria andPicUrlsEqualTo(String value) {
-            addCriterion("pic_urls =", value, "picUrls");
+        public Criteria andPicUrlsEqualTo(String[] value) {
+            addPicUrlsCriterion("pic_urls =", value, "picUrls");
             return (Criteria) this;
         }
 
@@ -1067,8 +1111,8 @@ public class CommentExample {
             return (Criteria) this;
         }
 
-        public Criteria andPicUrlsNotEqualTo(String value) {
-            addCriterion("pic_urls <>", value, "picUrls");
+        public Criteria andPicUrlsNotEqualTo(String[] value) {
+            addPicUrlsCriterion("pic_urls <>", value, "picUrls");
             return (Criteria) this;
         }
 
@@ -1084,8 +1128,8 @@ public class CommentExample {
             return (Criteria) this;
         }
 
-        public Criteria andPicUrlsGreaterThan(String value) {
-            addCriterion("pic_urls >", value, "picUrls");
+        public Criteria andPicUrlsGreaterThan(String[] value) {
+            addPicUrlsCriterion("pic_urls >", value, "picUrls");
             return (Criteria) this;
         }
 
@@ -1101,8 +1145,8 @@ public class CommentExample {
             return (Criteria) this;
         }
 
-        public Criteria andPicUrlsGreaterThanOrEqualTo(String value) {
-            addCriterion("pic_urls >=", value, "picUrls");
+        public Criteria andPicUrlsGreaterThanOrEqualTo(String[] value) {
+            addPicUrlsCriterion("pic_urls >=", value, "picUrls");
             return (Criteria) this;
         }
 
@@ -1118,8 +1162,8 @@ public class CommentExample {
             return (Criteria) this;
         }
 
-        public Criteria andPicUrlsLessThan(String value) {
-            addCriterion("pic_urls <", value, "picUrls");
+        public Criteria andPicUrlsLessThan(String[] value) {
+            addPicUrlsCriterion("pic_urls <", value, "picUrls");
             return (Criteria) this;
         }
 
@@ -1135,8 +1179,8 @@ public class CommentExample {
             return (Criteria) this;
         }
 
-        public Criteria andPicUrlsLessThanOrEqualTo(String value) {
-            addCriterion("pic_urls <=", value, "picUrls");
+        public Criteria andPicUrlsLessThanOrEqualTo(String[] value) {
+            addPicUrlsCriterion("pic_urls <=", value, "picUrls");
             return (Criteria) this;
         }
 
@@ -1152,33 +1196,33 @@ public class CommentExample {
             return (Criteria) this;
         }
 
-        public Criteria andPicUrlsLike(String value) {
-            addCriterion("pic_urls like", value, "picUrls");
+        public Criteria andPicUrlsLike(String[] value) {
+            addPicUrlsCriterion("pic_urls like", value, "picUrls");
             return (Criteria) this;
         }
 
-        public Criteria andPicUrlsNotLike(String value) {
-            addCriterion("pic_urls not like", value, "picUrls");
+        public Criteria andPicUrlsNotLike(String[] value) {
+            addPicUrlsCriterion("pic_urls not like", value, "picUrls");
             return (Criteria) this;
         }
 
-        public Criteria andPicUrlsIn(List<String> values) {
-            addCriterion("pic_urls in", values, "picUrls");
+        public Criteria andPicUrlsIn(List<String[]> values) {
+            addPicUrlsCriterion("pic_urls in", values, "picUrls");
             return (Criteria) this;
         }
 
-        public Criteria andPicUrlsNotIn(List<String> values) {
-            addCriterion("pic_urls not in", values, "picUrls");
+        public Criteria andPicUrlsNotIn(List<String[]> values) {
+            addPicUrlsCriterion("pic_urls not in", values, "picUrls");
             return (Criteria) this;
         }
 
-        public Criteria andPicUrlsBetween(String value1, String value2) {
-            addCriterion("pic_urls between", value1, value2, "picUrls");
+        public Criteria andPicUrlsBetween(String[] value1, String[] value2) {
+            addPicUrlsCriterion("pic_urls between", value1, value2, "picUrls");
             return (Criteria) this;
         }
 
-        public Criteria andPicUrlsNotBetween(String value1, String value2) {
-            addCriterion("pic_urls not between", value1, value2, "picUrls");
+        public Criteria andPicUrlsNotBetween(String[] value1, String[] value2) {
+            addPicUrlsCriterion("pic_urls not between", value1, value2, "picUrls");
             return (Criteria) this;
         }
 

@@ -1,18 +1,19 @@
 <view class="comments">
-  <view class="h">
+<!-- 评价分类 待开发 -->
+  <!-- <view class="h">
     <view class="item {{ showType == 0 ? 'active' : ''}}" bindtap="switchTab">
       <view class="txt">全部({{allCount}})</view>
     </view>
     <view class="item {{ showType == 0 ? '' : 'active'}}" bindtap="switchTab">
       <view class="txt">有图({{hasPicCount}})</view>
     </view>
-  </view>
+  </view> -->
   <view class="b">
     <view class="item" wx:for="{{comments}}" wx:key="id">
       <view class="info">
         <view class="user">
-          <image src="{{item.userInfo.avatarUrl}}"></image>
-          <text>{{item.userInfo.nickname}}</text>
+          <image src="{{item.avatar}}"></image>
+          <text>{{item.nickname}}</text>
         </view>
         <view class="time">{{item.addTime}}</view>
       </view>
@@ -21,7 +22,7 @@
         <image class="img" wx:for="{{item.picList}}" wx:key="*this" wx:for-item="pitem" src="{{pitem}}"></image>
       </view>
       <view class="customer-service" wx:if="{{item.reply}}">
-        <text class="u">小商场回复：</text>
+        <text class="u">掌柜回复：</text>
         <text class="c">{{item.reply}}</text>
       </view>
     </view>
