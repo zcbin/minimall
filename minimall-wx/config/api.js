@@ -1,10 +1,10 @@
 // 以下是业务服务器API地址
 // 本机开发时使用
- var WxApiRoot = 'http://localhost:8080/wx/';
+//  var WxApiRoot = 'http://localhost:8080/wx/';
 
 //局域网
-// var WxApiRoot = 'http://192.168.199.131:8080/wx/';
-
+var WxApiRoot = 'http://192.168.199.131:8080/wx/';
+// var WxApiRoot = 'http://192.168.3.43:8080/wx/';
 // 云平台上线时使用
 // var WxApiRoot = 'https://www.menethil.com.cn/wx/';
 
@@ -47,6 +47,8 @@ module.exports = {
   CollectAddOrDelete: WxApiRoot + 'collect/addordelete', //添加或取消收藏
 
   CommentList: WxApiRoot + 'comment/list', //评论列表
+
+
   CommentCount: WxApiRoot + 'comment/count', //评论总数
   CommentPost: WxApiRoot + 'comment/post', //发表评论
 
