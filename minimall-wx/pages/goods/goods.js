@@ -155,11 +155,11 @@ Page({
         //     });
         //   }
         // }
-
+        
         that.setData({
           goods: res.data.info,
-          // attribute: res.data.attribute,
-          // issueList: res.data.issue,
+          attribute: res.data.attribute,
+          issueList: res.data.issue,
            comment: res.data.comment,
           // brand: res.data.brand,
           // specificationList: res.data.specificationList,
@@ -195,8 +195,8 @@ Page({
         //     collectImage: that.data.noCollectImage
         //   });
         // }
-
-       // WxParse.wxParse('goodsDetail', 'html', res.data.info.detail, that);
+        console.log("----"+res.data.info.detail)
+        WxParse.wxParse('goodsDetail', 'html', res.data.info.detail, that);
         //获取推荐商品
         //that.getGoodsRelated();
       }

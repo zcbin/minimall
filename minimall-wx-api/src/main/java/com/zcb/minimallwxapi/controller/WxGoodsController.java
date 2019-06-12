@@ -6,9 +6,7 @@ import com.zcb.minimallcore.util.ResponseUtil;
 import com.zcb.minimalldb.domain.Comment;
 import com.zcb.minimalldb.domain.Goods;
 import com.zcb.minimalldb.domain.User;
-import com.zcb.minimalldb.service.ICommentService;
-import com.zcb.minimalldb.service.IGoodsService;
-import com.zcb.minimalldb.service.IUserService;
+import com.zcb.minimalldb.service.*;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,23 +26,37 @@ import java.util.concurrent.*;
 public class WxGoodsController {
     private static final Logger LOGGER = LogManager.getLogger();
     @Autowired
-    private IGoodsService goodsService;
+    private IGoodsService goodsService; //商品
 
     @Autowired
     private ICommentService commentService; //评论
 
     @Autowired
-    private IUserService userService;
+    private IUserService userService; //用户
+
+    @Autowired
+    private IGoodsAttributeService goodsAttributeService; //商品参数
+
+    @Autowired
+    private IIssueService issueService; //常见问题
     /**
-     * 商品的详细信息
+     * 商品详情
+     * @param id 物品id
      * @return
      */
     @RequestMapping(value = "/detail")
     public JSONObject detail(@NotNull Integer id) {
         LOGGER.info("商品详情,id="+id);
+        //商品信息
         Goods info = goodsService.findById(id);
+        //创建线程池
         ExecutorService executorService = Executors.newFixedThreadPool(9); //return ThreadPoolExecutor
 
+        //商品参数
+        Callable<List> goodsAttributeCallable = () -> goodsAttributeService.queryByGid(id);
+        //常见问题
+        Callable<List> issueCallable = () -> issueService.query(null,1,6);
+        //评论
         Callable<Map> commentsCallable = () -> {
             List<Comment> comments = commentService.queryByGid(id, 0 , 2);
             List<Map<String, Object>> commentsList = new ArrayList<>(comments.size());
@@ -67,8 +79,12 @@ public class WxGoodsController {
         };
 
         FutureTask<Map> commentsTask = new FutureTask<>(commentsCallable);
+        FutureTask<List> goodsAttributeTask = new FutureTask<>(goodsAttributeCallable);
+        FutureTask<List> issueTask = new FutureTask<>(issueCallable);
 
         executorService.submit(commentsTask);
+        executorService.submit(goodsAttributeTask);
+        executorService.submit(issueTask);
 
 
         Map<String, Object> data = new HashMap<>();
@@ -76,6 +92,8 @@ public class WxGoodsController {
         try {
             data.put("info", info);
             data.put("comment", commentsTask.get());
+            data.put("attribute", goodsAttributeTask.get());
+            data.put("issue", issueTask.get());
         } catch (InterruptedException e) {
             e.printStackTrace();
         } catch (ExecutionException e) {
