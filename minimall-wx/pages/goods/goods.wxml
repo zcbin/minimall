@@ -96,13 +96,13 @@
       </view>
     </view>
   </view>
-
+<!-- 商品详细介绍 -->
   <view class="detail">
     
     <import src="/lib/wxParse/wxParse.wxml" />
     <template is="wxParse" data="{{wxParseData:goodsDetail.nodes}}" />
   </view>
-
+<!-- 常见问题 -->
   <view class="common-problem">
     <view class="h">
       <view class="line"></view>
@@ -125,7 +125,7 @@
   <view class="related-goods" wx:if="{{relatedGoods.length > 0}}">
     <view class="h">
       <view class="line"></view>
-      <text class="title">大家都在看</text>
+      <text class="title">看了又看</text>
     </view>
     <view class="b">
       <view class="item" wx:for="{{relatedGoods}}" wx:key="id">

@@ -35,7 +35,10 @@ public class GoodsServiceImpl implements IGoodsService {
 
     @Override
     public List<Goods> queryByCategory(Integer categoryId, int offet, int limit) {
-        return null;
+        GoodsExample example = new GoodsExample();
+        example.or().andCategoryIdEqualTo(categoryId).andIsOnSaleEqualTo(true).andDeletedEqualTo(false);
+        PageHelper.startPage(offet, limit);
+        return goodsMapper.selectByExample(example);
     }
 
     @Override

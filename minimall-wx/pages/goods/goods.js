@@ -10,7 +10,7 @@ Page({
     goods: {},
     groupon: [], //该商品支持的团购规格
     grouponLink: {}, //参与的团购
-    attribute: [],
+    attribute: [], //
     issueList: [],
     comment: [],
     brand: {},
@@ -18,7 +18,7 @@ Page({
     productList: [],
     relatedGoods: [],
     cartGoodsCount: 0,
-    userHasCollect: 0,
+    userHasCollect: 0, //收藏
     number: 1,
     checkedSpecText: '规格数量选择',
     tmpSpecText: '请选择规格数量',
@@ -160,11 +160,11 @@ Page({
           goods: res.data.info,
           attribute: res.data.attribute,
           issueList: res.data.issue,
-           comment: res.data.comment,
+          comment: res.data.comment,
           // brand: res.data.brand,
           // specificationList: res.data.specificationList,
           // productList: res.data.productList,
-          // userHasCollect: res.data.userHasCollect,
+          userHasCollect: res.data.userHasCollect,
           // shareImage: res.data.shareImage,
            checkedSpecPrice: res.data.info.retailPrice,
           // groupon: res.data.groupon
@@ -185,20 +185,20 @@ Page({
         //   });
 
         // }
-
-        // if (res.data.userHasCollect == 1) {
-        //   that.setData({
-        //     collectImage: that.data.hasCollectImage
-        //   });
-        // } else {
-        //   that.setData({
-        //     collectImage: that.data.noCollectImage
-        //   });
-        // }
-        console.log("----"+res.data.info.detail)
+        console.log("-------" + res.data.userHasCollect)
+        if (res.data.userHasCollect == 1) {
+          that.setData({
+            collectImage: that.data.hasCollectImage
+          });
+        } else {
+          that.setData({
+            collectImage: that.data.noCollectImage
+          });
+        }
+        //商品详情
         WxParse.wxParse('goodsDetail', 'html', res.data.info.detail, that);
         //获取推荐商品
-        //that.getGoodsRelated();
+        that.getGoodsRelated();
       }
     });
   },
