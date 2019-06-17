@@ -31,6 +31,9 @@ module.exports = {
   GoodsDetail: WxApiRoot + 'goods/detail', //获得商品的详情
   GoodsRelated: WxApiRoot + 'goods/related', //商品详情页的关联商品（大家都在看）
 
+
+
+
   BrandList: WxApiRoot + 'brand/list', //品牌列表
   BrandDetail: WxApiRoot + 'brand/detail', //品牌详情
 
@@ -44,7 +47,7 @@ module.exports = {
   CartCheckout: WxApiRoot + 'cart/checkout', // 下单前信息确认
 
   CollectList: WxApiRoot + 'collect/list', //收藏列表
-  CollectAddOrDelete: WxApiRoot + 'collect/addordelete', //添加或取消收藏
+  CollectAddOrDelete: WxApiRoot + 'collect/addorcancel', //添加或取消收藏
 
   CommentList: WxApiRoot + 'comment/list', //评论列表
 
