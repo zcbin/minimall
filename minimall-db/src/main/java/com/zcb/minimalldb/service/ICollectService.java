@@ -19,6 +19,14 @@ public interface ICollectService {
     int count(Integer uid, Integer gid);
 
     /**
+     * 查询收藏
+     * @param uid
+     * @param gid
+     * @return
+     */
+    Collect queryById(Integer uid, Integer gid);
+
+    /**
      * 加入收藏
      * @param collect
      * @return

@@ -28,6 +28,13 @@ public class CollectServiceImpl implements ICollectService {
     }
 
     @Override
+    public Collect queryById(Integer uid, Integer gid) {
+        CollectExample example = new CollectExample();
+        example.or().andUserIdEqualTo(uid).andGoodIdEqualTo(gid).andDeletedEqualTo(false);
+        return collectMapper.selectOneByExample(example);
+    }
+
+    @Override
     public int add(Collect collect) {
         collect.setAddTime(LocalDateTime.now());
         collect.setUpdateTime(LocalDateTime.now());

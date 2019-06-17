@@ -99,7 +99,11 @@
         <!--<generatedKey column="id" sqlStatement="MySql" identity="true"/>-->
         <!--</table>-->
         <!--常见问题表-->
-        <table tableName="issue">
+        <!--<table tableName="issue">-->
+            <!--<generatedKey column="id" sqlStatement="MySql" identity="true"/>-->
+        <!--</table>-->
+        <!--收藏表-->
+        <table tableName="collect">
             <generatedKey column="id" sqlStatement="MySql" identity="true"/>
         </table>
         </context>

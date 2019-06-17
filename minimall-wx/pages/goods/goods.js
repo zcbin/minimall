@@ -424,7 +424,7 @@ Page({
     let that = this;
     wx.getSetting({
         success: function (res) {
-            console.log(res)
+           
             //不存在相册授权
             if (!res.authSetting['scope.writePhotosAlbum']) {
                 wx.authorize({
@@ -464,9 +464,8 @@ Page({
   addCollectOrNot: function() {
     let that = this;
     util.request(api.CollectAddOrDelete, {
-        type: 0,
-        valueId: this.data.id
-      }, "POST")
+        id: this.data.id
+      },"POST")
       .then(function(res) {
         let _res = res;
         if (_res.errno == 0) {
@@ -474,10 +473,12 @@ Page({
             that.setData({
               collectImage: that.data.hasCollectImage
             });
+            util.showSuccesToast("收藏成功");
           } else {
             that.setData({
               collectImage: that.data.noCollectImage
             });
+            util.showSuccesToast("取消成功");
           }
 
         } else {
