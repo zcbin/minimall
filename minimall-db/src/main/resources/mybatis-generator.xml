@@ -103,7 +103,23 @@
             <!--<generatedKey column="id" sqlStatement="MySql" identity="true"/>-->
         <!--</table>-->
         <!--收藏表-->
-        <table tableName="collect">
+        <!--<table tableName="collect">-->
+            <!--<generatedKey column="id" sqlStatement="MySql" identity="true"/>-->
+        <!--</table>-->
+        <!--购物车-->
+        <!--<table tableName="cart">
+            <generatedKey column="id" sqlStatement="MySql" identity="true"/>
+            <columnOverride column="specifications" javaType="java.lang.String[]"
+                            typeHandler="com.zcb.minimalldb.mybatis.JsonStringArrayTypeHandler"/>
+        </table>-->
+        <!--商品货品表-->
+        <!--<table tableName="goods_product">-->
+            <!--<generatedKey column="id" sqlStatement="MySql" identity="true"/>-->
+            <!--<columnOverride column="specifications" javaType="java.lang.String[]"-->
+                        <!--typeHandler="com.zcb.minimalldb.mybatis.JsonStringArrayTypeHandler"/>-->
+        <!--</table>-->
+        <!--商品规格-->
+        <table tableName="goods_specification">
             <generatedKey column="id" sqlStatement="MySql" identity="true"/>
         </table>
         </context>

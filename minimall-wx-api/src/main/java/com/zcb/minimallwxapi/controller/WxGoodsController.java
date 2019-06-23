@@ -5,6 +5,7 @@ import com.github.pagehelper.PageInfo;
 import com.zcb.minimallcore.util.ResponseUtil;
 import com.zcb.minimalldb.domain.Comment;
 import com.zcb.minimalldb.domain.Goods;
+import com.zcb.minimalldb.domain.GoodsProduct;
 import com.zcb.minimalldb.domain.User;
 import com.zcb.minimalldb.service.*;
 import org.apache.logging.log4j.LogManager;
@@ -44,6 +45,13 @@ public class WxGoodsController {
 
     @Autowired
     private ICollectService collectService; //收藏
+
+    @Autowired
+    private IGoodsSpecificationService goodsSpecificationService; //商品规格
+
+    @Autowired
+    private IGoodsProductService goodsProductService; //商品货品
+
     /**
      * 商品详情
      * @param id 物品id
@@ -62,6 +70,11 @@ public class WxGoodsController {
         Callable<List> goodsAttributeCallable = () -> goodsAttributeService.queryByGid(id);
         //常见问题
         Callable<List> issueCallable = () -> issueService.query(null,1,6);
+        //商品规格
+        Callable<Object> objectCallable = () -> goodsSpecificationService.getSpecificationVoList(id);
+        //商品规格对应的价格和数量
+        Callable<List> productCallable = () -> goodsProductService.queryByGid(id);
+
         //评论
         Callable<Map> commentsCallable = () -> {
             List<Comment> comments = commentService.queryByGid(id, 0 , 2);
@@ -88,17 +101,18 @@ public class WxGoodsController {
         if (userInfo != null) {
             userCollect = collectService.count(userInfo.getId(), id);
         }
-        LOGGER.info(userInfo);
-        LOGGER.info(userCollect);
+
         FutureTask<Map> commentsTask = new FutureTask<>(commentsCallable);
         FutureTask<List> goodsAttributeTask = new FutureTask<>(goodsAttributeCallable);
         FutureTask<List> issueTask = new FutureTask<>(issueCallable);
+        FutureTask<Object> objectTask = new FutureTask<>(objectCallable);
+        FutureTask<List> productTask = new FutureTask<>(productCallable);
 
         executorService.submit(commentsTask);
         executorService.submit(goodsAttributeTask);
         executorService.submit(issueTask);
-
-
+        executorService.submit(objectTask);
+        executorService.submit(productTask);
         Map<String, Object> data = new HashMap<>();
 
         try {
@@ -107,11 +121,14 @@ public class WxGoodsController {
             data.put("attribute", goodsAttributeTask.get()); //参数
             data.put("issue", issueTask.get()); //常见问题
             data.put("userHasCollect", userCollect); //收藏
+            data.put("specificationList", objectTask.get()); //商品规格
+            data.put("productList", productTask.get()); //商品规格对应的价格和数量
         } catch (InterruptedException e) {
             e.printStackTrace();
         } catch (ExecutionException e) {
             e.printStackTrace();
         }
+
         return ResponseUtil.ok(data);
     }
 

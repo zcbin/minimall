@@ -1,12 +1,12 @@
 package com.zcb.minimallwxapi.controller;
 
 import com.alibaba.fastjson.JSONObject;
-import com.zcb.minimallcore.util.ParseJsonUtil;
 import com.zcb.minimallcore.util.ResponseUtil;
 import com.zcb.minimalldb.domain.Collect;
 import com.zcb.minimalldb.domain.User;
 import com.zcb.minimalldb.service.ICollectService;
 import com.zcb.minimalldb.service.IUserService;
+import com.zcb.minimallwxapi.util.ParseJsonUtil;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.apache.shiro.SecurityUtils;
@@ -14,10 +14,8 @@ import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.validation.constraints.NotNull;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -50,7 +48,6 @@ public class WxCollectController {
             return ResponseUtil.unlogin();
         }
         Integer gid = ParseJsonUtil.parseInteger(body, "id");
-        System.out.println("good_id="+gid);
         Collect collect = collectService.queryById(userInfo.getId(), gid);
         String type = null;
         if (collect == null) { //添加收藏

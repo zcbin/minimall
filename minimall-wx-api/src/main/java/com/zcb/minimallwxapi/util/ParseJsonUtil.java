@@ -1,7 +1,6 @@
-package com.zcb.minimallcore.util;
+package com.zcb.minimallwxapi.util;
 
 import com.alibaba.fastjson.JSONObject;
-import com.fasterxml.jackson.databind.ObjectMapper;
 
 /**
  * @author zcbin
