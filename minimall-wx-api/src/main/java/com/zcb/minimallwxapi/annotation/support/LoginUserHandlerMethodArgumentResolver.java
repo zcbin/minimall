@@ -35,6 +35,9 @@ public class LoginUserHandlerMethodArgumentResolver implements HandlerMethodArgu
     public Object resolveArgument(MethodParameter parameter, ModelAndViewContainer container,
                                   NativeWebRequest request, WebDataBinderFactory factory) throws Exception {
         Subject subject = SecurityUtils.getSubject();
+        if (subject == null || subject.getPrincipal() == null) {
+            return null;
+        }
         User userInfo = userService.queryByUsername((String) subject.getPrincipal()); //登录用户信息
         if (userInfo != null) {
             return userInfo.getId();

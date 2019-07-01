@@ -11,4 +11,24 @@ public interface ICategoryService {
      * @return
      */
     List<Category> queryChannel(String level);
+
+    /**
+     * 查询所有L1分类
+     * @return
+     */
+    List<Category> queryL1();
+
+    /**
+     * 根据父级节点id查找二级分类
+     * @param id
+     * @return
+     */
+    List<Category> queryByPid(Integer id);
+
+    /**
+     * 根据id查询
+     * @param id
+     * @return
+     */
+    Category findById(Integer id);
 }

@@ -50,9 +50,9 @@
           </view>
         </navigator>
         <!-- 点击加入购物车 -->
-        <navigator url="/page/goods/hotGoods?id={{item.id}}">
+        <!-- <navigator url="/page/goods/hotGoods?id={{item.id}}">
           <image class="cart" src="/static/images/addcart.png"></image>
-        </navigator>
+        </navigator> -->
       </view>
     </view>
   

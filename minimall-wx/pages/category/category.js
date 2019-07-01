@@ -17,7 +17,9 @@ Page({
     // 页面初始化 options为页面跳转所带来的参数
     var that = this;
     if (options.id) {
+      console.log(typeof (options.id))
       that.setData({
+        
         id: parseInt(options.id)
       });
     }
@@ -94,9 +96,9 @@ Page({
     var that = this;
 
     util.request(api.GoodsList, {
-        categoryId: that.data.id,
+        cid: that.data.id,
         page: that.data.page,
-        size: that.data.size
+        limit: that.data.size
       })
       .then(function(res) {
         that.setData({

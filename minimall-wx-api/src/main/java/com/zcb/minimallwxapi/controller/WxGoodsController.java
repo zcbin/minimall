@@ -3,17 +3,16 @@ package com.zcb.minimallwxapi.controller;
 import com.alibaba.fastjson.JSONObject;
 import com.github.pagehelper.PageInfo;
 import com.zcb.minimallcore.util.ResponseUtil;
-import com.zcb.minimalldb.domain.Comment;
-import com.zcb.minimalldb.domain.Goods;
-import com.zcb.minimalldb.domain.GoodsProduct;
-import com.zcb.minimalldb.domain.User;
+import com.zcb.minimalldb.domain.*;
 import com.zcb.minimalldb.service.*;
+import com.zcb.minimallwxapi.annotation.LoginUser;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.constraints.NotNull;
@@ -52,17 +51,17 @@ public class WxGoodsController {
     @Autowired
     private IGoodsProductService goodsProductService; //商品货品
 
+    @Autowired
+    private ICategoryService categoryService; //分类目录
     /**
      * 商品详情
      * @param id 物品id
      * @return
      */
     @RequestMapping(value = "/detail")
-    public JSONObject detail(@NotNull Integer id) {
+    public JSONObject detail(@LoginUser Integer userId, @NotNull Integer id) {
         //商品信息
         Goods info = goodsService.findById(id);
-        Subject subject= SecurityUtils.getSubject();
-        User userInfo = userService.queryByUsername((String) subject.getPrincipal()); //登录用户信息
         //创建线程池
         ExecutorService executorService = Executors.newFixedThreadPool(9); //return ThreadPoolExecutor
 
@@ -98,9 +97,10 @@ public class WxGoodsController {
         };
         //用户是否收藏
         int userCollect = 0;
-        if (userInfo != null) {
-            userCollect = collectService.count(userInfo.getId(), id);
+        if (userId != null) {
+            userCollect = collectService.count(userId, id);
         }
+        //浏览足迹
 
         FutureTask<Map> commentsTask = new FutureTask<>(commentsCallable);
         FutureTask<List> goodsAttributeTask = new FutureTask<>(goodsAttributeCallable);
@@ -148,5 +148,59 @@ public class WxGoodsController {
         Map<String, Object> data = new HashMap<>();
         data.put("goodsList", goodsList);
         return ResponseUtil.ok(data);
+    }
+
+    /**
+     * 商品总数
+     * @return
+     */
+    @RequestMapping(value = "/count")
+    public JSONObject goodsCount() {
+        Long goodsCount = goodsService.goodsCount();
+        Map<String, Object> map = new HashMap<>();
+        map.put("goodsCount", goodsCount);
+        return ResponseUtil.ok(map);
+    }
+
+    /**
+     * 分类目录详情
+     * @param id 目录id
+     * @return
+     */
+    @RequestMapping(value = "/category")
+    public JSONObject categoryGoods(@NotNull Integer id) {
+        Category category = categoryService.findById(id);
+        Category parentCategory = new Category();
+        List<Category> childCategory = new ArrayList<>();
+        if (category.getPid() == 0 ) { //父目录进来
+            parentCategory = category;
+            childCategory = categoryService.queryByPid(category.getId());
+            category = childCategory.size() > 0 ? childCategory.get(0) : category;
+        } else { //子目录进来
+            parentCategory = categoryService.findById(category.getPid());
+            childCategory = categoryService.queryByPid(category.getPid());
+        }
+        Map<String, Object> data = new HashMap<>();
+        data.put("currentCategory", category);
+        data.put("parentCategory", parentCategory);
+        data.put("brotherCategory", childCategory);
+        return ResponseUtil.ok(data);
+    }
+
+    /**
+     * 分类下的商品
+     * @param cid 类目id
+     * @param page
+     * @param limit
+     * @return
+     */
+    @RequestMapping(value = "/list")
+    public JSONObject goodsList(@NotNull Integer cid,
+                                @RequestParam(defaultValue = "1") Integer page,
+                                @RequestParam(defaultValue = "10") Integer limit) {
+        List<Goods> goodsList = goodsService.queryByCategory(cid, page, limit);
+        Map<String, Object> map = new HashMap<>();
+        map.put("goodsList", goodsList);
+        return ResponseUtil.ok(map);
     }
 }

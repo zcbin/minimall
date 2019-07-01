@@ -19,4 +19,23 @@ public class CategoryServiceImpl implements ICategoryService {
         example.or().andLevelEqualTo(level).andDeletedEqualTo(false);
         return categoryMapper.selectByExampleSelective(example, CHANNEL);
     }
+
+    @Override
+    public List<Category> queryL1() {
+        CategoryExample example = new CategoryExample();
+        example.or().andLevelEqualTo("L1").andDeletedEqualTo(false);
+        return categoryMapper.selectByExampleSelective(example);
+    }
+
+    @Override
+    public List<Category> queryByPid(Integer id) {
+        CategoryExample example = new CategoryExample();
+        example.or().andPidEqualTo(id).andDeletedEqualTo(false);
+        return categoryMapper.selectByExample(example);
+    }
+
+    @Override
+    public Category findById(Integer id) {
+        return categoryMapper.selectByPrimaryKey(id);
+    }
 }

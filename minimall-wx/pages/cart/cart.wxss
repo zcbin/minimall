@@ -224,9 +224,7 @@ page {
   overflow: hidden;
 }
 
-.cart-view .item .price {
-  float: left;
-}
+
 
 .cart-view .item .open {
   height: 28rpx;
@@ -262,28 +260,36 @@ page {
   overflow: hidden;
 }
 
-.cart-view .item.edit .price {
-  line-height: 52rpx;
-  height: 52rpx;
-  flex: 1;
-}
 
-.cart-view .item .selnum {
+
+/* .cart-view .item .selnum {
   display: none;
+} */
+.cart-view .item .ps {
+  margin: 8rpx 0;
+  height: 70rpx;
+  font-size: 25rpx;
+  color: #333;
+  overflow: hidden;
 }
-
-.cart-view .item.edit .selnum {
-  width: 235rpx;
-  height: 52rpx;
+.ps .price {
+  float: left;
+  height: 45rpx;
+  width: 50%;
+}
+.ps .selnum {
+  width: 200rpx;
+  height: 55rpx;
   border: 1rpx solid #ccc;
   display: flex;
+ 
 }
 
 .selnum .cut {
-  width: 70rpx;
+  width: 55rpx;
   height: 100%;
   text-align: center;
-  line-height: 50rpx;
+  line-height: 48rpx;
 }
 
 .selnum .number {
@@ -297,10 +303,10 @@ page {
 }
 
 .selnum .add {
-  width: 80rpx;
+  width: 55rpx;
   height: 100%;
   text-align: center;
-  line-height: 50rpx;
+  line-height: 48rpx;
 }
 
 .cart-view .group-item .header {

@@ -62,7 +62,7 @@ public class ShiroConfiguration {
         //主页不认证
         map.put("/wx/home", "anon");
         //对所有用户认证
-        map.put("/**","authc");
+        //map.put("/**","authc");
         shiroFilterFactoryBean.setFilterChainDefinitionMap(map);
         //登录
         shiroFilterFactoryBean.setLoginUrl("/unauth"); //跳转至登录接口

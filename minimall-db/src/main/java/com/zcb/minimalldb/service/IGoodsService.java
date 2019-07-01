@@ -45,4 +45,10 @@ public interface IGoodsService {
      * @return
      */
     Goods findById(Integer id);
+
+    /**
+     * 商品总数
+     * @return
+     */
+    Long goodsCount();
 }

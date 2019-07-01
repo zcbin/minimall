@@ -6,6 +6,7 @@ import com.zcb.minimalldb.domain.Collect;
 import com.zcb.minimalldb.domain.User;
 import com.zcb.minimalldb.service.ICollectService;
 import com.zcb.minimalldb.service.IUserService;
+import com.zcb.minimallwxapi.annotation.LoginUser;
 import com.zcb.minimallwxapi.util.ParseJsonUtil;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -41,19 +42,17 @@ public class WxCollectController {
      * @return
      */
     @RequestMapping(value = "/addorcancel")
-    public JSONObject addOrCancel(@RequestBody String body) {
-        Subject subject= SecurityUtils.getSubject();
-        User userInfo = userService.queryByUsername((String) subject.getPrincipal()); //登录用户信息
-        if (userInfo == null) {
+    public JSONObject addOrCancel(@LoginUser Integer userId, @RequestBody String body) {
+        if (userId == null) {
             return ResponseUtil.unlogin();
         }
         Integer gid = ParseJsonUtil.parseInteger(body, "id");
-        Collect collect = collectService.queryById(userInfo.getId(), gid);
+        Collect collect = collectService.queryById(userId, gid);
         String type = null;
         if (collect == null) { //添加收藏
             type = "add";
             collect = new Collect();
-            collect.setUserId(userInfo.getId());
+            collect.setUserId(userId);
             collect.setGoodId(gid);
             collectService.add(collect);
         } else { //取消收藏

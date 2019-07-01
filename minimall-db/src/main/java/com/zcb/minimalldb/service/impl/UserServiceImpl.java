@@ -31,7 +31,7 @@ public class UserServiceImpl implements IUserService {
         UserExample example = new UserExample();
         // username=userName,deleted=false
         example.or().andUsernameEqualTo(userName).andDeletedEqualTo(false);
-        return userMapper.selectOneByExample(example);
+        return userMapper.selectOneByExampleSelective(example);
     }
 
     @Override

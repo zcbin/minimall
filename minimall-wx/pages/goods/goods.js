@@ -29,7 +29,7 @@ Page({
     hasCollectImage: '/static/images/icon_collect_checked.png',
     collectImage: '/static/images/icon_collect.png',
     shareImage: '',
-    isGroupon: false, //标识是否是一个参团购买
+    // isGroupon: false, //标识是否是一个参团购买
     soldout: false,
     canWrite: false, //用户是否获取了保存相册的权限
   },
@@ -376,12 +376,12 @@ Page({
       this.getGoodsInfo();
     }
 
-    if (options.grouponId) {
-      this.setData({
-        isGroupon: true,
-      });
-      this.getGrouponInfo(options.grouponId);
-    }
+    // if (options.grouponId) {
+    //   this.setData({
+    //     isGroupon: true,
+    //   });
+    //   this.getGrouponInfo(options.grouponId);
+    // }
     let that = this;
     wx.getSetting({
         success: function (res) {

@@ -28,16 +28,16 @@ public interface ICartService {
 
     /**
      * 删除
-     * @param id
+     * @param productIds
      * @return
      */
-    int delete(Integer id);
+    int delete(Integer userId, List<Integer> productIds);
 
     /**
      * 购物车列表 参数待定
      * @return
      */
-    List<Cart> query();
+    List<Cart> query(Integer uid);
 
     /**
      * 查询购物车中是否已存在
@@ -54,4 +54,20 @@ public interface ICartService {
      * @return
      */
     List<Cart> goodsCount(Integer uid);
+
+    /**
+     * 查询
+     * @param id
+     * @return
+     */
+    Cart findById(Integer id);
+
+    /**
+     * 更新选中状态
+     * @param userId
+     * @param productIds
+     * @param checked
+     * @return
+     */
+    int updateChecked(Integer userId, List<Integer> productIds, Boolean checked);
 }
