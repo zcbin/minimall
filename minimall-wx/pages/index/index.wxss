@@ -1,6 +1,7 @@
 .banner {
-  width: 750rpx;
+  width: 100%;
   height: 417rpx;
+  
 }
 
 .banner image {
@@ -569,7 +570,7 @@ float: right;
 }
 
 .search .input {
-  width: 690rpx;
+  width: 100%;
   height: 56rpx;
   background: #ededed;
   border-radius: 8rpx;

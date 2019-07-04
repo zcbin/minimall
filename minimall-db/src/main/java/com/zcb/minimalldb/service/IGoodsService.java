@@ -51,4 +51,11 @@ public interface IGoodsService {
      * @return
      */
     Long goodsCount();
+
+    /**
+     * 搜索
+     * @param keyword
+     * @return
+     */
+    List<Goods> searchList(List<String> keyword, int offet, int limit, String sort, String order);
 }

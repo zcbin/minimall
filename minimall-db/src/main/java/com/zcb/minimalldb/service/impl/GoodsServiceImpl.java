@@ -6,6 +6,7 @@ import com.zcb.minimalldb.domain.Goods;
 import com.zcb.minimalldb.domain.GoodsExample;
 import com.zcb.minimalldb.service.IGoodsService;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -53,5 +54,28 @@ public class GoodsServiceImpl implements IGoodsService {
         GoodsExample example = new GoodsExample();
         example.or().andIsOnSaleEqualTo(true).andDeletedEqualTo(false);
         return goodsMapper.countByExample(example);
+    }
+
+    @Override
+    public List<Goods> searchList(List<String> keyword, int offset, int limit, String sort, String order) {
+        GoodsExample example = new GoodsExample();
+        GoodsExample.Criteria criteria1 = example.or();
+        GoodsExample.Criteria criteria2 = example.or();
+        if (keyword != null && keyword.size() > 0) {
+            for (String key : keyword) {
+                criteria1.andKeywordsLike("%" + key + "%");
+                criteria2.andNameLike("%" + key + "%");
+            }
+
+        }
+        criteria1.andIsOnSaleEqualTo(true);
+        criteria1.andDeletedEqualTo(false);
+        criteria2.andIsOnSaleEqualTo(true);
+        criteria2.andDeletedEqualTo(false);
+        if (!StringUtils.isEmpty(sort) && !StringUtils.isEmpty(order)) {
+            example.setOrderByClause(sort + " " + order);
+        }
+        PageHelper.startPage(offset, limit);
+        return goodsMapper.selectByExample(example);
     }
 }

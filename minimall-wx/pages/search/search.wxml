@@ -8,7 +8,7 @@
     <view class="right" bindtap="closeSearch">取消</view>
   </view>
   <view class="no-search" wx:if="{{ !searchStatus}}">
-    <view class="search-keywords search-history" wx:if="{{!keyword  && historyKeyword.length}}">
+    <view class="search-keywords search-history" wx:if="{{!keyword  &&historyKeyword.length}}">
       <view class="h">
         <text class="title">历史记录</text>
         <image class="icon" bindtap="clearHistory" src="http://nos.netease.com/mailpub/hxm/yanxuan-wap/p/20150730/style/img/icon-normal/del1-93f0a4add4.png"></image>
@@ -22,11 +22,11 @@
         <text class="title">热门搜索</text>
       </view>
       <view class="b">
-        <view class="item {{item.is_hot === 1 ? 'active' : ''}}" hover-class="navigator-hover" bindtap="onKeywordTap" data-keyword="{{item.keyword}}" wx:for="{{hotKeyword}}" wx:key="id">{{item.keyword}}</view>
+        <view class="item {{item.is_hot === 1 ? 'active' : ''}}" hover-class="navigator-hover" bindtap="onKeywordTap" data-keyword="{{item}}" wx:for="{{hotKeyword}}" wx:key="id">{{item}}</view>
       </view>
     </view>
-    <view class="shelper-list" wx:if="{{keyword}}">
-      <view class="item" hover-class="navigator-hover" wx:for="{{helpKeyword}}" wx:key="id" bindtap="onKeywordTap" data-keyword="{{item}}">{{item}}</view>
+    <view class="shelper-list">
+      <view class="item" hover-class="navigator-hover" wx:for="{{helpKeyword}}" wx:key="id" bindtap="onKeywordTap" data-keyword="{{item.keyword}}">{{item.keyword}}</view>
     </view>
   </view>
 

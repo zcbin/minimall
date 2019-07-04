@@ -119,7 +119,15 @@
                         <!--typeHandler="com.zcb.minimalldb.mybatis.JsonStringArrayTypeHandler"/>-->
         <!--</table>-->
         <!--商品规格-->
-        <table tableName="goods_specification">
+       <!-- <table tableName="goods_specification">
+            <generatedKey column="id" sqlStatement="MySql" identity="true"/>
+        </table>-->
+        <!--搜索历史-->
+        <!--<table tableName="search_history">
+            <generatedKey column="id" sqlStatement="MySql" identity="true"/>
+        </table>-->
+        <!--关键字表-->
+        <table tableName="keyword">
             <generatedKey column="id" sqlStatement="MySql" identity="true"/>
         </table>
         </context>

@@ -3,6 +3,8 @@ package com.zcb.minimallwxapi.controller;
 import com.alibaba.fastjson.JSONObject;
 import com.github.pagehelper.PageInfo;
 import com.zcb.minimallcore.util.ResponseUtil;
+import com.zcb.minimallcore.validator.Order;
+import com.zcb.minimallcore.validator.Sort;
 import com.zcb.minimalldb.domain.*;
 import com.zcb.minimalldb.service.*;
 import com.zcb.minimallwxapi.annotation.LoginUser;
@@ -53,6 +55,9 @@ public class WxGoodsController {
 
     @Autowired
     private ICategoryService categoryService; //分类目录
+
+    @Autowired
+    private ISearchHistoryService searchHistoryService; //搜索记录
     /**
      * 商品详情
      * @param id 物品id
@@ -202,5 +207,58 @@ public class WxGoodsController {
         Map<String, Object> map = new HashMap<>();
         map.put("goodsList", goodsList);
         return ResponseUtil.ok(map);
+    }
+
+    /**
+     * 热门搜索
+     * @return
+     */
+    @RequestMapping(value = "/hotSearch")
+    public JSONObject hotSearch() {
+        List<String> searchHistoryList = searchHistoryService.queryHotSearch(null, 1);
+
+        String hotSearch = "";
+        if (searchHistoryList == null || searchHistoryList.size() == 0) {
+
+        } else {
+            hotSearch = searchHistoryList.get(0);
+        }
+        Map<String, Object> data = new HashMap<>();
+        data.put("hotSearch", hotSearch);
+        return ResponseUtil.ok(data);
+    }
+
+    /**
+     * 搜索
+     * @param id
+     * @return
+     */
+    @RequestMapping(value = "/searchList")
+    public JSONObject searchList(String keyword,
+                                 @LoginUser Integer id,
+                                 @RequestParam(defaultValue = "1") Integer page,
+                                 @RequestParam(defaultValue = "10") Integer limit,
+                                 @Sort(accepts = {"add_time", "retail_price", "name"}) @RequestParam(defaultValue = "add_time") String sort,
+                                 @Order @RequestParam(defaultValue = "desc") String order) {
+        List<String> keywordList = new ArrayList<>();
+        //keyword = "秋冬  羊毛";
+        String[] keys = keyword.split(" ");
+        if (keys != null && keys.length > 0) {
+            for (String key : keys) {
+                keywordList.add(key.trim());
+            }
+        }
+        if (id != null) {
+            SearchHistory searchHistory = new SearchHistory();
+            searchHistory.setUserId(id);
+            searchHistory.setKeyword(keyword);
+            searchHistory.setFrom("wx");
+            searchHistoryService.add(searchHistory);
+        }
+        List<Goods> goodsList = goodsService.searchList(keywordList, page, limit, sort, order);
+
+        Map<String, Object> data = new HashMap<>();
+        data.put("goodsList", goodsList);
+        return ResponseUtil.ok(data);
     }
 }

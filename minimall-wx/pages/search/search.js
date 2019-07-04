@@ -92,7 +92,7 @@ Page({
   },
   getGoodsList: function() {
     let that = this;
-    util.request(api.GoodsList, {
+    util.request(api.GoodsSearchList, {
       keyword: that.data.keyword,
       page: that.data.page,
       limit: that.data.limit,
