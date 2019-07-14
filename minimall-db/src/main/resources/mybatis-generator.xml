@@ -58,12 +58,20 @@
         <!--表名-->
         <!--<table tableName="user">
             <generatedKey column="id" sqlStatement="MySql" identity="true"/>
-        </table>
-        <table tableName="role">
+        </table>-->
+        <!--角色-->
+       <!-- <table tableName="role">
             <generatedKey column="id" sqlStatement="MySql" identity="true"/>
-        </table>
-        <table tableName="permission">
+        </table>-->
+        <!--权限-->
+       <!-- <table tableName="permission">
             <generatedKey column="id" sqlStatement="MySql" identity="true"/>
+        </table>-->
+        <!--管理员-->
+        <!--<table tableName="admin">
+            <generatedKey column="id" sqlStatement="MySql" identity="true"/>
+            <columnOverride column="role_ids" javaType="java.lang.Integer[]"
+                            typeHandler="com.zcb.minimalldb.mybatis.JsonIntegerArrayTypeHandler"/>
         </table>-->
         <!--商品表-->
         <!--<table tableName="goods">-->
@@ -127,8 +135,8 @@
             <generatedKey column="id" sqlStatement="MySql" identity="true"/>
         </table>-->
         <!--关键字表-->
-        <table tableName="keyword">
+       <!-- <table tableName="keyword">
             <generatedKey column="id" sqlStatement="MySql" identity="true"/>
-        </table>
+        </table>-->
         </context>
     </generatorConfiguration>

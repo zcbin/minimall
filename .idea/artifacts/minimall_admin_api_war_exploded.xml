@@ -14,6 +14,12 @@
           <element id="module-output" name="minimall-admin-api" />
         </element>
         <element id="directory" name="lib">
+          <element id="archive" name="minimall-core-0.0.1-SNAPSHOT.jar">
+            <element id="module-output" name="minimall-core" />
+          </element>
+          <element id="archive" name="minimall-db-0.0.1-SNAPSHOT.jar">
+            <element id="module-output" name="minimall-db" />
+          </element>
           <element id="library" level="project" name="Maven: org.springframework.boot:spring-boot-starter-web:2.1.4.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework.boot:spring-boot-starter-json:2.1.4.RELEASE" />
           <element id="library" level="project" name="Maven: com.fasterxml.jackson.core:jackson-databind:2.9.8" />
