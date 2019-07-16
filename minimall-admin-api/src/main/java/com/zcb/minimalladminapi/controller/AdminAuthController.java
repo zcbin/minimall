@@ -1,26 +1,31 @@
 package com.zcb.minimalladminapi.controller;
 
-import cn.binarywang.wx.miniapp.api.WxMaService;
 import com.alibaba.fastjson.JSONObject;
+import com.zcb.minimalladminapi.util.Permission;
+import com.zcb.minimalladminapi.util.PermissionUtil;
 import com.zcb.minimallcore.util.ParseJsonUtil;
 import com.zcb.minimallcore.util.ResponseUtil;
-import com.zcb.minimalldb.service.IUserService;
+import com.zcb.minimalldb.domain.Admin;
+import com.zcb.minimalldb.service.IAdminService;
+import com.zcb.minimalldb.service.IPermissionService;
+import com.zcb.minimalldb.service.IRolesService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.IncorrectCredentialsException;
 import org.apache.shiro.authc.UnknownAccountException;
 import org.apache.shiro.authc.UsernamePasswordToken;
+import org.apache.shiro.authz.annotation.RequiresAuthentication;
 import org.apache.shiro.session.Session;
 import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.Serializable;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 @RestController //@ResponseBody + @Controller
 @CrossOrigin
@@ -29,13 +34,13 @@ public class AdminAuthController {
     private static final Logger LOGGER = LogManager.getLogger();
 
     @Autowired
-    private WxMaService wxMaService;
-
+    private IRolesService rolesService;
     @Autowired
-    private IUserService userService;
+    private IPermissionService permissionService;
+    @Autowired
+    private IAdminService adminService;
     @PostMapping(value = "/login")
     public JSONObject login(@RequestBody String body, HttpServletRequest request) {
-        LOGGER.info("-------"+body);
         String username = ParseJsonUtil.parseString(body, "username");
         String password = ParseJsonUtil.parseString(body, "password");
 
@@ -56,7 +61,7 @@ public class AdminAuthController {
             data.put("token", sessionId);
 
 
-            return ResponseUtil.ok(data);
+            return ResponseUtil.ok(sessionId);
         } catch (UnknownAccountException e) {
             e.printStackTrace();
             //LogUtil.error("username is not found");
@@ -77,7 +82,7 @@ public class AdminAuthController {
 
 
     /**
-     * 微信登出
+     * 登出
      * @return
      */
     @RequestMapping("/logout")
@@ -86,4 +91,58 @@ public class AdminAuthController {
         subject.logout();
         return ResponseUtil.ok();
     }
+
+    @RequiresAuthentication
+    @RequestMapping(value = "/info")
+    public JSONObject info() {
+        Subject currentUser = SecurityUtils.getSubject();
+        String userName = (String) currentUser.getPrincipal(); //当前登录用户
+        Admin admin = adminService.queryByUsername(userName);
+       // Admin admin = (Admin) currentUser.getPrincipal();
+
+        Map<String, Object> data = new HashMap<>();
+        data.put("name", admin.getUsername());
+        data.put("avatar", admin.getAvatar());
+
+        Integer[] roleIds = admin.getRoleIds();
+        Set<String> roles = rolesService.queryByIds(roleIds);
+        Set<String> permissions = permissionService.queryByIds(roleIds);
+        data.put("roles", roles);
+        // NOTE
+        // 这里需要转换perms结构，因为对于前端而已API形式的权限更容易理解
+        data.put("perms", toAPI(permissions));
+        return ResponseUtil.ok(data);
+    }
+    @Autowired
+    private ApplicationContext context;
+    private HashMap<String, String> systemPermissionsMap = null;
+
+    private Collection<String> toAPI(Set<String> permissions) {
+        if (systemPermissionsMap == null) {
+            systemPermissionsMap = new HashMap<>();
+            final String basicPackage = "com.zcb.minimalladminapi";
+            List<Permission> systemPermissions = PermissionUtil.listPermission(context, basicPackage);
+            for (Permission permission : systemPermissions) {
+                String perm = permission.getRequiresPermissions().value()[0];
+                String api = permission.getApi();
+                systemPermissionsMap.put(perm, api);
+            }
+        }
+
+        Collection<String> apis = new HashSet<>();
+        for (String perm : permissions) {
+            String api = systemPermissionsMap.get(perm);
+            apis.add(api);
+
+            if (perm.equals("*")) {
+                apis.clear();
+                apis.add("*");
+                return apis;
+//                return systemPermissionsMap.values();
+
+            }
+        }
+        return apis;
+    }
+
 }

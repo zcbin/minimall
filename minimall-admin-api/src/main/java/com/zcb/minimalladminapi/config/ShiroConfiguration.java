@@ -1,10 +1,8 @@
 package com.zcb.minimalladminapi.config;
 
 import com.zcb.minimalladminapi.realm.MyRealm;
-import com.zcb.minimalladminapi.util.WxSessionManager;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.apache.shiro.authc.credential.HashedCredentialsMatcher;
 import org.apache.shiro.session.mgt.SessionManager;
 import org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor;
 import org.apache.shiro.spring.web.ShiroFilterFactoryBean;
@@ -30,8 +28,8 @@ public class ShiroConfiguration {
     //会话管理
     @Bean
     public SessionManager sessionManager() {
-        WxSessionManager wxSessionManager = new WxSessionManager();
-        return  wxSessionManager;
+        AdminSessionManager adminSessionManager = new AdminSessionManager();
+        return  adminSessionManager;
     }
    /* @Bean
     public HashedCredentialsMatcher hashedCredentialsMatcher() {
@@ -71,7 +69,7 @@ public class ShiroConfiguration {
 
 
         //对所有用户认证
-        map.put("/**","authc");
+        map.put("/**","anon");
         shiroFilterFactoryBean.setFilterChainDefinitionMap(map);
         //登录
         shiroFilterFactoryBean.setLoginUrl("/unauth"); //跳转至登录接口

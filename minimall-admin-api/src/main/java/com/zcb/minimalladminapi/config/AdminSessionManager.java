@@ -1,4 +1,4 @@
-package com.zcb.minimalladminapi.util;
+package com.zcb.minimalladminapi.config;
 
 import org.apache.shiro.web.servlet.ShiroHttpServletRequest;
 import org.apache.shiro.web.session.mgt.DefaultWebSessionManager;
@@ -12,13 +12,13 @@ import java.io.Serializable;
 /**
  * 自定义sessionId获取
  */
-public class WxSessionManager extends DefaultWebSessionManager {
+public class AdminSessionManager extends DefaultWebSessionManager {
 
-    private static final String AUTHORIZATION = "X-Minimall-Token";
+    private static final String AUTHORIZATION = "X-Minimall-Admin-Token";
 
     private static final String REFERENCED_SESSION_ID_SOURCE = "Stateless request";
 
-    public WxSessionManager() {
+    public AdminSessionManager() {
         super();
     }
 
@@ -34,8 +34,8 @@ public class WxSessionManager extends DefaultWebSessionManager {
             return id;
         } else {
             //否则按默认规则从cookie取sessionId
-            //System.out.println("sessionId="+super.getSessionId(request, response));
-            return null;
+            System.out.println("sessionId="+super.getSessionId(request, response));
+            return super.getSessionId(request, response);
         }
     }
 }

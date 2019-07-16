@@ -74,7 +74,7 @@ public class MyRealm extends AuthorizingRealm {
             return null;
         }
         ByteSource credentialsSalt = ByteSource.Util.bytes(admin.getUsername()); //使用userName加盐
-        SimpleAuthenticationInfo info = new SimpleAuthenticationInfo(admin.getUsername(), admin.getPassword(), getName());
+        SimpleAuthenticationInfo info = new SimpleAuthenticationInfo(admin.getUsername(), admin.getPassword(), credentialsSalt, getName());
         return info;
     }
     public static void main(String[] args) {
