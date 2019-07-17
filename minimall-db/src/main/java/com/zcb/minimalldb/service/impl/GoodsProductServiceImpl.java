@@ -31,4 +31,11 @@ public class GoodsProductServiceImpl implements IGoodsProductService {
         example.or().andGoodsIdEqualTo(gid).andDeletedEqualTo(false);
         return goodsProductMapper.selectByExample(example);
     }
+
+    @Override
+    public Long count() {
+        GoodsProductExample example = new GoodsProductExample();
+        example.or().andDeletedEqualTo(false);
+        return goodsProductMapper.countByExample(example);
+    }
 }

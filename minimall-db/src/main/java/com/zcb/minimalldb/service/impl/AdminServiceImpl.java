@@ -25,4 +25,9 @@ public class AdminServiceImpl implements IAdminService {
         example.or().andUsernameEqualTo(username).andDeletedEqualTo(false);
         return adminMapper.selectOneByExample(example);
     }
+
+    @Override
+    public int add(Admin admin) {
+        return adminMapper.insert(admin);
+    }
 }

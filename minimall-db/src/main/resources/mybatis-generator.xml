@@ -138,5 +138,9 @@
        <!-- <table tableName="keyword">
             <generatedKey column="id" sqlStatement="MySql" identity="true"/>
         </table>-->
+        <!--操作日志-->
+        <table tableName="log">
+            <generatedKey column="id" sqlStatement="MySql" identity="true"/>
+        </table>
         </context>
     </generatorConfiguration>

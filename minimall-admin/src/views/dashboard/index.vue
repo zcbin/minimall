@@ -68,6 +68,7 @@ export default {
   },
   created() {
     info().then(response => {
+      console.log(response)
       this.userTotal = response.data.data.userTotal
       this.goodsTotal = response.data.data.goodsTotal
       this.productTotal = response.data.data.productTotal

@@ -4,6 +4,9 @@ import com.zcb.minimalldb.domain.Goods;
 
 import java.util.List;
 
+/**
+ * 商品
+ */
 public interface IGoodsService {
     /**
      * 获取热卖产品

@@ -13,16 +13,22 @@ import java.util.List;
  */
 public interface IGoodsProductService {
     /**
-     *
+     *id查找
      * @param id
      * @return
      */
     GoodsProduct findById(Integer id);
 
     /**
-     *
+     *gid查找
      * @param gid
      * @return
      */
     List<GoodsProduct> queryByGid(Integer gid);
+
+    /**
+     * 总数
+     * @return
+     */
+    Long count();
 }

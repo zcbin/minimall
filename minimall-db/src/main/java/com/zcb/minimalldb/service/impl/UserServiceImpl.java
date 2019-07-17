@@ -64,4 +64,11 @@ public class UserServiceImpl implements IUserService {
     public User findById(Integer id) {
         return userMapper.selectByPrimaryKey(id);
     }
+
+    @Override
+    public Long count() {
+        UserExample example = new UserExample();
+        example.or().andDeletedEqualTo(false);
+        return userMapper.countByExample(example);
+    }
 }

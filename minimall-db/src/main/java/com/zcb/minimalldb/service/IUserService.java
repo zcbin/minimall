@@ -53,4 +53,10 @@ public interface IUserService {
      */
     User findById(Integer id);
 
+    /**
+     * 用户数量
+     * @return
+     */
+    Long count();
+
 }

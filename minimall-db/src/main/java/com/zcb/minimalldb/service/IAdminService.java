@@ -11,4 +11,6 @@ import com.zcb.minimalldb.domain.Admin;
  */
 public interface IAdminService {
     Admin queryByUsername(String username);
+
+    int add(Admin admin);
 }

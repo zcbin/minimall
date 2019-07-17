@@ -74,11 +74,11 @@ public class MyRealm extends AuthorizingRealm {
             return null;
         }
         ByteSource credentialsSalt = ByteSource.Util.bytes(admin.getUsername()); //使用userName加盐
-        SimpleAuthenticationInfo info = new SimpleAuthenticationInfo(admin.getUsername(), admin.getPassword(), credentialsSalt, getName());
+        SimpleAuthenticationInfo info = new SimpleAuthenticationInfo(admin.getUsername(), admin.getPassword(), getName());
         return info;
     }
     public static void main(String[] args) {
-        Md5Hash md5Hash = new Md5Hash("123456",ByteSource.Util.bytes("admin"),1024);
+        Md5Hash md5Hash = new Md5Hash("123456","admin",1024);
         //Object md5Pwd = new SimpleHash("MD5","123456","084015124",1024);
         System.out.println(md5Hash);
     }

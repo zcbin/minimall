@@ -1,6 +1,7 @@
 package com.zcb.minimalladminapi.controller;
 
 import com.alibaba.fastjson.JSONObject;
+import com.zcb.minimalladminapi.service.LogHelper;
 import com.zcb.minimalladminapi.util.Permission;
 import com.zcb.minimalladminapi.util.PermissionUtil;
 import com.zcb.minimallcore.util.ParseJsonUtil;
@@ -39,6 +40,8 @@ public class AdminAuthController {
     private IPermissionService permissionService;
     @Autowired
     private IAdminService adminService;
+    @Autowired
+    private LogHelper logHelper;
     @PostMapping(value = "/login")
     public JSONObject login(@RequestBody String body, HttpServletRequest request) {
         String username = ParseJsonUtil.parseString(body, "username");
@@ -57,22 +60,24 @@ public class AdminAuthController {
             Session session=subject.getSession();
             Serializable sessionId = session.getId();
 
-            Map<String, Object> data = new HashMap<>();
-            data.put("token", sessionId);
 
 
+            logHelper.logAuthSucceed("登录");
             return ResponseUtil.ok(sessionId);
         } catch (UnknownAccountException e) {
             e.printStackTrace();
             //LogUtil.error("username is not found");
-            return ResponseUtil.fail(1, "用户名不正确"); //系统错误
+            logHelper.loginFail(username, "用户名不存在");
+            return ResponseUtil.fail(1, "用户名不存在"); //系统错误
         } catch (IncorrectCredentialsException e) {
             e.printStackTrace();
             //LogUtil.error("password error");
+            logHelper.loginFail(username, "密码错误");
             return ResponseUtil.fail(1, "密码错误"); //系统错误
         } catch (Exception e) {
             e.printStackTrace();
             //LogUtil.error("login error");
+            logHelper.loginFail(username, "登录失败");
             return ResponseUtil.fail(1, "登录失败");
         }
 
@@ -111,6 +116,7 @@ public class AdminAuthController {
         // NOTE
         // 这里需要转换perms结构，因为对于前端而已API形式的权限更容易理解
         data.put("perms", toAPI(permissions));
+        System.out.println(data);
         return ResponseUtil.ok(data);
     }
     @Autowired
@@ -144,5 +150,4 @@ public class AdminAuthController {
         }
         return apis;
     }
-
 }
