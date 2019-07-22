@@ -139,8 +139,18 @@
             <generatedKey column="id" sqlStatement="MySql" identity="true"/>
         </table>-->
         <!--操作日志-->
-        <table tableName="log">
+       <!-- <table tableName="log">
             <generatedKey column="id" sqlStatement="MySql" identity="true"/>
+        </table>-->
+        <!--搜索历史-->
+       <!-- <table tableName="footprint">
+            <generatedKey column="id" sqlStatement="MySql" identity="true"/>
+        </table>-->
+        <!--意见反馈表-->
+        <table tableName="feedback">
+            <generatedKey column="id" sqlStatement="MySql" identity="true"/>
+            <columnOverride column="pic_urls" javaType="java.lang.String[]"
+                            typeHandler="com.zcb.minimalldb.mybatis.JsonStringArrayTypeHandler"/>
         </table>
         </context>
     </generatorConfiguration>

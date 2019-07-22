@@ -1,10 +1,12 @@
 package com.zcb.minimalldb.service.impl;
 
+import com.github.pagehelper.PageHelper;
 import com.zcb.minimalldb.dao.AddressMapper;
 import com.zcb.minimalldb.domain.Address;
 import com.zcb.minimalldb.domain.AddressExample;
 import com.zcb.minimalldb.service.IAddressService;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
 import javax.annotation.Resource;
 import java.time.LocalDateTime;
@@ -50,5 +52,23 @@ public class AddressServiceImpl implements IAddressService {
         AddressExample example = new AddressExample();
         example.or().andUserIdEqualTo(uid).andIsDefaultEqualTo(true).andDeletedEqualTo(false);
         return addressMapper.selectOneByExample(example);
+    }
+
+    @Override
+    public List<Address> query(Integer userid, String name, Integer offset, Integer limit, String sort, String order) {
+        AddressExample example = new AddressExample();
+        AddressExample.Criteria criteria = example.createCriteria();
+        if (!StringUtils.isEmpty(userid)) {
+            criteria.andUserIdEqualTo(userid);
+        }
+        if (!StringUtils.isEmpty(name)) {
+            criteria.andNameEqualTo(name);
+        }
+        criteria.andDeletedEqualTo(false);
+        if (!StringUtils.isEmpty(sort) && !StringUtils.isEmpty(order)) {
+            example.setOrderByClause(sort + " " + order);
+        }
+        PageHelper.startPage(offset, limit);
+        return addressMapper.selectByExample(example);
     }
 }

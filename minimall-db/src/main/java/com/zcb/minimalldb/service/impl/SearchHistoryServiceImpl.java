@@ -2,8 +2,10 @@ package com.zcb.minimalldb.service.impl;
 
 import com.github.pagehelper.PageHelper;
 import com.zcb.minimalldb.dao.SearchHistoryMapper;
+import com.zcb.minimalldb.domain.Address;
 import com.zcb.minimalldb.domain.SearchHistory;
 import com.zcb.minimalldb.domain.SearchHistoryExample;
+import com.zcb.minimalldb.domain.UserExample;
 import com.zcb.minimalldb.service.ISearchHistoryService;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
@@ -65,5 +67,23 @@ public class SearchHistoryServiceImpl implements ISearchHistoryService {
         SearchHistoryExample example = new SearchHistoryExample();
         example.or().andUserIdEqualTo(uid).andDeletedEqualTo(false);
         return searchHistoryMapper.deleteByExample(example);
+    }
+
+    @Override
+    public List<SearchHistory> query(Integer userid, String keyword, Integer offset, Integer limit, String sort, String order) {
+        SearchHistoryExample example = new SearchHistoryExample();
+        SearchHistoryExample.Criteria criteria = example.createCriteria();
+        if (!StringUtils.isEmpty(userid)) {
+            criteria.andUserIdEqualTo(userid);
+        }
+        if (!StringUtils.isEmpty(keyword)) {
+            criteria.andKeywordEqualTo(keyword);
+        }
+        criteria.andDeletedEqualTo(false);
+        if (!StringUtils.isEmpty(sort) && !StringUtils.isEmpty(order)) {
+            example.setOrderByClause(sort + " " + order);
+        }
+        PageHelper.startPage(offset, limit);
+        return searchHistoryMapper.selectByExample(example);
     }
 }

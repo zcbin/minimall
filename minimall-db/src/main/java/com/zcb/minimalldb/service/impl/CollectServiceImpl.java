@@ -5,9 +5,11 @@ import com.zcb.minimalldb.domain.Collect;
 import com.zcb.minimalldb.domain.CollectExample;
 import com.zcb.minimalldb.service.ICollectService;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
 import javax.annotation.Resource;
 import java.time.LocalDateTime;
+import java.util.List;
 
 /**
  * @author zcbin
@@ -44,5 +46,22 @@ public class CollectServiceImpl implements ICollectService {
     @Override
     public int delete(Integer id) {
         return collectMapper.deleteByPrimaryKey(id);
+    }
+
+    @Override
+    public List<Collect> query(Integer userId, Integer goodId, Integer offset, Integer limit, String sort, String order) {
+        CollectExample example = new CollectExample();
+        CollectExample.Criteria criteria = example.createCriteria();
+        if (!StringUtils.isEmpty(userId)) {
+            criteria.andUserIdEqualTo(userId);
+        }
+        if (!StringUtils.isEmpty(goodId)) {
+            criteria.andGoodIdEqualTo(goodId);
+        }
+        criteria.andDeletedEqualTo(false);
+        if (!StringUtils.isEmpty(sort) && !StringUtils.isEmpty(order)) {
+            example.setOrderByClause(sort + " " + order);
+        }
+        return collectMapper.selectByExample(example);
     }
 }

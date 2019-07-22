@@ -2,6 +2,8 @@ package com.zcb.minimalldb.service;
 
 import com.zcb.minimalldb.domain.Collect;
 
+import java.util.List;
+
 /**
  * @author zcbin
  * @title: ICollectService
@@ -39,4 +41,16 @@ public interface ICollectService {
      * @return
      */
     int delete(Integer id);
+
+    /**
+     * 查询
+     * @param userId
+     * @param goodId
+     * @param offset
+     * @param limit
+     * @param sort
+     * @param order
+     * @return
+     */
+    List<Collect> query(Integer userId, Integer goodId, Integer offset, Integer limit, String sort, String order);
 }

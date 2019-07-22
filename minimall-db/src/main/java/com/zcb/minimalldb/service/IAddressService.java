@@ -47,4 +47,16 @@ public interface IAddressService {
      * @return
      */
     Address findDefault(Integer uid);
+
+    /**
+     * 查询地址
+     * @param userid
+     * @param name
+     * @param offset
+     * @param limit
+     * @param sort
+     * @param order
+     * @return
+     */
+    List<Address> query(Integer userid, String name, Integer offset, Integer limit, String sort, String order);
 }

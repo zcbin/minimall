@@ -3,6 +3,7 @@ package com.zcb.minimalldb.service;
 
 import com.zcb.minimalldb.domain.User;
 
+import java.util.List;
 import java.util.Set;
 
 public interface IUserService {
@@ -20,19 +21,6 @@ public interface IUserService {
      */
     User queryByUsername(String userName);
 
-    /**
-     * 根据username查找角色
-     * @param userName
-     * @return
-     */
-    Set<String> getRoles(String userName);
-
-    /**
-     * 根据username查找权限
-     * @param userName
-     * @return
-     */
-    Set<String> getPermissions(String userName);
     /**
      * 添加
      * @param user
@@ -58,5 +46,17 @@ public interface IUserService {
      * @return
      */
     Long count();
+
+    /**
+     * 用户查找
+     * @param nickname
+     * @param mobile
+     * @param order
+     * @param sort
+     * @param offset
+     * @param limit
+     * @return
+     */
+    List<User> query(String nickname, String mobile, String order, String sort, Integer offset, Integer limit);
 
 }

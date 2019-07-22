@@ -1,5 +1,6 @@
 package com.zcb.minimalldb.service;
 
+import com.zcb.minimalldb.domain.Address;
 import com.zcb.minimalldb.domain.SearchHistory;
 
 import java.util.List;
@@ -45,4 +46,17 @@ public interface ISearchHistoryService {
      * @return
      */
     int deleteByUid(Integer uid);
+
+    /**
+     * 搜索历史 列表
+     * @param userid
+     * @param keyword
+     * @param offset
+     * @param limit
+     * @param sort
+     * @param order
+     * @return
+     */
+    List<SearchHistory> query(Integer userid, String keyword, Integer offset, Integer limit, String sort, String order);
+
 }
