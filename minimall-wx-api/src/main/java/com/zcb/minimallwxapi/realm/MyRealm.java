@@ -38,8 +38,8 @@ public class MyRealm extends AuthorizingRealm {
         SimpleAuthorizationInfo info = new SimpleAuthorizationInfo();
 
         //从数据库中查找该用户有何角色和权限
-        Set<String> roles = userServiceImpl.getRoles(userName);
-        Set<String> permissions = userServiceImpl.getPermissions(userName);
+        Set<String> roles = null;//userServiceImpl.getRoles(userName);
+        Set<String> permissions = null;//userServiceImpl.getPermissions(userName);
 
         //为当前用户赋予对应角色和权限
         info.setRoles(roles);

@@ -7,6 +7,7 @@ import com.zcb.minimalldb.service.ICategoryService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.time.LocalDateTime;
 import java.util.List;
 @Service
 public class CategoryServiceImpl implements ICategoryService {
@@ -37,5 +38,23 @@ public class CategoryServiceImpl implements ICategoryService {
     @Override
     public Category findById(Integer id) {
         return categoryMapper.selectByPrimaryKey(id);
+    }
+
+    @Override
+    public int add(Category category) {
+        category.setAddTime(LocalDateTime.now());
+        category.setUpdateTime(LocalDateTime.now());
+        return categoryMapper.insert(category);
+    }
+
+    @Override
+    public int update(Category category) {
+        category.setUpdateTime(LocalDateTime.now());
+        return categoryMapper.updateByPrimaryKeySelective(category);
+    }
+
+    @Override
+    public int delete(Integer id) {
+        return categoryMapper.deleteByPrimaryKey(id);
     }
 }

@@ -147,10 +147,15 @@
             <generatedKey column="id" sqlStatement="MySql" identity="true"/>
         </table>-->
         <!--意见反馈表-->
-        <table tableName="feedback">
+        <!--<table tableName="feedback">
             <generatedKey column="id" sqlStatement="MySql" identity="true"/>
             <columnOverride column="pic_urls" javaType="java.lang.String[]"
                             typeHandler="com.zcb.minimalldb.mybatis.JsonStringArrayTypeHandler"/>
+        </table>-->
+        <!---->
+        <!--文件存储-->
+        <table tableName="storage">
+            <generatedKey column="id" sqlStatement="MySql" identity="true"/>
         </table>
         </context>
     </generatorConfiguration>

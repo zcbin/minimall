@@ -17,4 +17,16 @@ public interface IIssueService {
      * @return
      */
     List<Issue> query(String question, int offset, int limit);
+
+    List<Issue> query(String question, int offset, int limit, String sort, String order);
+
+    /**
+     * 增
+     * @param issue
+     * @return
+     */
+    int add(Issue issue);
+    int update(Issue issue);
+    int delete(Integer id);
+    Issue findById(Integer id);
 }

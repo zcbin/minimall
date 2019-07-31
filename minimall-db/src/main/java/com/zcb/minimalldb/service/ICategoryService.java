@@ -31,4 +31,25 @@ public interface ICategoryService {
      * @return
      */
     Category findById(Integer id);
+
+    /**
+     * 新增
+     * @param category
+     * @return
+     */
+    int add(Category category);
+
+    /**
+     * 修改
+     * @param category
+     * @return
+     */
+    int update(Category category);
+
+    /**
+     * 删除
+     * @param id
+     * @return
+     */
+    int delete(Integer id);
 }
