@@ -61,4 +61,20 @@ public interface IGoodsService {
      * @return
      */
     List<Goods> searchList(List<String> keyword, int offet, int limit, String sort, String order);
+
+    /**
+     * 列表
+     * @param goodsSn
+     * @param name
+     * @param offset
+     * @param limit
+     * @param sort
+     * @param order
+     * @return
+     */
+    List<Goods> query(String goodsSn, String name, Integer offset, Integer limit, String sort, String order);
+
+    int add(Goods goods);
+    int update(Goods goods);
+    int delete(Integer id);
 }

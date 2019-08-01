@@ -90,7 +90,7 @@
           <el-cascader :options="categoryList" expand-trigger="hover" @change="handleCategoryChange"/>
         </el-form-item>
 
-        <el-form-item label="所属品牌商">
+        <el-form-item label="所属品牌商(暂未使用)">
           <el-select v-model="goods.brandId">
             <el-option v-for="item in brandList" :key="item.value" :label="item.label" :value="item.value"/>
           </el-select>
@@ -386,7 +386,7 @@ export default {
   computed: {
     headers() {
       return {
-        'X-Litemall-Admin-Token': getToken()
+        'X-Minimall-Admin-Token': getToken()
       }
     }
   },

@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
 import javax.annotation.Resource;
+import java.time.LocalDateTime;
 import java.util.List;
 @Service
 public class GoodsServiceImpl implements IGoodsService {
@@ -77,5 +78,41 @@ public class GoodsServiceImpl implements IGoodsService {
         }
         PageHelper.startPage(offset, limit);
         return goodsMapper.selectByExample(example);
+    }
+
+    @Override
+    public List<Goods> query(String goodsSn, String name, Integer offset, Integer limit, String sort, String order) {
+        GoodsExample example = new GoodsExample();
+        GoodsExample.Criteria criteria = example.createCriteria();
+        if (!StringUtils.isEmpty(goodsSn)) {
+            criteria.andGoodsSnEqualTo(goodsSn);
+        }
+        if (!StringUtils.isEmpty(name)) {
+            criteria.andNameLike("%" + name + "%");
+        }
+        criteria.andDeletedEqualTo(false);
+        if (!StringUtils.isEmpty(sort) && !StringUtils.isEmpty(order)) {
+            example.setOrderByClause(sort + " " + order);
+        }
+        PageHelper.startPage(offset, limit);
+        return goodsMapper.selectByExample(example);
+    }
+
+    @Override
+    public int add(Goods goods) {
+        goods.setAddTime(LocalDateTime.now());
+        goods.setUpdateTime(LocalDateTime.now());
+        return goodsMapper.insertSelective(goods);
+    }
+
+    @Override
+    public int update(Goods goods) {
+        goods.setUpdateTime(LocalDateTime.now());
+        return goodsMapper.updateByPrimaryKeySelective(goods);
+    }
+
+    @Override
+    public int delete(Integer id) {
+        return goodsMapper.logicalDeleteByPrimaryKey(id);
     }
 }
