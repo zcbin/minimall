@@ -414,6 +414,8 @@ export default {
         products: this.products,
         attributes: this.attributes
       }
+      console.log(JSON.stringify(finalGoods))
+      console.log(typeof finalGoods)
       publishGoods(finalGoods).then(response => {
         this.$notify.success({
           title: '成功',

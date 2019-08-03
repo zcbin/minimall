@@ -17,3 +17,8 @@ spring:
 mybatis:
   # mapper-locations: classpath*:mapper/*.xml #指定映射的文件，默认加载的是同一包下的同名.xml文件
   config-location: classpath:config/mybatis-config.xml
+
+# 打印sql语句
+logging:
+  level:
+     com.zcb.minimalldb.dao: debug

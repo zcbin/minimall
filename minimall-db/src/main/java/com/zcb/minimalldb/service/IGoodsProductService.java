@@ -31,4 +31,14 @@ public interface IGoodsProductService {
      * @return
      */
     Long count();
+
+    int add(GoodsProduct goodsProduct);
+    int update(GoodsProduct goodsProduct);
+    int delete(Integer id);
+    /**
+     * 根据商品id删除
+     * @param gid
+     * @return
+     */
+    int deleteByGid(Integer gid);
 }

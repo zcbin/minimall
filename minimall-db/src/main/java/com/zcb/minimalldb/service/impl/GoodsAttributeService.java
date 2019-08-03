@@ -7,6 +7,7 @@ import com.zcb.minimalldb.service.IGoodsAttributeService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.time.LocalDateTime;
 import java.util.List;
 
 /**
@@ -25,5 +26,30 @@ public class GoodsAttributeService implements IGoodsAttributeService {
         GoodsAttributeExample example = new GoodsAttributeExample();
         example.or().andGoodsIdEqualTo(gid).andDeletedEqualTo(false);
         return goodsAttributeMapper.selectByExample(example);
+    }
+
+    @Override
+    public int add(GoodsAttribute goodsAttribute) {
+        goodsAttribute.setAddTime(LocalDateTime.now());
+        goodsAttribute.setUpdateTime(LocalDateTime.now());
+        return goodsAttributeMapper.insertSelective(goodsAttribute);
+    }
+
+    @Override
+    public int update(GoodsAttribute goodsAttribute) {
+        goodsAttribute.setUpdateTime(LocalDateTime.now());
+        return goodsAttributeMapper.updateByPrimaryKeySelective(goodsAttribute);
+    }
+
+    @Override
+    public int delete(Integer id) {
+        return goodsAttributeMapper.logicalDeleteByPrimaryKey(id);
+    }
+
+    @Override
+    public int deleteByGid(Integer gid) {
+        GoodsAttributeExample example = new GoodsAttributeExample();
+        example.or().andGoodsIdEqualTo(gid).andDeletedEqualTo(false);
+        return goodsAttributeMapper.logicalDeleteByExample(example);
     }
 }

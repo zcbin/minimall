@@ -7,6 +7,7 @@ import com.zcb.minimalldb.service.IGoodsSpecificationService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -54,6 +55,32 @@ public class GoodsSpecificationServiceImpl implements IGoodsSpecificationService
         }
         return voList;
     }
+
+    @Override
+    public int add(GoodsSpecification goodsSpecification) {
+        goodsSpecification.setAddTime(LocalDateTime.now());
+        goodsSpecification.setUpdateTime(LocalDateTime.now());
+        return goodsSpecificationMapper.insertSelective(goodsSpecification);
+    }
+
+    @Override
+    public int update(GoodsSpecification goodsSpecification) {
+        goodsSpecification.setUpdateTime(LocalDateTime.now());
+        return goodsSpecificationMapper.updateByPrimaryKeySelective(goodsSpecification);
+    }
+
+    @Override
+    public int delete(Integer id) {
+        return goodsSpecificationMapper.logicalDeleteByPrimaryKey(id);
+    }
+
+    @Override
+    public int deleteByGid(Integer gid) {
+        GoodsSpecificationExample example = new GoodsSpecificationExample();
+        example.or().andGoodsIdEqualTo(gid).andDeletedEqualTo(false);
+        return goodsSpecificationMapper.logicalDeleteByExample(example);
+    }
+
     private class VO {
         private String name;
         private List<GoodsSpecification> valueList;

@@ -95,7 +95,7 @@ public class GoodsServiceImpl implements IGoodsService {
             example.setOrderByClause(sort + " " + order);
         }
         PageHelper.startPage(offset, limit);
-        return goodsMapper.selectByExample(example);
+        return goodsMapper.selectByExampleWithBLOBs(example);
     }
 
     @Override

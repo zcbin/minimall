@@ -18,4 +18,15 @@ public interface IGoodsAttributeService {
      * @return
      */
     List<GoodsAttribute> queryByGid(Integer gid);
+
+    int add(GoodsAttribute goodsAttribute);
+    int update(GoodsAttribute goodsAttribute);
+    int delete(Integer id);
+
+    /**
+     * 根据商品id删除
+     * @param gid
+     * @return
+     */
+    int deleteByGid(Integer gid);
 }

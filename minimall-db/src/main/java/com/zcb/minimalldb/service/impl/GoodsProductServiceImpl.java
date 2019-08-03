@@ -7,6 +7,7 @@ import com.zcb.minimalldb.service.IGoodsProductService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.time.LocalDateTime;
 import java.util.List;
 
 /**
@@ -37,5 +38,30 @@ public class GoodsProductServiceImpl implements IGoodsProductService {
         GoodsProductExample example = new GoodsProductExample();
         example.or().andDeletedEqualTo(false);
         return goodsProductMapper.countByExample(example);
+    }
+
+    @Override
+    public int add(GoodsProduct goodsProduct) {
+        goodsProduct.setAddTime(LocalDateTime.now());
+        goodsProduct.setUpdateTime(LocalDateTime.now());
+        return goodsProductMapper.insertSelective(goodsProduct);
+    }
+
+    @Override
+    public int update(GoodsProduct goodsProduct) {
+        goodsProduct.setUpdateTime(LocalDateTime.now());
+        return goodsProductMapper.updateByPrimaryKeySelective(goodsProduct);
+    }
+
+    @Override
+    public int delete(Integer id) {
+        return goodsProductMapper.logicalDeleteByPrimaryKey(id);
+    }
+
+    @Override
+    public int deleteByGid(Integer gid) {
+        GoodsProductExample example = new GoodsProductExample();
+        example.or().andGoodsIdEqualTo(gid).andDeletedEqualTo(false);
+        return goodsProductMapper.logicalDeleteByExample(example);
     }
 }

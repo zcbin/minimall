@@ -20,4 +20,14 @@ public interface IGoodsSpecificationService {
     List<GoodsSpecification> queryByGid(Integer gid);
 
     Object getSpecificationVoList(Integer gid);
+
+    int add(GoodsSpecification goodsSpecification);
+    int update(GoodsSpecification goodsSpecification);
+    int delete(Integer id);
+    /**
+     * 根据商品id删除
+     * @param gid
+     * @return
+     */
+    int deleteByGid(Integer gid);
 }

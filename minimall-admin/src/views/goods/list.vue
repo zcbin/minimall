@@ -173,6 +173,7 @@ export default {
       this.$router.push({ path: '/goods/edit', query: { id: row.id }})
     },
     showDetail(detail) {
+      console.log(detail)
       this.goodsDetail = detail
       this.detailDialogVisible = true
     },
