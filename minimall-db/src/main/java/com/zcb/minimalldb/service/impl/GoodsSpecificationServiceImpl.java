@@ -81,6 +81,13 @@ public class GoodsSpecificationServiceImpl implements IGoodsSpecificationService
         return goodsSpecificationMapper.logicalDeleteByExample(example);
     }
 
+    @Override
+    public List<GoodsSpecification> findByGid(Integer gid) {
+        GoodsSpecificationExample example = new GoodsSpecificationExample();
+        example.or().andGoodsIdEqualTo(gid).andDeletedEqualTo(false);
+        return goodsSpecificationMapper.selectByExample(example);
+    }
+
     private class VO {
         private String name;
         private List<GoodsSpecification> valueList;

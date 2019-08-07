@@ -64,4 +64,11 @@ public class GoodsProductServiceImpl implements IGoodsProductService {
         example.or().andGoodsIdEqualTo(gid).andDeletedEqualTo(false);
         return goodsProductMapper.logicalDeleteByExample(example);
     }
+
+    @Override
+    public List<GoodsProduct> findByGid(Integer gid) {
+        GoodsProductExample example = new GoodsProductExample();
+        example.or().andGoodsIdEqualTo(gid).andDeletedEqualTo(false);
+        return goodsProductMapper.selectByExample(example);
+    }
 }

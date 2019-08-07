@@ -30,4 +30,5 @@ public interface IGoodsSpecificationService {
      * @return
      */
     int deleteByGid(Integer gid);
+    List<GoodsSpecification> findByGid(Integer gid);
 }

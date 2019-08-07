@@ -52,4 +52,11 @@ public class GoodsAttributeService implements IGoodsAttributeService {
         example.or().andGoodsIdEqualTo(gid).andDeletedEqualTo(false);
         return goodsAttributeMapper.logicalDeleteByExample(example);
     }
+
+    @Override
+    public List<GoodsAttribute> findByGid(Integer gid) {
+        GoodsAttributeExample example = new GoodsAttributeExample();
+        example.or().andGoodsIdEqualTo(gid).andDeletedEqualTo(false);
+        return goodsAttributeMapper.selectByExample(example);
+    }
 }

@@ -40,6 +40,17 @@ public class AdminGoodsController {
     private IGoodsAttributeService goodsAttributeService; //参数
     @Autowired
     private ICategoryService categoryService; //类目
+
+    /**
+     * 列表
+     * @param goodsSn 商品编号
+     * @param name 名称
+     * @param page
+     * @param limit
+     * @param sort
+     * @param order
+     * @return
+     */
     @GetMapping(value = "/list")
     public JSONObject list(String goodsSn, String name,
                            @RequestParam(defaultValue = "1") Integer page,
@@ -84,7 +95,11 @@ public class AdminGoodsController {
         return ResponseUtil.ok(data);
     }
 
-    //新增
+    /**
+     * 新增
+     * @param goodsData
+     * @return
+     */
     @PostMapping(value = "/create")
     public JSONObject create(@RequestBody GoodsData goodsData) {
 
@@ -111,6 +126,44 @@ public class AdminGoodsController {
         return ResponseUtil.ok();
 
     }
+
+    /**
+     * 更新
+     * @param goodsData
+     * @return
+     */
+    @PostMapping(value = "/update")
+    public JSONObject update(@RequestBody GoodsData goodsData) {
+        Goods goods = goodsData.getGoods();
+        GoodsSpecification[] goodsSpecifications = goodsData.getSpecifications();
+        GoodsProduct[] goodsProducts = goodsData.getProducts();
+        GoodsAttribute[] goodsAttributes = goodsData.getAttributes();
+        goodsService.update(goods);
+        Integer id = goods.getId();
+        goodsSpecificationService.deleteByGid(id);
+        goodsProductService.deleteByGid(id);
+        goodsAttributeService.deleteByGid(id);
+        for (GoodsSpecification goodsSpecification : goodsSpecifications) {
+            goodsSpecification.setGoodsId(goods.getId());
+            goodsSpecificationService.add(goodsSpecification);
+        }
+        for (GoodsProduct goodsProduct : goodsProducts) {
+            goodsProduct.setGoodsId(goods.getId());
+            goodsProductService.add(goodsProduct);
+        }
+        for (GoodsAttribute goodsAttribute : goodsAttributes) {
+            goodsAttribute.setGoodsId(goods.getId());
+            goodsAttributeService.add(goodsAttribute);
+        }
+        return ResponseUtil.ok();
+
+    }
+
+    /**
+     * 删除
+     * @param goods
+     * @return
+     */
     @PostMapping(value = "/delete")
     public JSONObject delete(@RequestBody Goods goods) {
         Integer id = goods.getId();
@@ -123,5 +176,37 @@ public class AdminGoodsController {
         goodsProductService.deleteByGid(id);
         goodsSpecificationService.delete(id);
         return ResponseUtil.ok();
+    }
+
+    /**
+     * 详细信息
+     * @param id
+     * @return
+     */
+    @GetMapping(value = "/detail")
+    public JSONObject detail(@NotNull Integer id) {
+        if (id == null) {
+            return ResponseUtil.badArgument();
+        }
+        Goods goods = goodsService.findById(id);
+        List<GoodsSpecification> goodsSpecification = goodsSpecificationService.findByGid(id);
+        List<GoodsAttribute> goodsAttribute = goodsAttributeService.findByGid(id);
+        List<GoodsProduct> goodsProduct = goodsProductService.findByGid(id);
+
+        Integer categoryId = goods.getCategoryId();
+        Integer categoryIds[] = new Integer[]{};
+        Category category = categoryService.findById(categoryId);
+        if (category != null) {
+            Integer parentId = category.getPid();
+            categoryIds = new Integer[] {parentId, categoryId};
+        }
+
+        Map<String, Object> data = new HashMap<>();
+        data.put("goods", goods);
+        data.put("specifications", goodsSpecification);
+        data.put("products", goodsProduct);
+        data.put("attributes", goodsAttribute);
+        data.put("categoryIds", categoryIds);
+        return ResponseUtil.ok(data);
     }
 }

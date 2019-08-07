@@ -331,6 +331,7 @@ export default {
       editorInit: {
         language: 'zh_CN',
         convert_urls: false,
+        height: 300,
         plugins: [
           'advlist anchor autolink autosave code codesample colorpicker colorpicker contextmenu directionality emoticons fullscreen hr image imagetools importcss insertdatetime link lists media nonbreaking noneditable pagebreak paste preview print save searchreplace spellchecker tabfocus table template textcolor textpattern visualblocks visualchars wordcount'
         ],
@@ -355,7 +356,7 @@ export default {
   computed: {
     headers() {
       return {
-        'X-Litemall-Admin-Token': getToken()
+        'X-Minimall-Admin-Token': getToken()
       }
     }
   },

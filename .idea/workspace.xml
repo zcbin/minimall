@@ -7,19 +7,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bbc1bdef-9a47-46fc-93e6-677045977184" name="Default Changelist" comment="后台管理">
-      <change afterPath="$PROJECT_DIR$/minimall-admin-api/src/main/java/com/zcb/minimalladminapi/dto/GoodsData.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/minimall-admin-api/src/main/java/com/zcb/minimalladminapi/controller/AdminGoodsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/minimall-admin-api/src/main/java/com/zcb/minimalladminapi/controller/AdminGoodsController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/minimall-admin/src/views/goods/create.vue" beforeDir="false" afterPath="$PROJECT_DIR$/minimall-admin/src/views/goods/create.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/minimall-admin/src/views/goods/list.vue" beforeDir="false" afterPath="$PROJECT_DIR$/minimall-admin/src/views/goods/list.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/minimall-admin/src/views/goods/edit.vue" beforeDir="false" afterPath="$PROJECT_DIR$/minimall-admin/src/views/goods/edit.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/minimall-core/src/main/resources/application-core.yml" beforeDir="false" afterPath="$PROJECT_DIR$/minimall-core/src/main/resources/application-core.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/minimall-db/src/main/java/com/zcb/minimalldb/service/IGoodsAttributeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/minimall-db/src/main/java/com/zcb/minimalldb/service/IGoodsAttributeService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/minimall-db/src/main/java/com/zcb/minimalldb/service/IGoodsProductService.java" beforeDir="false" afterPath="$PROJECT_DIR$/minimall-db/src/main/java/com/zcb/minimalldb/service/IGoodsProductService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/minimall-db/src/main/java/com/zcb/minimalldb/service/IGoodsSpecificationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/minimall-db/src/main/java/com/zcb/minimalldb/service/IGoodsSpecificationService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/minimall-db/src/main/java/com/zcb/minimalldb/service/impl/GoodsAttributeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/minimall-db/src/main/java/com/zcb/minimalldb/service/impl/GoodsAttributeService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/minimall-db/src/main/java/com/zcb/minimalldb/service/impl/GoodsProductServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/minimall-db/src/main/java/com/zcb/minimalldb/service/impl/GoodsProductServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/minimall-db/src/main/java/com/zcb/minimalldb/service/impl/GoodsServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/minimall-db/src/main/java/com/zcb/minimalldb/service/impl/GoodsServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/minimall-db/src/main/java/com/zcb/minimalldb/service/impl/GoodsSpecificationServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/minimall-db/src/main/java/com/zcb/minimalldb/service/impl/GoodsSpecificationServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/minimall-db/src/main/resources/application-db.yml" beforeDir="false" afterPath="$PROJECT_DIR$/minimall-db/src/main/resources/application-db.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/minimall-wx-api/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/minimall-wx-api/src/main/resources/application.yml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -55,8 +54,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/minimall-admin-api/src/main/java/com/zcb/minimalladminapi/controller/AdminGoodsController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="301">
-              <caret line="53" column="36" lean-forward="true" selection-start-line="53" selection-start-column="36" selection-end-line="53" selection-end-column="36" />
+            <state relative-caret-position="5460">
+              <caret line="209" selection-start-line="209" selection-end-line="209" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -65,41 +64,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/minimall-admin-api/src/main/java/com/zcb/minimalladminapi/dto/GoodsData.java">
+        <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-web/5.1.6.RELEASE/spring-web-5.1.6.RELEASE.jar!/org/springframework/web/method/support/InvocableHandlerMethod.class">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="337">
-              <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#520#521#0" expanded="true" />
-                <element signature="e#548#549#0" expanded="true" />
-                <element signature="e#589#590#0" expanded="true" />
-                <element signature="e#623#624#0" expanded="true" />
-                <element signature="e#678#679#0" expanded="true" />
-                <element signature="e#715#716#0" expanded="true" />
-                <element signature="e#789#790#0" expanded="true" />
-                <element signature="e#841#842#0" expanded="true" />
-                <element signature="e#884#885#0" expanded="true" />
-                <element signature="e#915#916#0" expanded="true" />
-                <element signature="e#971#972#0" expanded="true" />
-                <element signature="e#1011#1012#0" expanded="true" />
-                <element signature="e#1058#1059#0" expanded="true" />
-                <element signature="e#1091#1092#0" expanded="true" />
-                <element signature="e#1153#1154#0" expanded="true" />
-                <element signature="e#1197#1198#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/minimall-admin/src/views/goods/list.vue">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="112">
-              <caret line="4" column="34" lean-forward="true" selection-start-line="4" selection-start-column="34" selection-end-line="4" selection-end-column="34" />
-              <folding>
-                <element signature="e#4612#4664#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="2324">
+              <caret line="101" selection-start-line="101" selection-end-line="101" />
             </state>
           </provider>
         </entry>
@@ -107,44 +75,20 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/minimall-db/src/main/java/com/zcb/minimalldb/service/impl/GoodsServiceImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="339">
-              <caret line="97" column="42" selection-start-line="97" selection-start-column="42" selection-end-line="97" selection-end-column="42" />
-              <folding>
-                <element signature="e#4317#4318#0" expanded="true" />
-                <element signature="e#4381#4382#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="-6">
+              <caret line="110" column="54" selection-start-line="110" selection-start-column="27" selection-end-line="110" selection-end-column="54" />
             </state>
           </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/minimall-db/src/main/java/com/zcb/minimalldb/dao/GoodsMapper.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="160">
-              <caret line="90" column="40" selection-start-line="90" selection-start-column="16" selection-end-line="90" selection-end-column="40" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/minimall-db/src/main/resources/application.yml">
-          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/minimall-db/src/main/resources/application-db.yml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="312">
-              <caret line="24" lean-forward="true" selection-start-line="24" selection-end-line="24" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/minimall-db/src/main/resources/com/zcb/minimalldb/dao/GoodsMapper.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="531">
-              <caret line="170" column="42" selection-start-line="170" selection-start-column="22" selection-end-line="170" selection-end-column="42" />
+        <entry file="file://$PROJECT_DIR$/README.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="SPLIT">
+              <first_editor relative-caret-position="112">
+                <caret line="4" column="4" lean-forward="true" selection-start-line="4" selection-start-column="4" selection-end-line="4" selection-end-column="4" />
+              </first_editor>
+              <second_editor />
             </state>
           </provider>
         </entry>
@@ -161,12 +105,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>updateByPrimaryKeySelective</find>
-      <find>specificationList</find>
-      <find>update</find>
-      <find>update_time</find>
-      <find>select keyword from search_history</find>
-      <find>updateByExample</find>
       <find>select key</find>
       <find>select ke</find>
       <find>useEslint</find>
@@ -185,12 +123,18 @@
       <find>delete</find>
       <find>handleCreate</find>
       <find>listCatAndBrand</find>
-      <find>categoryList</find>
       <find>brandList</find>
       <find>handleDelete</find>
-      <find>goodsDetail</find>
-      <find>showDetail</find>
       <find>selectByExampleWithBLOBs</find>
+      <find>createStorage</find>
+      <find>detailGoods</find>
+      <find>showDetail</find>
+      <find>goodsDetail</find>
+      <find>categoryList</find>
+      <find>categoryIds</find>
+      <find>商品详细</find>
+      <find>editorInit</find>
+      <find>fullscreen</find>
     </findStrings>
     <dirStrings>
       <dir>E:\minimall\minimall-wx-api\target</dir>
@@ -205,9 +149,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/minimall-db/src/main/java/com/zcb/minimalldb/service/ISearchHistoryService.java" />
-        <option value="$PROJECT_DIR$/minimall-db/src/main/java/com/zcb/minimalldb/service/impl/SearchHistoryServiceImpl.java" />
-        <option value="$PROJECT_DIR$/minimall-admin-api/src/main/java/com/zcb/minimalladminapi/controller/AdminHistoryController.java" />
         <option value="$PROJECT_DIR$/minimall-db/src/main/java/com/zcb/minimalldb/service/IFootPrintService.java" />
         <option value="$PROJECT_DIR$/minimall-db/src/main/java/com/zcb/minimalldb/service/impl/FootPrintServiceImpl.java" />
         <option value="$PROJECT_DIR$/minimall-admin-api/src/main/java/com/zcb/minimalladminapi/controller/AdminFootPrintController.java" />
@@ -231,7 +172,6 @@
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/minimall-core/pom.xml" />
         <option value="$PROJECT_DIR$/minimall-admin-api/src/main/java/com/zcb/minimalladminapi/controller/AdminStorageController.java" />
-        <option value="$PROJECT_DIR$/minimall-core/src/main/resources/application-core.yml" />
         <option value="$PROJECT_DIR$/minimall-core/src/main/java/com/zcb/minimallcore/storage/config/StorageProperties.java" />
         <option value="$PROJECT_DIR$/minimall-wx-api/src/main/java/com/zcb/minimallwxapi/controller/WxStorageController.java" />
         <option value="$PROJECT_DIR$/minimall-wx-api/src/main/java/com/zcb/minimallwxapi/realm/MyRealm.java" />
@@ -244,18 +184,22 @@
         <option value="$PROJECT_DIR$/minimall-admin-api/src/main/java/com/zcb/minimalladminapi/controller/AdminKeywordController.java" />
         <option value="$PROJECT_DIR$/minimall-db/src/main/java/com/zcb/minimalldb/service/IGoodsService.java" />
         <option value="$PROJECT_DIR$/minimall-admin-api/src/main/java/com/zcb/minimalladminapi/vo/CatVo.java" />
-        <option value="$PROJECT_DIR$/minimall-admin/src/views/goods/create.vue" />
         <option value="$PROJECT_DIR$/minimall-admin-api/src/main/java/com/zcb/minimalladminapi/dto/GoodsData.java" />
-        <option value="$PROJECT_DIR$/minimall-db/src/main/java/com/zcb/minimalldb/service/IGoodsAttributeService.java" />
-        <option value="$PROJECT_DIR$/minimall-db/src/main/java/com/zcb/minimalldb/service/IGoodsProductService.java" />
-        <option value="$PROJECT_DIR$/minimall-db/src/main/java/com/zcb/minimalldb/service/IGoodsSpecificationService.java" />
-        <option value="$PROJECT_DIR$/minimall-db/src/main/java/com/zcb/minimalldb/service/impl/GoodsAttributeService.java" />
-        <option value="$PROJECT_DIR$/minimall-db/src/main/java/com/zcb/minimalldb/service/impl/GoodsProductServiceImpl.java" />
-        <option value="$PROJECT_DIR$/minimall-db/src/main/java/com/zcb/minimalldb/service/impl/GoodsSpecificationServiceImpl.java" />
-        <option value="$PROJECT_DIR$/minimall-admin-api/src/main/java/com/zcb/minimalladminapi/controller/AdminGoodsController.java" />
         <option value="$PROJECT_DIR$/minimall-admin/src/views/goods/list.vue" />
         <option value="$PROJECT_DIR$/minimall-db/src/main/java/com/zcb/minimalldb/service/impl/GoodsServiceImpl.java" />
         <option value="$PROJECT_DIR$/minimall-db/src/main/resources/application-db.yml" />
+        <option value="$PROJECT_DIR$/minimall-wx-api/src/main/resources/application.yml" />
+        <option value="$PROJECT_DIR$/minimall-core/src/main/resources/application-core.yml" />
+        <option value="$PROJECT_DIR$/minimall-db/src/main/java/com/zcb/minimalldb/service/IGoodsSpecificationService.java" />
+        <option value="$PROJECT_DIR$/minimall-db/src/main/java/com/zcb/minimalldb/service/IGoodsProductService.java" />
+        <option value="$PROJECT_DIR$/minimall-db/src/main/java/com/zcb/minimalldb/service/IGoodsAttributeService.java" />
+        <option value="$PROJECT_DIR$/minimall-db/src/main/java/com/zcb/minimalldb/service/impl/GoodsSpecificationServiceImpl.java" />
+        <option value="$PROJECT_DIR$/minimall-db/src/main/java/com/zcb/minimalldb/service/impl/GoodsProductServiceImpl.java" />
+        <option value="$PROJECT_DIR$/minimall-db/src/main/java/com/zcb/minimalldb/service/impl/GoodsAttributeService.java" />
+        <option value="$PROJECT_DIR$/minimall-admin-api/src/main/java/com/zcb/minimalladminapi/controller/AdminGoodsController.java" />
+        <option value="$PROJECT_DIR$/minimall-admin/src/views/goods/create.vue" />
+        <option value="$PROJECT_DIR$/minimall-admin/src/views/goods/edit.vue" />
+        <option value="$PROJECT_DIR$/README.md" />
       </list>
     </option>
   </component>
@@ -300,7 +244,7 @@
       <select />
     </treeState>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="10" />
     <option name="y" value="20" />
     <option name="width" value="1346" />
@@ -314,7 +258,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -324,258 +268,13 @@
             </path>
             <path>
               <item name="minimall" type="b2602c69:ProjectViewProjectNode" />
-              <item name="minimall" type="462c0819:PsiDirectoryNode" />
-              <item name="doc" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="minimall" type="b2602c69:ProjectViewProjectNode" />
-              <item name="minimall" type="462c0819:PsiDirectoryNode" />
-              <item name="minimall-admin" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="minimall" type="b2602c69:ProjectViewProjectNode" />
-              <item name="minimall" type="462c0819:PsiDirectoryNode" />
-              <item name="minimall-admin" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="minimall" type="b2602c69:ProjectViewProjectNode" />
-              <item name="minimall" type="462c0819:PsiDirectoryNode" />
-              <item name="minimall-admin" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="api" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="minimall" type="b2602c69:ProjectViewProjectNode" />
-              <item name="minimall" type="462c0819:PsiDirectoryNode" />
-              <item name="minimall-admin" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="router" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="minimall" type="b2602c69:ProjectViewProjectNode" />
-              <item name="minimall" type="462c0819:PsiDirectoryNode" />
-              <item name="minimall-admin" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="minimall" type="b2602c69:ProjectViewProjectNode" />
-              <item name="minimall" type="462c0819:PsiDirectoryNode" />
-              <item name="minimall-admin" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-              <item name="goods" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="minimall" type="b2602c69:ProjectViewProjectNode" />
-              <item name="minimall" type="462c0819:PsiDirectoryNode" />
-              <item name="minimall-admin-api" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="minimall" type="b2602c69:ProjectViewProjectNode" />
-              <item name="minimall" type="462c0819:PsiDirectoryNode" />
-              <item name="minimall-admin-api" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="minimall" type="b2602c69:ProjectViewProjectNode" />
-              <item name="minimall" type="462c0819:PsiDirectoryNode" />
-              <item name="minimall-admin-api" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="minimall" type="b2602c69:ProjectViewProjectNode" />
-              <item name="minimall" type="462c0819:PsiDirectoryNode" />
-              <item name="minimall-admin-api" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="minimall" type="b2602c69:ProjectViewProjectNode" />
-              <item name="minimall" type="462c0819:PsiDirectoryNode" />
-              <item name="minimall-admin-api" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="minimall" type="b2602c69:ProjectViewProjectNode" />
-              <item name="minimall" type="462c0819:PsiDirectoryNode" />
-              <item name="minimall-admin-api" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-              <item name="zcb" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="minimall" type="b2602c69:ProjectViewProjectNode" />
-              <item name="minimall" type="462c0819:PsiDirectoryNode" />
-              <item name="minimall-admin-api" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-              <item name="zcb" type="462c0819:PsiDirectoryNode" />
-              <item name="minimalladminapi" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="minimall" type="b2602c69:ProjectViewProjectNode" />
-              <item name="minimall" type="462c0819:PsiDirectoryNode" />
-              <item name="minimall-admin-api" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-              <item name="zcb" type="462c0819:PsiDirectoryNode" />
-              <item name="minimalladminapi" type="462c0819:PsiDirectoryNode" />
-              <item name="config" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="minimall" type="b2602c69:ProjectViewProjectNode" />
-              <item name="minimall" type="462c0819:PsiDirectoryNode" />
-              <item name="minimall-admin-api" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-              <item name="zcb" type="462c0819:PsiDirectoryNode" />
-              <item name="minimalladminapi" type="462c0819:PsiDirectoryNode" />
-              <item name="controller" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="minimall" type="b2602c69:ProjectViewProjectNode" />
-              <item name="minimall" type="462c0819:PsiDirectoryNode" />
-              <item name="minimall-admin-api" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-              <item name="zcb" type="462c0819:PsiDirectoryNode" />
-              <item name="minimalladminapi" type="462c0819:PsiDirectoryNode" />
-              <item name="vo" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="minimall" type="b2602c69:ProjectViewProjectNode" />
-              <item name="minimall" type="462c0819:PsiDirectoryNode" />
-              <item name="minimall-db" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="minimall" type="b2602c69:ProjectViewProjectNode" />
-              <item name="minimall" type="462c0819:PsiDirectoryNode" />
-              <item name="minimall-db" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="minimall" type="b2602c69:ProjectViewProjectNode" />
-              <item name="minimall" type="462c0819:PsiDirectoryNode" />
-              <item name="minimall-db" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="minimall" type="b2602c69:ProjectViewProjectNode" />
-              <item name="minimall" type="462c0819:PsiDirectoryNode" />
-              <item name="minimall-db" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="minimall" type="b2602c69:ProjectViewProjectNode" />
-              <item name="minimall" type="462c0819:PsiDirectoryNode" />
-              <item name="minimall-db" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="minimall" type="b2602c69:ProjectViewProjectNode" />
-              <item name="minimall" type="462c0819:PsiDirectoryNode" />
-              <item name="minimall-db" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-              <item name="zcb" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="minimall" type="b2602c69:ProjectViewProjectNode" />
-              <item name="minimall" type="462c0819:PsiDirectoryNode" />
-              <item name="minimall-db" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-              <item name="zcb" type="462c0819:PsiDirectoryNode" />
-              <item name="minimalldb" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="minimall" type="b2602c69:ProjectViewProjectNode" />
-              <item name="minimall" type="462c0819:PsiDirectoryNode" />
-              <item name="minimall-db" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-              <item name="zcb" type="462c0819:PsiDirectoryNode" />
-              <item name="minimalldb" type="462c0819:PsiDirectoryNode" />
-              <item name="service" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="minimall" type="b2602c69:ProjectViewProjectNode" />
-              <item name="minimall" type="462c0819:PsiDirectoryNode" />
-              <item name="minimall-db" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-              <item name="zcb" type="462c0819:PsiDirectoryNode" />
-              <item name="minimalldb" type="462c0819:PsiDirectoryNode" />
-              <item name="service" type="462c0819:PsiDirectoryNode" />
-              <item name="impl" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="minimall" type="b2602c69:ProjectViewProjectNode" />
-              <item name="minimall" type="462c0819:PsiDirectoryNode" />
-              <item name="minimall-db" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="minimall" type="b2602c69:ProjectViewProjectNode" />
-              <item name="minimall" type="462c0819:PsiDirectoryNode" />
-              <item name="minimall-db" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="minimall" type="b2602c69:ProjectViewProjectNode" />
-              <item name="minimall" type="462c0819:PsiDirectoryNode" />
-              <item name="minimall-db" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-              <item name="zcb" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="minimall" type="b2602c69:ProjectViewProjectNode" />
               <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -794,7 +493,11 @@
       <workItem from="1564484694315" duration="5026000" />
       <workItem from="1564577675131" duration="5307000" />
       <workItem from="1564658282171" duration="3508000" />
-      <workItem from="1564810234396" duration="9088000" />
+      <workItem from="1564810234396" duration="9556000" />
+      <workItem from="1564988013964" duration="1973000" />
+      <workItem from="1565010540221" duration="6433000" />
+      <workItem from="1565090478240" duration="3865000" />
+      <workItem from="1565158370378" duration="1399000" />
     </task>
     <task id="LOCAL-00001" summary="项目创建">
       <created>1556155351366</created>
@@ -1038,7 +741,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="408106000" />
+    <option name="totallyTimeSpent" value="422244000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1050,10 +753,9 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="true" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49464667" visible="true" weight="0.38091603" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49464667" visible="true" weight="0.20610687" />
       <window_info id="Structure" order="1" sideWeight="0.50535333" side_tool="true" weight="0.35954198" />
       <window_info id="Web" order="2" sideWeight="0.5026042" side_tool="true" weight="0.33435115" />
       <window_info id="Designer" order="3" />
@@ -1061,8 +763,8 @@
       <window_info anchor="bottom" id="TypeScript" order="0" weight="0.32993197" />
       <window_info anchor="bottom" id="Message" order="1" />
       <window_info anchor="bottom" id="Find" order="2" weight="0.4931973" />
-      <window_info anchor="bottom" id="Run" order="3" sideWeight="0.4984733" visible="true" weight="0.28231293" />
-      <window_info anchor="bottom" id="Debug" order="4" weight="0.5408163" />
+      <window_info anchor="bottom" id="Run" order="3" sideWeight="0.4984733" weight="0.25510204" />
+      <window_info anchor="bottom" id="Debug" order="4" weight="0.40816328" />
       <window_info anchor="bottom" id="Cvs" order="5" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="6" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="7" weight="0.32993197" />
@@ -1074,7 +776,7 @@
       <window_info anchor="bottom" id="Messages" order="13" weight="0.15476191" />
       <window_info anchor="bottom" id="Java Enterprise" order="14" weight="0.32993197" />
       <window_info anchor="bottom" id="Duplicate detector" order="15" weight="0.58843535" />
-      <window_info anchor="bottom" id="Terminal" order="16" sideWeight="0.4984733" weight="0.2159864" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="16" sideWeight="0.4984733" visible="true" weight="0.27380952" />
       <window_info anchor="right" id="Module Dependencies" order="0" weight="0.5664122" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="1" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="2" weight="0.24961832" />
@@ -1085,7 +787,7 @@
       <window_info anchor="right" id="Palette&#9;" order="7" />
     </layout>
     <layout-to-restore>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49464667" weight="0.38091603" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49464667" weight="0.33969465" />
       <window_info id="Structure" order="1" sideWeight="0.50535333" side_tool="true" weight="0.35954198" />
       <window_info id="Web" order="2" sideWeight="0.5026042" side_tool="true" weight="0.33435115" />
       <window_info id="Designer" order="3" />
@@ -1093,8 +795,8 @@
       <window_info anchor="bottom" id="TypeScript" order="0" weight="0.32993197" />
       <window_info anchor="bottom" id="Message" order="1" />
       <window_info anchor="bottom" id="Find" order="2" weight="0.4931973" />
-      <window_info active="true" anchor="bottom" id="Run" order="3" sideWeight="0.4984733" visible="true" weight="0.15816326" />
-      <window_info anchor="bottom" id="Debug" order="4" weight="0.15986395" />
+      <window_info active="true" anchor="bottom" id="Run" order="3" sideWeight="0.4984733" visible="true" weight="0.35714287" />
+      <window_info anchor="bottom" id="Debug" order="4" weight="0.40816328" />
       <window_info anchor="bottom" id="Cvs" order="5" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="6" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="7" weight="0.32993197" />
@@ -1106,7 +808,7 @@
       <window_info anchor="bottom" id="Messages" order="13" weight="0.15476191" />
       <window_info anchor="bottom" id="Java Enterprise" order="14" weight="0.32993197" />
       <window_info anchor="bottom" id="Duplicate detector" order="15" weight="0.58843535" />
-      <window_info anchor="bottom" id="Terminal" order="16" sideWeight="0.4984733" weight="0.2159864" />
+      <window_info anchor="bottom" id="Terminal" order="16" sideWeight="0.4984733" weight="0.31292516" />
       <window_info anchor="right" id="Module Dependencies" order="0" weight="0.5664122" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="1" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="2" weight="0.24961832" />
@@ -1233,9 +935,9 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/minimall-admin-api/src/main/java/com/zcb/minimalladminapi/controller/AdminGoodsController.java</url>
-          <line>48</line>
+          <line>187</line>
           <properties />
-          <option name="timeStamp" value="15" />
+          <option name="timeStamp" value="12" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -1245,105 +947,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/minimall-core/src/main/java/com/zcb/minimallcore/storage/AliyunStorage.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="84">
-          <caret line="64" column="16" selection-start-line="64" selection-start-column="16" selection-end-line="64" selection-end-column="16" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/minimall-core/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="163">
-          <caret line="74" column="26" selection-start-line="74" selection-start-column="26" selection-end-line="74" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/minimall-core/src/main/java/com/zcb/minimallcore/storage/TencentStorage.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="56">
-          <caret line="2" column="17" selection-start-line="2" selection-start-column="11" selection-end-line="2" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/minimall-admin-api/src/main/java/com/zcb/minimalladminapi/controller/AdminStorageController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="448">
-          <caret line="23" column="18" selection-start-line="23" selection-start-column="18" selection-end-line="23" selection-end-column="18" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/minimall-core/src/main/java/com/zcb/minimallcore/storage/StorageService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="196">
-          <caret line="14" column="3" selection-start-line="14" selection-start-column="3" selection-end-line="14" selection-end-column="3" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/minimall-core/src/main/java/com/zcb/minimallcore/storage/config/StorageAutoConfiguration.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="12" column="26" selection-start-line="12" selection-start-column="26" selection-end-line="12" selection-end-column="26" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/minimall-core/src/main/java/com/zcb/minimallcore/storage/config/StorageProperties.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="112">
-          <caret line="4" column="37" selection-start-line="4" selection-start-column="35" selection-end-line="4" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/minimall-wx-api/src/main/java/com/zcb/minimallwxapi/controller/WxStorageController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="224">
-          <caret line="8" column="45" selection-start-line="8" selection-start-column="45" selection-end-line="8" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/minimall-wx-api/src/main/java/com/zcb/minimallwxapi/realm/MyRealm.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="728">
-          <caret line="41" column="41" selection-start-line="41" selection-start-column="41" selection-end-line="41" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/minimall-core/src/main/resources/application-core.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="9" selection-start-line="9" selection-end-line="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/minimall-wx-api/src/main/java/com/zcb/minimallwxapi/MinimallWxApiApplication.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="88">
-          <caret line="7" column="111" selection-start-line="7" selection-start-column="98" selection-end-line="7" selection-end-column="111" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/minimall-admin-api/src/main/java/com/zcb/minimalladminapi/MinimallAdminApiApplication.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="112">
-          <caret line="7" column="115" selection-start-line="7" selection-start-column="115" selection-end-line="7" selection-end-column="115" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/minimall-admin/src/views/mall/issue.vue">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/minimall-admin-api/src/main/java/com/zcb/minimalladminapi/controller/AdminHistoryController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="157">
@@ -1435,11 +1038,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/minimall-admin/src/views/goods/edit.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1596" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/minimall-admin/src/views/goods/comment.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-3108" />
@@ -1497,26 +1095,33 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/minimall-admin/src/api/goods.js">
+    <entry file="file://$PROJECT_DIR$/minimall-db/src/main/java/com/zcb/minimalldb/service/IGoodsService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="21" column="17" selection-start-line="21" selection-start-column="13" selection-end-line="21" selection-end-column="17" />
+        <state relative-caret-position="161">
+          <caret line="74" column="16" selection-start-line="74" selection-start-column="16" selection-end-line="74" selection-end-column="16" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/minimall-admin/src/views/goods/create.vue">
+    <entry file="file://$PROJECT_DIR$/minimall-db/src/main/java/com/zcb/minimalldb/domain/Goods.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="262">
-          <caret line="417" column="35" selection-start-line="417" selection-start-column="35" selection-end-line="417" selection-end-column="35" />
-          <folding>
-            <element signature="e#11651#11710#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="168">
+          <caret line="213" column="25" selection-start-line="213" selection-start-column="19" selection-end-line="213" selection-end-column="25" />
         </state>
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/minimall-db/src/main/resources/application-db.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="160">
+          <caret line="24" lean-forward="true" selection-start-line="24" selection-end-line="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/storage/8a9hm8920f864emxo67o.jpg">
+      <provider selected="true" editor-type-id="images" />
     </entry>
     <entry file="file://$PROJECT_DIR$/minimall-admin-api/src/main/java/com/zcb/minimalladminapi/dto/GoodsData.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="337">
+        <state relative-caret-position="308">
           <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -1540,114 +1145,189 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/minimall-db/src/main/java/com/zcb/minimalldb/service/impl/GoodsSpecificationServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="278">
-          <caret line="80" column="46" selection-start-line="80" selection-start-column="46" selection-end-line="80" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/minimall-db/src/main/java/com/zcb/minimalldb/service/impl/GoodsProductServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="278">
-          <caret line="64" column="64" selection-start-line="64" selection-start-column="64" selection-end-line="64" selection-end-column="64" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/minimall-db/src/main/java/com/zcb/minimalldb/service/impl/GoodsAttributeService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="250">
-          <caret line="51" column="67" selection-start-line="51" selection-start-column="67" selection-end-line="51" selection-end-column="67" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/minimall-db/src/main/java/com/zcb/minimalldb/service/IGoodsSpecificationService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="31" column="33" selection-start-line="31" selection-start-column="33" selection-end-line="31" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/minimall-db/src/main/java/com/zcb/minimalldb/service/IGoodsProductService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="42" column="33" selection-start-line="42" selection-start-column="33" selection-end-line="42" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/minimall-db/src/main/java/com/zcb/minimalldb/service/IGoodsAttributeService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="25" column="4" selection-start-line="25" selection-start-column="4" selection-end-line="30" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/minimall-db/src/main/java/com/zcb/minimalldb/service/IGoodsService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="161">
-          <caret line="74" column="16" selection-start-line="74" selection-start-column="16" selection-end-line="74" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/minimall-db/src/main/java/com/zcb/minimalldb/domain/Goods.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="213" column="25" selection-start-line="213" selection-start-column="19" selection-end-line="213" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/minimall-admin/src/views/goods/list.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="112">
-          <caret line="4" column="34" lean-forward="true" selection-start-line="4" selection-start-column="34" selection-end-line="4" selection-end-column="34" />
-          <folding>
-            <element signature="e#4612#4664#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/minimall-admin-api/src/main/java/com/zcb/minimalladminapi/controller/AdminGoodsController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="301">
-          <caret line="53" column="36" lean-forward="true" selection-start-line="53" selection-start-column="36" selection-end-line="53" selection-end-column="36" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/minimall-db/src/main/java/com/zcb/minimalldb/service/impl/GoodsServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="339">
-          <caret line="97" column="42" selection-start-line="97" selection-start-column="42" selection-end-line="97" selection-end-column="42" />
-          <folding>
-            <element signature="e#4317#4318#0" expanded="true" />
-            <element signature="e#4381#4382#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/minimall-db/src/main/resources/com/zcb/minimalldb/dao/GoodsMapper.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="531">
+        <state relative-caret-position="4760">
           <caret line="170" column="42" selection-start-line="170" selection-start-column="22" selection-end-line="170" selection-end-column="42" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/minimall-db/src/main/java/com/zcb/minimalldb/dao/GoodsMapper.java">
+    <entry file="file://$PROJECT_DIR$/minimall-wx-api/src/main/java/com/zcb/minimallwxapi/ServletInitializer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="160">
-          <caret line="90" column="40" selection-start-line="90" selection-start-column="16" selection-end-line="90" selection-end-column="40" />
+        <state relative-caret-position="112">
+          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/minimall-wx-api/src/main/resources/log4j2.xml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/minimall-core/src/main/java/com/zcb/minimallcore/MinimallCoreApplication.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="141">
+          <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/minimall-core/src/main/resources/application-core.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="504">
+          <caret line="18" column="36" selection-start-line="18" selection-start-column="36" selection-end-line="18" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/minimall-wx-api/src/main/java/com/zcb/minimallwxapi/MinimallWxApiApplication.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="24">
+          <caret line="7" column="111" selection-start-line="7" selection-start-column="98" selection-end-line="7" selection-end-column="111" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/minimall-wx-api/src/main/resources/application.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="254">
+          <caret line="10" column="12" selection-start-line="10" selection-start-column="12" selection-end-line="10" selection-end-column="12" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/minimall-db/src/main/resources/application.yml">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/minimall-db/src/main/resources/application-db.yml">
+    <entry file="file://$PROJECT_DIR$/minimall-db/src/main/java/com/zcb/minimalldb/dao/GoodsMapper.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="312">
-          <caret line="24" lean-forward="true" selection-start-line="24" selection-end-line="24" />
+        <state relative-caret-position="230">
+          <caret line="90" column="40" selection-start-line="90" selection-start-column="16" selection-end-line="90" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/minimall-admin/src/api/storage.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="132">
+          <caret line="6" column="17" lean-forward="true" selection-start-line="6" selection-start-column="17" selection-end-line="6" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/minimall-db/src/main/java/com/zcb/minimalldb/service/IGoodsSpecificationService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="32" column="28" selection-start-line="32" selection-start-column="28" selection-end-line="32" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/minimall-db/src/main/java/com/zcb/minimalldb/service/IGoodsProductService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="334">
+          <caret line="43" column="22" selection-start-line="43" selection-start-column="22" selection-end-line="43" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/minimall-db/src/main/java/com/zcb/minimalldb/service/IGoodsAttributeService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="253">
+          <caret line="31" column="24" selection-start-line="31" selection-start-column="24" selection-end-line="31" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/minimall-db/src/main/java/com/zcb/minimalldb/service/impl/GoodsAttributeService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="59" column="45" lean-forward="true" selection-start-line="59" selection-start-column="45" selection-end-line="59" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/minimall-db/src/main/java/com/zcb/minimalldb/service/impl/GoodsProductServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="268">
+          <caret line="71" column="40" selection-start-line="71" selection-start-column="40" selection-end-line="71" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/minimall-db/src/main/java/com/zcb/minimalldb/service/impl/GoodsSpecificationServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="87" column="63" selection-start-line="87" selection-start-column="63" selection-end-line="87" selection-end-column="63" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/minimall-admin/src/views/goods/list.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="163">
+          <caret line="59" column="36" selection-start-line="59" selection-start-column="25" selection-end-line="59" selection-end-column="36" />
+          <folding>
+            <element signature="e#4612#4664#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/minimall-admin/src/api/goods.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="162">
+          <caret line="26" column="33" lean-forward="true" selection-start-line="26" selection-start-column="33" selection-end-line="26" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/minimall-admin/static/tinymce4.7.5/tinymce.min.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/minimall-admin/static/tinymce4.7.5/langs/zh_CN.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-252" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/minimall-admin-api/src/main/java/com/zcb/minimalladminapi/controller/AdminGoodsController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5460">
+          <caret line="209" selection-start-line="209" selection-end-line="209" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-web/5.1.6.RELEASE/spring-web-5.1.6.RELEASE.jar!/org/springframework/web/method/support/InvocableHandlerMethod.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2324">
+          <caret line="101" selection-start-line="101" selection-end-line="101" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/minimall-admin/src/views/goods/edit.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="247">
+          <caret line="339" column="141" selection-start-line="339" selection-start-column="131" selection-end-line="339" selection-end-column="141" />
+          <folding>
+            <element signature="e#10819#10888#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/minimall-admin/src/views/goods/create.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="163">
+          <caret line="371" column="20" selection-start-line="371" selection-start-column="7" selection-end-line="371" selection-end-column="20" />
+          <folding>
+            <element signature="e#11651#11710#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/minimall-db/src/main/java/com/zcb/minimalldb/service/impl/GoodsServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-6">
+          <caret line="110" column="54" selection-start-line="110" selection-start-column="27" selection-end-line="110" selection-end-column="54" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="112">
+            <caret line="4" column="4" lean-forward="true" selection-start-line="4" selection-start-column="4" selection-end-line="4" selection-end-column="4" />
+          </first_editor>
+          <second_editor />
         </state>
       </provider>
     </entry>

@@ -6,3 +6,6 @@ spring:
 
 logging:
   config: classpath:log4j2.xml
+
+server:
+  port: 8081

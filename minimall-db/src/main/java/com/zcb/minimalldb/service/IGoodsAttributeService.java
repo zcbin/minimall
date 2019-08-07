@@ -29,4 +29,5 @@ public interface IGoodsAttributeService {
      * @return
      */
     int deleteByGid(Integer gid);
+    List<GoodsAttribute> findByGid(Integer gid);
 }

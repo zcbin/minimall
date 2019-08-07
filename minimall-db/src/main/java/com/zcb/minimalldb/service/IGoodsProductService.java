@@ -41,4 +41,5 @@ public interface IGoodsProductService {
      * @return
      */
     int deleteByGid(Integer gid);
+    List<GoodsProduct> findByGid(Integer gid);
 }
