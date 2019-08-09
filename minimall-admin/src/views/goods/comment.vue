@@ -4,7 +4,7 @@
     <!-- 查询和其他操作 -->
     <div class="filter-container">
       <el-input v-model="listQuery.userId" clearable class="filter-item" style="width: 200px;" placeholder="请输入用户ID"/>
-      <el-input v-model="listQuery.valueId" clearable class="filter-item" style="width: 200px;" placeholder="请输入商品ID"/>
+      <el-input v-model="listQuery.goodId" clearable class="filter-item" style="width: 200px;" placeholder="请输入商品ID"/>
       <el-button class="filter-item" type="primary" icon="el-icon-search" @click="handleFilter">查找</el-button>
       <el-button :loading="downloadLoading" class="filter-item" type="primary" icon="el-icon-download" @click="handleDownload">导出</el-button>
     </div>
@@ -14,7 +14,7 @@
 
       <el-table-column align="center" label="用户ID" prop="userId"/>
 
-      <el-table-column align="center" label="商品ID" prop="valueId"/>
+      <el-table-column align="center" label="商品ID" prop="goodId"/>
 
       <el-table-column align="center" label="打分" prop="star"/>
 
@@ -27,7 +27,7 @@
       </el-table-column>
 
       <el-table-column align="center" label="时间" prop="addTime"/>
-
+      <el-table-column align="center" label="回复" prop="reply"/>
       <el-table-column align="center" label="操作" width="200" class-name="small-padding fixed-width">
         <template slot-scope="scope">
           <el-button type="primary" size="mini" @click="handleReply(scope.row)">回复</el-button>
@@ -55,8 +55,8 @@
 </template>
 
 <script>
-import { listComment, deleteComment } from '@/api/comment'
-import { replyComment } from '@/api/order'
+import { listComment, deleteComment, replyComment } from '@/api/comment'
+
 import Pagination from '@/components/Pagination' // Secondary package based on el-pagination
 
 export default {
@@ -71,13 +71,15 @@ export default {
         page: 1,
         limit: 20,
         userId: undefined,
-        valueId: undefined,
+        goodId: undefined,
         sort: 'add_time',
         order: 'desc'
       },
       downloadLoading: false,
       replyForm: {
         commentId: 0,
+        goodId: 0,
+        userId: 0,
         content: ''
       },
       replyFormVisible: false
@@ -104,12 +106,13 @@ export default {
       this.getList()
     },
     handleReply(row) {
-      this.replyForm = { commentId: row.id, content: '' }
+      this.replyForm = { commentId: row.id, goodId: row.goodId, userId: row.userId, content: '' }
       this.replyFormVisible = true
     },
     reply() {
       replyComment(this.replyForm).then(response => {
         this.replyFormVisible = false
+        this.getList()
         this.$notify.success({
           title: '成功',
           message: '回复成功'
@@ -122,7 +125,8 @@ export default {
       })
     },
     handleDelete(row) {
-      deleteComment(row).then(response => {
+      const id = { id: row.id }
+      deleteComment(id).then(response => {
         this.$notify({
           title: '成功',
           message: '删除成功',
@@ -136,8 +140,8 @@ export default {
     handleDownload() {
       this.downloadLoading = true
       import('@/vendor/Export2Excel').then(excel => {
-        const tHeader = ['评论ID', '用户ID', '商品ID', '评论', '评论图片列表', '评论时间']
-        const filterVal = ['id', 'userId', 'valueId', 'content', 'picUrls', 'addTime']
+        const tHeader = ['评论ID', '用户ID', '商品ID', '评论', '评论图片列表', '评论时间', '回复']
+        const filterVal = ['id', 'userId', 'goodId', 'content', 'picUrls', 'addTime', 'reply']
         excel.export_json_to_excel2(tHeader, this.list, filterVal, '商品评论信息')
         this.downloadLoading = false
       })

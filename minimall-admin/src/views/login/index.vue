@@ -24,7 +24,7 @@
       <el-button :loading="loading" type="primary" style="width:100%;margin-bottom:30px;" @click.native.prevent="handleLogin">登录</el-button>
 
       <div style="position:relative">
-        <div class="tips">
+        <!--<div class="tips">
           <span> 超级管理员用户名: admin123</span>
           <span> 超级管理员用户名：admin123</span>
         </div>
@@ -35,7 +35,7 @@
         <div class="tips">
           <span> 推广管理员用户名: promotion123</span>
           <span> 推广管理员用户名：promotion123</span>
-        </div>
+        </div>-->
       </div>
     </el-form>
 

@@ -55,4 +55,16 @@ public interface ICommentService {
      * @return
      */
     List<Comment> query(String type, Integer gid, int offet, int limit);
+
+    /**
+     * 评论列表
+     * @param userId
+     * @param goodId
+     * @param offset
+     * @param limit
+     * @param sort
+     * @param order
+     * @return
+     */
+    List<Comment> query(Integer userId, Integer goodId, Integer offset, Integer limit, String sort, String order);
 }

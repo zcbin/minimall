@@ -1,7 +1,9 @@
 package com.zcb.minimalladminapi.annotation.support;
 
 import com.zcb.minimalladminapi.annotation.LoginUser;
+import com.zcb.minimalldb.domain.Admin;
 import com.zcb.minimalldb.domain.User;
+import com.zcb.minimalldb.service.IAdminService;
 import com.zcb.minimalldb.service.IUserService;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.subject.Subject;
@@ -16,7 +18,7 @@ import org.springframework.web.method.support.ModelAndViewContainer;
 @Component
 public class LoginUserHandlerMethodArgumentResolver implements HandlerMethodArgumentResolver {
     @Autowired
-    private IUserService userService;
+    private IAdminService adminService;
     @Override
     public boolean supportsParameter(MethodParameter parameter) {
         return parameter.getParameterType().isAssignableFrom(Integer.class) && parameter.hasParameterAnnotation(LoginUser.class);
@@ -38,9 +40,9 @@ public class LoginUserHandlerMethodArgumentResolver implements HandlerMethodArgu
         if (subject == null || subject.getPrincipal() == null) {
             return null;
         }
-        User userInfo = userService.queryByUsername((String) subject.getPrincipal()); //登录用户信息
-        if (userInfo != null) {
-            return userInfo.getId();
+        Admin admin = adminService.queryByUsername((String) subject.getPrincipal());  //登录用户信息
+        if (admin != null) {
+            return admin.getId();
         }
         return null;
 

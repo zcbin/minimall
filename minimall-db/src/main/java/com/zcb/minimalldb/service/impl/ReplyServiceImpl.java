@@ -33,4 +33,26 @@ public class ReplyServiceImpl implements IReplyService {
         example.or().andCommentIdEqualTo(cid).andReplyTypeEqualTo(replyType).andDeletedEqualTo(false);
         return replyMapper.selectOneByExample(example);
     }
+
+    @Override
+    public int add(Reply reply) {
+        return replyMapper.insertSelective(reply);
+    }
+
+    @Override
+    public int update(Reply reply) {
+        return replyMapper.updateByPrimaryKeySelective(reply);
+    }
+
+    @Override
+    public int delete(Integer id) {
+        return replyMapper.logicalDeleteByPrimaryKey(id);
+    }
+
+    @Override
+    public int deleteByCommentId(Integer commentId) {
+        ReplyExample example = new ReplyExample();
+        example.or().andCommentIdEqualTo(commentId).andDeletedEqualTo(false);
+        return replyMapper.logicalDeleteByExample(example);
+    }
 }

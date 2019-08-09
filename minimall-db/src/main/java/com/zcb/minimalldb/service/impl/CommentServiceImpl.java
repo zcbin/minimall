@@ -7,6 +7,7 @@ import com.zcb.minimalldb.domain.Comment;
 import com.zcb.minimalldb.domain.CommentExample;
 import com.zcb.minimalldb.service.ICommentService;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
 import javax.annotation.Resource;
 import java.time.LocalDateTime;
@@ -66,6 +67,24 @@ public class CommentServiceImpl implements ICommentService {
         }
 
         PageHelper.startPage(offet, limit);
+        return commentMapper.selectByExample(example);
+    }
+
+    @Override
+    public List<Comment> query(Integer userId, Integer goodId, Integer offset, Integer limit, String sort, String order) {
+        CommentExample example = new CommentExample();
+        CommentExample.Criteria criteria = example.createCriteria();
+        if (!StringUtils.isEmpty(userId)) {
+            criteria.andUserIdEqualTo(userId);
+        }
+        if (!StringUtils.isEmpty(goodId)) {
+            criteria.andGoodIdEqualTo(goodId);
+        }
+        criteria.andDeletedEqualTo(false);
+        if (!StringUtils.isEmpty(sort) && !StringUtils.isEmpty(order)) {
+            example.setOrderByClause(sort + " " + order);
+        }
+        PageHelper.startPage(offset, limit);
         return commentMapper.selectByExample(example);
     }
 }

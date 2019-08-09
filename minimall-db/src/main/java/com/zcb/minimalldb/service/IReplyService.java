@@ -26,4 +26,8 @@ public interface IReplyService {
      * @return
      */
     Reply queryBusiness(Integer cid, String replyType);
+    int add(Reply reply);
+    int update(Reply reply);
+    int delete(Integer id);
+    int deleteByCommentId(Integer commentId);
 }
