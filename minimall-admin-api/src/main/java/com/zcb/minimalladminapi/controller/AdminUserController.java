@@ -22,7 +22,6 @@ import java.util.Map;
  * @date 2019/7/18 19:40
  */
 @RestController
-@CrossOrigin
 @RequestMapping(value = "/admin/user")
 public class AdminUserController {
     @Autowired

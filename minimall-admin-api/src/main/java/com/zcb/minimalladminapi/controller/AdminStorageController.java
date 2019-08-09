@@ -17,7 +17,6 @@ import java.io.IOException;
  * @date 2019/7/25 20:10
  */
 @RestController
-@CrossOrigin
 @RequestMapping(value = "/admin/storage")
 public class AdminStorageController {
     @Autowired

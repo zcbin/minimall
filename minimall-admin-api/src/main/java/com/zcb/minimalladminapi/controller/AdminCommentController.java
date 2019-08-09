@@ -31,7 +31,6 @@ import java.util.Map;
  * @date 2019/8/7 16:36
  */
 @RestController
-@CrossOrigin
 @RequestMapping(value = "/admin/comment")
 public class AdminCommentController {
     @Autowired

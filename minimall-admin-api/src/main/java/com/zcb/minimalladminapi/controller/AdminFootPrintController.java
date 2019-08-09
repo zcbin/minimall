@@ -23,7 +23,6 @@ import java.util.Map;
  * @date 2019/7/22 21:11
  */
 @RestController
-@CrossOrigin
 @RequestMapping(value = "/admin/footprint")
 public class AdminFootPrintController {
     @Autowired

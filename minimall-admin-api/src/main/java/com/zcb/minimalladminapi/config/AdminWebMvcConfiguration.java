@@ -10,7 +10,6 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import java.util.List;
 
 @Configuration
-@Component
 public class AdminWebMvcConfiguration implements WebMvcConfigurer {
     @Autowired
     private LoginUserHandlerMethodArgumentResolver loginUserHandlerMethodArgumentResolver;

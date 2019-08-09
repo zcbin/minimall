@@ -24,7 +24,6 @@ import java.util.Map;
  * @date 2019/7/31 21:55
  */
 @RestController
-@CrossOrigin
 @RequestMapping(value = "/admin/keyword")
 public class AdminKeywordController {
     @Autowired

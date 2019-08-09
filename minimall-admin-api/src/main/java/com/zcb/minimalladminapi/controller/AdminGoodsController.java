@@ -24,7 +24,6 @@ import java.util.*;
  * @date 2019/8/1 19:29
  */
 @RestController
-@CrossOrigin
 @RequestMapping(value = "/admin/goods")
 public class AdminGoodsController {
     @Autowired

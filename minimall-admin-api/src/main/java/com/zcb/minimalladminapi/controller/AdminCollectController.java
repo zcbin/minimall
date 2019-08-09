@@ -22,7 +22,6 @@ import java.util.Map;
  * @date 2019/7/18 22:57
  */
 @RestController
-@CrossOrigin
 @RequestMapping(value = "/admin/collect")
 public class AdminCollectController {
     @Autowired

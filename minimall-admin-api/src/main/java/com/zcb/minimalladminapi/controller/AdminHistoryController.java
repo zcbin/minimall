@@ -23,7 +23,6 @@ import java.util.Map;
  * @date 2019/7/22 20:44
  */
 @RestController
-@CrossOrigin
 @RequestMapping(value = "/admin/history")
 public class AdminHistoryController {
 

@@ -23,7 +23,6 @@ import java.util.Map;
  * @date 2019/7/22 21:30
  */
 @RestController
-@CrossOrigin
 @RequestMapping(value = "/admin/feedback")
 public class AdminFeedbackController {
     @Autowired

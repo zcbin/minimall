@@ -29,7 +29,6 @@ import java.io.Serializable;
 import java.util.*;
 
 @RestController //@ResponseBody + @Controller
-@CrossOrigin
 @RequestMapping(value = "/admin/auth")
 public class AdminAuthController {
     private static final Logger LOGGER = LogManager.getLogger();
