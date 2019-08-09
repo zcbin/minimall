@@ -6,35 +6,7 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bbc1bdef-9a47-46fc-93e6-677045977184" name="Default Changelist" comment="后台管理">
-      <change afterPath="$PROJECT_DIR$/minimall-admin-api/src/main/java/com/zcb/minimalladminapi/config/CrossOriginConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/minimall-admin-api/src/main/java/com/zcb/minimalladminapi/controller/AdminAdController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/minimall-admin-api/src/main/java/com/zcb/minimalladminapi/controller/AdminCommentController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/minimall-admin/src/api/reply.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/minimall-admin-api/src/main/java/com/zcb/minimalladminapi/annotation/support/LoginUserHandlerMethodArgumentResolver.java" beforeDir="false" afterPath="$PROJECT_DIR$/minimall-admin-api/src/main/java/com/zcb/minimalladminapi/annotation/support/LoginUserHandlerMethodArgumentResolver.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/minimall-admin-api/src/main/java/com/zcb/minimalladminapi/config/AdminWebMvcConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/minimall-admin-api/src/main/java/com/zcb/minimalladminapi/config/AdminWebMvcConfiguration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/minimall-admin-api/src/main/java/com/zcb/minimalladminapi/controller/AdminAddressController.java" beforeDir="false" afterPath="$PROJECT_DIR$/minimall-admin-api/src/main/java/com/zcb/minimalladminapi/controller/AdminAddressController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/minimall-admin-api/src/main/java/com/zcb/minimalladminapi/controller/AdminAuthController.java" beforeDir="false" afterPath="$PROJECT_DIR$/minimall-admin-api/src/main/java/com/zcb/minimalladminapi/controller/AdminAuthController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/minimall-admin-api/src/main/java/com/zcb/minimalladminapi/controller/AdminCategoryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/minimall-admin-api/src/main/java/com/zcb/minimalladminapi/controller/AdminCategoryController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/minimall-admin-api/src/main/java/com/zcb/minimalladminapi/controller/AdminCollectController.java" beforeDir="false" afterPath="$PROJECT_DIR$/minimall-admin-api/src/main/java/com/zcb/minimalladminapi/controller/AdminCollectController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/minimall-admin-api/src/main/java/com/zcb/minimalladminapi/controller/AdminDashbordController.java" beforeDir="false" afterPath="$PROJECT_DIR$/minimall-admin-api/src/main/java/com/zcb/minimalladminapi/controller/AdminDashbordController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/minimall-admin-api/src/main/java/com/zcb/minimalladminapi/controller/AdminFeedbackController.java" beforeDir="false" afterPath="$PROJECT_DIR$/minimall-admin-api/src/main/java/com/zcb/minimalladminapi/controller/AdminFeedbackController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/minimall-admin-api/src/main/java/com/zcb/minimalladminapi/controller/AdminFootPrintController.java" beforeDir="false" afterPath="$PROJECT_DIR$/minimall-admin-api/src/main/java/com/zcb/minimalladminapi/controller/AdminFootPrintController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/minimall-admin-api/src/main/java/com/zcb/minimalladminapi/controller/AdminGoodsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/minimall-admin-api/src/main/java/com/zcb/minimalladminapi/controller/AdminGoodsController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/minimall-admin-api/src/main/java/com/zcb/minimalladminapi/controller/AdminHistoryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/minimall-admin-api/src/main/java/com/zcb/minimalladminapi/controller/AdminHistoryController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/minimall-admin-api/src/main/java/com/zcb/minimalladminapi/controller/AdminIssueController.java" beforeDir="false" afterPath="$PROJECT_DIR$/minimall-admin-api/src/main/java/com/zcb/minimalladminapi/controller/AdminIssueController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/minimall-admin-api/src/main/java/com/zcb/minimalladminapi/controller/AdminKeywordController.java" beforeDir="false" afterPath="$PROJECT_DIR$/minimall-admin-api/src/main/java/com/zcb/minimalladminapi/controller/AdminKeywordController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/minimall-admin-api/src/main/java/com/zcb/minimalladminapi/controller/AdminStorageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/minimall-admin-api/src/main/java/com/zcb/minimalladminapi/controller/AdminStorageController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/minimall-admin-api/src/main/java/com/zcb/minimalladminapi/controller/AdminUserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/minimall-admin-api/src/main/java/com/zcb/minimalladminapi/controller/AdminUserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/minimall-admin/src/api/comment.js" beforeDir="false" afterPath="$PROJECT_DIR$/minimall-admin/src/api/comment.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/minimall-admin/src/views/goods/comment.vue" beforeDir="false" afterPath="$PROJECT_DIR$/minimall-admin/src/views/goods/comment.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/minimall-admin/src/views/login/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/minimall-admin/src/views/login/index.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/minimall-db/src/main/java/com/zcb/minimalldb/service/ICommentService.java" beforeDir="false" afterPath="$PROJECT_DIR$/minimall-db/src/main/java/com/zcb/minimalldb/service/ICommentService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/minimall-db/src/main/java/com/zcb/minimalldb/service/IReplyService.java" beforeDir="false" afterPath="$PROJECT_DIR$/minimall-db/src/main/java/com/zcb/minimalldb/service/IReplyService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/minimall-db/src/main/java/com/zcb/minimalldb/service/impl/CommentServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/minimall-db/src/main/java/com/zcb/minimalldb/service/impl/CommentServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/minimall-db/src/main/java/com/zcb/minimalldb/service/impl/ReplyServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/minimall-db/src/main/java/com/zcb/minimalldb/service/impl/ReplyServiceImpl.java" afterDir="false" />
-    </list>
+    <list default="true" id="bbc1bdef-9a47-46fc-93e6-677045977184" name="Default Changelist" comment="后台管理" />
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
     <ignored path="$PROJECT_DIR$/minimall-wx-api/target/" />
@@ -81,16 +53,28 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/minimall-admin-api/src/main/java/com/zcb/minimalladminapi/config/ShiroConfiguration.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="140">
-              <caret line="19" column="13" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
+            <state relative-caret-position="224">
+              <caret line="19" column="31" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="31" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/minimall-admin-api/src/main/java/com/zcb/minimalladminapi/controller/AdminCommentController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="270">
+              <caret line="96" column="78" lean-forward="true" selection-start-line="96" selection-start-column="78" selection-end-line="96" selection-end-column="78" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/minimall-admin-api/src/main/java/com/zcb/minimalladminapi/config/AdminWebMvcConfiguration.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="112">
+            <state relative-caret-position="28">
               <caret line="11" column="14" selection-start-line="11" selection-start-column="14" selection-end-line="11" selection-end-column="14" />
             </state>
           </provider>
@@ -188,7 +172,6 @@
         <option value="$PROJECT_DIR$/minimall-admin/src/views/login/index.vue" />
         <option value="$PROJECT_DIR$/minimall-admin-api/src/main/java/com/zcb/minimalladminapi/controller/AdminAdController.java" />
         <option value="$PROJECT_DIR$/minimall-admin-api/src/main/java/com/zcb/minimalladminapi/config/CrossOriginConfig.java" />
-        <option value="$PROJECT_DIR$/minimall-admin-api/src/main/java/com/zcb/minimalladminapi/controller/AdminCommentController.java" />
         <option value="$PROJECT_DIR$/minimall-admin-api/src/main/java/com/zcb/minimalladminapi/controller/AdminAddressController.java" />
         <option value="$PROJECT_DIR$/minimall-admin-api/src/main/java/com/zcb/minimalladminapi/controller/AdminAuthController.java" />
         <option value="$PROJECT_DIR$/minimall-admin-api/src/main/java/com/zcb/minimalladminapi/controller/AdminCategoryController.java" />
@@ -203,6 +186,7 @@
         <option value="$PROJECT_DIR$/minimall-admin-api/src/main/java/com/zcb/minimalladminapi/controller/AdminStorageController.java" />
         <option value="$PROJECT_DIR$/minimall-admin-api/src/main/java/com/zcb/minimalladminapi/controller/AdminUserController.java" />
         <option value="$PROJECT_DIR$/minimall-admin-api/src/main/java/com/zcb/minimalladminapi/config/AdminWebMvcConfiguration.java" />
+        <option value="$PROJECT_DIR$/minimall-admin-api/src/main/java/com/zcb/minimalladminapi/controller/AdminCommentController.java" />
       </list>
     </option>
   </component>
@@ -273,271 +257,12 @@
             <path>
               <item name="minimall" type="b2602c69:ProjectViewProjectNode" />
               <item name="minimall" type="462c0819:PsiDirectoryNode" />
-              <item name="doc" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="minimall" type="b2602c69:ProjectViewProjectNode" />
-              <item name="minimall" type="462c0819:PsiDirectoryNode" />
-              <item name="minimall-admin" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="minimall" type="b2602c69:ProjectViewProjectNode" />
-              <item name="minimall" type="462c0819:PsiDirectoryNode" />
-              <item name="minimall-admin" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="minimall" type="b2602c69:ProjectViewProjectNode" />
-              <item name="minimall" type="462c0819:PsiDirectoryNode" />
-              <item name="minimall-admin" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
+              <item name=".idea" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="minimall" type="b2602c69:ProjectViewProjectNode" />
               <item name="minimall" type="462c0819:PsiDirectoryNode" />
               <item name="minimall-admin-api" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="minimall" type="b2602c69:ProjectViewProjectNode" />
-              <item name="minimall" type="462c0819:PsiDirectoryNode" />
-              <item name="minimall-admin-api" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="minimall" type="b2602c69:ProjectViewProjectNode" />
-              <item name="minimall" type="462c0819:PsiDirectoryNode" />
-              <item name="minimall-admin-api" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="minimall" type="b2602c69:ProjectViewProjectNode" />
-              <item name="minimall" type="462c0819:PsiDirectoryNode" />
-              <item name="minimall-admin-api" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="minimall" type="b2602c69:ProjectViewProjectNode" />
-              <item name="minimall" type="462c0819:PsiDirectoryNode" />
-              <item name="minimall-admin-api" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="minimall" type="b2602c69:ProjectViewProjectNode" />
-              <item name="minimall" type="462c0819:PsiDirectoryNode" />
-              <item name="minimall-admin-api" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-              <item name="zcb" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="minimall" type="b2602c69:ProjectViewProjectNode" />
-              <item name="minimall" type="462c0819:PsiDirectoryNode" />
-              <item name="minimall-admin-api" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-              <item name="zcb" type="462c0819:PsiDirectoryNode" />
-              <item name="minimalladminapi" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="minimall" type="b2602c69:ProjectViewProjectNode" />
-              <item name="minimall" type="462c0819:PsiDirectoryNode" />
-              <item name="minimall-admin-api" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-              <item name="zcb" type="462c0819:PsiDirectoryNode" />
-              <item name="minimalladminapi" type="462c0819:PsiDirectoryNode" />
-              <item name="annotation" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="minimall" type="b2602c69:ProjectViewProjectNode" />
-              <item name="minimall" type="462c0819:PsiDirectoryNode" />
-              <item name="minimall-admin-api" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-              <item name="zcb" type="462c0819:PsiDirectoryNode" />
-              <item name="minimalladminapi" type="462c0819:PsiDirectoryNode" />
-              <item name="annotation" type="462c0819:PsiDirectoryNode" />
-              <item name="support" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="minimall" type="b2602c69:ProjectViewProjectNode" />
-              <item name="minimall" type="462c0819:PsiDirectoryNode" />
-              <item name="minimall-admin-api" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-              <item name="zcb" type="462c0819:PsiDirectoryNode" />
-              <item name="minimalladminapi" type="462c0819:PsiDirectoryNode" />
-              <item name="config" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="minimall" type="b2602c69:ProjectViewProjectNode" />
-              <item name="minimall" type="462c0819:PsiDirectoryNode" />
-              <item name="minimall-db" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="minimall" type="b2602c69:ProjectViewProjectNode" />
-              <item name="minimall" type="462c0819:PsiDirectoryNode" />
-              <item name="minimall-db" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="minimall" type="b2602c69:ProjectViewProjectNode" />
-              <item name="minimall" type="462c0819:PsiDirectoryNode" />
-              <item name="minimall-db" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="minimall" type="b2602c69:ProjectViewProjectNode" />
-              <item name="minimall" type="462c0819:PsiDirectoryNode" />
-              <item name="minimall-db" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="minimall" type="b2602c69:ProjectViewProjectNode" />
-              <item name="minimall" type="462c0819:PsiDirectoryNode" />
-              <item name="minimall-db" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="minimall" type="b2602c69:ProjectViewProjectNode" />
-              <item name="minimall" type="462c0819:PsiDirectoryNode" />
-              <item name="minimall-db" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-              <item name="zcb" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="minimall" type="b2602c69:ProjectViewProjectNode" />
-              <item name="minimall" type="462c0819:PsiDirectoryNode" />
-              <item name="minimall-db" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-              <item name="zcb" type="462c0819:PsiDirectoryNode" />
-              <item name="minimalldb" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="minimall" type="b2602c69:ProjectViewProjectNode" />
-              <item name="minimall" type="462c0819:PsiDirectoryNode" />
-              <item name="minimall-db" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-              <item name="zcb" type="462c0819:PsiDirectoryNode" />
-              <item name="minimalldb" type="462c0819:PsiDirectoryNode" />
-              <item name="service" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="minimall" type="b2602c69:ProjectViewProjectNode" />
-              <item name="minimall" type="462c0819:PsiDirectoryNode" />
-              <item name="minimall-db" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-              <item name="zcb" type="462c0819:PsiDirectoryNode" />
-              <item name="minimalldb" type="462c0819:PsiDirectoryNode" />
-              <item name="service" type="462c0819:PsiDirectoryNode" />
-              <item name="impl" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="minimall" type="b2602c69:ProjectViewProjectNode" />
-              <item name="minimall" type="462c0819:PsiDirectoryNode" />
-              <item name="minimall-wx-api" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="minimall" type="b2602c69:ProjectViewProjectNode" />
-              <item name="minimall" type="462c0819:PsiDirectoryNode" />
-              <item name="minimall-wx-api" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="minimall" type="b2602c69:ProjectViewProjectNode" />
-              <item name="minimall" type="462c0819:PsiDirectoryNode" />
-              <item name="minimall-wx-api" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="minimall" type="b2602c69:ProjectViewProjectNode" />
-              <item name="minimall" type="462c0819:PsiDirectoryNode" />
-              <item name="minimall-wx-api" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="minimall" type="b2602c69:ProjectViewProjectNode" />
-              <item name="minimall" type="462c0819:PsiDirectoryNode" />
-              <item name="minimall-wx-api" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="minimall" type="b2602c69:ProjectViewProjectNode" />
-              <item name="minimall" type="462c0819:PsiDirectoryNode" />
-              <item name="minimall-wx-api" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-              <item name="zcb" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="minimall" type="b2602c69:ProjectViewProjectNode" />
-              <item name="minimall" type="462c0819:PsiDirectoryNode" />
-              <item name="minimall-wx-api" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-              <item name="zcb" type="462c0819:PsiDirectoryNode" />
-              <item name="minimallwxapi" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="minimall" type="b2602c69:ProjectViewProjectNode" />
-              <item name="minimall" type="462c0819:PsiDirectoryNode" />
-              <item name="minimall-wx-api" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-              <item name="zcb" type="462c0819:PsiDirectoryNode" />
-              <item name="minimallwxapi" type="462c0819:PsiDirectoryNode" />
-              <item name="controller" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="minimall" type="b2602c69:ProjectViewProjectNode" />
-              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
             </path>
           </expand>
           <select />
@@ -767,7 +492,7 @@
       <workItem from="1565090478240" duration="3865000" />
       <workItem from="1565158370378" duration="8813000" />
       <workItem from="1565255664325" duration="6499000" />
-      <workItem from="1565330851718" duration="1872000" />
+      <workItem from="1565330851718" duration="2498000" />
     </task>
     <task id="LOCAL-00001" summary="项目创建">
       <created>1556155351366</created>
@@ -1011,7 +736,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="438029000" />
+    <option name="totallyTimeSpent" value="438655000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1034,7 +759,7 @@
       <window_info anchor="bottom" id="TypeScript" order="0" weight="0.32993197" />
       <window_info anchor="bottom" id="Message" order="1" />
       <window_info anchor="bottom" id="Find" order="2" weight="0.4931973" />
-      <window_info anchor="bottom" id="Run" order="3" sideWeight="0.4984733" visible="true" weight="0.3469388" />
+      <window_info anchor="bottom" id="Run" order="3" sideWeight="0.4984733" weight="0.39455783" />
       <window_info anchor="bottom" id="Debug" order="4" weight="0.3282313" />
       <window_info anchor="bottom" id="Cvs" order="5" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="6" weight="0.4" />
@@ -1047,7 +772,7 @@
       <window_info anchor="bottom" id="Messages" order="13" weight="0.15476191" />
       <window_info anchor="bottom" id="Java Enterprise" order="14" weight="0.32993197" />
       <window_info anchor="bottom" id="Duplicate detector" order="15" weight="0.58843535" />
-      <window_info anchor="bottom" id="Terminal" order="16" sideWeight="0.4984733" weight="0.20068027" />
+      <window_info anchor="bottom" id="Terminal" order="16" sideWeight="0.4984733" visible="true" weight="0.34013605" />
       <window_info anchor="right" id="Module Dependencies" order="0" weight="0.5664122" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="1" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="2" weight="0.24961832" />
@@ -1224,28 +949,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/minimall-admin/build/webpack.base.conf.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2676" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/minimall-admin/build/webpack.dev.conf.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/minimall-admin/build/webpack.prod.conf.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/minimall-admin/config/dep.env.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/minimall-admin/config/dev.env.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/minimall-admin/config/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2144" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/minimall-admin/config/prod.env.js">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -1427,16 +1130,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/minimall-admin-api/src/main/java/com/zcb/minimalladminapi/controller/AdminCommentController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="190">
-          <caret line="32" column="15" selection-start-line="32" selection-start-column="15" selection-end-line="32" selection-end-column="15" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/minimall-admin-api/src/main/java/com/zcb/minimalladminapi/controller/AdminDashbordController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="107">
@@ -1517,13 +1210,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/minimall-admin-api/src/main/java/com/zcb/minimalladminapi/config/ShiroConfiguration.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="140">
-          <caret line="19" column="13" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/minimall-admin-api/src/main/java/com/zcb/minimalladminapi/config/AdminSessionManager.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="32">
@@ -1531,10 +1217,57 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/minimall-admin-api/src/main/java/com/zcb/minimalladminapi/annotation/support/LoginUserHandlerMethodArgumentResolver.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="116">
+          <caret line="18" column="13" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/minimall-admin-api/src/main/java/com/zcb/minimalladminapi/config/AdminWebMvcConfiguration.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="112">
+        <state relative-caret-position="28">
           <caret line="11" column="14" selection-start-line="11" selection-start-column="14" selection-end-line="11" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/minimall-admin-api/src/main/java/com/zcb/minimalladminapi/config/ShiroConfiguration.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="224">
+          <caret line="19" column="31" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.idea/modules.xml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/minimall-core/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-628" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/minimall-admin-vue/.gitignore">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/minimall-admin-api/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="84">
+          <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/minimall-admin/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-252" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/minimall-admin-api/src/main/java/com/zcb/minimalladminapi/controller/AdminCommentController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="96" column="78" lean-forward="true" selection-start-line="96" selection-start-column="78" selection-end-line="96" selection-end-column="78" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
