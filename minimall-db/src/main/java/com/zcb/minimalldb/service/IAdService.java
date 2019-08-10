@@ -13,4 +13,19 @@ public interface IAdService {
      * @return
      */
     List<Ad> queryIndex();
+
+    /**
+     * 广告列表
+     * @param name
+     * @param content
+     * @param offset
+     * @param limit
+     * @param sort
+     * @param order
+     * @return
+     */
+    List<Ad> query(String name, String content, Integer offset, Integer limit, String sort, String order);
+    int add(Ad ad);
+    int update(Ad ad);
+    int delete(Integer id);
 }

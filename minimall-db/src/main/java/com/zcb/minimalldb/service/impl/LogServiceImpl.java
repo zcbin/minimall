@@ -44,4 +44,19 @@ public class LogServiceImpl implements ILogService {
         PageHelper.startPage(offset, limit);
         return logMapper.selectByExample(example);
     }
+
+    @Override
+    public List<Log> query(String admin, Integer offset, Integer limit, String sort, String order) {
+        LogExample example = new LogExample();
+        LogExample.Criteria criteria = example.createCriteria();
+        if (!StringUtils.isEmpty(admin)) {
+            criteria.andAdminEqualTo(admin);
+        }
+        criteria.andDeletedEqualTo(false);
+        if (!StringUtils.isEmpty(sort) && !StringUtils.isEmpty(offset)) {
+            example.setOrderByClause(sort + " " + order);
+        }
+        PageHelper.startPage(offset, limit);
+        return logMapper.selectByExample(example);
+    }
 }

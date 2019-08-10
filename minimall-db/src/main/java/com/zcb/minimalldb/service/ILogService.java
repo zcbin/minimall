@@ -24,4 +24,15 @@ public interface ILogService {
      * @return
      */
     List<Log> query(String admin, Integer type, int offset, int limit);
+
+    /**
+     * 查询
+     * @param admin
+     * @param offset
+     * @param limit
+     * @param sort
+     * @param order
+     * @return
+     */
+    List<Log> query(String admin, Integer offset, Integer limit, String sort, String order);
 }

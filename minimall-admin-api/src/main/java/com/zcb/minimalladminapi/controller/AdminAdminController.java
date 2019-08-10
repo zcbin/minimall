@@ -5,9 +5,8 @@ import com.github.pagehelper.PageInfo;
 import com.zcb.minimallcore.util.ResponseUtil;
 import com.zcb.minimallcore.validator.Order;
 import com.zcb.minimallcore.validator.Sort;
-import com.zcb.minimalldb.domain.Ad;
-import com.zcb.minimalldb.domain.Address;
-import com.zcb.minimalldb.service.IAdService;
+import com.zcb.minimalldb.domain.Admin;
+import com.zcb.minimalldb.service.IAdminService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,51 +16,50 @@ import java.util.Map;
 
 /**
  * @author zcbin
- * @title: AdminAdController
+ * @title: AdminAdminController
  * @projectName minimall
- * @description: 广告
- * @date 2019/8/9 14:18
+ * @description: 管理员
+ * @date 2019/8/10 22:47
  */
 @RestController
-@RequestMapping(value = "/admin/ad")
-public class AdminAdController {
+@RequestMapping(value = "/admin/admin")
+public class AdminAdminController {
     @Autowired
-    private IAdService adService;
+    private IAdminService adminService;
 
     @GetMapping(value = "/list")
-    public JSONObject list(String name, String content,
+    public JSONObject list(String username,
                            @RequestParam(defaultValue = "1") Integer page,
                            @RequestParam(defaultValue = "10") Integer limit,
                            @Sort @RequestParam(defaultValue = "add_time") String sort,
                            @Order @RequestParam(defaultValue = "desc") String order) {
-        List<Ad> adList = adService.query(name, content, page, limit, sort, order);
-        long total = PageInfo.of(adList).getTotal();
+        List<Admin> adminList = adminService.query(username, page, limit, sort, order);
+        long total = PageInfo.of(adminList).getTotal();
         Map<String, Object> data = new HashMap<>();
         data.put("total", total);
-        data.put("items", adList);
+        data.put("items", adminList);
         return ResponseUtil.ok(data);
     }
 
     @PostMapping(value = "/create")
-    public JSONObject create(@RequestBody Ad ad) {
-        adService.add(ad);
-        return ResponseUtil.ok(ad);
+    public JSONObject create(@RequestBody Admin admin) {
+        adminService.add(admin);
+        return ResponseUtil.ok(admin);
     }
-
     @PostMapping(value = "/update")
-    public JSONObject update(@RequestBody Ad ad) {
-        if (adService.update(ad) == 0) {
+    public JSONObject update(@RequestBody Admin admin) {
+        if (adminService.update(admin) == 0) {
             return ResponseUtil.updatedDataFailed();
         }
         return ResponseUtil.ok();
     }
     @PostMapping(value = "/delete")
-    public JSONObject delete(@RequestBody Ad ad) {
-        Integer id = ad.getId();
+    public JSONObject delete(@RequestBody Admin admin) {
+        Integer id = admin.getId();
         if (id == null) {
             return ResponseUtil.badArgument();
         }
-        adService.delete(id);
+        adminService.delete(id);
         return ResponseUtil.ok();
     }
 }
