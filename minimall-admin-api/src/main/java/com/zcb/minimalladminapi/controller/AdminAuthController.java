@@ -118,7 +118,7 @@ public class AdminAuthController {
         // NOTE
         // 这里需要转换perms结构，因为对于前端而已API形式的权限更容易理解
         data.put("perms", toAPI(permissions));
-        System.out.println(data);
+        LOGGER.info(data);
         return ResponseUtil.ok(data);
     }
     @Autowired

@@ -3,6 +3,7 @@ package com.zcb.minimalladminapi.controller;
 import com.alibaba.fastjson.JSONObject;
 import com.github.pagehelper.PageInfo;
 import com.zcb.minimalladminapi.annotation.RequiresPermissionsDesc;
+import com.zcb.minimalladminapi.service.LogHelper;
 import com.zcb.minimallcore.util.ResponseUtil;
 import com.zcb.minimallcore.validator.Order;
 import com.zcb.minimallcore.validator.Sort;
@@ -29,6 +30,8 @@ import java.util.Map;
 public class AdminAdminController {
     @Autowired
     private IAdminService adminService;
+    @Autowired
+    private LogHelper logHelper;
     @RequiresPermissions("admin:admin:list")
     @RequiresPermissionsDesc(menu={"系统管理" , "管理员管理"}, button="查询")
     @GetMapping(value = "/list")
@@ -57,7 +60,9 @@ public class AdminAdminController {
         }
         Md5Hash md5Hash = new Md5Hash(password, username,1024);
         admin.setPassword(String.valueOf(md5Hash));
+
         adminService.add(admin);
+        logHelper.logAuthSucceed("添加管理员", username);
         return ResponseUtil.ok(admin);
     }
     @RequiresPermissions("admin:admin:update")
@@ -77,6 +82,7 @@ public class AdminAdminController {
         if (adminService.update(admin) == 0) {
             return ResponseUtil.updatedDataFailed();
         }
+        logHelper.logAuthSucceed("编辑管理员", username);
         return ResponseUtil.ok();
     }
     @RequiresPermissions("admin:admin:delete")
@@ -88,6 +94,7 @@ public class AdminAdminController {
             return ResponseUtil.badArgument();
         }
         adminService.delete(id);
+        logHelper.logAuthSucceed("删除管理员", admin.getUsername());
         return ResponseUtil.ok();
     }
 }

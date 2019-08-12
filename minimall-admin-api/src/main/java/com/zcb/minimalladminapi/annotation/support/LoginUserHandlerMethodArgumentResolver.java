@@ -15,6 +15,8 @@ import org.springframework.web.context.request.NativeWebRequest;
 import org.springframework.web.method.support.HandlerMethodArgumentResolver;
 import org.springframework.web.method.support.ModelAndViewContainer;
 
+import java.util.List;
+
 @Component
 public class LoginUserHandlerMethodArgumentResolver implements HandlerMethodArgumentResolver {
     @Autowired
@@ -40,8 +42,11 @@ public class LoginUserHandlerMethodArgumentResolver implements HandlerMethodArgu
         if (subject == null || subject.getPrincipal() == null) {
             return null;
         }
-
-        Admin admin = adminService.queryByUsername((String) subject.getPrincipal());  //登录用户信息
+        List<Admin> adminList = adminService.findByUsername((String) subject.getPrincipal());
+        if (adminList == null || adminList.size() != 1) {
+            return null;
+        }
+        Admin admin = adminList.get(0);
         if (admin != null) {
             return admin.getId();
         }

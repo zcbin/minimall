@@ -3,6 +3,7 @@ package com.zcb.minimalladminapi.controller;
 import com.alibaba.fastjson.JSONObject;
 import com.github.pagehelper.PageInfo;
 import com.zcb.minimalladminapi.annotation.RequiresPermissionsDesc;
+import com.zcb.minimalladminapi.service.LogHelper;
 import com.zcb.minimalladminapi.util.Permission;
 import com.zcb.minimalladminapi.util.PermissionUtil;
 import com.zcb.minimalladminapi.vo.PermVo;
@@ -36,7 +37,8 @@ public class AdminRoleController {
 
     @Autowired
     private IPermissionService permissionService;
-
+    @Autowired
+    private LogHelper logHelper;
     @RequiresPermissions("admin:role:list")
     @RequiresPermissionsDesc(menu={"系统管理" , "角色管理"}, button="查询")
     @GetMapping(value = "/list")
@@ -61,6 +63,7 @@ public class AdminRoleController {
             return ResponseUtil.fail(1, "角色已经存在");
         }
         rolesService.add(role);
+        logHelper.logAuthSucceed("添加角色", role.getName());
         return ResponseUtil.ok(role);
     }
 
@@ -71,6 +74,7 @@ public class AdminRoleController {
         if (rolesService.update(role) == 0) {
             return ResponseUtil.updatedDataFailed();
         }
+        logHelper.logAuthSucceed("编辑角色", role.getName());
         return ResponseUtil.ok();
     }
 
@@ -83,6 +87,7 @@ public class AdminRoleController {
             return ResponseUtil.badArgument();
         }
         rolesService.delete(id);
+        logHelper.logAuthSucceed("删除角色", role.getName());
         return ResponseUtil.ok();
     }
 
@@ -178,6 +183,7 @@ public class AdminRoleController {
             permission1.setPermission(permission);
             permissionService.add(permission1);
         }
+        logHelper.logAuthSucceed("角色授权", String.valueOf(roleId));
         return ResponseUtil.ok();
     }
 }

@@ -380,7 +380,7 @@ export const asyncRouterMap = [
         component: () => import('@/views/sys/log'),
         name: 'log',
         meta: {
-          perms: ['GET /admin/admin/log'],
+          perms: ['GET /admin/log/list'],
           title: '操作日志',
           noCache: true
         }
