@@ -2,11 +2,13 @@ package com.zcb.minimalladminapi.controller;
 
 import com.alibaba.fastjson.JSONObject;
 import com.github.pagehelper.PageInfo;
+import com.zcb.minimalladminapi.annotation.RequiresPermissionsDesc;
 import com.zcb.minimallcore.util.ResponseUtil;
 import com.zcb.minimallcore.validator.Order;
 import com.zcb.minimallcore.validator.Sort;
 import com.zcb.minimalldb.domain.Admin;
 import com.zcb.minimalldb.service.IAdminService;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.apache.shiro.crypto.hash.Md5Hash;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -27,7 +29,8 @@ import java.util.Map;
 public class AdminAdminController {
     @Autowired
     private IAdminService adminService;
-
+    @RequiresPermissions("admin:admin:list")
+    @RequiresPermissionsDesc(menu={"系统管理" , "管理员管理"}, button="查询")
     @GetMapping(value = "/list")
     public JSONObject list(String username,
                            @RequestParam(defaultValue = "1") Integer page,
@@ -42,6 +45,8 @@ public class AdminAdminController {
         return ResponseUtil.ok(data);
     }
 
+    @RequiresPermissions("admin:admin:create")
+    @RequiresPermissionsDesc(menu={"系统管理" , "管理员管理"}, button="添加")
     @PostMapping(value = "/create")
     public JSONObject create(@RequestBody Admin admin) {
         String password = admin.getPassword();
@@ -55,6 +60,8 @@ public class AdminAdminController {
         adminService.add(admin);
         return ResponseUtil.ok(admin);
     }
+    @RequiresPermissions("admin:admin:update")
+    @RequiresPermissionsDesc(menu={"系统管理" , "管理员管理"}, button="编辑")
     @PostMapping(value = "/update")
     public JSONObject update(@RequestBody Admin admin) {
         Integer id = admin.getId();
@@ -72,6 +79,8 @@ public class AdminAdminController {
         }
         return ResponseUtil.ok();
     }
+    @RequiresPermissions("admin:admin:delete")
+    @RequiresPermissionsDesc(menu={"系统管理" , "管理员管理"}, button="删除")
     @PostMapping(value = "/delete")
     public JSONObject delete(@RequestBody Admin admin) {
         Integer id = admin.getId();

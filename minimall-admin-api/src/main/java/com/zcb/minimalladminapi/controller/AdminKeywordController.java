@@ -2,11 +2,13 @@ package com.zcb.minimalladminapi.controller;
 
 import com.alibaba.fastjson.JSONObject;
 import com.github.pagehelper.PageInfo;
+import com.zcb.minimalladminapi.annotation.RequiresPermissionsDesc;
 import com.zcb.minimallcore.util.ResponseUtil;
 import com.zcb.minimallcore.validator.Order;
 import com.zcb.minimallcore.validator.Sort;
 import com.zcb.minimalldb.domain.Keyword;
 import com.zcb.minimalldb.service.IKeywordService;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
@@ -29,6 +31,8 @@ public class AdminKeywordController {
     @Autowired
     private IKeywordService keywordService;
 
+    @RequiresPermissions("admin:keyword:list")
+    @RequiresPermissionsDesc(menu={"商场管理" , "关键词"}, button="查询")
     @GetMapping(value = "/list")
     public JSONObject list(String keyword, String url,
                            @RequestParam(defaultValue = "1") Integer page,
@@ -43,6 +47,8 @@ public class AdminKeywordController {
         return ResponseUtil.ok(data);
     }
 
+    @RequiresPermissions("admin:keyword:create")
+    @RequiresPermissionsDesc(menu={"商场管理" , "关键词"}, button="添加")
     @PostMapping(value = "/create")
     public JSONObject create(@RequestBody Keyword keyword) {
         JSONObject json = this.validate(keyword);
@@ -52,6 +58,9 @@ public class AdminKeywordController {
         keywordService.add(keyword);
         return ResponseUtil.ok(keyword);
     }
+
+    @RequiresPermissions("admin:keyword:update")
+    @RequiresPermissionsDesc(menu={"商场管理" , "关键词"}, button="编辑")
     @PostMapping(value = "/update")
     public JSONObject update(@RequestBody Keyword keyword) {
         JSONObject json = this.validate(keyword);
@@ -63,6 +72,9 @@ public class AdminKeywordController {
         }
         return ResponseUtil.ok(keyword);
     }
+
+    @RequiresPermissions("admin:keyword:delete")
+    @RequiresPermissionsDesc(menu={"商场管理" , "关键词"}, button="删除")
     @PostMapping(value = "/delete")
     public JSONObject delete(@RequestBody Keyword keyword) {
         Integer id = keyword.getId();
@@ -72,6 +84,9 @@ public class AdminKeywordController {
         keywordService.delete(id);
         return ResponseUtil.ok();
     }
+
+    @RequiresPermissions("admin:keyword:read")
+    @RequiresPermissionsDesc(menu={"商场管理" , "关键词"}, button="详情")
     @GetMapping(value = "/read")
     public JSONObject read(@NotNull Integer id) {
         Keyword keyword = keywordService.findById(id);

@@ -2,12 +2,14 @@ package com.zcb.minimalladminapi.controller;
 
 import com.alibaba.fastjson.JSONObject;
 import com.github.pagehelper.PageInfo;
+import com.zcb.minimalladminapi.annotation.RequiresPermissionsDesc;
 import com.zcb.minimallcore.util.ResponseUtil;
 import com.zcb.minimallcore.validator.Order;
 import com.zcb.minimallcore.validator.Sort;
 import com.zcb.minimalldb.domain.SearchHistory;
 import com.zcb.minimalldb.domain.User;
 import com.zcb.minimalldb.service.ISearchHistoryService;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -28,6 +30,9 @@ public class AdminHistoryController {
 
     @Autowired
     private ISearchHistoryService searchHistoryService;
+
+    @RequiresPermissions("admin:history:list")
+    @RequiresPermissionsDesc(menu={"用户管理" , "搜索历史"}, button="查询")
     @GetMapping(value = "/list")
     public JSONObject list(Integer userId, String keyword,
                            @RequestParam(defaultValue = "1") Integer page,

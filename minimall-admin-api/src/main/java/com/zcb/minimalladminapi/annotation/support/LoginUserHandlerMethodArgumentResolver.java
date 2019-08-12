@@ -40,6 +40,7 @@ public class LoginUserHandlerMethodArgumentResolver implements HandlerMethodArgu
         if (subject == null || subject.getPrincipal() == null) {
             return null;
         }
+
         Admin admin = adminService.queryByUsername((String) subject.getPrincipal());  //登录用户信息
         if (admin != null) {
             return admin.getId();

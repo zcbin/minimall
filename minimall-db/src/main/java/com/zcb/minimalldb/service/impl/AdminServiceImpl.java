@@ -31,6 +31,11 @@ public class AdminServiceImpl implements IAdminService {
     }
 
     @Override
+    public Admin findById(Integer id) {
+        return adminMapper.selectByPrimaryKeyWithLogicalDelete(id, false);
+    }
+
+    @Override
     public List<Admin> findByUsername(String username) {
         AdminExample example = new AdminExample();
         AdminExample.Criteria criteria = example.createCriteria();

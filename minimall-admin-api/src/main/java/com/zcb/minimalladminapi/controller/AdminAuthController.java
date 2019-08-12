@@ -1,6 +1,7 @@
 package com.zcb.minimalladminapi.controller;
 
 import com.alibaba.fastjson.JSONObject;
+import com.zcb.minimalladminapi.annotation.LoginUser;
 import com.zcb.minimalladminapi.service.LogHelper;
 import com.zcb.minimalladminapi.util.Permission;
 import com.zcb.minimalladminapi.util.PermissionUtil;
@@ -98,10 +99,12 @@ public class AdminAuthController {
 
     @RequiresAuthentication
     @RequestMapping(value = "/info")
-    public JSONObject info() {
-        Subject currentUser = SecurityUtils.getSubject();
-        String userName = (String) currentUser.getPrincipal(); //当前登录用户
-        Admin admin = adminService.queryByUsername(userName);
+    public JSONObject info(@LoginUser Integer id) {
+       if (id == null) {
+           return ResponseUtil.unloginTimeOut();
+       }
+       Admin admin = adminService.findById(id);
+
        // Admin admin = (Admin) currentUser.getPrincipal();
 
         Map<String, Object> data = new HashMap<>();

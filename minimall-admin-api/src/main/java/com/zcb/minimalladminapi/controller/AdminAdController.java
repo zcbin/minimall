@@ -2,12 +2,14 @@ package com.zcb.minimalladminapi.controller;
 
 import com.alibaba.fastjson.JSONObject;
 import com.github.pagehelper.PageInfo;
+import com.zcb.minimalladminapi.annotation.RequiresPermissionsDesc;
 import com.zcb.minimallcore.util.ResponseUtil;
 import com.zcb.minimallcore.validator.Order;
 import com.zcb.minimallcore.validator.Sort;
 import com.zcb.minimalldb.domain.Ad;
 import com.zcb.minimalldb.domain.Address;
 import com.zcb.minimalldb.service.IAdService;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -28,6 +30,8 @@ public class AdminAdController {
     @Autowired
     private IAdService adService;
 
+    @RequiresPermissions("admin:ad:list")
+    @RequiresPermissionsDesc(menu={"推广管理" , "广告管理"}, button="查询")
     @GetMapping(value = "/list")
     public JSONObject list(String name, String content,
                            @RequestParam(defaultValue = "1") Integer page,
@@ -41,13 +45,15 @@ public class AdminAdController {
         data.put("items", adList);
         return ResponseUtil.ok(data);
     }
-
+    @RequiresPermissions("admin:ad:create")
+    @RequiresPermissionsDesc(menu={"推广管理" , "广告管理"}, button="添加")
     @PostMapping(value = "/create")
     public JSONObject create(@RequestBody Ad ad) {
         adService.add(ad);
         return ResponseUtil.ok(ad);
     }
-
+    @RequiresPermissions("admin:ad:update")
+    @RequiresPermissionsDesc(menu={"推广管理" , "广告管理"}, button="编辑")
     @PostMapping(value = "/update")
     public JSONObject update(@RequestBody Ad ad) {
         if (adService.update(ad) == 0) {
@@ -55,6 +61,8 @@ public class AdminAdController {
         }
         return ResponseUtil.ok();
     }
+    @RequiresPermissions("admin:ad:delete")
+    @RequiresPermissionsDesc(menu={"推广管理" , "广告管理"}, button="删除")
     @PostMapping(value = "/delete")
     public JSONObject delete(@RequestBody Ad ad) {
         Integer id = ad.getId();

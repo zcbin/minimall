@@ -1,10 +1,12 @@
 package com.zcb.minimalladminapi.controller;
 
 import com.alibaba.fastjson.JSONObject;
+import com.zcb.minimalladminapi.annotation.RequiresPermissionsDesc;
 import com.zcb.minimalladminapi.vo.CategoryVo;
 import com.zcb.minimallcore.util.ResponseUtil;
 import com.zcb.minimalldb.domain.Category;
 import com.zcb.minimalldb.service.ICategoryService;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -31,6 +33,9 @@ public class AdminCategoryController {
      * 列表
      * @return
      */
+
+    @RequiresPermissions("admin:category:list")
+    @RequiresPermissionsDesc(menu={"商场管理" , "类目管理"}, button="查询")
     @GetMapping(value = "/list")
     public JSONObject list() {
         List<CategoryVo> categoryVoList = new ArrayList<>();
@@ -67,12 +72,16 @@ public class AdminCategoryController {
         return ResponseUtil.ok(categoryVoList);
     }
 
+    @RequiresPermissions("admin:category:create")
+    @RequiresPermissionsDesc(menu={"商场管理" , "类目管理"}, button="添加")
     @PostMapping(value = "/create")
     public JSONObject add(@RequestBody Category category) {
         categoryService.add(category);
         return ResponseUtil.ok(category);
     }
 
+    @RequiresPermissions("admin:category:update")
+    @RequiresPermissionsDesc(menu={"商场管理" , "类目管理"}, button="编辑")
     @PostMapping(value = "/update")
     public JSONObject update(@RequestBody Category category) {
         if (categoryService.update(category) == 0) {
@@ -80,6 +89,8 @@ public class AdminCategoryController {
         }
         return ResponseUtil.ok();
     }
+    @RequiresPermissions("admin:category:delete")
+    @RequiresPermissionsDesc(menu={"商场管理" , "类目管理"}, button="删除")
     @PostMapping(value = "/delete")
     public JSONObject delete(@RequestBody Category category) {
         Integer id = category.getId();
@@ -89,6 +100,7 @@ public class AdminCategoryController {
         categoryService.delete(id);
         return ResponseUtil.ok();
     }
+    @RequiresPermissions("admin:category:list")
     @GetMapping(value = "/l1")
     public JSONObject getL1() {
         List<Category> categoryList = categoryService.queryL1();

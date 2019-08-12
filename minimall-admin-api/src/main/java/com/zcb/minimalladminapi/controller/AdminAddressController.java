@@ -2,11 +2,13 @@ package com.zcb.minimalladminapi.controller;
 
 import com.alibaba.fastjson.JSONObject;
 import com.github.pagehelper.PageInfo;
+import com.zcb.minimalladminapi.annotation.RequiresPermissionsDesc;
 import com.zcb.minimallcore.util.ResponseUtil;
 import com.zcb.minimallcore.validator.Order;
 import com.zcb.minimallcore.validator.Sort;
 import com.zcb.minimalldb.domain.Address;
 import com.zcb.minimalldb.service.IAddressService;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -26,6 +28,9 @@ import java.util.Map;
 public class AdminAddressController {
     @Autowired
     private IAddressService addressService;
+
+    @RequiresPermissions("admin:address:list")
+    @RequiresPermissionsDesc(menu={"用户管理" , "收货地址"}, button="查询")
     @GetMapping(value = "/list")
     public JSONObject list(Integer userId, String name,
                            @RequestParam(defaultValue = "1") Integer page,

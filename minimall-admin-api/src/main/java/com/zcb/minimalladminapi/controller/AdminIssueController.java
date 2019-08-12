@@ -4,12 +4,14 @@ import com.alibaba.fastjson.JSONObject;
 import com.github.pagehelper.PageInfo;
 import com.google.gson.JsonObject;
 import com.sun.org.apache.bcel.internal.generic.ISUB;
+import com.zcb.minimalladminapi.annotation.RequiresPermissionsDesc;
 import com.zcb.minimallcore.util.ResponseUtil;
 import com.zcb.minimallcore.validator.Order;
 import com.zcb.minimallcore.validator.Sort;
 import com.zcb.minimalldb.domain.Issue;
 import com.zcb.minimalldb.domain.SearchHistory;
 import com.zcb.minimalldb.service.IIssueService;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
@@ -32,6 +34,8 @@ public class AdminIssueController {
     @Autowired
     private IIssueService issueService;
 
+    @RequiresPermissions("admin:issue:list")
+    @RequiresPermissionsDesc(menu={"商场管理" , "通用问题"}, button="查询")
     @GetMapping(value = "/list")
     public JSONObject list(String question,
                            @RequestParam(defaultValue = "1") Integer page,
@@ -46,6 +50,8 @@ public class AdminIssueController {
         return ResponseUtil.ok(data);
     }
 
+    @RequiresPermissions("admin:issue:create")
+    @RequiresPermissionsDesc(menu={"商场管理" , "通用问题"}, button="添加")
     @PostMapping(value = "/create")
     public JSONObject create(@RequestBody Issue issue) {
         JSONObject json = this.validate(issue);
@@ -55,6 +61,9 @@ public class AdminIssueController {
         issueService.add(issue);
         return ResponseUtil.ok(issue);
     }
+
+    @RequiresPermissions("admin:issue:update")
+    @RequiresPermissionsDesc(menu={"商场管理" , "通用问题"}, button="编辑")
     @PostMapping(value = "/update")
     public JSONObject update(@RequestBody Issue issue) {
         JSONObject json = this.validate(issue);
@@ -66,6 +75,9 @@ public class AdminIssueController {
         }
         return ResponseUtil.ok(issue);
     }
+
+    @RequiresPermissions("admin:issue:delete")
+    @RequiresPermissionsDesc(menu={"商场管理" , "通用问题"}, button="删除")
     @PostMapping(value = "/delete")
     public JSONObject delete(@RequestBody Issue issue) {
         Integer id = issue.getId();
@@ -75,6 +87,10 @@ public class AdminIssueController {
         issueService.delete(id);
         return ResponseUtil.ok();
     }
+
+    @RequiresPermissions("admin:issue:read")
+    @RequiresPermissionsDesc(menu={"商场管理" , "通用问题"}, button="详情")
+
     @GetMapping(value = "/read")
     public JSONObject read(@NotNull Integer id) {
         Issue issue = issueService.findById(id);

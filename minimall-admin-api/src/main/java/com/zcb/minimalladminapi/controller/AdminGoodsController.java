@@ -2,6 +2,7 @@ package com.zcb.minimalladminapi.controller;
 
 import com.alibaba.fastjson.JSONObject;
 import com.github.pagehelper.PageInfo;
+import com.zcb.minimalladminapi.annotation.RequiresPermissionsDesc;
 import com.zcb.minimalladminapi.dto.GoodsData;
 import com.zcb.minimalladminapi.vo.CatVo;
 import com.zcb.minimalladminapi.vo.CategoryVo;
@@ -10,6 +11,7 @@ import com.zcb.minimallcore.validator.Order;
 import com.zcb.minimallcore.validator.Sort;
 import com.zcb.minimalldb.domain.*;
 import com.zcb.minimalldb.service.*;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -50,6 +52,8 @@ public class AdminGoodsController {
      * @param order
      * @return
      */
+    @RequiresPermissions("admin:goods:list")
+    @RequiresPermissionsDesc(menu = {"商品管理", "商品管理"}, button = "查询")
     @GetMapping(value = "/list")
     public JSONObject list(String goodsSn, String name,
                            @RequestParam(defaultValue = "1") Integer page,
@@ -99,6 +103,8 @@ public class AdminGoodsController {
      * @param goodsData
      * @return
      */
+    @RequiresPermissions("admin:goods:create")
+    @RequiresPermissionsDesc(menu = {"商品管理", "商品管理"}, button = "上架")
     @PostMapping(value = "/create")
     public JSONObject create(@RequestBody GoodsData goodsData) {
 
@@ -131,6 +137,8 @@ public class AdminGoodsController {
      * @param goodsData
      * @return
      */
+    @RequiresPermissions("admin:goods:update")
+    @RequiresPermissionsDesc(menu = {"商品管理", "商品管理"}, button = "编辑")
     @PostMapping(value = "/update")
     public JSONObject update(@RequestBody GoodsData goodsData) {
         Goods goods = goodsData.getGoods();
@@ -163,6 +171,8 @@ public class AdminGoodsController {
      * @param goods
      * @return
      */
+    @RequiresPermissions("admin:goods:delete")
+    @RequiresPermissionsDesc(menu = {"商品管理", "商品管理"}, button = "删除")
     @PostMapping(value = "/delete")
     public JSONObject delete(@RequestBody Goods goods) {
         Integer id = goods.getId();
@@ -182,6 +192,8 @@ public class AdminGoodsController {
      * @param id
      * @return
      */
+    @RequiresPermissions("admin:goods:read")
+    @RequiresPermissionsDesc(menu = {"商品管理", "商品管理"}, button = "详情")
     @GetMapping(value = "/detail")
     public JSONObject detail(@NotNull Integer id) {
         if (id == null) {

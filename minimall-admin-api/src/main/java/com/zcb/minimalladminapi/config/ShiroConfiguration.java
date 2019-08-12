@@ -20,7 +20,12 @@ import java.util.Map;
 @Configuration
 public class ShiroConfiguration {
     private static final Logger LOGGER = LogManager.getLogger();
-     @Bean
+
+    /**
+     * 加密方式
+     * @return
+     */
+    @Bean
     public HashedCredentialsMatcher hashedCredentialsMatcher() {
         HashedCredentialsMatcher hashedCredentialsMatcher = new HashedCredentialsMatcher();
         hashedCredentialsMatcher.setHashAlgorithmName("md5");

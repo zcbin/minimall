@@ -21,6 +21,12 @@ public interface IAdminService {
 
     /**
      * 查找
+     * @param id
+     * @return
+     */
+    Admin findById(Integer id);
+    /**
+     * 查找
      * @param username
      * @return
      */

@@ -3,6 +3,7 @@ package com.zcb.minimalladminapi.controller;
 import com.alibaba.fastjson.JSONObject;
 import com.github.pagehelper.PageInfo;
 import com.zcb.minimalladminapi.annotation.LoginUser;
+import com.zcb.minimalladminapi.annotation.RequiresPermissionsDesc;
 import com.zcb.minimallcore.util.ParseJsonUtil;
 import com.zcb.minimallcore.util.ResponseUtil;
 import com.zcb.minimallcore.validator.Order;
@@ -13,6 +14,7 @@ import com.zcb.minimalldb.domain.Reply;
 import com.zcb.minimalldb.domain.User;
 import com.zcb.minimalldb.service.ICommentService;
 import com.zcb.minimalldb.service.IReplyService;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -38,6 +40,9 @@ public class AdminCommentController {
 
     @Autowired
     private IReplyService replyService;
+
+    @RequiresPermissions("admin:comment:list")
+    @RequiresPermissionsDesc(menu={"商品管理" , "评论管理"}, button="查询")
     @GetMapping(value = "/list")
     public JSONObject list(Integer userId, Integer goodId,
                            @RequestParam(defaultValue = "1") Integer page,
@@ -76,6 +81,8 @@ public class AdminCommentController {
      * @param
      * @return
      */
+    @RequiresPermissions("admin:comment:delete")
+    @RequiresPermissionsDesc(menu={"商品管理" , "评论管理"}, button="删除")
     @PostMapping(value = "/delete")
     public JSONObject delete(@RequestBody String body) {
         Integer id = ParseJsonUtil.parseInteger(body, "id");
@@ -93,6 +100,8 @@ public class AdminCommentController {
      * @param body
      * @return
      */
+    @RequiresPermissions("admin:comment:reply")
+    @RequiresPermissionsDesc(menu={"商品管理" , "评论管理"}, button="回复")
     @PostMapping(value = "/reply")
     public JSONObject reply(@LoginUser Integer id, @RequestBody String body) {
         if (id == null) {

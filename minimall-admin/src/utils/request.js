@@ -71,6 +71,12 @@ service.interceptors.response.use(
         type: 'error'
       })
       return Promise.reject('error')
+    } else if (res.errno === 507) {
+      MessageBox.alert('会话超时，请重新登录', '错误', {
+        confirmButtonText: '确定',
+        type: 'error'
+      })
+      return Promise.reject('error')
     } else if (res.errno !== 0) {
       // 非5xx的错误属于业务错误，留给具体页面处理
       return Promise.reject(response)

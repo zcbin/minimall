@@ -25,4 +25,8 @@ public class ParseJsonUtil {
         JSONObject json = JSONObject.parseObject(body);
         return json.getObject(field, new TypeReference<List<Integer>>(){});
     }
+    public static List<String> parseStringList(String body, String field) {
+        JSONObject json = JSONObject.parseObject(body);
+        return json.getObject(field, new TypeReference<List<String>>(){});
+    }
 }

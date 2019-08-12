@@ -107,6 +107,9 @@ public class ResponseUtil {
     public static JSONObject unauthz() {
         return fail(506, "无操作权限");
     }
+    public static JSONObject unloginTimeOut() {
+        return fail(507, "会话超时，请重新登录");
+    }
 }
 
 
