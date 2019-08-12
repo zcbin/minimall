@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.zcb.minimalladminapi.service.LogHelper;
 import com.zcb.minimalladminapi.util.Permission;
 import com.zcb.minimalladminapi.util.PermissionUtil;
+import com.zcb.minimallcore.util.IpUtil;
 import com.zcb.minimallcore.util.ParseJsonUtil;
 import com.zcb.minimallcore.util.ResponseUtil;
 import com.zcb.minimalldb.domain.Admin;
@@ -26,6 +27,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.Serializable;
+import java.time.LocalDateTime;
 import java.util.*;
 
 @RestController //@ResponseBody + @Controller
@@ -55,11 +57,9 @@ public class AdminAuthController {
             //为当前用户进行认证，授权
             subject.login(token);
             //登录成功则返回sessionId作为token给前端存储，
-            //前端请求时将该token放入请求头，以Authorization为key，以此来鉴权
+            //前端请求时将该token放入请求头，以此来鉴权
             Session session=subject.getSession();
             Serializable sessionId = session.getId();
-
-
 
             logHelper.logAuthSucceed("登录");
             return ResponseUtil.ok(sessionId);

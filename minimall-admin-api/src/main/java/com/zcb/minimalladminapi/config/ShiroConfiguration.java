@@ -3,6 +3,7 @@ package com.zcb.minimalladminapi.config;
 import com.zcb.minimalladminapi.realm.MyRealm;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.apache.shiro.authc.credential.HashedCredentialsMatcher;
 import org.apache.shiro.session.mgt.SessionManager;
 import org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor;
 import org.apache.shiro.spring.web.ShiroFilterFactoryBean;
@@ -19,10 +20,19 @@ import java.util.Map;
 @Configuration
 public class ShiroConfiguration {
     private static final Logger LOGGER = LogManager.getLogger();
+     @Bean
+    public HashedCredentialsMatcher hashedCredentialsMatcher() {
+        HashedCredentialsMatcher hashedCredentialsMatcher = new HashedCredentialsMatcher();
+        hashedCredentialsMatcher.setHashAlgorithmName("md5");
+        hashedCredentialsMatcher.setHashIterations(1024);
+        return hashedCredentialsMatcher;
+    }
     //将自己的验证方式加入容器
     @Bean
     public MyRealm myShiroRealm() {
         MyRealm myRealm = new MyRealm();
+        myRealm.setCredentialsMatcher(hashedCredentialsMatcher());
+        LOGGER.info("md5");
         return myRealm;
     }
     //会话管理
@@ -31,13 +41,7 @@ public class ShiroConfiguration {
         AdminSessionManager adminSessionManager = new AdminSessionManager();
         return  adminSessionManager;
     }
-   /* @Bean
-    public HashedCredentialsMatcher hashedCredentialsMatcher() {
-        HashedCredentialsMatcher hashedCredentialsMatcher = new HashedCredentialsMatcher();
-        hashedCredentialsMatcher.setHashAlgorithmName("MD5");
-        hashedCredentialsMatcher.setHashIterations(1024);
-        return hashedCredentialsMatcher;
-    }*/
+
     //权限管理，配置主要是Realm的管理认证
 
     /**

@@ -16,7 +16,9 @@ import org.apache.shiro.subject.PrincipalCollection;
 import org.apache.shiro.util.ByteSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.util.StringUtils;
 
+import java.util.List;
 import java.util.Set;
 
 @Component
@@ -64,17 +66,24 @@ public class MyRealm extends AuthorizingRealm {
         UsernamePasswordToken upToken = (UsernamePasswordToken) token;
         String userName = upToken.getUsername();
         String password = new String(upToken.getPassword());
-
+        if (StringUtils.isEmpty(userName)) {
+            throw new AccountException("用户名不能为空");
+        }
+        if (StringUtils.isEmpty(password)) {
+            throw new AccountException("密码不能为空");
+        }
         //用户名
        // String userName = (String) token.getPrincipal();
         //从数据库中查找用户信息
-        Admin admin = adminService.queryByUsername(userName);
-        System.out.println(admin.toString());
-        if (admin == null) {
-            return null;
+        List<Admin> adminList = adminService.findByUsername(userName);
+        if (adminList == null || adminList.size() == 0) {
+            throw new UnknownAccountException("找不到" + userName + "的账号信息");
+        } else if (adminList.size() > 1) {
+            throw new UnknownAccountException(userName + "对应多个账号信息");
         }
+        Admin admin = adminList.get(0);
         ByteSource credentialsSalt = ByteSource.Util.bytes(admin.getUsername()); //使用userName加盐
-        SimpleAuthenticationInfo info = new SimpleAuthenticationInfo(admin.getUsername(), admin.getPassword(), getName());
+        SimpleAuthenticationInfo info = new SimpleAuthenticationInfo(admin.getUsername(), admin.getPassword(), credentialsSalt, getName());
         return info;
     }
     public static void main(String[] args) {
