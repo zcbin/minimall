@@ -31,6 +31,31 @@ public class AdminServiceImpl implements IAdminService {
     }
 
     @Override
+    public List<Admin> findByUsername(String username) {
+        AdminExample example = new AdminExample();
+        AdminExample.Criteria criteria = example.createCriteria();
+        if (!StringUtils.isEmpty(username)) {
+            criteria.andUsernameEqualTo(username);
+        }
+        criteria.andDeletedEqualTo(false);
+        return adminMapper.selectByExample(example);
+    }
+
+    @Override
+    public int findCountByUsername(Integer id, String username) {
+        AdminExample example = new AdminExample();
+        AdminExample.Criteria criteria = example.createCriteria();
+        if (!StringUtils.isEmpty(username)) {
+            criteria.andUsernameEqualTo(username);
+        }
+        if (!StringUtils.isEmpty(id)) {
+            criteria.andIdNotEqualTo(id);
+        }
+        criteria.andDeletedEqualTo(false);
+        return (int) adminMapper.countByExample(example);
+    }
+
+    @Override
     public List<Admin> query(String username, Integer offset, Integer limit, String sort, String order) {
         AdminExample example = new AdminExample();
         AdminExample.Criteria criteria = example.createCriteria();
@@ -49,7 +74,7 @@ public class AdminServiceImpl implements IAdminService {
     public int add(Admin admin) {
         admin.setAddTime(LocalDateTime.now());
         admin.setUpdateTime(LocalDateTime.now());
-        return adminMapper.insert(admin);
+        return adminMapper.insertSelective(admin);
     }
 
     @Override

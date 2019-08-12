@@ -22,6 +22,20 @@ public interface IAdminService {
     /**
      * 查找
      * @param username
+     * @return
+     */
+    List<Admin> findByUsername(String username);
+
+    /**
+     * 统计,不包含id
+     * @param id
+     * @param username
+     * @return
+     */
+    int findCountByUsername(Integer id, String username);
+    /**
+     * 查找
+     * @param username
      * @param offset
      * @param limit
      * @param sort

@@ -7,6 +7,7 @@ import com.zcb.minimallcore.validator.Order;
 import com.zcb.minimallcore.validator.Sort;
 import com.zcb.minimalldb.domain.Admin;
 import com.zcb.minimalldb.service.IAdminService;
+import org.apache.shiro.crypto.hash.Md5Hash;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -43,11 +44,29 @@ public class AdminAdminController {
 
     @PostMapping(value = "/create")
     public JSONObject create(@RequestBody Admin admin) {
+        String password = admin.getPassword();
+        String username = admin.getUsername();
+        int count = adminService.findCountByUsername(null, username);
+        if (count > 0) {
+            return ResponseUtil.fail(1, "管理员已存在");
+        }
+        Md5Hash md5Hash = new Md5Hash(password, username,1024);
+        admin.setPassword(String.valueOf(md5Hash));
         adminService.add(admin);
         return ResponseUtil.ok(admin);
     }
     @PostMapping(value = "/update")
     public JSONObject update(@RequestBody Admin admin) {
+        Integer id = admin.getId();
+        if (id == null) {
+            return ResponseUtil.badArgument();
+        }
+        String username = admin.getUsername();
+        int count = adminService.findCountByUsername(id, username);
+        if (count > 0) {
+            return ResponseUtil.fail(1, "管理员已存在");
+        }
+        admin.setPassword(null);
         if (adminService.update(admin) == 0) {
             return ResponseUtil.updatedDataFailed();
         }
