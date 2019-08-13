@@ -4,3 +4,11 @@ spring:
   messages:
     encoding: UTF-8
 
+  servlet:
+    multipart:
+      #单个数据大小
+      max-file-size: 10MB
+      #总数据大小
+      max-request-size: 100MB
+
+

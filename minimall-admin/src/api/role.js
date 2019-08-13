@@ -42,7 +42,7 @@ export function deleteRole(data) {
 
 export function getPermission(query) {
   return request({
-    url: '/role/permissions',
+    url: '/role/permissions/get',
     method: 'get',
     params: query
   })
@@ -50,7 +50,7 @@ export function getPermission(query) {
 
 export function updatePermission(data) {
   return request({
-    url: '/role/permissions',
+    url: '/role/permissions/update',
     method: 'post',
     data
   })

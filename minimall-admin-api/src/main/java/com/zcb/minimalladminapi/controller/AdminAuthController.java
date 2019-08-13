@@ -91,7 +91,7 @@ public class AdminAuthController {
      * @return
      */
     @RequestMapping("/logout")
-    public JSONObject logoutWx() {
+    public JSONObject logout() {
         Subject subject = SecurityUtils.getSubject();
         subject.logout();
         return ResponseUtil.ok();

@@ -87,6 +87,8 @@ public class AdminRoleController {
             return ResponseUtil.badArgument();
         }
         rolesService.delete(id);
+        //删除角色对应的权限
+        permissionService.deleteByRoleId(id);
         logHelper.logAuthSucceed("删除角色", role.getName());
         return ResponseUtil.ok();
     }
@@ -142,7 +144,7 @@ public class AdminRoleController {
      */
     @RequiresPermissions("admin:role:permission:get")
     @RequiresPermissionsDesc(menu={"系统管理" , "角色管理"}, button="权限详情")
-    @GetMapping("/permissions")
+    @GetMapping("/permissions/get")
     public JSONObject getPermissions(Integer roleId) {
         List<PermVo> systemPermissions = getSystemPermissions();
         Set<String> assignedPermissions = getAssignedPermissions(roleId);
@@ -162,7 +164,7 @@ public class AdminRoleController {
      */
     @RequiresPermissions("admin:role:permission:update")
     @RequiresPermissionsDesc(menu={"系统管理" , "角色管理"}, button="权限变更")
-    @PostMapping("/permissions")
+    @PostMapping("/permissions/update")
     public Object updatePermissions(@RequestBody String body) {
         Integer roleId = ParseJsonUtil.parseInteger(body, "roleId");
         List<String> permissions = ParseJsonUtil.parseStringList(body, "permissions");
