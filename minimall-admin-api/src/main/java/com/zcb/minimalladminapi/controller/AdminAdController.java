@@ -7,7 +7,6 @@ import com.zcb.minimallcore.util.ResponseUtil;
 import com.zcb.minimallcore.validator.Order;
 import com.zcb.minimallcore.validator.Sort;
 import com.zcb.minimalldb.domain.Ad;
-import com.zcb.minimalldb.domain.Address;
 import com.zcb.minimalldb.service.IAdService;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +20,7 @@ import java.util.Map;
  * @author zcbin
  * @title: AdminAdController
  * @projectName minimall
- * @description: 广告
+ * @description: 广告管理
  * @date 2019/8/9 14:18
  */
 @RestController
@@ -30,6 +29,16 @@ public class AdminAdController {
     @Autowired
     private IAdService adService;
 
+    /**
+     * 广告列表
+     * @param name 广告名
+     * @param content 内容
+     * @param page
+     * @param limit
+     * @param sort
+     * @param order
+     * @return {total, items}
+     */
     @RequiresPermissions("admin:ad:list")
     @RequiresPermissionsDesc(menu={"推广管理" , "广告管理"}, button="查询")
     @GetMapping(value = "/list")
@@ -45,6 +54,12 @@ public class AdminAdController {
         data.put("items", adList);
         return ResponseUtil.ok(data);
     }
+
+    /**
+     * 广告添加
+     * @param ad
+     * @return
+     */
     @RequiresPermissions("admin:ad:create")
     @RequiresPermissionsDesc(menu={"推广管理" , "广告管理"}, button="添加")
     @PostMapping(value = "/create")
@@ -52,6 +67,12 @@ public class AdminAdController {
         adService.add(ad);
         return ResponseUtil.ok(ad);
     }
+
+    /**
+     * 更新
+     * @param ad
+     * @return
+     */
     @RequiresPermissions("admin:ad:update")
     @RequiresPermissionsDesc(menu={"推广管理" , "广告管理"}, button="编辑")
     @PostMapping(value = "/update")
@@ -61,6 +82,12 @@ public class AdminAdController {
         }
         return ResponseUtil.ok();
     }
+
+    /**
+     * 删除
+     * @param ad
+     * @return
+     */
     @RequiresPermissions("admin:ad:delete")
     @RequiresPermissionsDesc(menu={"推广管理" , "广告管理"}, button="删除")
     @PostMapping(value = "/delete")

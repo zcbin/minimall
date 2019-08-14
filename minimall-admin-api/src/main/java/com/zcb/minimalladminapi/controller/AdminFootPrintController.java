@@ -30,6 +30,16 @@ public class AdminFootPrintController {
     @Autowired
     private IFootPrintService footPrintService;
 
+    /**
+     * 列表
+     * @param userId
+     * @param goodId
+     * @param page
+     * @param limit
+     * @param sort
+     * @param order
+     * @return
+     */
     @RequiresPermissions("admin:footprint:list")
     @RequiresPermissionsDesc(menu={"用户管理" , "用户足迹"}, button="查询")
     @GetMapping(value = "/list")

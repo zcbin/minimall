@@ -5,7 +5,6 @@ import com.zcb.minimalladminapi.annotation.LoginUser;
 import com.zcb.minimalladminapi.service.LogHelper;
 import com.zcb.minimalladminapi.util.Permission;
 import com.zcb.minimalladminapi.util.PermissionUtil;
-import com.zcb.minimallcore.util.IpUtil;
 import com.zcb.minimallcore.util.ParseJsonUtil;
 import com.zcb.minimallcore.util.ResponseUtil;
 import com.zcb.minimalldb.domain.Admin;
@@ -28,9 +27,15 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.Serializable;
-import java.time.LocalDateTime;
 import java.util.*;
 
+/**
+ * @author zcbin
+ * @title:
+ * @projectName minimall
+ * @description: 登录
+ * @date
+ */
 @RestController //@ResponseBody + @Controller
 @RequestMapping(value = "/admin/auth")
 public class AdminAuthController {
@@ -44,6 +49,13 @@ public class AdminAuthController {
     private IAdminService adminService;
     @Autowired
     private LogHelper logHelper;
+
+    /**
+     * 登录
+     * @param body {username,password}
+     * @param request
+     * @return {errno,errmsg}
+     */
     @PostMapping(value = "/login")
     public JSONObject login(@RequestBody String body, HttpServletRequest request) {
         String username = ParseJsonUtil.parseString(body, "username");
@@ -97,6 +109,11 @@ public class AdminAuthController {
         return ResponseUtil.ok();
     }
 
+    /**
+     * 登录用户信息
+     * @param id userid
+     * @return {name, avatar, roles, perms}
+     */
     @RequiresAuthentication
     @RequestMapping(value = "/info")
     public JSONObject info(@LoginUser Integer id) {

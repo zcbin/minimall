@@ -20,7 +20,7 @@ import java.util.Map;
  * @author zcbin
  * @title: AdminAddressController
  * @projectName minimall
- * @description: TODO
+ * @description: 地址管理
  * @date 2019/7/18 22:42
  */
 @RestController
@@ -29,6 +29,16 @@ public class AdminAddressController {
     @Autowired
     private IAddressService addressService;
 
+    /**
+     * 列表
+     * @param userId
+     * @param name
+     * @param page
+     * @param limit
+     * @param sort
+     * @param order
+     * @return
+     */
     @RequiresPermissions("admin:address:list")
     @RequiresPermissionsDesc(menu={"用户管理" , "收货地址"}, button="查询")
     @GetMapping(value = "/list")

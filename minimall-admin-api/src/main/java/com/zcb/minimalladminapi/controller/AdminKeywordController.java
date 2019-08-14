@@ -31,6 +31,16 @@ public class AdminKeywordController {
     @Autowired
     private IKeywordService keywordService;
 
+    /**
+     * 列表
+     * @param keyword
+     * @param url
+     * @param page
+     * @param limit
+     * @param sort
+     * @param order
+     * @return
+     */
     @RequiresPermissions("admin:keyword:list")
     @RequiresPermissionsDesc(menu={"商场管理" , "关键词"}, button="查询")
     @GetMapping(value = "/list")
@@ -47,6 +57,11 @@ public class AdminKeywordController {
         return ResponseUtil.ok(data);
     }
 
+    /**
+     * 添加
+     * @param keyword
+     * @return
+     */
     @RequiresPermissions("admin:keyword:create")
     @RequiresPermissionsDesc(menu={"商场管理" , "关键词"}, button="添加")
     @PostMapping(value = "/create")
@@ -59,6 +74,11 @@ public class AdminKeywordController {
         return ResponseUtil.ok(keyword);
     }
 
+    /**
+     * 修改
+     * @param keyword
+     * @return
+     */
     @RequiresPermissions("admin:keyword:update")
     @RequiresPermissionsDesc(menu={"商场管理" , "关键词"}, button="编辑")
     @PostMapping(value = "/update")
@@ -73,6 +93,11 @@ public class AdminKeywordController {
         return ResponseUtil.ok(keyword);
     }
 
+    /**
+     * 删除
+     * @param keyword
+     * @return
+     */
     @RequiresPermissions("admin:keyword:delete")
     @RequiresPermissionsDesc(menu={"商场管理" , "关键词"}, button="删除")
     @PostMapping(value = "/delete")
@@ -85,6 +110,11 @@ public class AdminKeywordController {
         return ResponseUtil.ok();
     }
 
+    /**
+     * 详情
+     * @param id
+     * @return
+     */
     @RequiresPermissions("admin:keyword:read")
     @RequiresPermissionsDesc(menu={"商场管理" , "关键词"}, button="详情")
     @GetMapping(value = "/read")

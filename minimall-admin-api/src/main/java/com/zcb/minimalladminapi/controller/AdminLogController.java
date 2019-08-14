@@ -24,7 +24,7 @@ import java.util.Map;
  * @author zcbin
  * @title: AdminLogController
  * @projectName minimall
- * @description: 日志
+ * @description: 操作日志
  * @date 2019/8/10 22:25
  */
 @RestController
@@ -33,6 +33,15 @@ public class AdminLogController {
     @Autowired
     private ILogService logService;
 
+    /**
+     * 列表
+     * @param admin
+     * @param page
+     * @param limit
+     * @param sort
+     * @param order
+     * @return
+     */
     @RequiresPermissions("admin:log:list")
     @RequiresPermissionsDesc(menu={"系统管理" , "操作日志"}, button="查询")
     @GetMapping(value = "/list")

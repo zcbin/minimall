@@ -29,7 +29,16 @@ public class AdminCollectController {
     @Autowired
     private ICollectService collectService;
 
-
+    /**
+     * 列表
+     * @param userId
+     * @param goodId
+     * @param page
+     * @param limit
+     * @param sort
+     * @param order
+     * @return
+     */
     @RequiresPermissions("admin:collect:list")
     @RequiresPermissionsDesc(menu={"用户管理" , "用户收藏"}, button="查询")
     @GetMapping(value = "/list")

@@ -29,6 +29,16 @@ public class AdminUserController {
     @Autowired
     private IUserService userService;
 
+    /**
+     * 列表
+     * @param nickname
+     * @param mobile
+     * @param page
+     * @param limit
+     * @param sort
+     * @param order
+     * @return
+     */
     @RequiresPermissions("admin:user:list")
     @RequiresPermissionsDesc(menu={"用户管理" , "会员管理"}, button="查询")
     @GetMapping(value = "/list")

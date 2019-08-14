@@ -35,6 +35,16 @@ public class AdminStorageController {
     @Autowired
     private IStorageService iStorageService;
 
+    /**
+     * 列表
+     * @param key
+     * @param name
+     * @param page
+     * @param limit
+     * @param sort
+     * @param order
+     * @return
+     */
     @RequiresPermissions("admin:storage:list")
     @RequiresPermissionsDesc(menu={"系统管理" , "对象存储"}, button="查询")
     @GetMapping("/list")
@@ -51,6 +61,13 @@ public class AdminStorageController {
 
         return ResponseUtil.ok(data);
     }
+
+    /**
+     * 上传
+     * @param file
+     * @return
+     * @throws IOException
+     */
     @RequiresPermissions("admin:storage:create")
     @RequiresPermissionsDesc(menu={"系统管理" , "对象存储"}, button="上传")
     @PostMapping("/create")
@@ -60,6 +77,13 @@ public class AdminStorageController {
         Storage storage = storageService.store(file.getInputStream(), file.getSize(), file.getContentType(), originalFilename);
         return ResponseUtil.ok(storage);
     }
+
+    /**
+     * 编辑
+     * @param storage
+     * @return
+     * @throws IOException
+     */
     @RequiresPermissions("admin:storage:update")
     @RequiresPermissionsDesc(menu={"系统管理" , "对象存储"}, button="编辑")
     @PostMapping("/update")
@@ -74,6 +98,13 @@ public class AdminStorageController {
        return ResponseUtil.ok(storage);
 
     }
+
+    /**
+     * 删除
+     * @param storage
+     * @return
+     * @throws IOException
+     */
     @RequiresPermissions("admin:storage:delete")
     @RequiresPermissionsDesc(menu={"系统管理" , "对象存储"}, button="删除")
     @PostMapping("/delete")

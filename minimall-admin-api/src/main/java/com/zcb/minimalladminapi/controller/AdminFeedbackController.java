@@ -30,6 +30,16 @@ public class AdminFeedbackController {
     @Autowired
     private IFeedbackService feedbackService;
 
+    /**
+     * 列表
+     * @param username
+     * @param id
+     * @param page
+     * @param limit
+     * @param sort
+     * @param order
+     * @return
+     */
     @RequiresPermissions("admin:feedback:list")
     @RequiresPermissionsDesc(menu={"用户管理" , "意见反馈"}, button="查询")
     @GetMapping(value = "/list")

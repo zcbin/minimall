@@ -31,6 +31,16 @@ public class AdminHistoryController {
     @Autowired
     private ISearchHistoryService searchHistoryService;
 
+    /**
+     * 列表
+     * @param userId
+     * @param keyword
+     * @param page
+     * @param limit
+     * @param sort
+     * @param order
+     * @return
+     */
     @RequiresPermissions("admin:history:list")
     @RequiresPermissionsDesc(menu={"用户管理" , "搜索历史"}, button="查询")
     @GetMapping(value = "/list")

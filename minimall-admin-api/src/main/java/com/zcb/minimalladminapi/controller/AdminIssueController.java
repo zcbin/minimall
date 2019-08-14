@@ -34,6 +34,15 @@ public class AdminIssueController {
     @Autowired
     private IIssueService issueService;
 
+    /**
+     * 列表
+     * @param question
+     * @param page
+     * @param limit
+     * @param sort
+     * @param order
+     * @return
+     */
     @RequiresPermissions("admin:issue:list")
     @RequiresPermissionsDesc(menu={"商场管理" , "通用问题"}, button="查询")
     @GetMapping(value = "/list")
@@ -50,6 +59,11 @@ public class AdminIssueController {
         return ResponseUtil.ok(data);
     }
 
+    /**
+     * 添加
+     * @param issue
+     * @return
+     */
     @RequiresPermissions("admin:issue:create")
     @RequiresPermissionsDesc(menu={"商场管理" , "通用问题"}, button="添加")
     @PostMapping(value = "/create")
@@ -62,6 +76,11 @@ public class AdminIssueController {
         return ResponseUtil.ok(issue);
     }
 
+    /**
+     * 编辑
+     * @param issue
+     * @return
+     */
     @RequiresPermissions("admin:issue:update")
     @RequiresPermissionsDesc(menu={"商场管理" , "通用问题"}, button="编辑")
     @PostMapping(value = "/update")
@@ -76,6 +95,11 @@ public class AdminIssueController {
         return ResponseUtil.ok(issue);
     }
 
+    /**
+     * 删除
+     * @param issue
+     * @return
+     */
     @RequiresPermissions("admin:issue:delete")
     @RequiresPermissionsDesc(menu={"商场管理" , "通用问题"}, button="删除")
     @PostMapping(value = "/delete")
@@ -88,6 +112,11 @@ public class AdminIssueController {
         return ResponseUtil.ok();
     }
 
+    /**
+     * 详情
+     * @param id
+     * @return
+     */
     @RequiresPermissions("admin:issue:read")
     @RequiresPermissionsDesc(menu={"商场管理" , "通用问题"}, button="详情")
 

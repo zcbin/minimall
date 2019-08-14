@@ -32,6 +32,16 @@ public class AdminAdminController {
     private IAdminService adminService;
     @Autowired
     private LogHelper logHelper;
+
+    /**
+     * 列表
+     * @param username
+     * @param page
+     * @param limit
+     * @param sort
+     * @param order
+     * @return
+     */
     @RequiresPermissions("admin:admin:list")
     @RequiresPermissionsDesc(menu={"系统管理" , "管理员管理"}, button="查询")
     @GetMapping(value = "/list")
@@ -48,6 +58,11 @@ public class AdminAdminController {
         return ResponseUtil.ok(data);
     }
 
+    /**
+     * 添加
+     * @param admin
+     * @return
+     */
     @RequiresPermissions("admin:admin:create")
     @RequiresPermissionsDesc(menu={"系统管理" , "管理员管理"}, button="添加")
     @PostMapping(value = "/create")
@@ -65,6 +80,12 @@ public class AdminAdminController {
         logHelper.logAuthSucceed("添加管理员", username);
         return ResponseUtil.ok(admin);
     }
+
+    /**
+     * 编辑
+     * @param admin
+     * @return
+     */
     @RequiresPermissions("admin:admin:update")
     @RequiresPermissionsDesc(menu={"系统管理" , "管理员管理"}, button="编辑")
     @PostMapping(value = "/update")
@@ -85,6 +106,12 @@ public class AdminAdminController {
         logHelper.logAuthSucceed("编辑管理员", username);
         return ResponseUtil.ok();
     }
+
+    /**
+     * 删除
+     * @param admin
+     * @return
+     */
     @RequiresPermissions("admin:admin:delete")
     @RequiresPermissionsDesc(menu={"系统管理" , "管理员管理"}, button="删除")
     @PostMapping(value = "/delete")

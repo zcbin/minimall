@@ -26,7 +26,7 @@ import java.util.*;
  * @author zcbin
  * @title: AdminRoleController
  * @projectName minimall
- * @description: TODO
+ * @description: 角色管理
  * @date 2019/8/10 15:24
  */
 @RestController
@@ -39,6 +39,16 @@ public class AdminRoleController {
     private IPermissionService permissionService;
     @Autowired
     private LogHelper logHelper;
+
+    /**
+     * 列表
+     * @param name
+     * @param page
+     * @param limit
+     * @param sort
+     * @param order
+     * @return
+     */
     @RequiresPermissions("admin:role:list")
     @RequiresPermissionsDesc(menu={"系统管理" , "角色管理"}, button="查询")
     @GetMapping(value = "/list")
@@ -54,6 +64,12 @@ public class AdminRoleController {
         data.put("items", roleList);
         return ResponseUtil.ok(data);
     }
+
+    /**
+     * 添加
+     * @param role
+     * @return
+     */
     @RequiresPermissions("admin:role:create")
     @RequiresPermissionsDesc(menu={"系统管理" , "角色管理"}, button="添加")
     @PostMapping(value = "/create")
@@ -67,6 +83,11 @@ public class AdminRoleController {
         return ResponseUtil.ok(role);
     }
 
+    /**
+     * 编辑
+     * @param role
+     * @return
+     */
     @RequiresPermissions("admin:role:update")
     @RequiresPermissionsDesc(menu={"系统管理" , "角色管理"}, button="编辑")
     @PostMapping(value = "/update")
@@ -78,6 +99,11 @@ public class AdminRoleController {
         return ResponseUtil.ok();
     }
 
+    /**
+     * 删除
+     * @param role
+     * @return
+     */
     @RequiresPermissions("admin:role:delete")
     @RequiresPermissionsDesc(menu={"系统管理" , "角色管理"}, button="删除")
     @PostMapping(value = "/delete")
@@ -93,6 +119,10 @@ public class AdminRoleController {
         return ResponseUtil.ok();
     }
 
+    /**
+     * 所有角色
+     * @return
+     */
     @GetMapping(value = "/options")
     public JSONObject options() {
         List<Role> roleList = rolesService.queryAll();
@@ -112,6 +142,10 @@ public class AdminRoleController {
     private List<PermVo> systemPermissions = null;
     private Set<String> systemPermissionsString = null;
 
+    /**
+     * 获取系统所有角色
+     * @return
+     */
     private List<PermVo> getSystemPermissions(){
         final String basicPackage = "com.zcb.minimalladminapi";
         if(systemPermissions == null){

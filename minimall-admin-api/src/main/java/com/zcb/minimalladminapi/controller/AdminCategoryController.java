@@ -72,6 +72,11 @@ public class AdminCategoryController {
         return ResponseUtil.ok(categoryVoList);
     }
 
+    /**
+     * 添加
+     * @param category
+     * @return
+     */
     @RequiresPermissions("admin:category:create")
     @RequiresPermissionsDesc(menu={"商场管理" , "类目管理"}, button="添加")
     @PostMapping(value = "/create")
@@ -80,6 +85,11 @@ public class AdminCategoryController {
         return ResponseUtil.ok(category);
     }
 
+    /**
+     * 编辑
+     * @param category
+     * @return
+     */
     @RequiresPermissions("admin:category:update")
     @RequiresPermissionsDesc(menu={"商场管理" , "类目管理"}, button="编辑")
     @PostMapping(value = "/update")
@@ -89,6 +99,12 @@ public class AdminCategoryController {
         }
         return ResponseUtil.ok();
     }
+
+    /**
+     * 删除
+     * @param category
+     * @return
+     */
     @RequiresPermissions("admin:category:delete")
     @RequiresPermissionsDesc(menu={"商场管理" , "类目管理"}, button="删除")
     @PostMapping(value = "/delete")
@@ -100,6 +116,11 @@ public class AdminCategoryController {
         categoryService.delete(id);
         return ResponseUtil.ok();
     }
+
+    /**
+     * L1类目
+     * @return
+     */
     @RequiresPermissions("admin:category:list")
     @GetMapping(value = "/l1")
     public JSONObject getL1() {

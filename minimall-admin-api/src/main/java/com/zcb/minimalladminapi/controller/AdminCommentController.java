@@ -41,6 +41,16 @@ public class AdminCommentController {
     @Autowired
     private IReplyService replyService;
 
+    /**
+     * 列表
+     * @param userId
+     * @param goodId
+     * @param page
+     * @param limit
+     * @param sort
+     * @param order
+     * @return
+     */
     @RequiresPermissions("admin:comment:list")
     @RequiresPermissionsDesc(menu={"商品管理" , "评论管理"}, button="查询")
     @GetMapping(value = "/list")
