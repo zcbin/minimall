@@ -22,6 +22,7 @@
 商品类目
 [![category](https://github.com/zcbin/minimall/blob/master/file/category.png?raw=true "category")](https://github.com/zcbin/minimall/blob/master/file/category.png?raw=true "category")
 微信首页
+
 [![微信](https://github.com/zcbin/minimall/blob/master/file/wx_home.png?raw=true "微信")](https://github.com/zcbin/minimall/blob/master/file/wx_home.png?raw=true "微信")
 
 ## 系统功能
