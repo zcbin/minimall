@@ -17,7 +17,7 @@
  - MySQL5.7
   
 ## 系统截图
-
+[![商品列表](https://github.com/zcbin/minimall/blob/master/file/goods_list.png?raw=true "商品列表")](https://github.com/zcbin/minimall/blob/master/file/goods_list.png?raw=true "商品列表")
 
 ## 系统功能
 #### 商城
