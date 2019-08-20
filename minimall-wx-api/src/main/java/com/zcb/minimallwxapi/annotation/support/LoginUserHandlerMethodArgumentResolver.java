@@ -3,6 +3,7 @@ package com.zcb.minimallwxapi.annotation.support;
 import com.zcb.minimalldb.domain.User;
 import com.zcb.minimalldb.service.IUserService;
 import com.zcb.minimallwxapi.annotation.LoginUser;
+import com.zcb.minimallwxapi.service.UserTokenManager;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,8 +16,7 @@ import org.springframework.web.method.support.ModelAndViewContainer;
 
 @Component
 public class LoginUserHandlerMethodArgumentResolver implements HandlerMethodArgumentResolver {
-    @Autowired
-    private IUserService userService;
+    public static final String LOGIN_TOKEN_KEY = "X-Minimall-Token";
     @Override
     public boolean supportsParameter(MethodParameter parameter) {
         return parameter.getParameterType().isAssignableFrom(Integer.class) && parameter.hasParameterAnnotation(LoginUser.class);
@@ -34,15 +34,13 @@ public class LoginUserHandlerMethodArgumentResolver implements HandlerMethodArgu
     @Override
     public Object resolveArgument(MethodParameter parameter, ModelAndViewContainer container,
                                   NativeWebRequest request, WebDataBinderFactory factory) throws Exception {
-        Subject subject = SecurityUtils.getSubject();
-        if (subject == null || subject.getPrincipal() == null) {
+
+        String token = request.getHeader(LOGIN_TOKEN_KEY);
+//        System.out.println("token:"+token);
+        if (token == null || token.isEmpty()) {
             return null;
         }
-        User userInfo = userService.queryByUsername((String) subject.getPrincipal()); //登录用户信息
-        if (userInfo != null) {
-            return userInfo.getId();
-        }
-        return null;
+        return UserTokenManager.getUserId(token);
 
     }
 }

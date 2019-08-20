@@ -6,6 +6,7 @@ pagehelper:
 
 
 # 数据库配置
+# Minimall.123
 spring:
   datasource:
     url: jdbc:mysql://localhost:3306/minimall?useUnicode=true&characterEncoding=UTF-8&useSSL=false

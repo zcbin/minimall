@@ -4,12 +4,15 @@ import cn.binarywang.wx.miniapp.api.WxMaService;
 import cn.binarywang.wx.miniapp.bean.WxMaJscode2SessionResult;
 import com.alibaba.fastjson.JSONObject;
 import com.zcb.minimallcore.util.IpUtil;
+import com.zcb.minimallcore.util.ParseJsonUtil;
 import com.zcb.minimallcore.util.ResponseUtil;
+import com.zcb.minimallcore.util.bcrypt.BCryptPasswordEncoder;
 import com.zcb.minimalldb.domain.User;
 import com.zcb.minimalldb.service.IUserService;
 import com.zcb.minimalldb.service.impl.UserServiceImpl;
 import com.zcb.minimallwxapi.dto.UserInfo;
 import com.zcb.minimallwxapi.dto.WxLoginInfo;
+import com.zcb.minimallwxapi.service.UserTokenManager;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.apache.shiro.SecurityUtils;
@@ -28,6 +31,7 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.servlet.http.HttpServletRequest;
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @RestController //@ResponseBody + @Controller
 
@@ -40,6 +44,52 @@ public class WxAuthController {
 
     @Autowired
     private IUserService userService;
+
+    @PostMapping(value = "/login")
+    public JSONObject login(@RequestBody String body, HttpServletRequest request) {
+        String username = ParseJsonUtil.parseString(body, "username");
+        String password = ParseJsonUtil.parseString(body, "password");
+        if (username == null || password == null) {
+            return ResponseUtil.fail(1, "账号或密码为空");
+        }
+        List<User> userList = userService.queryByName(username);
+        User user = null;
+        if (userList == null || userList.size() == 0) {
+            return ResponseUtil.fail(1, "账号不存在");
+        } else if (userList.size() > 1) {
+            return ResponseUtil.serious();
+        } else {
+            user = userList.get(0);
+        }
+        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+        if (!encoder.matches(password, user.getPassword())) {
+            return ResponseUtil.fail(1, "账号密码不对");
+        }
+
+        user.setLastLoginTime(LocalDateTime.now());
+        user.setLastLoginIp(IpUtil.getIpAddr(request));
+
+        //LogUtil.info("登录 " + user.toString());
+        if (userService.updateById(user) == 0) {
+            //LogUtil.error("update login user error");
+            return ResponseUtil.updatedDataFailed();
+        }
+        UserInfo userInfo = new UserInfo();
+        userInfo.setNickName(username);
+        userInfo.setAvatarUrl(user.getAvatar());
+        String token = UserTokenManager.generateToken(user.getId());
+        JSONObject jsonObject = new JSONObject();
+        //生成token
+        jsonObject.put("errno","0");
+        jsonObject.put("token", token);
+        jsonObject.put("userInfo", userInfo);
+        LOGGER.info(jsonObject);
+        //LogUtil.info("login success");
+        //LogUtil.info(jsonObject);
+        return ResponseUtil.ok(jsonObject);
+
+    }
+
     /**
      * 微信登录接口
      *  @param wxLoginInfo
@@ -72,8 +122,8 @@ public class WxAuthController {
         if (user == null) {
             user = new User();
             user.setUsername(openId);
-            Md5Hash md5Hash = new Md5Hash(openId, openId,1024);
-            user.setPassword(String.valueOf(md5Hash)); //密码保存加密的openid
+            //Md5Hash md5Hash = new Md5Hash(openId, openId,1024);
+            user.setPassword(openId); //密码保存加密的openid
             user.setWeixinOpenid(openId);
             user.setAvatar(userInfo.getAvatarUrl());
             user.setNickname(userInfo.getNickName());
@@ -95,39 +145,17 @@ public class WxAuthController {
                 return ResponseUtil.updatedDataFailed();
             }
         }
-        //登录系统
-        //获取当前用户
-        Subject subject= SecurityUtils.getSubject();
-        UsernamePasswordToken token = new UsernamePasswordToken(user.getUsername(), user.getPassword());
-        try{
-            //为当前用户进行认证，授权
-            subject.login(token);
-            //登录成功则返回sessionId作为token给前端存储，
-            //前端请求时将该token放入请求头，以Authorization为key，以此来鉴权
-            Session session=subject.getSession();
-            Serializable sessionId = session.getId();
-            JSONObject jsonObject = new JSONObject();
-            //生成token
-            jsonObject.put("errno","0");
-            jsonObject.put("token", sessionId);
-            jsonObject.put("userInfo", userInfo);
-            LOGGER.info(jsonObject);
-            //LogUtil.info("login success");
-            //LogUtil.info(jsonObject);
-            return ResponseUtil.ok(jsonObject);
-        } catch (UnknownAccountException e) {
-            e.printStackTrace();
-            //LogUtil.error("username is not found");
-            return ResponseUtil.serious(); //系统错误
-        } catch (IncorrectCredentialsException e) {
-            e.printStackTrace();
-            //LogUtil.error("password error");
-            return ResponseUtil.serious(); //系统错误
-        } catch (Exception e) {
-            e.printStackTrace();
-            //LogUtil.error("login error");
-            return ResponseUtil.fail();
-        }
+        String token = UserTokenManager.generateToken(user.getId());
+        JSONObject jsonObject = new JSONObject();
+        //生成token
+        jsonObject.put("errno","0");
+        jsonObject.put("token", token);
+        jsonObject.put("userInfo", userInfo);
+        LOGGER.info(jsonObject);
+        //LogUtil.info("login success");
+        //LogUtil.info(jsonObject);
+        return ResponseUtil.ok(jsonObject);
+
 
     }
 

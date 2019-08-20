@@ -38,6 +38,17 @@ public class UserServiceImpl implements IUserService {
     }
 
     @Override
+    public List<User> queryByName(String userName) {
+        UserExample example = new UserExample();
+        // username=userName,deleted=false
+        if (userName == null) {
+            return null;
+        }
+        example.or().andUsernameEqualTo(userName).andDeletedEqualTo(false);
+        return userMapper.selectByExample(example);
+    }
+
+    @Override
     public void add(User user) {
         user.setAddTime(LocalDateTime.now());
         user.setUpdateTime(LocalDateTime.now());

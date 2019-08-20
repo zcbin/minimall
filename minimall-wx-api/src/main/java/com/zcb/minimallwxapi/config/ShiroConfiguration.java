@@ -16,8 +16,9 @@ import java.util.Map;
 
 /**
  * shiro过滤配置
+ * 不再使用
  */
-@Configuration
+//@Configuration
 public class ShiroConfiguration {
     private static final Logger LOGGER = LogManager.getLogger();
     //将自己的验证方式加入容器

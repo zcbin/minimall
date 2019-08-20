@@ -22,6 +22,12 @@ public interface IUserService {
     User queryByUsername(String userName);
 
     /**
+     * 根据用户名查找
+     * @param userName
+     * @return
+     */
+    List<User> queryByName(String userName);
+    /**
      * 添加
      * @param user
      */
