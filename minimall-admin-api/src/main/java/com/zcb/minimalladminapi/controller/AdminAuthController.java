@@ -2,6 +2,7 @@ package com.zcb.minimalladminapi.controller;
 
 import com.alibaba.fastjson.JSONObject;
 import com.zcb.minimalladminapi.annotation.LoginUser;
+import com.zcb.minimalladminapi.log.Log;
 import com.zcb.minimalladminapi.service.LogHelper;
 import com.zcb.minimalladminapi.util.Permission;
 import com.zcb.minimalladminapi.util.PermissionUtil;
@@ -57,6 +58,7 @@ public class AdminAuthController {
      * @return {errno,errmsg}
      */
     @PostMapping(value = "/login")
+    @Log(desc = "登录")
     public JSONObject login(@RequestBody String body, HttpServletRequest request) {
         String username = ParseJsonUtil.parseString(body, "username");
         String password = ParseJsonUtil.parseString(body, "password");
@@ -103,6 +105,7 @@ public class AdminAuthController {
      * @return
      */
     @RequestMapping("/logout")
+    @Log(desc = "登出")
     public JSONObject logout() {
         Subject subject = SecurityUtils.getSubject();
         subject.logout();
@@ -116,6 +119,7 @@ public class AdminAuthController {
      */
     @RequiresAuthentication
     @RequestMapping(value = "/info")
+    @Log(desc = "用户信息")
     public JSONObject info(@LoginUser Integer id) {
        if (id == null) {
            return ResponseUtil.unloginTimeOut();

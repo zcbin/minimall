@@ -11,7 +11,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
  * @description: TODO
  * @date 2019/8/9 14:35
  */
-@Configuration
+//@Configuration
 public class CrossOriginConfig implements WebMvcConfigurer {
 
     @Override

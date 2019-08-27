@@ -44,7 +44,16 @@ public class MyRealm extends AuthorizingRealm {
          * 注意principals.getPrimaryPrincipal()对应
          * new SimpleAuthenticationInfo(user.getUserName(), user.getPassword(), getName())的第一个参数
          */
-        Admin admin = (Admin) getAvailablePrincipal(principals);
+        String userName = (String) getAvailablePrincipal(principals);
+        System.out.println("-----------"+userName);
+        List<Admin> adminList = adminService.findByUsername(userName);
+        if (adminList == null || adminList.size() == 0) {
+            throw new UnknownAccountException("找不到" + userName + "的账号信息");
+        } else if (adminList.size() > 1) {
+            throw new UnknownAccountException(userName + "对应多个账号信息");
+        }
+        Admin admin = adminList.get(0);
+
         Integer[] roleIds = admin.getRoleIds();
         Set<String> roles = rolesService.queryByIds(roleIds);
         Set<String> permissions = permissionService.queryByIds(roleIds);
@@ -53,7 +62,7 @@ public class MyRealm extends AuthorizingRealm {
         //为当前用户赋予对应角色和权限
         info.setRoles(roles);
         info.setStringPermissions(permissions);
-
+        System.out.println("info=="+roles + "--"+permissions);
         return info;
     }
 
