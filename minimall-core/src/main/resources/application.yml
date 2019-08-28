@@ -4,6 +4,7 @@ spring:
   messages:
     encoding: UTF-8
 
+#上传
   servlet:
     multipart:
       #单个数据大小

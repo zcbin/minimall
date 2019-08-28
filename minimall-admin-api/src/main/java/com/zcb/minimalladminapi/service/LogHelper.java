@@ -9,6 +9,7 @@ import org.apache.shiro.subject.Subject;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
@@ -24,6 +25,7 @@ import javax.servlet.http.HttpServletRequest;
  * 当然可能很多操作是不需要记录到数据库的，例如编辑商品、编辑广告品之类。
  */
 @Component
+@Transactional
 public class LogHelper {
     public final static Integer LOG_TYPE_GENERAL = 0;
     public final static Integer LOG_TYPE_AUTH = 1;

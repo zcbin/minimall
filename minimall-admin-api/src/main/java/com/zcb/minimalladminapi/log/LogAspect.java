@@ -27,13 +27,13 @@ import java.util.Date;
  * @description: TODO
  * @date 2019/8/26 17:26
  */
-@Aspect
+@Aspect //切面
 @Component
 public class LogAspect {
     private static final Logger LOGGER = LogManager.getLogger();
     //设置切入点：这里直接拦截被@RestController注解的类
     //@Pointcut("execution(* com.zcb.minimalladminapi.controller.*.*(..))")
-    @Pointcut("@annotation(com.zcb.minimalladminapi.log.Log)")
+    @Pointcut("@annotation(com.zcb.minimalladminapi.log.Log)") //切入点
     public void pointcut() {}
 
 //    @Pointcut("execution(* com.zcb.minimalladminapi.controller.AdminAuthController(..))")
@@ -42,7 +42,7 @@ public class LogAspect {
     public void doBefore() {
         System.out.println("----------------------------------------before");
     }*/
-    @Around(value = "pointcut()&&@annotation(log)")
+    @Around(value = "pointcut()&&@annotation(log)") //通知
     public Object doAround(ProceedingJoinPoint joinPoint, Log log) throws Throwable {
         long beginTime = System.currentTimeMillis();//1、开始时间
         //利用RequestContextHolder获取requst对象
