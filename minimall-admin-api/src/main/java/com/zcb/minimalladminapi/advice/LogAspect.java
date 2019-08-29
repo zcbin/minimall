@@ -1,21 +1,15 @@
-package com.zcb.minimalladminapi.log;
+package com.zcb.minimalladminapi.advice;
 
-import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.aspectj.lang.ProceedingJoinPoint;
-import org.aspectj.lang.Signature;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
-import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
-import org.aspectj.lang.reflect.MethodSignature;
-import org.springframework.core.annotation.AnnotationUtils;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
-import java.lang.reflect.Method;
 import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.Date;
@@ -33,7 +27,7 @@ public class LogAspect {
     private static final Logger LOGGER = LogManager.getLogger();
     //设置切入点：这里直接拦截被@RestController注解的类
     //@Pointcut("execution(* com.zcb.minimalladminapi.controller.*.*(..))")
-    @Pointcut("@annotation(com.zcb.minimalladminapi.log.Log)") //切入点
+    @Pointcut("@annotation(com.zcb.minimalladminapi.advice.Log)") //切入点
     public void pointcut() {}
 
 //    @Pointcut("execution(* com.zcb.minimalladminapi.controller.AdminAuthController(..))")

@@ -2,7 +2,7 @@ package com.zcb.minimalladminapi.controller;
 
 import com.alibaba.fastjson.JSONObject;
 import com.zcb.minimalladminapi.annotation.LoginUser;
-import com.zcb.minimalladminapi.log.Log;
+import com.zcb.minimalladminapi.advice.Log;
 import com.zcb.minimalladminapi.service.LogHelper;
 import com.zcb.minimalladminapi.util.Permission;
 import com.zcb.minimalladminapi.util.PermissionUtil;

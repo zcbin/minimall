@@ -1,4 +1,4 @@
-package com.zcb.minimalladminapi.log;
+package com.zcb.minimalladminapi.advice;
 
 import org.springframework.core.annotation.AliasFor;
 
