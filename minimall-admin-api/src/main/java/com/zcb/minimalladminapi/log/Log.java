@@ -8,7 +8,7 @@ import java.lang.annotation.*;
  * @author zcbin
  * @title: SystemLog
  * @projectName minimall
- * @description: TODO
+ * @description: 日志注解
  * @date 2019/8/26 17:19
  */
 @Documented
@@ -22,6 +22,7 @@ public @interface Log {
     @AliasFor("desc")
     String desc() default "";
 
+    Class clazz() default Object.class;
 
     /**
      * 是否不记录日志

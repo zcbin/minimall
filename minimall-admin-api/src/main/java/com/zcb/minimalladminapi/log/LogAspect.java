@@ -24,7 +24,7 @@ import java.util.Date;
  * @author zcbin
  * @title: LogAspect
  * @projectName minimall
- * @description: TODO
+ * @description: 日志
  * @date 2019/8/26 17:26
  */
 @Aspect //切面
@@ -54,7 +54,7 @@ public class LogAspect {
         Object[] args = joinPoint.getArgs();
         //方法名获取
         String methodName = joinPoint.getSignature().getName();
-        LOGGER.info("Request method：{}, Request parameter: {}", methodName, Arrays.toString(args));
+        LOGGER.info("Request method：{}.{}(), Request parameter: {}", log.clazz().getName(), methodName, Arrays.toString(args));
         Object obj = joinPoint.proceed();
         long endTime = System.currentTimeMillis();
         LOGGER.info("End timing: {},  URI: {}, Time-consuming：{}ms", new Date(),uri,endTime - beginTime);

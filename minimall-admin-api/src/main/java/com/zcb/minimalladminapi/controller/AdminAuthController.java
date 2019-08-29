@@ -58,7 +58,7 @@ public class AdminAuthController {
      * @return {errno,errmsg}
      */
     @PostMapping(value = "/login")
-    @Log(desc = "登录")
+    @Log(desc = "登录", clazz = AdminAuthController.class)
     public JSONObject login(@RequestBody String body, HttpServletRequest request) {
         String username = ParseJsonUtil.parseString(body, "username");
         String password = ParseJsonUtil.parseString(body, "password");
@@ -105,7 +105,7 @@ public class AdminAuthController {
      * @return
      */
     @RequestMapping("/logout")
-    @Log(desc = "登出")
+    @Log(desc = "登出", clazz = AdminAuthController.class)
     public JSONObject logout() {
         Subject subject = SecurityUtils.getSubject();
         subject.logout();
@@ -119,7 +119,7 @@ public class AdminAuthController {
      */
     @RequiresAuthentication
     @RequestMapping(value = "/info")
-    @Log(desc = "用户信息")
+    @Log(desc = "用户信息", clazz = AdminAuthController.class)
     public JSONObject info(@LoginUser Integer id) {
        if (id == null) {
            return ResponseUtil.unloginTimeOut();

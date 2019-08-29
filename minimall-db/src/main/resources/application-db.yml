@@ -7,13 +7,17 @@ pagehelper:
 
 # 数据库配置
 # Minimall.123
+# privateKey:MIIBVAIBADANBgkqhkiG9w0BAQEFAASCAT4wggE6AgEAAkEAoXJmG5K4jkRo6604TpSlOqkN2UIqchMPIDLYp5PlPKHiYNZk7i1ap7ALt8O+tf+KFi5bEyUx8Ov96a483tfowQIDAQABAkAhOXi37e7bIErzTVeMHF0QgF/gORShGzj+qFgbzHzdiCK8rj11riKDNaUdZOeQGpBohQ66g8Mot6GeVrEtTY79AiEA52IDSW6MAJjrZffyZZu9SQjRgFXLMXE3emEVJlSsSKcCIQCyn5ifoOSi+iHvIUk8ARF7SPlUwlpx2IDcBlLnlIoIVwIgdPJQ/vhkwpiHwc4EMd75WMSgPuEeBitXAv+2lN0PBtkCIHCyuzPz6m1dje13PeKK9gGn8A/nM/NiWyL3JnWQRWqvAiEAq0vK8RrVYUtp+yOY94N1GrTGnZLwN7DqsQbc2LOAoMU=
+# publicKey:MFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBAKFyZhuSuI5EaOutOE6UpTqpDdlCKnITDyAy2KeT5Tyh4mDWZO4tWqewC7fDvrX/ihYuWxMlMfDr/emuPN7X6MECAwEAAQ==
+# password:VpMe8FclztkdP1xdJ/Mh8EX47kkSCrqN8wZ4LSoDArJZXcPRhvFy6KeK2RRhsl2qW3BX2yR6nXB7k2VFm72V5w==
+# https://github.com/alibaba/druid
 spring:
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
     druid:
       url: jdbc:mysql://localhost:3306/minimall?useUnicode=true&characterEncoding=UTF-8&useSSL=false
       username: root
-      password: 123456
+      password: VpMe8FclztkdP1xdJ/Mh8EX47kkSCrqN8wZ4LSoDArJZXcPRhvFy6KeK2RRhsl2qW3BX2yR6nXB7k2VFm72V5w==
       driver-class-name: com.mysql.jdbc.Driver
       initial-size:  10
       max-active:  50
@@ -26,9 +30,9 @@ spring:
       test-on-return:  false
       test-while-idle:  true
       time-between-eviction-runs-millis:  60000
-      filters:  stat,wall
+      filters:  stat,config,wall
       useGlobalDataSourceStat: true
-      connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=500
+      connectionProperties: config.decrypt=true;config.decrypt.key=MFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBAKFyZhuSuI5EaOutOE6UpTqpDdlCKnITDyAy2KeT5Tyh4mDWZO4tWqewC7fDvrX/ihYuWxMlMfDr/emuPN7X6MECAwEAAQ==
 
 # mybatis配置
 mybatis:
@@ -39,3 +43,5 @@ mybatis:
 logging:
   level:
      com.zcb.minimalldb.dao: debug
+
+
