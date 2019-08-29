@@ -1,8 +1,7 @@
-package com.zcb.minimalladminapi.advice;
+package com.zcb.minimallcore.advice;
 
 import com.alibaba.fastjson.JSONObject;
 import com.zcb.minimallcore.util.ResponseUtil;
-import org.apache.shiro.authc.UnknownAccountException;
 import org.apache.shiro.authz.UnauthenticatedException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;

@@ -1,4 +1,4 @@
-package com.zcb.minimalladminapi.advice;
+package com.zcb.minimallcore.advice;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -27,7 +27,7 @@ public class LogAspect {
     private static final Logger LOGGER = LogManager.getLogger();
     //设置切入点：这里直接拦截被@RestController注解的类
     //@Pointcut("execution(* com.zcb.minimalladminapi.controller.*.*(..))")
-    @Pointcut("@annotation(com.zcb.minimalladminapi.advice.Log)") //切入点
+    @Pointcut("@annotation(com.zcb.minimallcore.advice.Log)") //切入点
     public void pointcut() {}
 
 //    @Pointcut("execution(* com.zcb.minimalladminapi.controller.AdminAuthController(..))")

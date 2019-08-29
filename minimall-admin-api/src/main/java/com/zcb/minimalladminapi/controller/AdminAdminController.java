@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.github.pagehelper.PageInfo;
 import com.zcb.minimalladminapi.annotation.RequiresPermissionsDesc;
 import com.zcb.minimalladminapi.service.LogHelper;
+import com.zcb.minimallcore.advice.Log;
 import com.zcb.minimallcore.util.ResponseUtil;
 import com.zcb.minimallcore.validator.Order;
 import com.zcb.minimallcore.validator.Sort;
@@ -45,6 +46,7 @@ public class AdminAdminController {
     @RequiresPermissions("admin:admin:list")
     @RequiresPermissionsDesc(menu={"系统管理" , "管理员管理"}, button="查询")
     @GetMapping(value = "/list")
+    @Log(desc = "管理员列表", clazz = AdminAdminController.class)
     public JSONObject list(String username,
                            @RequestParam(defaultValue = "1") Integer page,
                            @RequestParam(defaultValue = "10") Integer limit,
@@ -66,6 +68,7 @@ public class AdminAdminController {
     @RequiresPermissions("admin:admin:create")
     @RequiresPermissionsDesc(menu={"系统管理" , "管理员管理"}, button="添加")
     @PostMapping(value = "/create")
+    @Log(desc = "管理员添加", clazz = AdminAdminController.class)
     public JSONObject create(@RequestBody Admin admin) {
         String password = admin.getPassword();
         String username = admin.getUsername();
@@ -89,6 +92,7 @@ public class AdminAdminController {
     @RequiresPermissions("admin:admin:update")
     @RequiresPermissionsDesc(menu={"系统管理" , "管理员管理"}, button="编辑")
     @PostMapping(value = "/update")
+    @Log(desc = "管理员编辑", clazz = AdminAdminController.class)
     public JSONObject update(@RequestBody Admin admin) {
         Integer id = admin.getId();
         if (id == null) {
@@ -115,6 +119,7 @@ public class AdminAdminController {
     @RequiresPermissions("admin:admin:delete")
     @RequiresPermissionsDesc(menu={"系统管理" , "管理员管理"}, button="删除")
     @PostMapping(value = "/delete")
+    @Log(desc = "管理员删除", clazz = AdminAdminController.class)
     public JSONObject delete(@RequestBody Admin admin) {
         Integer id = admin.getId();
         if (id == null) {
