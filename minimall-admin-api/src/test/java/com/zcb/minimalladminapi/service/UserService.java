@@ -36,7 +36,7 @@ public class UserService {
 
         adminMapper.insertSelective(admin);
         System.out.println("lllll");
-        int i = 1/0;
+        //int i = 1/0;
         adminMapper.logicalDeleteByPrimaryKey(11);
         //adminMapper.insertSelective(admin1);
 

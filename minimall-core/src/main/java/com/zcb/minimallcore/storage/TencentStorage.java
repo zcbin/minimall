@@ -20,7 +20,7 @@ import java.util.stream.Stream;
 /**
  * 腾讯对象存储服务
  */
-public class TencentStorage implements Storage {
+public class TencentStorage implements IStorage {
 
     private String secretId;
     private String secretKey;

@@ -2,6 +2,7 @@ package com.zcb.minimallcore.storage;
 
 
 import com.zcb.minimallcore.util.CharUtil;
+import com.zcb.minimalldb.domain.Storage;
 import com.zcb.minimalldb.service.IStorageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
@@ -15,7 +16,7 @@ import java.util.stream.Stream;
  */
 public class StorageService {
     private String active;
-    private Storage storage;
+    private IStorage iStorage;
     @Autowired
     private IStorageService storageService;
 
@@ -27,12 +28,12 @@ public class StorageService {
         this.active = active;
     }
 
-    public Storage getStorage() {
-        return storage;
+    public IStorage getStorage() {
+        return iStorage;
     }
 
-    public void setStorage(Storage storage) {
-        this.storage = storage;
+    public void setStorage(IStorage iStorage) {
+        this.iStorage = iStorage;
     }
 
     /**
@@ -43,12 +44,12 @@ public class StorageService {
      * @param contentType   文件类型
      * @param fileName      文件索引名
      */
-    public com.zcb.minimalldb.domain.Storage store(InputStream inputStream, long contentLength, String contentType, String fileName) {
+    public Storage store(InputStream inputStream, long contentLength, String contentType, String fileName) {
         String key = generateKey(fileName);
-        storage.store(inputStream, contentLength, contentType, key);
+        iStorage.store(inputStream, contentLength, contentType, key);
 
         String url = generateUrl(key);
-        com.zcb.minimalldb.domain.Storage storageInfo = new com.zcb.minimalldb.domain.Storage();
+        Storage storageInfo = new Storage();
         storageInfo.setName(fileName);
         storageInfo.setSize((int) contentLength);
         storageInfo.setType(contentType);
@@ -64,7 +65,7 @@ public class StorageService {
         String suffix = originalFilename.substring(index);
 
         String key = null;
-        com.zcb.minimalldb.domain.Storage storageInfo = null;
+        Storage storageInfo = null;
 
         do {
             key = CharUtil.getRandomString(20) + suffix;
@@ -76,22 +77,22 @@ public class StorageService {
     }
 
     public Stream<Path> loadAll() {
-        return storage.loadAll();
+        return iStorage.loadAll();
     }
 
     public Path load(String keyName) {
-        return storage.load(keyName);
+        return iStorage.load(keyName);
     }
 
     public Resource loadAsResource(String keyName) {
-        return storage.loadAsResource(keyName);
+        return iStorage.loadAsResource(keyName);
     }
 
     public void delete(String keyName) {
-        storage.delete(keyName);
+        iStorage.delete(keyName);
     }
 
     private String generateUrl(String keyName) {
-        return storage.generateUrl(keyName);
+        return iStorage.generateUrl(keyName);
     }
 }

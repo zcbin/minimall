@@ -9,6 +9,7 @@ import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Primary;
 
 import javax.sql.DataSource;
 import java.util.Arrays;
@@ -30,9 +31,16 @@ public class DruidConfig {
 		 * https://github.com/alibaba/druid/tree/master/druid-spring-boot-starter
 		 * @return
 		 */
-		@ConfigurationProperties(prefix = "spring.datasource.druid")
+		//@Primary
+		@ConfigurationProperties(prefix = "spring.datasource.druid.one")
 		@Bean
-		public DataSource dataSource() {
+		public DataSource dataSourceOne() {
+				return  DruidDataSourceBuilder.create().build();
+		}
+		@Primary
+		@ConfigurationProperties(prefix = "spring.datasource.druid.two")
+		@Bean
+		public DataSource dataSourceTwo() {
 				return  DruidDataSourceBuilder.create().build();
 		}
 		@Bean

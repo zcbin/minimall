@@ -2,20 +2,16 @@ package com.zcb.minimalladminapi.controller;
 
 import com.alibaba.fastjson.JSONObject;
 import com.github.pagehelper.PageInfo;
-import com.google.gson.JsonObject;
-import com.sun.org.apache.bcel.internal.generic.ISUB;
 import com.zcb.minimalladminapi.annotation.RequiresPermissionsDesc;
 import com.zcb.minimallcore.util.ResponseUtil;
 import com.zcb.minimallcore.validator.Order;
 import com.zcb.minimallcore.validator.Sort;
 import com.zcb.minimalldb.domain.Issue;
-import com.zcb.minimalldb.domain.SearchHistory;
 import com.zcb.minimalldb.service.IIssueService;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
-
 import javax.validation.constraints.NotNull;
 import java.util.HashMap;
 import java.util.List;

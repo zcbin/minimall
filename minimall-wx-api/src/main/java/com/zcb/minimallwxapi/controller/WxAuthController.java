@@ -3,6 +3,7 @@ package com.zcb.minimallwxapi.controller;
 import cn.binarywang.wx.miniapp.api.WxMaService;
 import cn.binarywang.wx.miniapp.bean.WxMaJscode2SessionResult;
 import com.alibaba.fastjson.JSONObject;
+import com.zcb.minimallcore.advice.Log;
 import com.zcb.minimallcore.util.IpUtil;
 import com.zcb.minimallcore.util.ParseJsonUtil;
 import com.zcb.minimallcore.util.ResponseUtil;
@@ -96,6 +97,7 @@ public class WxAuthController {
      * @param request
      */
     @PostMapping(value = "/login_wx")
+    @Log(desc = "微信登录", clazz = WxAuthController.class)
     public JSONObject loginWx(@RequestBody WxLoginInfo wxLoginInfo, HttpServletRequest request) {
         String code = wxLoginInfo.getCode();
         UserInfo userInfo = wxLoginInfo.getUserInfo();
