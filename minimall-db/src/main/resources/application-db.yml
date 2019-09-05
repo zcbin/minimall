@@ -14,9 +14,9 @@ spring:
     type: com.alibaba.druid.pool.DruidDataSource
     druid:
       one:
-        url: jdbc:mysql://192.168.12.9:3306/minimall?useUnicode=true&characterEncoding=UTF-8&useSSL=false
+        url: jdbc:mysql://localhost:3306/minimall?useUnicode=true&characterEncoding=UTF-8&useSSL=false
         username: root
-        password: a9B1RJ56t7ycUOSu4cI+g6ImcHUvU7sDG//weMqYzhyIPvHem8jzX5VOGLXD+/O3R0QUGVBQcJZzcpQWkQ6Z2A==
+        password: VpMe8FclztkdP1xdJ/Mh8EX47kkSCrqN8wZ4LSoDArJZXcPRhvFy6KeK2RRhsl2qW3BX2yR6nXB7k2VFm72V5w==
         driver-class-name: com.mysql.jdbc.Driver
         initial-size:  10
         max-active:  50
@@ -31,7 +31,7 @@ spring:
         time-between-eviction-runs-millis:  60000
         filters:  stat,config,wall
         useGlobalDataSourceStat: true
-        connectionProperties: config.decrypt=true;config.decrypt.key=MFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBAIJ1Hm+FD4x6dsvHyk/MRJQRpDQ6wCfyLpV9dkkAw/1T9kNilXl48/0oH10vNoZ25gl750D+noeNESVXxy6I4F0CAwEAAQ==
+        connectionProperties: config.decrypt=true;config.decrypt.key=MFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBAKFyZhuSuI5EaOutOE6UpTqpDdlCKnITDyAy2KeT5Tyh4mDWZO4tWqewC7fDvrX/ihYuWxMlMfDr/emuPN7X6MECAwEAAQ==
       two:
         url: jdbc:mysql://localhost:3306/minimall?useUnicode=true&characterEncoding=UTF-8&useSSL=false
         username: root

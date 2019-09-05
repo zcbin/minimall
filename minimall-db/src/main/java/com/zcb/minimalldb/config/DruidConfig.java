@@ -31,13 +31,13 @@ public class DruidConfig {
 		 * https://github.com/alibaba/druid/tree/master/druid-spring-boot-starter
 		 * @return
 		 */
-		//@Primary
+		@Primary
 		@ConfigurationProperties(prefix = "spring.datasource.druid.one")
 		@Bean
 		public DataSource dataSourceOne() {
 				return  DruidDataSourceBuilder.create().build();
 		}
-		@Primary
+
 		@ConfigurationProperties(prefix = "spring.datasource.druid.two")
 		@Bean
 		public DataSource dataSourceTwo() {
