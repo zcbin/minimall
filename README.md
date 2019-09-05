@@ -29,6 +29,10 @@
 #### 商城
 
 #### 管理平台
+ shiro实现权限管理
+ 
+ spring aop实现日志管理
+######功能
 - [x] 用户管理
 	- [x] 会员管理
 	- [x] 收货地址
@@ -65,5 +69,20 @@
 	- [ ] 用户统计
 	- [ ] 订单统计
 	- [ ] 商品统计
+####部署
+######安装MySQL
+
+######vue项目
+安装node,npm,nginx
+npm run build:prod 打包
+将生成的dist拷贝到centos中
+配置nginx.conf root目录为dist路径，配置监听端口等，./nginx -s reload重启打开浏览器输入ip:port访问
+
+######后台
+mvn clean
+mvn install
+生成jar文件，执行java -jar minimall.**.jar --spring.profiles.active=prod,core,admin
+
+
 
 
