@@ -1,9 +1,9 @@
 // 以下是业务服务器API地址
 // 本机开发时使用
-//  var WxApiRoot = 'http://localhost:8081/wx/';
+ var WxApiRoot = 'http://localhost:8081/wx/';
 
 //局域网
-var WxApiRoot = 'http://192.168.12.7:8081/wx/';
+// var WxApiRoot = 'http://192.168.12.7:8081/wx/';
 // var WxApiRoot = 'http://192.168.3.119:8081/wx/';
 // 云平台上线时使用
 // var WxApiRoot = 'https://www.menethil.com.cn/wx/';

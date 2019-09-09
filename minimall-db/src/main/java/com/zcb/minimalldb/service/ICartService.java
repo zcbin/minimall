@@ -70,4 +70,10 @@ public interface ICartService {
      * @return
      */
     int updateChecked(Integer userId, List<Integer> productIds, Boolean checked);
+
+    /**
+     * 查询选中的购物车商品
+     * @return
+     */
+    List<Cart> findByChecked();
 }

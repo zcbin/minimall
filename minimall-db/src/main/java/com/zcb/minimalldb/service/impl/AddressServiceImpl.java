@@ -30,28 +30,38 @@ public class AddressServiceImpl implements IAddressService {
     }
 
     @Override
-    public int addAddress(Address address) {
+    public int add(Address address) {
         address.setAddTime(LocalDateTime.now());
         address.setUpdateTime(LocalDateTime.now());
-        return addressMapper.insert(address);
+        return addressMapper.insertSelective(address);
     }
 
     @Override
-    public int updateAddress(Address address) {
+    public int update(Address address) {
         address.setUpdateTime(LocalDateTime.now());
         return addressMapper.updateByPrimaryKeySelective(address);
     }
 
     @Override
-    public int deleteAddress(Integer id) {
+    public int delete(Integer id) {
         return addressMapper.logicalDeleteByPrimaryKey(id);
     }
+
 
     @Override
     public Address findDefault(Integer uid) {
         AddressExample example = new AddressExample();
         example.or().andUserIdEqualTo(uid).andIsDefaultEqualTo(true).andDeletedEqualTo(false);
         return addressMapper.selectOneByExample(example);
+    }
+
+    @Override
+    public int resetDefault(Integer uid) {
+        Address address = new Address();
+        address.setIsDefault(false);
+        AddressExample example = new AddressExample();
+        example.or().andUserIdEqualTo(uid).andIsDefaultEqualTo(true).andDeletedEqualTo(false);
+        return addressMapper.updateByExampleSelective(address, example);
     }
 
     @Override

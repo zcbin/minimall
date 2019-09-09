@@ -2,24 +2,16 @@ package com.zcb.minimallwxapi.controller;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
+import com.zcb.minimallcore.advice.Log;
 import com.zcb.minimallcore.util.ResponseUtil;
-import com.zcb.minimalldb.domain.Cart;
-import com.zcb.minimalldb.domain.Goods;
-import com.zcb.minimalldb.domain.GoodsProduct;
-import com.zcb.minimalldb.domain.User;
-import com.zcb.minimalldb.service.ICartService;
-import com.zcb.minimalldb.service.IGoodsProductService;
-import com.zcb.minimalldb.service.IGoodsService;
-import com.zcb.minimalldb.service.IUserService;
+import com.zcb.minimalldb.domain.*;
+import com.zcb.minimalldb.service.*;
 import com.zcb.minimallwxapi.annotation.LoginUser;
 import com.zcb.minimallwxapi.util.ParseJsonUtil;
 import org.apache.commons.lang3.ObjectUtils;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.subject.Subject;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.math.BigDecimal;
@@ -48,6 +40,9 @@ public class WxCartController {
 
     @Resource
     private IGoodsProductService goodsProductService; //商品货品
+
+    @Resource
+    private IAddressService addressService; //收货地址
 
     @RequestMapping(value = "/index")
     public JSONObject index(@LoginUser Integer userId) {
@@ -255,6 +250,90 @@ public class WxCartController {
             goodsCount += cart.getNumber();
         }
         return ResponseUtil.ok(goodsCount);
+    }
+
+    /**
+     * 购物车下单
+     * @param userId 用户id
+     * @param cartId 购物车商品id
+     * @param addressId 地址id
+     * @param couponId 优惠券id
+     * @param grouponRulesId
+     * @return
+     */
+    @GetMapping(value = "/checkout")
+    @Log(desc = "下单", clazz = WxCartController.class)
+    public JSONObject checkOut(@LoginUser Integer userId, Integer cartId, Integer addressId, Integer couponId, Integer grouponRulesId) {
+        if (userId == null) {
+            return ResponseUtil.unlogin();
+        }
+        Address checkedAddress = null;
+        //选择默认收货地址
+        if (addressId == null || addressId.equals(0)) {
+            checkedAddress = addressService.findDefault(userId); //默认
+            if (checkedAddress == null) { //没有默认收货地址 提醒用户选择收货地址
+                addressId = 0;
+            } else {
+                addressId = checkedAddress.getId();
+            }
+        } else {
+            checkedAddress = addressService.query(userId, addressId);
+            if (checkedAddress == null) {
+                return ResponseUtil.badArgument();
+            }
+        }
+        //优惠信息
+
+        //订单价格 暂不考虑优惠
+        List<Cart> cartList = null;
+        //默认购买所有选中商品
+        if (cartId == null || cartId.equals(0)) {
+            cartList = cartService.findByChecked();
+        } else {
+            //单个商品下单购买
+
+        }
+        //计算价格
+        BigDecimal checkedGoodsPrice = new BigDecimal(0.00);
+        for (Cart cart : cartList) {
+            checkedGoodsPrice = checkedGoodsPrice.add(cart.getPrice().multiply(new BigDecimal(cart.getNumber())));
+        }
+        //计算优惠券价格
+        BigDecimal couponPrice = new BigDecimal(0);
+
+        //计算邮费
+        //应在商品中设置 1.包邮 2.满XX包邮 3.邮费多少
+        BigDecimal freightPrice = new BigDecimal(0.00);
+
+        //订单总费用
+        BigDecimal orderTotalPrice = new BigDecimal(0.00);
+        //商品总费用加上运费减去优惠
+        //减去优惠费用不能出钱负数情况
+        orderTotalPrice = checkedGoodsPrice.add(freightPrice).subtract(couponPrice).max(new BigDecimal(0.00));
+        // 积分 暂时不用
+        BigDecimal integralPrice = new BigDecimal(0.00);
+        BigDecimal actualPrice = orderTotalPrice.subtract(integralPrice);
+
+        Map<String, Object> data = new HashMap<>();
+        data.put("addressId", addressId);
+        data.put("couponId", couponId);
+        data.put("cartId", cartId);
+        data.put("grouponRulesId", grouponRulesId);
+        data.put("grouponPrice", 0); //团购优惠，暂时不要
+        data.put("checkedAddress", checkedAddress); //收货地址
+        data.put("availableCouponLength", 0); //优惠券数量
+        data.put("goodsTotalPrice", checkedGoodsPrice); //订单费用
+        data.put("freightPrice", freightPrice); //运费
+        data.put("couponPrice", couponPrice); //优惠券减免金额
+        data.put("orderTotalPrice", orderTotalPrice); //订单费用
+        data.put("actualPrice", actualPrice); //减去积分价格
+        data.put("checkedGoodsList", cartList); //购物车商品
+
+
+
+
+
+        return ResponseUtil.ok(data);
     }
 
 

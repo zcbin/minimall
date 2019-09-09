@@ -154,8 +154,23 @@
         </table>-->
         <!---->
         <!--文件存储-->
-        <table tableName="storage">
+        <!--<table tableName="storage">
+            <generatedKey column="id" sqlStatement="MySql" identity="true"/>
+        </table>-->
+        <!--行政区域-->
+       <!-- <table tableName="region">
+            <generatedKey column="id" sqlStatement="MySql" identity="true"/>
+        </table>-->
+        <table tableName="orders">
             <generatedKey column="id" sqlStatement="MySql" identity="true"/>
         </table>
+        <!--<table tableName="order_goods">
+            <generatedKey column="id" sqlStatement="MySql" identity="true"/>
+            <columnOverride column="specifications" javaType="java.lang.String[]"
+                            typeHandler="com.zcb.minimalldb.mybatis.JsonStringArrayTypeHandler"/>
+            <columnOverride column="comments" javaType="java.lang.Integer[]"
+                            typeHandler="com.zcb.minimalldb.mybatis.JsonIntegerArrayTypeHandler"/>
+
+        </table>-->
         </context>
     </generatorConfiguration>

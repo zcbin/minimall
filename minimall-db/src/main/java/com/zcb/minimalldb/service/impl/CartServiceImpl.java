@@ -76,4 +76,11 @@ public class CartServiceImpl implements ICartService {
         cart.setUpdateTime(LocalDateTime.now());
         return cartMapper.updateByExampleSelective(cart, example);
     }
+
+    @Override
+    public List<Cart> findByChecked() {
+        CartExample example = new CartExample();
+        example.or().andCheckedEqualTo(true).andDeletedEqualTo(false);
+        return cartMapper.selectByExample(example);
+    }
 }

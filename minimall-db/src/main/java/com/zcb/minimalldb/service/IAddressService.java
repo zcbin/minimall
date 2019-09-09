@@ -25,21 +25,21 @@ public interface IAddressService {
      * @param address
      * @return
      */
-    int addAddress(Address address);
+    int add(Address address);
 
     /**
      * 修改收货地址
      * @param address
      * @return
      */
-    int updateAddress(Address address);
+    int update(Address address);
 
     /**
      * 删除收货地址
      * @param id
      * @return
      */
-    int deleteAddress(Integer id);
+    int delete(Integer id);
 
     /**
      * 查找默认地址
@@ -47,6 +47,13 @@ public interface IAddressService {
      * @return
      */
     Address findDefault(Integer uid);
+
+    /**
+     *
+     * @param uid
+     * @return
+     */
+    int resetDefault(Integer uid);
 
     /**
      * 查询地址

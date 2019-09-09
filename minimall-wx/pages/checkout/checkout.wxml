@@ -6,8 +6,8 @@
         <text class="default" wx:if="{{checkedAddress.isDefault}}">默认</text>
       </view>
       <view class="m">
-        <text class="mobile">{{checkedAddress.mobile}}</text>
-        <text class="address">{{checkedAddress.address}}</text>
+        <view class="mobile">{{checkedAddress.tel}}</view>
+        <view class="address">{{checkedAddress.province + '省' + checkedAddress.city + '市' + checkedAddress.county + checkedAddress.addressDetail}}</view>
       </view>
       <view class="r">
         <image src="/static/images/address_right.png"></image>
