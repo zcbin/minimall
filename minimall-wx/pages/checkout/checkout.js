@@ -150,6 +150,12 @@ Page({
         }, 'POST').then(function(res) {
           if (res.errno === 0) {
             const payParam = res.data;
+            //暂不开发支付功能
+            wx.redirectTo({
+              url: '/pages/payResult/payResult?status=0&orderId=' + orderId
+            });
+
+
             console.log("支付过程开始");
             wx.requestPayment({
               'timeStamp': payParam.timeStamp,
