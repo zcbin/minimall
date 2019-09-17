@@ -2,11 +2,13 @@ package com.zcb.minimalldb.service.impl;
 
 import com.zcb.minimalldb.dao.OrderGoodsMapper;
 import com.zcb.minimalldb.domain.OrderGoods;
+import com.zcb.minimalldb.domain.OrderGoodsExample;
 import com.zcb.minimalldb.service.IOrderGoodsService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.time.LocalDateTime;
+import java.util.List;
 
 /**
  * @author zcbin
@@ -35,5 +37,12 @@ public class OrderGoodsServiceImpl implements IOrderGoodsService {
 		@Override
 		public int delete(Integer id) {
 				return orderGoodsMapper.logicalDeleteByPrimaryKey(id);
+		}
+
+		@Override
+		public List<OrderGoods> queryByOid(Integer oid) {
+				OrderGoodsExample example = new OrderGoodsExample();
+				example.or().andOrderIdEqualTo(oid).andDeletedEqualTo(false);
+				return orderGoodsMapper.selectByExample(example);
 		}
 }

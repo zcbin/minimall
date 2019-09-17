@@ -3,6 +3,8 @@ package com.zcb.minimallwxapi.service;
 import com.alibaba.fastjson.JSONObject;
 import com.zcb.minimallcore.util.ParseJsonUtil;
 import com.zcb.minimallcore.util.ResponseUtil;
+import com.zcb.minimallcore.validator.Order;
+import com.zcb.minimallcore.validator.Sort;
 import com.zcb.minimalldb.domain.Address;
 import com.zcb.minimalldb.domain.Cart;
 import com.zcb.minimalldb.domain.OrderGoods;
@@ -12,12 +14,15 @@ import com.zcb.minimalldb.service.ICartService;
 import com.zcb.minimalldb.service.IOrderGoodsService;
 import com.zcb.minimalldb.service.IOrderService;
 import com.zcb.minimalldb.util.OrderUtil;
+import com.zcb.minimallwxapi.annotation.LoginUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -45,6 +50,109 @@ public class WxOrderService {
 		@Autowired
 		private IOrderGoodsService orderGoodsService; //订单商品
 
+		/**
+		 * 订单列表
+		 * @param userId
+		 * @param showType
+		 * @param page
+		 * @param limit
+		 * @param sort
+		 * @param order
+		 * @return
+		 */
+		public JSONObject list(Integer userId, Integer showType, Integer page, Integer limit, String sort, String order) {
+				if (userId == null) {
+						return ResponseUtil.unlogin();
+				}
+				List<Short> orderStatus = OrderUtil.orderStatus(showType);
+				List<Orders> orderList = orderService.queryByOrderStatus(userId, orderStatus, page, limit, sort, order);
+
+				List<Map<String, Object>> orderVoList = new ArrayList<>(orderList.size());
+				for (Orders o : orderList) {
+						Map<String, Object> orderVo = new HashMap<>();
+						orderVo.put("id", o.getId());
+						orderVo.put("orderSn", o.getOrderSn());
+						orderVo.put("actualPrice", o.getActualPrice());
+						orderVo.put("orderStatusText", OrderUtil.orderStatusText(o));
+						orderVo.put("handleOption", OrderUtil.build(o));
+
+//						LitemallGroupon groupon = grouponService.queryByOrderId(o.getId());
+//						if (groupon != null) {
+//								orderVo.put("isGroupin", true);
+//						} else {
+//								orderVo.put("isGroupin", false);
+//						}
+						orderVo.put("isGroupin", false);
+
+						List<OrderGoods> orderGoodsList = orderGoodsService.queryByOid(o.getId());
+						List<Map<String, Object>> orderGoodsVoList = new ArrayList<>(orderGoodsList.size());
+						for (OrderGoods orderGoods : orderGoodsList) {
+								Map<String, Object> orderGoodsVo = new HashMap<>();
+								orderGoodsVo.put("id", orderGoods.getId());
+								orderGoodsVo.put("goodsName", orderGoods.getGoodsName());
+								orderGoodsVo.put("number", orderGoods.getNumber());
+								orderGoodsVo.put("picUrl", orderGoods.getPicUrl());
+								orderGoodsVo.put("specifications", orderGoods.getSpecifications());
+								orderGoodsVoList.add(orderGoodsVo);
+						}
+						orderVo.put("goodsList", orderGoodsVoList);
+
+						orderVoList.add(orderVo);
+				}
+
+				return ResponseUtil.okList(orderVoList, orderList);
+
+		}
+
+		public JSONObject detail(Integer userId, Integer orderId) {
+				if (userId == null) {
+						return ResponseUtil.unlogin();
+				}
+
+				Orders order = orderService.findDetail(userId, orderId);
+				if (order == null) {
+						return ResponseUtil.fail(1, "订单不存在");
+				}
+				Map<String, Object> orderVo = new HashMap<String, Object>();
+				orderVo.put("id", order.getId());
+				orderVo.put("orderSn", order.getOrderSn());
+				orderVo.put("addTime", order.getAddTime());
+				orderVo.put("consignee", order.getConsignee());
+				orderVo.put("mobile", order.getMobile());
+				orderVo.put("address", order.getAddress());
+				orderVo.put("goodsPrice", order.getGoodsPrice());
+				orderVo.put("couponPrice", order.getCouponPrice());
+				orderVo.put("freightPrice", order.getFreightPrice());
+				orderVo.put("actualPrice", order.getActualPrice());
+				orderVo.put("orderStatusText", OrderUtil.orderStatusText(order));
+				orderVo.put("handleOption", OrderUtil.build(order));
+				orderVo.put("expCode", order.getShipChannel());
+				orderVo.put("expNo", order.getShipSn());
+
+				List<OrderGoods> orderGoodsList = orderGoodsService.queryByOid(order.getId());
+
+				Map<String, Object> result = new HashMap<>();
+				result.put("orderInfo", orderVo);
+				result.put("orderGoods", orderGoodsList);
+
+				// 订单状态为已发货且物流信息不为空
+				//"YTO", "800669400640887922"
+//				if (order.getOrderStatus().equals(OrderUtil.STATUS_SHIP)) {
+//						ExpressInfo ei = expressService.getExpressInfo(order.getShipChannel(), order.getShipSn());
+//						result.put("expressInfo", ei);
+//				}
+
+				return ResponseUtil.ok(result);
+
+
+
+		}
+		/**
+		 * 订单提交
+		 * @param userId
+		 * @param body
+		 * @return
+		 */
 		public JSONObject submit(Integer userId, String body) {
 				if (userId == null) {
 						return ResponseUtil.unlogin();

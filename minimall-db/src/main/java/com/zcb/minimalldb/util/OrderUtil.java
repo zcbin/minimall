@@ -141,39 +141,39 @@ public class OrderUtil {
     }
 
 
-    public static boolean isCreateStatus(Orders litemallOrder) {
-        return OrderUtil.STATUS_CREATE == litemallOrder.getOrderStatus().shortValue();
+    public static boolean isCreateStatus(Orders orders) {
+        return OrderUtil.STATUS_CREATE == orders.getOrderStatus().shortValue();
     }
 
-    public static boolean isPayStatus(Orders litemallOrder) {
-        return OrderUtil.STATUS_PAY == litemallOrder.getOrderStatus().shortValue();
+    public static boolean isPayStatus(Orders orders) {
+        return OrderUtil.STATUS_PAY == orders.getOrderStatus().shortValue();
     }
 
-    public static boolean isShipStatus(Orders litemallOrder) {
-        return OrderUtil.STATUS_SHIP == litemallOrder.getOrderStatus().shortValue();
+    public static boolean isShipStatus(Orders orders) {
+        return OrderUtil.STATUS_SHIP == orders.getOrderStatus().shortValue();
     }
 
-    public static boolean isConfirmStatus(Orders litemallOrder) {
-        return OrderUtil.STATUS_CONFIRM == litemallOrder.getOrderStatus().shortValue();
+    public static boolean isConfirmStatus(Orders orders) {
+        return OrderUtil.STATUS_CONFIRM == orders.getOrderStatus().shortValue();
     }
 
-    public static boolean isCancelStatus(Orders litemallOrder) {
-        return OrderUtil.STATUS_CANCEL == litemallOrder.getOrderStatus().shortValue();
+    public static boolean isCancelStatus(Orders orders) {
+        return OrderUtil.STATUS_CANCEL == orders.getOrderStatus().shortValue();
     }
 
-    public static boolean isAutoCancelStatus(Orders litemallOrder) {
-        return OrderUtil.STATUS_AUTO_CANCEL == litemallOrder.getOrderStatus().shortValue();
+    public static boolean isAutoCancelStatus(Orders orders) {
+        return OrderUtil.STATUS_AUTO_CANCEL == orders.getOrderStatus().shortValue();
     }
 
-    public static boolean isRefundStatus(Orders litemallOrder) {
-        return OrderUtil.STATUS_REFUND == litemallOrder.getOrderStatus().shortValue();
+    public static boolean isRefundStatus(Orders orders) {
+        return OrderUtil.STATUS_REFUND == orders.getOrderStatus().shortValue();
     }
 
-    public static boolean isRefundConfirmStatus(Orders litemallOrder) {
-        return OrderUtil.STATUS_REFUND_CONFIRM == litemallOrder.getOrderStatus().shortValue();
+    public static boolean isRefundConfirmStatus(Orders orders) {
+        return OrderUtil.STATUS_REFUND_CONFIRM == orders.getOrderStatus().shortValue();
     }
 
-    public static boolean isAutoConfirmStatus(Orders litemallOrder) {
-        return OrderUtil.STATUS_AUTO_CONFIRM == litemallOrder.getOrderStatus().shortValue();
+    public static boolean isAutoConfirmStatus(Orders orders) {
+        return OrderUtil.STATUS_AUTO_CONFIRM == orders.getOrderStatus().shortValue();
     }
 }

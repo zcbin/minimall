@@ -6,10 +6,10 @@ Page({
     orderList: [],
     showType: 0,
     page: 1,
-    size: 10,
+    limit: 10,
     totalPages: 1
   },
-  onLoad: function(options) {
+  onLoad: function (options) {
     // 页面初始化 options为页面跳转所带来的参数
     let that = this
     try {
@@ -18,7 +18,7 @@ Page({
       this.setData({
         showType: tab
       });
-    } catch (e) {}
+    } catch (e) { }
 
   },
   getOrderList() {
@@ -26,13 +26,13 @@ Page({
     util.request(api.OrderList, {
       showType: that.data.showType,
       page: that.data.page,
-      size: that.data.size
-    }).then(function(res) {
+      limit: that.data.limit
+    }).then(function (res) {
       if (res.errno === 0) {
         console.log(res.data);
         that.setData({
-          orderList: that.data.orderList.concat(res.data.data),
-          totalPages: res.data.totalPages
+          orderList: that.data.orderList.concat(res.data.list),
+          totalPages: res.data.pages
         });
       }
     });
@@ -52,28 +52,28 @@ Page({
       return false;
     }
   },
-  switchTab: function(event) {
+  switchTab: function (event) {
     let showType = event.currentTarget.dataset.index;
     this.setData({
       orderList: [],
       showType: showType,
       page: 1,
-      size: 10,
+      limit: 10,
       totalPages: 1
     });
     this.getOrderList();
   },
-  onReady: function() {
+  onReady: function () {
     // 页面渲染完成
   },
-  onShow: function() {
+  onShow: function () {
     // 页面显示
     this.getOrderList();
   },
-  onHide: function() {
+  onHide: function () {
     // 页面隐藏
   },
-  onUnload: function() {
+  onUnload: function () {
     // 页面关闭
   }
 })

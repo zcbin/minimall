@@ -1,14 +1,18 @@
 package com.zcb.minimalldb.service.impl;
 
+import com.github.pagehelper.PageHelper;
 import com.zcb.minimalldb.dao.OrdersMapper;
 import com.zcb.minimalldb.domain.Orders;
+import com.zcb.minimalldb.domain.OrdersExample;
 import com.zcb.minimalldb.service.IOrderService;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
 import javax.annotation.Resource;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.List;
 import java.util.Random;
 
 /**
@@ -58,5 +62,32 @@ public class OrderServiceImpl implements IOrderService {
 				String orderSn = now + getRandomNum(6);
 
 				return orderSn;
+		}
+
+		@Override
+		public List<Orders> queryByOrderStatus(Integer userId, List<Short> orderStatus, Integer page, Integer limit, String sort, String order) {
+				OrdersExample example = new OrdersExample();
+				OrdersExample.Criteria criteria = example.createCriteria();
+				if (!StringUtils.isEmpty(userId)) {
+						criteria.andUserIdEqualTo(userId);
+				}
+				if (orderStatus != null) {
+						criteria.andOrderStatusIn(orderStatus);
+				}
+				criteria.andDeletedEqualTo(false);
+
+				if (!StringUtils.isEmpty(sort) && !StringUtils.isEmpty(order)) {
+						example.setOrderByClause(sort + " " + order);
+				}
+				example.setOrderByClause(Orders.Column.addTime.desc());
+				PageHelper.startPage(page, limit);
+				return ordersMapper.selectByExample(example);
+		}
+
+		@Override
+		public Orders findDetail(Integer userId, Integer orderId) {
+				OrdersExample example = new OrdersExample();
+				example.or().andIdEqualTo(orderId).andUserIdEqualTo(userId).andDeletedEqualTo(false);
+				return ordersMapper.selectOneByExample(example);
 		}
 }

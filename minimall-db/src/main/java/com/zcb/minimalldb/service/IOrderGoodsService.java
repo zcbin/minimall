@@ -2,6 +2,8 @@ package com.zcb.minimalldb.service;
 
 import com.zcb.minimalldb.domain.OrderGoods;
 
+import java.util.List;
+
 /**
  * @author zcbin
  * @title: IOrderGoodsService
@@ -15,4 +17,11 @@ public interface IOrderGoodsService {
 		int update(OrderGoods orderGoods);
 
 		int delete(Integer id);
+
+		/**
+		 * 根据订单id查
+		 * param oid
+		 * @return
+		 */
+		List<OrderGoods> queryByOid(Integer oid);
 }
