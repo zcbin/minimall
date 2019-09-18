@@ -142,7 +142,12 @@ public class WxOrderService {
 //						result.put("expressInfo", ei);
 //				}
 
+<<<<<<< HEAD
  				return ResponseUtil.ok(result);
+=======
+
+				return ResponseUtil.ok(result);
+>>>>>>> dev
 
 
 
