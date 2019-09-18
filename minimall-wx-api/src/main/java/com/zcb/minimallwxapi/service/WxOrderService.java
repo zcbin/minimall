@@ -141,16 +141,7 @@ public class WxOrderService {
 //						ExpressInfo ei = expressService.getExpressInfo(order.getShipChannel(), order.getShipSn());
 //						result.put("expressInfo", ei);
 //				}
-
-<<<<<<< HEAD
  				return ResponseUtil.ok(result);
-=======
-
-				return ResponseUtil.ok(result);
->>>>>>> dev
-
-
-
 		}
 		/**
 		 * 订单提交
