@@ -46,4 +46,11 @@ public interface IOrderService {
 		 */
 		Orders findDetail(Integer userId, Integer orderId);
 
+		/**
+		 * 取消订单
+		 * @param orders
+		 * @return
+		 */
+		int updateWithOptimisticLocker(Orders orders);
+
 }

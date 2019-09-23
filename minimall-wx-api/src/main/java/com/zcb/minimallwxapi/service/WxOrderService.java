@@ -11,6 +11,7 @@ import com.zcb.minimalldb.service.IAddressService;
 import com.zcb.minimalldb.service.ICartService;
 import com.zcb.minimalldb.service.IOrderGoodsService;
 import com.zcb.minimalldb.service.IOrderService;
+import com.zcb.minimalldb.util.OrderHandleOption;
 import com.zcb.minimalldb.util.OrderUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -31,7 +32,7 @@ import java.util.Map;
  * @date 2019/9/9 21:19
  */
 @Service
-@Transactional
+@Transactional //开启事务
 public class WxOrderService {
 
 		@Autowired
@@ -48,6 +49,7 @@ public class WxOrderService {
 
 		/**
 		 * 订单列表
+		 * 1-N 一个订单对应多个商品
 		 * @param userId
 		 * @param showType
 		 * @param page
@@ -60,10 +62,11 @@ public class WxOrderService {
 				if (userId == null) {
 						return ResponseUtil.unlogin();
 				}
-				List<Short> orderStatus = OrderUtil.orderStatus(showType);
-				List<Orders> orderList = orderService.queryByOrderStatus(userId, orderStatus, page, limit, sort, order);
+				List<Short> orderStatus = OrderUtil.orderStatus(showType); //订单状态
+				List<Orders> orderList = orderService.queryByOrderStatus(userId, orderStatus, page, limit, sort, order); //订单列表
 
 				List<Map<String, Object>> orderVoList = new ArrayList<>(orderList.size());
+				//前台展示
 				for (Orders o : orderList) {
 						Map<String, Object> orderVo = new HashMap<>();
 						orderVo.put("id", o.getId());
@@ -71,17 +74,11 @@ public class WxOrderService {
 						orderVo.put("actualPrice", o.getActualPrice());
 						orderVo.put("orderStatusText", OrderUtil.orderStatusText(o));
 						orderVo.put("handleOption", OrderUtil.build(o));
+						orderVo.put("isGroupin", false); //没有团购
 
-//						LitemallGroupon groupon = grouponService.queryByOrderId(o.getId());
-//						if (groupon != null) {
-//								orderVo.put("isGroupin", true);
-//						} else {
-//								orderVo.put("isGroupin", false);
-//						}
-						orderVo.put("isGroupin", false);
-
-						List<OrderGoods> orderGoodsList = orderGoodsService.queryByOid(o.getId());
+						List<OrderGoods> orderGoodsList = orderGoodsService.queryByOid(o.getId()); //订单中商品信息
 						List<Map<String, Object>> orderGoodsVoList = new ArrayList<>(orderGoodsList.size());
+						//前台展示
 						for (OrderGoods orderGoods : orderGoodsList) {
 								Map<String, Object> orderGoodsVo = new HashMap<>();
 								orderGoodsVo.put("id", orderGoods.getId());
@@ -100,12 +97,18 @@ public class WxOrderService {
 
 		}
 
+		/**
+		 * 订单详情
+		 * @param userId
+		 * @param orderId
+		 * @return
+		 */
 		public JSONObject detail(Integer userId, Integer orderId) {
 				if (userId == null) {
 						return ResponseUtil.unlogin();
 				}
 
-				Orders order = orderService.findDetail(userId, orderId);
+				Orders order = orderService.findDetail(userId, orderId); //订单
 				if (order == null) {
 						return ResponseUtil.fail(1, "订单不存在");
 				}
@@ -143,6 +146,40 @@ public class WxOrderService {
 
 
 
+		}
+
+		/**
+		 * 取消订单
+		 * @param userId
+		 * @param body
+		 * @return
+		 */
+		public JSONObject cancel(Integer userId, String body) {
+				if (userId == null) {
+						return ResponseUtil.unlogin();
+				}
+				Integer orderId = ParseJsonUtil.parseInteger(body, "orderId"); //订单id
+				if (orderId == null) {
+						return ResponseUtil.badArgument();
+				}
+				Orders orders = orderService.findDetail(userId, orderId); //对应的订单信息
+				if (orders == null) {
+						return ResponseUtil.fail(1, "订单不存在");
+				}
+				//检测订单能否取消
+				OrderHandleOption handleOption = OrderUtil.build(orders); //根据订单状态判断
+				if (!handleOption.isCancel()) {
+						return ResponseUtil.fail(1, "订单不能取消");
+				}
+				//订单设置为取消状态
+				orders.setOrderStatus(OrderUtil.STATUS_CANCEL);
+				orders.setEndTime(LocalDateTime.now());
+				if (orderService.updateWithOptimisticLocker(orders) == 0) { //更新订单状态
+						throw new RuntimeException("更新数据已失效");
+				}
+				//订单取消，对应的商品数量应增加
+
+				return ResponseUtil.ok();
 		}
 		/**
 		 * 订单提交
@@ -183,7 +220,7 @@ public class WxOrderService {
 
 				//订单价格 暂不考虑优惠
 				List<Cart> cartList = null;
-				//默认购买所有选中商品
+				//默认购买所有选中商品 待优化，优化为选中的购物车商品
 				if (cartId == null || cartId.equals(0)) {
 						cartList = cartService.findByChecked();
 				} else {

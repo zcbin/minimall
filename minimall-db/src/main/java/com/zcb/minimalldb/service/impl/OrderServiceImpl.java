@@ -90,4 +90,13 @@ public class OrderServiceImpl implements IOrderService {
 				example.or().andIdEqualTo(orderId).andUserIdEqualTo(userId).andDeletedEqualTo(false);
 				return ordersMapper.selectOneByExample(example);
 		}
+
+		@Override
+		public int updateWithOptimisticLocker(Orders orders) {
+
+				OrdersExample example = new OrdersExample();
+				example.or().andIdEqualTo(orders.getId()).andUpdateTimeEqualTo(orders.getUpdateTime()).andDeletedEqualTo(false);
+				orders.setUpdateTime(LocalDateTime.now());
+				return ordersMapper.updateByExampleSelective(orders, example);
+		}
 }
