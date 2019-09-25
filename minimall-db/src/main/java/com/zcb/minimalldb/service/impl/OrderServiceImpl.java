@@ -92,11 +92,35 @@ public class OrderServiceImpl implements IOrderService {
 		}
 
 		@Override
+		public Orders findDetail(Integer orderId) {
+				OrdersExample example = new OrdersExample();
+				example.or().andIdEqualTo(orderId).andDeletedEqualTo(false);
+				return ordersMapper.selectOneByExample(example);
+		}
+
+		@Override
 		public int updateWithOptimisticLocker(Orders orders) {
 
 				OrdersExample example = new OrdersExample();
 				example.or().andIdEqualTo(orders.getId()).andUpdateTimeEqualTo(orders.getUpdateTime()).andDeletedEqualTo(false);
 				orders.setUpdateTime(LocalDateTime.now());
 				return ordersMapper.updateByExampleSelective(orders, example);
+		}
+
+		@Override
+		public List<Orders> list(Integer userId, String orderSn, Integer page, Integer limit, String sort, String order) {
+				OrdersExample example = new OrdersExample();
+				OrdersExample.Criteria criteria = example.createCriteria();
+				if (!StringUtils.isEmpty(userId)) {
+						criteria.andUserIdEqualTo(userId);
+				}
+				if (!StringUtils.isEmpty(orderSn)) {
+						criteria.andOrderSnEqualTo(orderSn);
+				}
+				criteria.andDeletedEqualTo(false);
+				if (!StringUtils.isEmpty(sort) && !StringUtils.isEmpty(order)) {
+						example.setOrderByClause(sort + " " + order);
+				}
+				return ordersMapper.selectByExample(example);
 		}
 }

@@ -13,6 +13,8 @@ import com.zcb.minimalldb.service.IOrderGoodsService;
 import com.zcb.minimalldb.service.IOrderService;
 import com.zcb.minimalldb.util.OrderHandleOption;
 import com.zcb.minimalldb.util.OrderUtil;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -46,7 +48,7 @@ public class WxOrderService {
 
 		@Autowired
 		private IOrderGoodsService orderGoodsService; //订单商品
-
+		private static final Logger LOGGER = LogManager.getLogger(WxOrderService.class);
 		/**
 		 * 订单列表
 		 * 1-N 一个订单对应多个商品
