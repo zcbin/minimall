@@ -3,6 +3,7 @@ package com.zcb.minimallcore.util;
 import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.TypeReference;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 /**
@@ -16,6 +17,10 @@ public class ParseJsonUtil {
     public static Integer parseInteger(String body, String field) {
         JSONObject json = JSONObject.parseObject(body);
         return json.getInteger(field);
+    }
+    public static BigDecimal parseBigDecimal(String body, String field) {
+        JSONObject json = JSONObject.parseObject(body);
+        return json.getBigDecimal(field);
     }
     public static String parseString(String body, String field) {
         JSONObject json = JSONObject.parseObject(body);

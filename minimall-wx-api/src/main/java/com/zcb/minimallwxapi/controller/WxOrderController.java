@@ -7,13 +7,11 @@ import com.zcb.minimallcore.validator.Order;
 import com.zcb.minimallcore.validator.Sort;
 import com.zcb.minimallwxapi.annotation.LoginUser;
 import com.zcb.minimallwxapi.service.WxOrderService;
-import org.apache.logging.log4j.LogManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.constraints.NotNull;
-import java.util.logging.Logger;
 
 /**
  * @author zcbin
@@ -31,7 +29,7 @@ public class WxOrderController {
 		/**
 		 * 订单列表
 		 * @param userId
-		 * @param showType
+		 * @param showType 订单状态 待付款，待收货，待评价。。。
 		 * @param page
 		 * @param limit
 		 * @param sort
@@ -59,6 +57,17 @@ public class WxOrderController {
 				return wxOrderService.detail(userId, orderId);
 		}
 
+		/**
+		 * 取消订单
+		 * @param userId
+		 * @param body
+		 * @return
+		 */
+		@PostMapping(value = "/cancel")
+		@Log(desc = "取消订单")
+		public JSONObject cancel(@LoginUser Integer userId, @RequestBody String body) {
+				return wxOrderService.cancel(userId, body);
+		}
 
 		/**
 		 *
@@ -85,5 +94,16 @@ public class WxOrderController {
 		public JSONObject prepay(@LoginUser Integer userId, @RequestBody String body, HttpServletRequest request) {
 				System.out.println(body);
 				return ResponseUtil.ok();
+		}
+
+		/**
+		 * 确认收货
+		 * @param userId
+		 * @param body
+		 * @return
+		 */
+		@PostMapping(value = "/confirm")
+		public JSONObject confirm(@LoginUser Integer userId, @RequestBody String body) {
+				return wxOrderService.confirm(userId, body);
 		}
 }

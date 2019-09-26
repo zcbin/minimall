@@ -45,5 +45,23 @@ public interface IOrderService {
 		 * @return
 		 */
 		Orders findDetail(Integer userId, Integer orderId);
+		Orders findDetail(Integer orderId);
+		/**
+		 * 取消订单
+		 * @param orders
+		 * @return
+		 */
+		int updateWithOptimisticLocker(Orders orders);
 
+		/**
+		 * 列表
+		 * @param userId
+		 * @param orderSn
+		 * @param page
+		 * @param limit
+		 * @param sort
+		 * @param order
+		 * @return
+		 */
+		List<Orders> list(Integer userId, String orderSn, List<Short> orderStatusArray, Integer page, Integer limit, String sort, String order);
 }
