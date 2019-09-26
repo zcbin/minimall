@@ -63,5 +63,5 @@ public interface IOrderService {
 		 * @param order
 		 * @return
 		 */
-		List<Orders> list(Integer userId, String orderSn, Integer page, Integer limit, String sort, String order);
+		List<Orders> list(Integer userId, String orderSn, List<Short> orderStatusArray, Integer page, Integer limit, String sort, String order);
 }

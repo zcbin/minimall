@@ -1,6 +1,7 @@
 package com.zcb.minimallwxapi.service;
 
 import com.alibaba.fastjson.JSONObject;
+
 import com.zcb.minimallcore.util.ParseJsonUtil;
 import com.zcb.minimallcore.util.ResponseUtil;
 import com.zcb.minimalldb.domain.Address;
@@ -13,11 +14,13 @@ import com.zcb.minimalldb.service.IOrderGoodsService;
 import com.zcb.minimalldb.service.IOrderService;
 import com.zcb.minimalldb.util.OrderHandleOption;
 import com.zcb.minimalldb.util.OrderUtil;
+import com.zcb.minimallwxapi.annotation.LoginUser;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -48,6 +51,8 @@ public class WxOrderService {
 
 		@Autowired
 		private IOrderGoodsService orderGoodsService; //订单商品
+
+
 		private static final Logger LOGGER = LogManager.getLogger(WxOrderService.class);
 		/**
 		 * 订单列表
@@ -303,6 +308,37 @@ public class WxOrderService {
 				return ResponseUtil.ok(data);
 
 
+		}
+
+		/**
+		 * 确认收货
+		 * @param userId
+		 * @param body
+		 * @return
+		 */
+		public JSONObject confirm(@LoginUser Integer userId, @RequestBody String body) {
+				if (userId == null) {
+						return ResponseUtil.unlogin();
+				}
+				Integer orderId = ParseJsonUtil.parseInteger(body, "orderId");
+				if (orderId == null) {
+						return ResponseUtil.badArgument();
+				}
+				Orders order = orderService.findDetail(userId, orderId);
+				if (order == null) {
+						return ResponseUtil.badArgument();
+				}
+				OrderHandleOption handleOption = OrderUtil.build(order);
+				if (!handleOption.isConfirm()) {
+						return ResponseUtil.fail(1, "订单不能确认收货");
+				}
+				order.setOrderStatus(OrderUtil.STATUS_CONFIRM);
+				order.setConfirmTime(LocalDateTime.now());
+
+				if (orderService.updateWithOptimisticLocker(order) == 0) {
+						return ResponseUtil.fail(1, "收货失败");
+				}
+				return ResponseUtil.ok();
 		}
 
 

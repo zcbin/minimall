@@ -95,4 +95,15 @@ public class WxOrderController {
 				System.out.println(body);
 				return ResponseUtil.ok();
 		}
+
+		/**
+		 * 确认收货
+		 * @param userId
+		 * @param body
+		 * @return
+		 */
+		@PostMapping(value = "/confirm")
+		public JSONObject confirm(@LoginUser Integer userId, @RequestBody String body) {
+				return wxOrderService.confirm(userId, body);
+		}
 }

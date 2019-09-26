@@ -108,7 +108,7 @@ public class OrderServiceImpl implements IOrderService {
 		}
 
 		@Override
-		public List<Orders> list(Integer userId, String orderSn, Integer page, Integer limit, String sort, String order) {
+		public List<Orders> list(Integer userId, String orderSn, List<Short> orderStatusArray, Integer page, Integer limit, String sort, String order) {
 				OrdersExample example = new OrdersExample();
 				OrdersExample.Criteria criteria = example.createCriteria();
 				if (!StringUtils.isEmpty(userId)) {
@@ -116,6 +116,9 @@ public class OrderServiceImpl implements IOrderService {
 				}
 				if (!StringUtils.isEmpty(orderSn)) {
 						criteria.andOrderSnEqualTo(orderSn);
+				}
+				if (orderStatusArray != null && orderStatusArray.size() > 0) {
+						criteria.andOrderStatusIn(orderStatusArray);
 				}
 				criteria.andDeletedEqualTo(false);
 				if (!StringUtils.isEmpty(sort) && !StringUtils.isEmpty(order)) {
