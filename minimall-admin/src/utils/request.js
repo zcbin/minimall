@@ -81,11 +81,19 @@ service.interceptors.response.use(
       // 非5xx的错误属于业务错误，留给具体页面处理
       return Promise.reject(response)
     } else {
-      Message({
-        message: response.data.errmsg,
-        type: 'success',
-        duration: 5 * 1000
-      })
+      if (res.errno === 507) {
+        MessageBox.alert('会话超时，请重新登录', '错误', {
+          confirmButtonText: '确定',
+          type: 'error'
+        })
+      } else {
+        Message({
+          message: response.data.errmsg,
+          type: 'success',
+          duration: 5 * 1000
+        })
+      }
+
       return response
     }
   }, error => {
