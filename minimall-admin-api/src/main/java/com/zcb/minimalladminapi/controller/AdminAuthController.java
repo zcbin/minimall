@@ -5,6 +5,7 @@ import com.zcb.minimalladminapi.annotation.LoginUser;
 import com.zcb.minimalladminapi.service.LogHelper;
 import com.zcb.minimalladminapi.util.Permission;
 import com.zcb.minimalladminapi.util.PermissionUtil;
+import com.zcb.minimalladminapi.util.RedisUtil;
 import com.zcb.minimallcore.advice.Log;
 import com.zcb.minimallcore.util.ParseJsonUtil;
 import com.zcb.minimallcore.util.ResponseUtil;
@@ -50,6 +51,8 @@ public class AdminAuthController {
     private IAdminService adminService;
     @Autowired
     private LogHelper logHelper;
+    @Autowired
+    private RedisUtil redisUtil;
 
     /**
      * 登录
@@ -107,7 +110,9 @@ public class AdminAuthController {
     @RequestMapping("/logout")
     @Log(desc = "登出", clazz = AdminAuthController.class)
     public JSONObject logout() {
+
         Subject subject = SecurityUtils.getSubject();
+        redisUtil.del((String) subject.getPrincipal()); //删除缓存
         subject.logout();
         return ResponseUtil.ok();
     }
