@@ -1,0 +1,44 @@
+spring:
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    druid:
+        url: jdbc:mysql://localhost:3306/minimall?useUnicode=true&characterEncoding=UTF-8&useSSL=false
+        username: root
+        password: VpMe8FclztkdP1xdJ/Mh8EX47kkSCrqN8wZ4LSoDArJZXcPRhvFy6KeK2RRhsl2qW3BX2yR6nXB7k2VFm72V5w==
+        driver-class-name: com.mysql.jdbc.Driver
+        initial-size:  10
+        max-active:  50
+        min-idle:  10
+        max-wait:  60000
+        pool-prepared-statements:  true
+        max-pool-prepared-statement-per-connection-size:  20
+        validation-query:  SELECT 1 FROM DUAL
+        test-on-borrow:  false
+        test-on-return:  false
+        test-while-idle:  true
+        time-between-eviction-runs-millis:  60000
+        filters:  stat,config,wall
+        useGlobalDataSourceStat: true
+        connectionProperties: config.decrypt=true;config.decrypt.key=MFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBAKFyZhuSuI5EaOutOE6UpTqpDdlCKnITDyAy2KeT5Tyh4mDWZO4tWqewC7fDvrX/ihYuWxMlMfDr/emuPN7X6MECAwEAAQ==
+
+  data:
+    elasticsearch:
+      repositories:
+        enabled: true
+      cluster-name: elasticsearch_zcbin
+      cluster-nodes: 127.0.0.1:9300
+
+# mybatis配置
+mybatis:
+  # mapper-locations: classpath*:mapper/*.xml #指定映射的文件，默认加载的是同一包下的同名.xml文件
+  config-location: classpath:mybatis-config.xml
+
+# 打印sql语句
+logging:
+  level:
+    com.zcb.minimallsearch.dao: debug
+
+
+
+
+

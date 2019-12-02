@@ -23,6 +23,7 @@
         <module>minimall-core</module>
         <module>minimall-wx-api</module>
         <module>minimall-admin-api</module>
+        <module>minimall-search</module>
     </modules>
     <dependencies>
         <dependency>
@@ -45,7 +46,7 @@
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>fastjson</artifactId>
-            <version>1.2.47</version>
+            <version>1.2.58</version>
         </dependency>
         <!--log-->
         <dependency>

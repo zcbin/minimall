@@ -12,9 +12,11 @@
  - SpringBoot
  - VUE
  - 微信小程序
+ - Elasticsearch
 ##### 开发环境
  - JDK1.8
  - MySQL5.7
+ - Elasticsearch6.8.5
   
 ## 系统截图
 商品列表
@@ -82,6 +84,10 @@
 * mvn clean
 * mvn install
 * 生成jar文件，执行java -jar minimall.**.jar --spring.profiles.active=prod,core,admin
+
+####致谢
+
+感谢[jetbrains](https://www.jetbrains.com/idea/ "jetbrains")提供的免费license
 
 
 

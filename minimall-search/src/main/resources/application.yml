@@ -1,0 +1,10 @@
+#redis配置
+spring:
+   # profiles:
+   # active: prod, core, admin
+  messages:
+    encoding: UTF-8
+
+server:
+  port: 8082
+
