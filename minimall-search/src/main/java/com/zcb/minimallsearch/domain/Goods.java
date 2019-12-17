@@ -24,31 +24,6 @@ public class Goods implements Serializable {
     public Goods() {
     }
 
-    @Override
-    public String toString() {
-        return "Goods{" +
-                "id=" + id +
-                ", goodsSn='" + goodsSn + '\'' +
-                ", name='" + name + '\'' +
-                ", categoryId=" + categoryId +
-                ", shopId=" + shopId +
-                ", gallery=" + Arrays.toString(gallery) +
-                ", keywords='" + keywords + '\'' +
-                ", brief='" + brief + '\'' +
-                ", isOnSale=" + isOnSale +
-                ", sortOrder=" + sortOrder +
-                ", picUrl='" + picUrl + '\'' +
-                ", shareUrl='" + shareUrl + '\'' +
-                ", isNew=" + isNew +
-                ", isHot=" + isHot +
-                ", unit='" + unit + '\'' +
-                ", counterPrice=" + counterPrice +
-                ", retailPrice=" + retailPrice +
-
-                ", deleted=" + deleted +
-                ", detail='" + detail + '\'' +
-                '}';
-    }
 
     @Id
     private Long id;
@@ -58,37 +33,67 @@ public class Goods implements Serializable {
     @Field(analyzer = "ik_max_word",type = FieldType.Text)
     private String name;
 
+    @Field(type = FieldType.Integer)
     private Integer categoryId;
 
+    @Field(type = FieldType.Integer)
     private Integer shopId;
+
     @Field(type = FieldType.Keyword)
     private String[] gallery;
     @Field(analyzer = "ik_max_word",type = FieldType.Text)
     private String keywords;
 
+    @Field(type = FieldType.Keyword)
     private String brief;
 
+    @Field(type = FieldType.Boolean)
     private Boolean isOnSale;
 
+    @Field(type = FieldType.Keyword)
     private Short sortOrder;
-
+    @Field(type = FieldType.Keyword)
     private String picUrl;
-
+    @Field(type = FieldType.Keyword)
     private String shareUrl;
+    @Field(type = FieldType.Boolean)
     private Boolean isNew;
-
+    @Field(type = FieldType.Boolean)
     private Boolean isHot;
-
+    @Field(type = FieldType.Keyword)
     private String unit;
-
+    @Field(type = FieldType.Double)
     private BigDecimal counterPrice;
-
+    @Field(type = FieldType.Double)
     private BigDecimal retailPrice;
 
 
-    @Field(type = FieldType.Keyword)
+    @Field(type = FieldType.Boolean)
     private Boolean deleted;
+    @Field(type = FieldType.Text, analyzer = "ik_max_word")
     private String detail;
+
+    //时间类型存储为long型
+    @Field(type = FieldType.Long)
+    private LocalDateTime addTime;
+    @Field(type = FieldType.Long)
+    private LocalDateTime updateTime;
+
+    public LocalDateTime getAddTime() {
+        return addTime;
+    }
+
+    public void setAddTime(LocalDateTime addTime) {
+        this.addTime = addTime;
+    }
+
+    public LocalDateTime getUpdateTime() {
+        return updateTime;
+    }
+
+    public void setUpdateTime(LocalDateTime updateTime) {
+        this.updateTime = updateTime;
+    }
 
     public Long getId() {
         return id;
@@ -241,5 +246,32 @@ public class Goods implements Serializable {
 
     public void setDetail(String detail) {
         this.detail = detail;
+    }
+
+    @Override
+    public String toString() {
+        return "Goods{" +
+                "id=" + id +
+                ", goodsSn='" + goodsSn + '\'' +
+                ", name='" + name + '\'' +
+                ", categoryId=" + categoryId +
+                ", shopId=" + shopId +
+                ", gallery=" + Arrays.toString(gallery) +
+                ", keywords='" + keywords + '\'' +
+                ", brief='" + brief + '\'' +
+                ", isOnSale=" + isOnSale +
+                ", sortOrder=" + sortOrder +
+                ", picUrl='" + picUrl + '\'' +
+                ", shareUrl='" + shareUrl + '\'' +
+                ", isNew=" + isNew +
+                ", isHot=" + isHot +
+                ", unit='" + unit + '\'' +
+                ", counterPrice=" + counterPrice +
+                ", retailPrice=" + retailPrice +
+                ", deleted=" + deleted +
+                ", detail='" + detail + '\'' +
+                ", addTime=" + addTime +
+                ", updateTime=" + updateTime +
+                '}';
     }
 }

@@ -23,8 +23,6 @@ spring:
 
   data:
     elasticsearch:
-      repositories:
-        enabled: true
       cluster-name: elasticsearch_zcbin
       cluster-nodes: 127.0.0.1:9300
 

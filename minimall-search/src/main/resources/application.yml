@@ -1,4 +1,3 @@
-#redis配置
 spring:
    # profiles:
    # active: prod, core, admin

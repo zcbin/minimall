@@ -4,15 +4,21 @@ import com.zcb.minimallsearch.dao.GoodsMapper;
 import com.zcb.minimallsearch.domain.Goods;
 import com.zcb.minimallsearch.repository.GoodsRespository;
 import com.zcb.minimallsearch.service.IGoodsService;
+import org.elasticsearch.index.query.*;
+import org.elasticsearch.index.query.functionscore.FunctionScoreQueryBuilder;
+import org.elasticsearch.index.query.functionscore.ScoreFunctionBuilders;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.elasticsearch.core.aggregation.AggregatedPage;
+import org.springframework.data.elasticsearch.core.query.FetchSourceFilter;
+import org.springframework.data.elasticsearch.core.query.NativeSearchQueryBuilder;
+import org.springframework.data.elasticsearch.core.query.SearchQuery;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 
@@ -92,10 +98,33 @@ public class GoodsServiceImpl implements IGoodsService {
     }
 
     @Override
-    public Page<Goods> search(String keyword, Integer pageNum, Integer pageSize) {
+    public Page<Goods> search(String content, Integer pageNum, Integer pageSize) {
         Pageable pageable = PageRequest.of(pageNum, pageSize);
 
-        return goodsRespository.findByNameOrKeywords(keyword, keyword, pageable);
+//        //创建查询构建器
+//        NativeSearchQueryBuilder queryBuilder = new NativeSearchQueryBuilder();
+//        //结果过滤
+//        //queryBuilder.withSourceFilter(new FetchSourceFilter(new String[]{ "name"}, null));
+//        //分页
+//        queryBuilder.withPageable(pageable);
+//        //过滤
+//        queryBuilder.withQuery(QueryBuilders.matchQuery("name", content));
+//        //查询
+//        Page<Goods> result = goodsRespository.search(queryBuilder.build());
+        //AggregatedPage<Goods> result = template.queryForPage(queryBuilder.build(), Goods.class);
+
+        //根据分词进行匹配
+//        MatchQueryBuilder matchQuery = QueryBuilders.matchQuery("name", content);
+//        Page<Goods> result = goodsRespository.search(matchQuery, pageable);
+//        System.out.println(result.getContent());
+
+        //模糊匹配，可能会进行纠正
+//        FuzzyQueryBuilder queryBuilder = QueryBuilders.fuzzyQuery("name", content);
+//        Page<Goods> result = goodsRespository.search(queryBuilder, pageable);
+//        System.out.println(result.getContent());
+
+
+        return goodsRespository.findGoodsByNameMatches(content, pageable);
     }
 
     @Override
@@ -107,4 +136,5 @@ public class GoodsServiceImpl implements IGoodsService {
     public Page<Goods> recommend(Long id, Integer pageNum, Integer pageSize) {
         return null;
     }
+
 }

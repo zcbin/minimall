@@ -5,6 +5,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.elasticsearch.repository.ElasticsearchRepository;
 
+import java.util.List;
+
 /**
  * @author zcbin
  * @title GoodsRespository
@@ -17,11 +19,14 @@ public interface GoodsRespository extends ElasticsearchRepository<Goods, Long> {
      * 搜索查询
      *
      * @param name              商品名称
-     * @param keywords          商品关键字
+     * @param
      * @param page              分页信息
      * @return
      */
-    Page<Goods> findByNameOrKeywords(String name, String keywords, Pageable page);
+    Page<Goods> findGoodsByNameMatches(String name, Pageable page);
+    List<Goods> findGoodsByDeletedIs(Boolean delete);
+
+    //List<Goods> findGoodsByName(String name, Pageable pageable);
 
 
 }

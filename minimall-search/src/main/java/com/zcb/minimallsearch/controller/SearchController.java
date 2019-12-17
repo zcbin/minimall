@@ -40,10 +40,11 @@ public class SearchController {
         return json;
     }
     @GetMapping(value = "/search")
-    public JSONObject search(String keyword,
+    public JSONObject search(String name,
                              @RequestParam(defaultValue = "1") Integer page,
                              @RequestParam(defaultValue = "10") Integer limit) {
-        Page<Goods> pageGoods = goodsService.search(keyword, page, limit);
+        System.out.println("name="+name + ", page="+page + ", limit=" + limit);
+        Page<Goods> pageGoods = goodsService.search(name, page, limit);
         List<Goods> goodsList = pageGoods.getContent();
         JSONObject json = new JSONObject();
         json.put("result", goodsList);
