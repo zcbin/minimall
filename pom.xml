@@ -24,6 +24,7 @@
         <module>minimall-wx-api</module>
         <module>minimall-admin-api</module>
         <module>minimall-search</module>
+        <module>minimall-sso</module>
     </modules>
     <dependencies>
         <dependency>
