@@ -2,6 +2,8 @@
 // 本机开发时使用
  var WxApiRoot = 'http://localhost:8081/wx/';
 
+ var WxApiRootSearch = 'http://localhost:8082/search/'
+
 //局域网
 // var WxApiRoot = 'http://192.168.12.7:8081/wx/';
 // var WxApiRoot = 'http://192.168.3.119:8081/wx/';
@@ -62,7 +64,7 @@ module.exports = {
 
   SearchIndex: WxApiRoot + 'search/index', //搜索关键字
   SearchResult: WxApiRoot + 'search/result', //搜索结果
-  SearchHelper: WxApiRoot + 'search/helper', //搜索帮助
+  SearchHelper: WxApiRootSearch + 'helper', //搜索帮助
   SearchClearHistory: WxApiRoot + 'search/clearhistory', //搜索历史清楚
 
   AddressList: WxApiRoot + 'address/list', //收货地址列表

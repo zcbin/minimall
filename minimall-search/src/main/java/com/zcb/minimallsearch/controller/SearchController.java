@@ -1,10 +1,14 @@
 package com.zcb.minimallsearch.controller;
 
 import com.alibaba.fastjson.JSONObject;
+import com.zcb.minimallcore.util.ResponseUtil;
 import com.zcb.minimallsearch.domain.Goods;
+import com.zcb.minimallsearch.domain.Keyword;
 import com.zcb.minimallsearch.service.IGoodsService;
+import com.zcb.minimallsearch.service.IKeywordService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -23,9 +27,13 @@ public class SearchController {
     @Autowired
     private IGoodsService goodsService;
 
+    @Autowired
+    private IKeywordService keywordService;
+
     @PostMapping(value = "/importAll")
     public JSONObject importAll() {
         int result = goodsService.importAll();
+        keywordService.importAll();
         JSONObject json = new JSONObject();
         json.put("result", result);
         return json;
@@ -35,6 +43,7 @@ public class SearchController {
     @PostMapping(value = "/deleteAll")
     public JSONObject deleteAll() {
         goodsService.deleteAll();
+        keywordService.deleteAll();
         JSONObject json = new JSONObject();
         json.put("result", "deleteAll");
         return json;
@@ -49,5 +58,21 @@ public class SearchController {
         JSONObject json = new JSONObject();
         json.put("result", goodsList);
         return json;
+    }
+
+    /**
+     * 小程序搜索接口
+     * 检索推荐
+     * @param keyword
+     * @return
+     */
+    @RequestMapping(value = "/helper")
+    public JSONObject helper(String keyword) {
+        if (StringUtils.isEmpty(keyword)) {
+            return ResponseUtil.ok();
+        }
+        Page<Keyword> pageKeyword = keywordService.search(keyword, 0, 10);
+        List<Keyword> keywordList = pageKeyword.getContent();
+        return ResponseUtil.ok(keywordList);
     }
 }
