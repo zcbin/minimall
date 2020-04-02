@@ -7,7 +7,7 @@
 
 
  本项目只是学习使用，还在开发初期，仅仅完成了部分功能的实现，项目中存在大量bug，努力优化中
-
+* 访问地址 [http://129.211.81.42/index.html][http://129.211.81.42/index.html]
 ##### 技术栈
  - SpringBoot
  - VUE
@@ -33,7 +33,8 @@
 
 #### 管理平台
  shiro实现权限管理
- 
+ es全文检索功能
+ redis用户登陆状态管理
  spring aop实现日志管理
 ######功能
 - [x] 用户管理
@@ -72,6 +73,8 @@
 	- [ ] 用户统计
 	- [ ] 订单统计
 	- [ ] 商品统计
+	
+- [x] 全文检索功能	
 #### 部署
 ###### 安装MySQL
 
@@ -79,12 +82,13 @@
 * 安装node,npm,nginx
 * npm run build:prod 打包
 * 将生成的dist拷贝到centos中
-* 配置nginx.conf root目录为dist路径，配置监听端口等，./nginx -s reload重启打开浏览器输入ip:port访问
-
+* 配置nginx.conf root目录为dist路径，配置监听端口等，./nginx -s reload重启打开浏览器输入ip/index.html访问
+* 本项目地址 http://129.211.81.42/index.html
 ###### 后台
 * mvn clean
 * mvn install
 * 生成jar文件，执行java -jar minimall.**.jar --spring.profiles.active=prod,core,admin
+* nohup 命令 & 后台运行
 
 ####致谢
 
@@ -93,3 +97,6 @@
 
 
 
+
+
+[]: http://129.211.81.42/index.html
