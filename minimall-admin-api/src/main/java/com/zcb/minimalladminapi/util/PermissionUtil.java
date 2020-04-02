@@ -97,8 +97,8 @@ public class PermissionUtil {
 
             Class<?> clz = bean.getClass();
             Class controllerClz = clz.getSuperclass();
-            RequestMapping clazzRequestMapping = AnnotationUtils.findAnnotation(clz, RequestMapping.class);
-            List<Method> methods = MethodUtils.getMethodsListWithAnnotation(clz, RequiresPermissions.class);
+            RequestMapping clazzRequestMapping = AnnotationUtils.findAnnotation(controllerClz, RequestMapping.class);
+            List<Method> methods = MethodUtils.getMethodsListWithAnnotation(controllerClz, RequiresPermissions.class);
             for (Method method : methods) {
                 RequiresPermissions requiresPermissions = AnnotationUtils.getAnnotation(method, RequiresPermissions.class);
                 RequiresPermissionsDesc requiresPermissionsDesc = AnnotationUtils.getAnnotation(method, RequiresPermissionsDesc.class);

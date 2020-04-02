@@ -6,9 +6,10 @@ pagehelper:
 
 
 # 数据库配置
-# Minimall.123
+
 
 # https://github.com/alibaba/druid
+# Zcb123456@
 spring:
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource

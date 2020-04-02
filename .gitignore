@@ -4,6 +4,7 @@
 /*.iml
 .idea
 *.iml
+.DS_Store
 
 /log/
 /out/
