@@ -15,12 +15,11 @@
 
 ## 系统截图
 商品列表
-[![商品列表](https://github.com/zcbin/minimall/blob/master/file/goods_list.png?raw=true "商品列表")](https://github.com/zcbin/minimall/blob/master/file/goods_list.png?raw=true "商品列表")
+![商品列表](./file/pic/goods_list.png)
 商品类目
-[![category](https://github.com/zcbin/minimall/blob/master/file/category.png?raw=true "category")](https://github.com/zcbin/minimall/blob/master/file/category.png?raw=true "category")
+![商品类目](./file/pic/category.png)
 微信首页
-
-[![微信](https://github.com/zcbin/minimall/blob/master/file/wx_home.png?raw=true "微信")](https://github.com/zcbin/minimall/blob/master/file/wx_home.png?raw=true "微信")
+![微信首页](./file/pic/wx_home.png)
 
 ## 系统功能
 
@@ -82,3 +81,4 @@
 
 ---
 ## 许可证
+[GPL-3.0](https://github.com/zcbin/minimall/blob/master/LICENSE)
