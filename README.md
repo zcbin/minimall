@@ -24,9 +24,6 @@
 ## 系统功能
 
 ### 商城后台管理系统
-#### 管理平台
- 权限管理，用户管理，商品管理，推广管理，系统管理
-##### 开发进度
 - 用户管理
 - 商场管理
 - 商品管理
@@ -56,6 +53,7 @@
 ## 部署
 ### 安装MySQL
 * 执行minimall.sql 建表、导数据
+* [表结构文档](./file/doc/table.docx)
 
 ### 管理系统
 * 安装node,npm,nginx
@@ -63,18 +61,20 @@
 * 将生成的dist拷贝到centos中
 * 配置nginx.conf root目录为dist路径，配置监听端口等，./nginx -s reload重启打开浏览器输入ip/index.html访问
 * 本项目地址 http://129.211.81.42/index.html
-###### 后台
+### 后台
 * mvn clean
 * mvn install
 * 生成jar文件，执行java -jar minimall.**.jar --spring.profiles.active=prod,core,admin
 * nohup 命令 & 后台运行
 ---
 ## 致谢
-
  本项目参考或基于此项目开发：
- * 又一个小商城。litemall = Spring Boot后端 + Vue管理员前端 + 微信小程序用户前端 + Vue用户移动端https://github.com/linlinjava/litemall
- * A magical vue admin https://github.com/PanJiaChen/vue-element-admin
- * mall项目是一套电商系统 https://github.com/macrozheng/mall
+ *[litemall](https://github.com/linlinjava/litemall) 
+    又一个小商城。litemall = Spring Boot后端 + Vue管理员前端 + 微信小程序用户前端 + Vue用户移动端
+ *[vue-element-admin](https://github.com/PanJiaChen/vue-element-admin) 
+    A magical vue admin 
+ *[mall](https://github.com/macrozheng/mall) 
+    mall项目是一套电商系统 
 ---
 
 感谢[jetbrains](https://www.jetbrains.com/idea/ "jetbrains")提供的免费license
