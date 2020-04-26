@@ -2,6 +2,7 @@
 
  本项目只是学习使用，还在开发初期，仅仅完成了部分功能的实现，项目中存在大量bug，努力优化中
 *  [管理平台访问地址](http://129.211.81.42/index.html)
+---
 ### 技术栈
  - SpringBoot
  - VUE
@@ -12,7 +13,7 @@
  - JDK1.8
  - MySQL5.7
  - Elasticsearch6.8.5
-
+---
 ## 系统截图
 商品列表
 ![商品列表](./file/pic/goods_list.png)
@@ -20,7 +21,7 @@
 ![商品类目](./file/pic/category.png)
 微信首页
 ![微信首页](./file/pic/wx_home.png)
-
+---
 ## 系统功能
 
 ### 商城后台管理系统
