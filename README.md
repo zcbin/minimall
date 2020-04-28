@@ -74,11 +74,11 @@
 ---
 ## 致谢
  本项目参考或基于此项目开发：
- *[litemall](https://github.com/linlinjava/litemall) 
+ * [litemall](https://github.com/linlinjava/litemall) 
     又一个小商城。litemall = Spring Boot后端 + Vue管理员前端 + 微信小程序用户前端 + Vue用户移动端
- *[vue-element-admin](https://github.com/PanJiaChen/vue-element-admin) 
+ * [vue-element-admin](https://github.com/PanJiaChen/vue-element-admin) 
     A magical vue admin 
- *[mall](https://github.com/macrozheng/mall) 
+ * [mall](https://github.com/macrozheng/mall) 
     mall项目是一套电商系统 
 ---
 
