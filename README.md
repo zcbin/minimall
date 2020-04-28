@@ -9,6 +9,10 @@
  - 微信小程序
  - Elasticsearch
  - Redis
+ - Shiro
+ - JWT
+ - pagehelper
+ - druid
 ### 开发环境
  - JDK1.8
  - MySQL5.7
@@ -49,7 +53,7 @@
 * 订单功能完善
 * 全文检索功能完善
 * vue前台开发
-
+* 接口文档
 ---
 ## 部署
 ### 安装MySQL
