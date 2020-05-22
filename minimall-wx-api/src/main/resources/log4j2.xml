@@ -52,6 +52,7 @@
          <logger name="org.springframework" level="ERROR"></logger>
          <logger name="org.mybatis" level="ERROR"></logger>
          <logger name="com.zcb.minimallwxapi" level="DEBUG"></logger>
+         <logger name="org.apache.kafka" level="ERROR"></logger>
          <root level="all">
                  <appender-ref ref="Console"/>
                  <appender-ref ref="RollingFileInfo"/>

@@ -5,12 +5,13 @@
 ---
 ### 技术栈
  - SpringBoot
- - VUE
+ - Vue
  - 微信小程序
  - Elasticsearch
  - Redis
  - Shiro
  - JWT
+ - Nginx
  - pagehelper
  - druid
 ### 开发环境

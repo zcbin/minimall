@@ -2,8 +2,10 @@ package com.zcb.minimallwxapi.service;
 
 import com.alibaba.fastjson.JSONObject;
 
+import com.zcb.minimallcore.mq.KafkaProducer;
 import com.zcb.minimallcore.util.ParseJsonUtil;
 import com.zcb.minimallcore.util.ResponseUtil;
+import com.zcb.minimallcore.vo.Message;
 import com.zcb.minimalldb.domain.Address;
 import com.zcb.minimalldb.domain.Cart;
 import com.zcb.minimalldb.domain.OrderGoods;
@@ -51,6 +53,9 @@ public class WxOrderService {
 
 		@Autowired
 		private IOrderGoodsService orderGoodsService; //订单商品
+
+		@Autowired
+		private KafkaProducer kafkaProducer; //kafka生产者
 
 
 		private static final Logger LOGGER = LogManager.getLogger(WxOrderService.class);
@@ -303,6 +308,41 @@ public class WxOrderService {
 				return ResponseUtil.ok(data);
 
 
+		}
+
+		/**
+		 * 模拟付款功能
+		 * @param userId
+		 * @param body {orderId}
+		 * @return
+		 */
+		public JSONObject prepay(Integer userId, String body) {
+			if (userId == null) {
+				return ResponseUtil.unlogin();
+			}
+			if (body == null) {
+				return ResponseUtil.badArgument();
+			}
+			Integer orderId = ParseJsonUtil.parseInteger(body, "orderId"); //订单id
+			// 付款成功
+
+
+			// 给客户和管理员分别发送短信/邮件
+			Message adminMessage = new Message();
+			adminMessage.setId(orderId.longValue());
+			adminMessage.setTopic("admin_topic_order");
+			adminMessage.setMessage("客户" + userId + "已付款成功，订单id:" + orderId + ", 请及时处理");
+			adminMessage.setLocalDateTime(LocalDateTime.now());
+			kafkaProducer.sendMessage(adminMessage);
+
+			Message userMessage = new Message();
+			userMessage.setId(orderId.longValue());
+			userMessage.setTopic("user_topic_order");
+			userMessage.setMessage("你已付款成功，订单id:" + orderId + ", 祝你购物愉快");
+			userMessage.setLocalDateTime(LocalDateTime.now());
+			kafkaProducer.sendMessage(userMessage);
+
+			return ResponseUtil.ok();
 		}
 
 		/**

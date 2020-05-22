@@ -53,6 +53,7 @@
          <logger name="org.mybatis" level="ERROR"></logger>
          <logger name="org.apache.shiro" level="ERROR"></logger>
          <logger name="com.zcb.minimalladminapi" level="DEBUG"></logger>
+         <logger name="org.apache.kafka" level="ERROR"></logger>
          <root level="all">
                  <appender-ref ref="Console"/>
                  <appender-ref ref="RollingFileInfo"/>

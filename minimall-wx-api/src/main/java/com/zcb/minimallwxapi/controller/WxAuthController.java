@@ -7,7 +7,6 @@ import com.zcb.minimallcore.advice.Log;
 import com.zcb.minimallcore.util.IpUtil;
 import com.zcb.minimallcore.util.ParseJsonUtil;
 import com.zcb.minimallcore.util.ResponseUtil;
-import com.zcb.minimallcore.util.bcrypt.BCryptPasswordEncoder;
 import com.zcb.minimalldb.domain.User;
 import com.zcb.minimalldb.service.IUserService;
 import com.zcb.minimalldb.service.impl.UserServiceImpl;
@@ -24,6 +23,7 @@ import org.apache.shiro.crypto.hash.Md5Hash;
 import org.apache.shiro.session.Session;
 import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -159,6 +159,32 @@ public class WxAuthController {
         return ResponseUtil.ok(jsonObject);
 
 
+    }
+
+    /**
+     * 注册
+     * @param user
+     * @return
+     */
+    @PostMapping(value = "/register")
+    public JSONObject register(@RequestBody User user) {
+        if (user.getUsername() == null || user.getPassword() == null) {
+            return ResponseUtil.fail(1, "账号或密码为空");
+        }
+        List<User> userList = userService.queryByName(user.getUsername());
+        if (userList != null && userList.size() > 0) {
+            return ResponseUtil.fail(1, "账号已存在");
+        }
+        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder(16);
+        String password = encoder.encode(user.getPassword());
+        LOGGER.info("********* password==" + password);
+        user.setPassword(password); //加密
+        user.setUserLevel((byte) 0); //普通用户
+        user.setStatus((byte) 0); //0可用 1禁用 2注销
+        user.setUpdateTime(LocalDateTime.now());
+        user.setAddTime(LocalDateTime.now());
+        userService.add(user);
+        return ResponseUtil.ok();
     }
 
     /**

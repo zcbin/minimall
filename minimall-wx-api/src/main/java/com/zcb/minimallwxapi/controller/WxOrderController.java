@@ -84,16 +84,16 @@ public class WxOrderController {
 
 		/**
 		 * 付款
+		 * 模拟付款成功
 		 * @param userId
-		 * @param body
+		 * @param body {orderId}
 		 * @param request
 		 * @return
 		 */
 		@PostMapping(value = "/prepay")
 		@Log(desc = "付款", clazz = WxOrderController.class)
 		public JSONObject prepay(@LoginUser Integer userId, @RequestBody String body, HttpServletRequest request) {
-				System.out.println(body);
-				return ResponseUtil.ok();
+				return wxOrderService.prepay(userId, body);
 		}
 
 		/**
