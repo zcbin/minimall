@@ -14,6 +14,7 @@
  - Nginx
  - pagehelper
  - druid
+ - kafka
 ### 开发环境
  - JDK1.8
  - MySQL5.7
