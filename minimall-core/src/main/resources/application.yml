@@ -4,28 +4,11 @@ spring:
   messages:
     encoding: UTF-8
 
-  kafka:
-    # 消费者
-    consumer:
-      # 指定默认消费者group id
 
-      auto-offset-reset: earliest
-      # 制定kafka代理地址
-      bootstrap-servers: localhost:9092
-      group-id: test_group # 怎么没用？
-    # 生产者
-    producer:
-      bootstrap-servers: localhost:9092
-      # 指定消息key和消息体的编解码方式
-      key-serializer: org.apache.kafka.common.serialization.StringSerializer
-      value-serializer: org.apache.kafka.common.serialization.StringSerializer
-
-#上传
+  #上传
   servlet:
     multipart:
       #单个数据大小
       max-file-size: 10MB
       #总数据大小
       max-request-size: 100MB
-
-

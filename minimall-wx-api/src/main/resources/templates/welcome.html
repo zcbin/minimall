@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>email测试</title>
+    <style>
+        body {
+            text-align: center;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        #welcome {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<div id="welcome">
+    <h3>欢迎使用 <span th:text="${project}"></span> - Powered By <span th:text=" ${author}"></span></h3>
+    <span th:text="${url}"></span>
+    <div style="text-align: center; padding: 10px">
+        <a style="text-decoration: none;" href="#" th:href="@{${url}}" target="_bank">
+            <strong>spring-boot-demo，入门Spring Boot的首选Demo！:)</strong>
+        </a>
+    </div>
+
+
+</div>
+</body>
+</html>

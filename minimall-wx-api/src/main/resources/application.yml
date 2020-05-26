@@ -4,6 +4,41 @@ spring:
   messages:
     encoding: UTF-8
 
+  kafka:
+  # 消费者
+    consumer:
+      # 指定默认消费者group id
+      auto-offset-reset: earliest
+      # 制定kafka代理地址
+      bootstrap-servers: localhost:9092
+      group-id: test_group # 怎么没用？
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      # 自定义反序列化器
+      value-deserializer: com.zcb.minimallwxapi.mq.JSONDeserializer
+    # 生产者
+    producer:
+      bootstrap-servers: localhost:9092
+      # 指定消息key和消息体的编解码方式
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      # 自定义序列化器
+      value-serializer: com.zcb.minimallwxapi.mq.JSONSerializer
+
+  # 邮件
+  mail:
+    host: smtp.qq.com
+    port: 465
+    username: 1432419543@qq.com
+    password: iiufnsmeforwffed
+    protocol: smtp
+    test-connection: true
+    default-encoding: UTF-8
+    properties:
+      mail.smtp.auth: true
+      mail.smtp.starttls.enable: true
+      mail.smtp.starttls.required: true
+      mail.smtp.ssl.enable: true
+      mail.display.sendmail: minimall
+
 logging:
   config: classpath:log4j2.xml
 

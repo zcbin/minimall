@@ -2,7 +2,9 @@ package com.zcb.minimallwxapi.service;
 
 import com.alibaba.fastjson.JSONObject;
 
-import com.zcb.minimallcore.mq.KafkaProducer;
+import com.zcb.minimallwxapi.config.KafkaConfig;
+import com.zcb.minimallwxapi.dto.EmailMessage;
+import com.zcb.minimallwxapi.mq.KafkaProducer;
 import com.zcb.minimallcore.util.ParseJsonUtil;
 import com.zcb.minimallcore.util.ResponseUtil;
 import com.zcb.minimallcore.vo.Message;
@@ -328,19 +330,22 @@ public class WxOrderService {
 
 
 			// 给客户和管理员分别发送短信/邮件
-			Message adminMessage = new Message();
-			adminMessage.setId(orderId.longValue());
-			adminMessage.setTopic("admin_topic_order");
-			adminMessage.setMessage("客户" + userId + "已付款成功，订单id:" + orderId + ", 请及时处理");
-			adminMessage.setLocalDateTime(LocalDateTime.now());
-			kafkaProducer.sendMessage(adminMessage);
+			EmailMessage emailMessage = new EmailMessage();
+			emailMessage.setReceiver("526029672@qq.com");
+			emailMessage.setSubject("测试主题");
+			emailMessage.setContent("客户id:" + userId + "已付款成功，订单id:" + orderId + ", 请及时处理!" + LocalDateTime.now());
+			emailMessage.setLocalDateTime(LocalDateTime.now());
+			emailMessage.setCc(new String[]{"2780484667@qq.com", "zcbinvip@gmail.com"});
+			JSONObject jsonObject = new JSONObject();
+			jsonObject.put("data", emailMessage);
+			kafkaProducer.sendMessage(KafkaConfig.EMAIL_NOTIFICATION, jsonObject);
 
-			Message userMessage = new Message();
-			userMessage.setId(orderId.longValue());
-			userMessage.setTopic("user_topic_order");
-			userMessage.setMessage("你已付款成功，订单id:" + orderId + ", 祝你购物愉快");
-			userMessage.setLocalDateTime(LocalDateTime.now());
-			kafkaProducer.sendMessage(userMessage);
+//			Message userMessage = new Message();
+//			userMessage.setId(orderId.longValue());
+//			userMessage.setTopic("user_topic_order");
+//			userMessage.setMessage("你已付款成功，订单id:" + orderId + ", 祝你购物愉快");
+//			userMessage.setLocalDateTime(LocalDateTime.now());
+//			kafkaProducer.sendMessage(userMessage);
 
 			return ResponseUtil.ok();
 		}
