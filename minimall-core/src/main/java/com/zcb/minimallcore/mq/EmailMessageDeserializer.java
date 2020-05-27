@@ -1,7 +1,7 @@
-package com.zcb.minimallwxapi.mq;
+package com.zcb.minimallcore.mq;
 
 import com.alibaba.fastjson.JSON;
-import com.zcb.minimallwxapi.dto.EmailMessage;
+import com.zcb.minimallcore.vo.EmailMessage;
 import org.apache.kafka.common.serialization.Deserializer;
 
 import java.util.Map;

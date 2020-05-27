@@ -1,9 +1,9 @@
-package com.zcb.minimallwxapi.config;
+package com.zcb.minimallcore.config;
 
 /**
  * @author: zcbin
  * @title: KafkaConfig
- * @packageName: com.zcb.minimallwxapi.config
+ * @packageName: com.zcb.minimallcore.config
  * @projectName: minimall
  * @description: kafka配置
  * @date: 2020/5/26 19:44

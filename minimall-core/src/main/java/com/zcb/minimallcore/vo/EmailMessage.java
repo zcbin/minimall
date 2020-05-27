@@ -1,4 +1,4 @@
-package com.zcb.minimallwxapi.dto;
+package com.zcb.minimallcore.vo;
 
 import java.time.LocalDateTime;
 import java.util.Arrays;

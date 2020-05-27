@@ -1,4 +1,4 @@
-package com.zcb.minimallwxapi.mail;
+package com.zcb.minimallcore.mail;
 
 import org.springframework.messaging.MessagingException;
 

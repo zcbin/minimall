@@ -2,12 +2,11 @@ package com.zcb.minimallwxapi.service;
 
 import com.alibaba.fastjson.JSONObject;
 
-import com.zcb.minimallwxapi.config.KafkaConfig;
-import com.zcb.minimallwxapi.dto.EmailMessage;
-import com.zcb.minimallwxapi.mq.KafkaProducer;
+import com.zcb.minimallcore.vo.EmailMessage;
+import com.zcb.minimallcore.config.KafkaConfig;
+import com.zcb.minimallcore.mq.KafkaProducer;
 import com.zcb.minimallcore.util.ParseJsonUtil;
 import com.zcb.minimallcore.util.ResponseUtil;
-import com.zcb.minimallcore.vo.Message;
 import com.zcb.minimalldb.domain.Address;
 import com.zcb.minimalldb.domain.Cart;
 import com.zcb.minimalldb.domain.OrderGoods;
@@ -357,28 +356,28 @@ public class WxOrderService {
 		 * @return
 		 */
 		public JSONObject confirm(@LoginUser Integer userId, @RequestBody String body) {
-				if (userId == null) {
-						return ResponseUtil.unlogin();
-				}
-				Integer orderId = ParseJsonUtil.parseInteger(body, "orderId");
-				if (orderId == null) {
-						return ResponseUtil.badArgument();
-				}
-				Orders order = orderService.findDetail(userId, orderId);
-				if (order == null) {
-						return ResponseUtil.badArgument();
-				}
-				OrderHandleOption handleOption = OrderUtil.build(order);
-				if (!handleOption.isConfirm()) {
-						return ResponseUtil.fail(1, "订单不能确认收货");
-				}
-				order.setOrderStatus(OrderUtil.STATUS_CONFIRM);
-				order.setConfirmTime(LocalDateTime.now());
+			if (userId == null) {
+					return ResponseUtil.unlogin();
+			}
+			Integer orderId = ParseJsonUtil.parseInteger(body, "orderId");
+			if (orderId == null) {
+					return ResponseUtil.badArgument();
+			}
+			Orders order = orderService.findDetail(userId, orderId);
+			if (order == null) {
+					return ResponseUtil.badArgument();
+			}
+			OrderHandleOption handleOption = OrderUtil.build(order);
+			if (!handleOption.isConfirm()) {
+					return ResponseUtil.fail(1, "订单不能确认收货");
+			}
+			order.setOrderStatus(OrderUtil.STATUS_CONFIRM);
+			order.setConfirmTime(LocalDateTime.now());
 
-				if (orderService.updateWithOptimisticLocker(order) == 0) {
-						return ResponseUtil.fail(1, "收货失败");
-				}
-				return ResponseUtil.ok();
+			if (orderService.updateWithOptimisticLocker(order) == 0) {
+					return ResponseUtil.fail(1, "收货失败");
+			}
+			return ResponseUtil.ok();
 		}
 
 

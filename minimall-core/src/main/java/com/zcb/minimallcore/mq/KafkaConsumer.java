@@ -1,10 +1,9 @@
-package com.zcb.minimallwxapi.mq;
+package com.zcb.minimallcore.mq;
 
 import com.alibaba.fastjson.JSONObject;
-import com.zcb.minimallcore.vo.Message;
-import com.zcb.minimallwxapi.config.KafkaConfig;
-import com.zcb.minimallwxapi.dto.EmailMessage;
-import com.zcb.minimallwxapi.mail.MailService;
+import com.zcb.minimallcore.config.KafkaConfig;
+import com.zcb.minimallcore.mail.MailService;
+import com.zcb.minimallcore.vo.EmailMessage;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -14,12 +13,10 @@ import org.springframework.stereotype.Component;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.Context;
 
-import java.util.Optional;
-
 /**
  * @author: zcbin
  * @title: KafkaConsumer
- * @packageName: com.zcb.minimallwxapi.mq
+ * @packageName: com.zcb.minimallcore.mq
  * @projectName: minimall
  * @description: kafka消费者
  * @date: 2020/5/20 16:04

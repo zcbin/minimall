@@ -1,8 +1,8 @@
-package com.zcb.minimallwxapi.mail.impl;
+package com.zcb.minimallcore.mail.impl;
 
 
+import com.zcb.minimallcore.mail.MailService;
 import com.zcb.minimallcore.util.ArrayUtil;
-import com.zcb.minimallwxapi.mail.MailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.FileSystemResource;
