@@ -8,7 +8,7 @@
       label-width="300px"
 
     >
-      <el-tabs tab-position="left" >
+      <el-tabs tab-position="left">
         <el-tab-pane label="首页配置">
           <el-form-item label="新品首发栏目商品显示数量" prop="litemall_wx_index_new">
             <el-input v-model="dataForm.litemall_wx_index_new"/>
@@ -45,42 +45,42 @@
 </template>
 
 <script>
-import { listWx, updateWx } from '@/api/config'
+  import {listWx, updateWx} from '@/api/config'
 
-export default {
-  name: 'ConfigWx',
-  data() {
-    return {
-      dataForm: { }
-    }
-  },
-  created() {
-    this.init()
-  },
-  methods: {
-    init: function() {
-      listWx().then(response => {
-        this.dataForm = response.data.data
-      })
+  export default {
+    name: 'ConfigWx',
+    data() {
+      return {
+        dataForm: {}
+      }
     },
-    cancel() {
+    created() {
       this.init()
     },
-    update() {
-      updateWx(this.dataForm)
-        .then(response => {
-          this.$notify.success({
-            title: '成功',
-            message: '小程序配置成功'
-          })
+    methods: {
+      init: function () {
+        listWx().then(response => {
+          this.dataForm = response.data.data
         })
-        .catch(response => {
-          this.$notify.error({
-            title: '失败',
-            message: response.data.errmsg
+      },
+      cancel() {
+        this.init()
+      },
+      update() {
+        updateWx(this.dataForm)
+          .then(response => {
+            this.$notify.success({
+              title: '成功',
+              message: '小程序配置成功'
+            })
           })
-        })
+          .catch(response => {
+            this.$notify.error({
+              title: '失败',
+              message: response.data.errmsg
+            })
+          })
+      }
     }
   }
-}
 </script>

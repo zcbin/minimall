@@ -130,7 +130,7 @@ public class GoodsSpecificationExample {
      * @mbg.generated
      * @project https://github.com/itfsw/mybatis-generator-plugin
      */
-    public GoodsSpecificationExample orderBy(String ... orderByClauses) {
+    public GoodsSpecificationExample orderBy(String... orderByClauses) {
         StringBuffer sb = new StringBuffer();
         for (int i = 0; i < orderByClauses.length; i++) {
             sb.append(orderByClauses[i]);

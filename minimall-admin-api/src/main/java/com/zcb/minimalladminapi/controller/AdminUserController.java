@@ -31,6 +31,7 @@ public class AdminUserController {
 
     /**
      * 列表
+     *
      * @param nickname
      * @param mobile
      * @param page
@@ -40,7 +41,7 @@ public class AdminUserController {
      * @return
      */
     @RequiresPermissions("admin:user:list")
-    @RequiresPermissionsDesc(menu={"用户管理" , "会员管理"}, button="查询")
+    @RequiresPermissionsDesc(menu = {"用户管理", "会员管理"}, button = "查询")
     @GetMapping(value = "/list")
     public JSONObject list(String nickname, String mobile,
                            @RequestParam(defaultValue = "1") Integer page,

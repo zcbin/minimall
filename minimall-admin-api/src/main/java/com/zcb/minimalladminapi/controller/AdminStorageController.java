@@ -37,6 +37,7 @@ public class AdminStorageController {
 
     /**
      * 列表
+     *
      * @param key
      * @param name
      * @param page
@@ -46,13 +47,13 @@ public class AdminStorageController {
      * @return
      */
     @RequiresPermissions("admin:storage:list")
-    @RequiresPermissionsDesc(menu={"系统管理" , "对象存储"}, button="查询")
+    @RequiresPermissionsDesc(menu = {"系统管理", "对象存储"}, button = "查询")
     @GetMapping("/list")
     public JSONObject list(String key, String name,
-                       @RequestParam(defaultValue = "1") Integer page,
-                       @RequestParam(defaultValue = "10") Integer limit,
-                       @Sort @RequestParam(defaultValue = "add_time") String sort,
-                       @Order @RequestParam(defaultValue = "desc") String order) {
+                           @RequestParam(defaultValue = "1") Integer page,
+                           @RequestParam(defaultValue = "10") Integer limit,
+                           @Sort @RequestParam(defaultValue = "add_time") String sort,
+                           @Order @RequestParam(defaultValue = "desc") String order) {
         List<Storage> storageList = iStorageService.query(key, name, page, limit, sort, order);
         long total = PageInfo.of(storageList).getTotal();
         Map<String, Object> data = new HashMap<>(2);
@@ -64,12 +65,13 @@ public class AdminStorageController {
 
     /**
      * 上传
+     *
      * @param file
      * @return
      * @throws IOException
      */
     @RequiresPermissions("admin:storage:create")
-    @RequiresPermissionsDesc(menu={"系统管理" , "对象存储"}, button="上传")
+    @RequiresPermissionsDesc(menu = {"系统管理", "对象存储"}, button = "上传")
     @PostMapping("/create")
     public JSONObject create(@RequestParam("file") MultipartFile file) throws IOException {
         String originalFilename = file.getOriginalFilename();
@@ -80,33 +82,35 @@ public class AdminStorageController {
 
     /**
      * 编辑
+     *
      * @param storage
      * @return
      * @throws IOException
      */
     @RequiresPermissions("admin:storage:update")
-    @RequiresPermissionsDesc(menu={"系统管理" , "对象存储"}, button="编辑")
+    @RequiresPermissionsDesc(menu = {"系统管理", "对象存储"}, button = "编辑")
     @PostMapping("/update")
     public JSONObject update(@RequestBody Storage storage) throws IOException {
-       Integer id = storage.getId();
-       if (id == null) {
-           return ResponseUtil.badArgument();
-       }
-       if (iStorageService.update(storage) == 0) {
-           return ResponseUtil.updatedDataFailed();
-       }
-       return ResponseUtil.ok(storage);
+        Integer id = storage.getId();
+        if (id == null) {
+            return ResponseUtil.badArgument();
+        }
+        if (iStorageService.update(storage) == 0) {
+            return ResponseUtil.updatedDataFailed();
+        }
+        return ResponseUtil.ok(storage);
 
     }
 
     /**
      * 删除
+     *
      * @param storage
      * @return
      * @throws IOException
      */
     @RequiresPermissions("admin:storage:delete")
-    @RequiresPermissionsDesc(menu={"系统管理" , "对象存储"}, button="删除")
+    @RequiresPermissionsDesc(menu = {"系统管理", "对象存储"}, button = "删除")
     @PostMapping("/delete")
     public JSONObject delete(@RequestBody Storage storage) throws IOException {
         String key = storage.getKey();

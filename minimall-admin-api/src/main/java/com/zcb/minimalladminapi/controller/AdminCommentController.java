@@ -43,6 +43,7 @@ public class AdminCommentController {
 
     /**
      * 列表
+     *
      * @param userId
      * @param goodId
      * @param page
@@ -52,7 +53,7 @@ public class AdminCommentController {
      * @return
      */
     @RequiresPermissions("admin:comment:list")
-    @RequiresPermissionsDesc(menu={"商品管理" , "评论管理"}, button="查询")
+    @RequiresPermissionsDesc(menu = {"商品管理", "评论管理"}, button = "查询")
     @GetMapping(value = "/list")
     public JSONObject list(Integer userId, Integer goodId,
                            @RequestParam(defaultValue = "1") Integer page,
@@ -75,7 +76,7 @@ public class AdminCommentController {
 
             Reply reply = replyService.queryBusiness(comment.getId(), "shop");
 
-            map.put("reply",reply == null ? "" : reply.getContent()); //回复
+            map.put("reply", reply == null ? "" : reply.getContent()); //回复
 
 
             commentsList.add(map);
@@ -88,11 +89,12 @@ public class AdminCommentController {
 
     /**
      * 删除
+     *
      * @param
      * @return
      */
     @RequiresPermissions("admin:comment:delete")
-    @RequiresPermissionsDesc(menu={"商品管理" , "评论管理"}, button="删除")
+    @RequiresPermissionsDesc(menu = {"商品管理", "评论管理"}, button = "删除")
     @PostMapping(value = "/delete")
     public JSONObject delete(@RequestBody String body) {
         Integer id = ParseJsonUtil.parseInteger(body, "id");
@@ -106,12 +108,13 @@ public class AdminCommentController {
 
     /**
      * 回复评论
+     *
      * @param id
      * @param body
      * @return
      */
     @RequiresPermissions("admin:comment:reply")
-    @RequiresPermissionsDesc(menu={"商品管理" , "评论管理"}, button="回复")
+    @RequiresPermissionsDesc(menu = {"商品管理", "评论管理"}, button = "回复")
     @PostMapping(value = "/reply")
     public JSONObject reply(@LoginUser Integer id, @RequestBody String body) {
         if (id == null) {

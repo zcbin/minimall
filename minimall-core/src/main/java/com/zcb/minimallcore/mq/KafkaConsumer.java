@@ -30,8 +30,10 @@ public class KafkaConsumer {
 
     @Autowired
     private TemplateEngine templateEngine;
+
     /**
      * 邮件通知
+     *
      * @param record
      */
     @KafkaListener(topics = {KafkaConfig.EMAIL_NOTIFICATION})
@@ -53,6 +55,7 @@ public class KafkaConsumer {
 //        }
 
     }
+
     @KafkaListener(topics = {KafkaConfig.TEST_TOPIC})
     public void emailHtml(ConsumerRecord<String, JSONObject> record) {
 

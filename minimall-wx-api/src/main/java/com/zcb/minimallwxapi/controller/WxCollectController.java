@@ -36,8 +36,10 @@ public class WxCollectController {
 
     @Autowired
     private ICollectService collectService;
+
     /**
      * 添加或取消收藏
+     *
      * @param body 商品id
      * @return
      */

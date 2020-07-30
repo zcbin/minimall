@@ -4,9 +4,12 @@ import cn.binarywang.wx.miniapp.api.WxMaService;
 import cn.binarywang.wx.miniapp.bean.WxMaJscode2SessionResult;
 import com.alibaba.fastjson.JSONObject;
 import com.zcb.minimallcore.advice.Log;
+import com.zcb.minimallcore.config.KafkaConfig;
+import com.zcb.minimallcore.mq.KafkaProducer;
 import com.zcb.minimallcore.util.IpUtil;
 import com.zcb.minimallcore.util.ParseJsonUtil;
 import com.zcb.minimallcore.util.ResponseUtil;
+import com.zcb.minimallcore.vo.EmailMessage;
 import com.zcb.minimalldb.domain.User;
 import com.zcb.minimalldb.service.IUserService;
 import com.zcb.minimalldb.service.impl.UserServiceImpl;
@@ -24,6 +27,7 @@ import org.apache.shiro.session.Session;
 import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -45,6 +49,9 @@ public class WxAuthController {
 
     @Autowired
     private IUserService userService;
+
+    @Autowired
+    private KafkaProducer kafkaProducer; //kafka生产者
 
     @PostMapping(value = "/login")
     public JSONObject login(@RequestBody String body, HttpServletRequest request) {
@@ -81,7 +88,7 @@ public class WxAuthController {
         String token = UserTokenManager.generateToken(user.getId());
         JSONObject jsonObject = new JSONObject();
         //生成token
-        jsonObject.put("errno","0");
+        jsonObject.put("errno", "0");
         jsonObject.put("token", token);
         jsonObject.put("userInfo", userInfo);
         LOGGER.info(jsonObject);
@@ -93,7 +100,8 @@ public class WxAuthController {
 
     /**
      * 微信登录接口
-     *  @param wxLoginInfo
+     *
+     * @param wxLoginInfo
      * @param request
      */
     @PostMapping(value = "/login_wx")
@@ -150,7 +158,7 @@ public class WxAuthController {
         String token = UserTokenManager.generateToken(user.getId());
         JSONObject jsonObject = new JSONObject();
         //生成token
-        jsonObject.put("errno","0");
+        jsonObject.put("errno", "0");
         jsonObject.put("token", token);
         jsonObject.put("userInfo", userInfo);
         LOGGER.info(jsonObject);
@@ -163,6 +171,7 @@ public class WxAuthController {
 
     /**
      * 注册
+     *
      * @param user
      * @return
      */
@@ -177,18 +186,33 @@ public class WxAuthController {
         }
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder(16);
         String password = encoder.encode(user.getPassword());
-        LOGGER.info("********* password==" + password);
+        // LOGGER.info("********* password==" + password);
         user.setPassword(password); //加密
         user.setUserLevel((byte) 0); //普通用户
         user.setStatus((byte) 0); //0可用 1禁用 2注销
         user.setUpdateTime(LocalDateTime.now());
         user.setAddTime(LocalDateTime.now());
         userService.add(user);
+        //注册成功通知
+        if (!StringUtils.isEmpty(user.getEmail())) {
+            EmailMessage emailMessage = new EmailMessage();
+            emailMessage.setReceiver(user.getEmail());
+            emailMessage.setSubject("注册成功");
+            emailMessage.setContent("恭喜用户：" + user.getUsername() + "，你已注册成功！");
+            emailMessage.setLocalDateTime(LocalDateTime.now());
+            emailMessage.setCc(new String[]{"zcbinvip@gmail.com"});
+            JSONObject jsonObject = new JSONObject();
+            jsonObject.put("data", emailMessage);
+            kafkaProducer.sendMessage(KafkaConfig.EMAIL_NOTIFICATION, jsonObject);
+
+        }
+
         return ResponseUtil.ok();
     }
 
     /**
      * 微信登出
+     *
      * @return
      */
     @RequestMapping("/logout")

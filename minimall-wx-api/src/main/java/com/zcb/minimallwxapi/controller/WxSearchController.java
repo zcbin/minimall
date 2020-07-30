@@ -37,9 +37,11 @@ public class WxSearchController {
 
     @Autowired
     private IKeywordService keywordService; //关键字服务
+
     /**
      * 热搜
      * 搜索历史记录
+     *
      * @param id
      * @return
      */
@@ -62,6 +64,7 @@ public class WxSearchController {
 
     /**
      * 检索推荐
+     *
      * @param keyword
      * @return
      */
@@ -76,6 +79,7 @@ public class WxSearchController {
         //List<String> hotKeyword = searchHistoryService.queryHotSearch(keyword, 6);
         return ResponseUtil.ok(keywordList);
     }
+
     //删除历史记录
     @RequestMapping(value = "/clearhistory")
     public JSONObject clearHistory(@LoginUser Integer id) {

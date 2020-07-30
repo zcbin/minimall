@@ -9,14 +9,15 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-@Document(indexName = "minimall_keyword",type = "minmall_keyword", shards = 1, replicas = 0)
+@Document(indexName = "minimall_keyword", type = "minmall_keyword", shards = 1, replicas = 0)
 public class Keyword {
-    public Keyword(){}
+    public Keyword() {
+    }
 
     @Id
     private Integer id;
 
-    @Field(analyzer = "ik_max_word",type = FieldType.Text)
+    @Field(analyzer = "ik_max_word", type = FieldType.Text)
     private String keyword;
 
     @Field(type = FieldType.Keyword)

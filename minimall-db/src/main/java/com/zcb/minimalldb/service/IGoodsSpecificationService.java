@@ -14,6 +14,7 @@ import java.util.List;
 public interface IGoodsSpecificationService {
     /**
      * 查询商品规格
+     *
      * @param gid
      * @return
      */
@@ -22,13 +23,18 @@ public interface IGoodsSpecificationService {
     Object getSpecificationVoList(Integer gid);
 
     int add(GoodsSpecification goodsSpecification);
+
     int update(GoodsSpecification goodsSpecification);
+
     int delete(Integer id);
+
     /**
      * 根据商品id删除
+     *
      * @param gid
      * @return
      */
     int deleteByGid(Integer gid);
+
     List<GoodsSpecification> findByGid(Integer gid);
 }

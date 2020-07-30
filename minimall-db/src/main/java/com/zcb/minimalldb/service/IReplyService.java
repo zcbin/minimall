@@ -14,20 +14,26 @@ import java.util.List;
 public interface IReplyService {
     /**
      * 所有回复
+     *
      * @param cid
      * @return
      */
     List<Reply> query(Integer cid);
 
     /**
-     *查询商家回复
-     * @param cid 评论id
+     * 查询商家回复
+     *
+     * @param cid       评论id
      * @param replyType 回复类型 shop
      * @return
      */
     Reply queryBusiness(Integer cid, String replyType);
+
     int add(Reply reply);
+
     int update(Reply reply);
+
     int delete(Integer id);
+
     int deleteByCommentId(Integer commentId);
 }

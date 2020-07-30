@@ -21,22 +21,25 @@ import java.util.Map;
 //@Configuration
 public class ShiroConfiguration {
     private static final Logger LOGGER = LogManager.getLogger();
+
     //将自己的验证方式加入容器
     @Bean
     public MyRealm myShiroRealm() {
         MyRealm myRealm = new MyRealm();
         return myRealm;
     }
+
     //会话管理
     @Bean
     public SessionManager sessionManager() {
         WxSessionManager wxSessionManager = new WxSessionManager();
-        return  wxSessionManager;
+        return wxSessionManager;
     }
     //权限管理，配置主要是Realm的管理认证
 
     /**
      * 安全管理员
+     *
      * @return
      */
     @Bean
@@ -55,9 +58,9 @@ public class ShiroConfiguration {
         LOGGER.info("config shiro filter");
         ShiroFilterFactoryBean shiroFilterFactoryBean = new ShiroFilterFactoryBean();
         shiroFilterFactoryBean.setSecurityManager(securityManager);
-        Map<String,String> map = new HashMap<String, String>();
+        Map<String, String> map = new HashMap<String, String>();
         //登出
-        map.put("/logout","logout");
+        map.put("/logout", "logout");
         //微信登录 不验证
         map.put("/wx/auth/login_wx", "anon");
         //主页不认证

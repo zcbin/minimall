@@ -20,6 +20,7 @@ import java.util.List;
 public class ReplyServiceImpl implements IReplyService {
     @Resource
     private ReplyMapper replyMapper;
+
     @Override
     public List<Reply> query(Integer cid) {
         ReplyExample example = new ReplyExample();

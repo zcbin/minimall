@@ -36,6 +36,7 @@ public class AdminAdminController {
 
     /**
      * 列表
+     *
      * @param username
      * @param page
      * @param limit
@@ -44,7 +45,7 @@ public class AdminAdminController {
      * @return
      */
     @RequiresPermissions("admin:admin:list")
-    @RequiresPermissionsDesc(menu={"系统管理" , "管理员管理"}, button="查询")
+    @RequiresPermissionsDesc(menu = {"系统管理", "管理员管理"}, button = "查询")
     @GetMapping(value = "/list")
     @Log(desc = "管理员列表", clazz = AdminAdminController.class)
     public JSONObject list(String username,
@@ -62,11 +63,12 @@ public class AdminAdminController {
 
     /**
      * 添加
+     *
      * @param admin
      * @return
      */
     @RequiresPermissions("admin:admin:create")
-    @RequiresPermissionsDesc(menu={"系统管理" , "管理员管理"}, button="添加")
+    @RequiresPermissionsDesc(menu = {"系统管理", "管理员管理"}, button = "添加")
     @PostMapping(value = "/create")
     @Log(desc = "管理员添加", clazz = AdminAdminController.class)
     public JSONObject create(@RequestBody Admin admin) {
@@ -76,7 +78,7 @@ public class AdminAdminController {
         if (count > 0) {
             return ResponseUtil.fail(1, "管理员已存在");
         }
-        Md5Hash md5Hash = new Md5Hash(password, username,1024);
+        Md5Hash md5Hash = new Md5Hash(password, username, 1024);
         admin.setPassword(String.valueOf(md5Hash));
 
         adminService.add(admin);
@@ -86,11 +88,12 @@ public class AdminAdminController {
 
     /**
      * 编辑
+     *
      * @param admin
      * @return
      */
     @RequiresPermissions("admin:admin:update")
-    @RequiresPermissionsDesc(menu={"系统管理" , "管理员管理"}, button="编辑")
+    @RequiresPermissionsDesc(menu = {"系统管理", "管理员管理"}, button = "编辑")
     @PostMapping(value = "/update")
     @Log(desc = "管理员编辑", clazz = AdminAdminController.class)
     public JSONObject update(@RequestBody Admin admin) {
@@ -113,11 +116,12 @@ public class AdminAdminController {
 
     /**
      * 删除
+     *
      * @param admin
      * @return
      */
     @RequiresPermissions("admin:admin:delete")
-    @RequiresPermissionsDesc(menu={"系统管理" , "管理员管理"}, button="删除")
+    @RequiresPermissionsDesc(menu = {"系统管理", "管理员管理"}, button = "删除")
     @PostMapping(value = "/delete")
     @Log(desc = "管理员删除", clazz = AdminAdminController.class)
     public JSONObject delete(@RequestBody Admin admin) {

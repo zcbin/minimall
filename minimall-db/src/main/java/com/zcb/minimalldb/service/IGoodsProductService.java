@@ -13,14 +13,16 @@ import java.util.List;
  */
 public interface IGoodsProductService {
     /**
-     *id查找
+     * id查找
+     *
      * @param id
      * @return
      */
     GoodsProduct findById(Integer id);
 
     /**
-     *gid查找
+     * gid查找
+     *
      * @param gid
      * @return
      */
@@ -28,18 +30,24 @@ public interface IGoodsProductService {
 
     /**
      * 总数
+     *
      * @return
      */
     Long count();
 
     int add(GoodsProduct goodsProduct);
+
     int update(GoodsProduct goodsProduct);
+
     int delete(Integer id);
+
     /**
      * 根据商品id删除
+     *
      * @param gid
      * @return
      */
     int deleteByGid(Integer gid);
+
     List<GoodsProduct> findByGid(Integer gid);
 }

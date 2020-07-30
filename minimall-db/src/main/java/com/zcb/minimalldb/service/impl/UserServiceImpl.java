@@ -77,17 +77,17 @@ public class UserServiceImpl implements IUserService {
     public List<User> query(String nickname, String mobile, String order, String sort, Integer offset, Integer limit) {
         UserExample example = new UserExample();
         UserExample.Criteria criteria = example.createCriteria();
-       if (!StringUtils.isEmpty(nickname)) {
-           criteria.andNicknameEqualTo(nickname);
-       }
-       if (!StringUtils.isEmpty(mobile)) {
-           criteria.andMobileEqualTo(mobile);
-       }
-       criteria.andDeletedEqualTo(false);
-       if (!StringUtils.isEmpty(sort) && !StringUtils.isEmpty(order)) {
-           example.setOrderByClause(sort + " " + order);
-       }
-       PageHelper.startPage(offset, limit);
-       return userMapper.selectByExample(example);
+        if (!StringUtils.isEmpty(nickname)) {
+            criteria.andNicknameEqualTo(nickname);
+        }
+        if (!StringUtils.isEmpty(mobile)) {
+            criteria.andMobileEqualTo(mobile);
+        }
+        criteria.andDeletedEqualTo(false);
+        if (!StringUtils.isEmpty(sort) && !StringUtils.isEmpty(order)) {
+            example.setOrderByClause(sort + " " + order);
+        }
+        PageHelper.startPage(offset, limit);
+        return userMapper.selectByExample(example);
     }
 }

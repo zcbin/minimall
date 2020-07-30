@@ -14,20 +14,25 @@ import java.util.List;
 public interface IGoodsAttributeService {
     /**
      * 查找某商品参数
+     *
      * @param gid
      * @return
      */
     List<GoodsAttribute> queryByGid(Integer gid);
 
     int add(GoodsAttribute goodsAttribute);
+
     int update(GoodsAttribute goodsAttribute);
+
     int delete(Integer id);
 
     /**
      * 根据商品id删除
+     *
      * @param gid
      * @return
      */
     int deleteByGid(Integer gid);
+
     List<GoodsAttribute> findByGid(Integer gid);
 }

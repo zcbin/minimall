@@ -64,8 +64,9 @@ public class MyRealm extends AuthorizingRealm {
         SimpleAuthenticationInfo info = new SimpleAuthenticationInfo(user.getUsername(), user.getPassword(), credentialsSalt, getName());
         return info;
     }
+
     public static void main(String[] args) {
-        Md5Hash md5Hash = new Md5Hash("123456","admin",1024);
+        Md5Hash md5Hash = new Md5Hash("123456", "admin", 1024);
         //Object md5Pwd = new SimpleHash("MD5","123456","084015124",1024);
         System.out.println(md5Hash);
     }

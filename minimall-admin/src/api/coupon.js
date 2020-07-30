@@ -20,7 +20,7 @@ export function readCoupon(id) {
   return request({
     url: '/coupon/read',
     method: 'get',
-    params: { id }
+    params: {id}
   })
 }
 

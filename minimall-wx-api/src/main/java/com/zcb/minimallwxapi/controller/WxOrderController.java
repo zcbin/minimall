@@ -23,87 +23,92 @@ import javax.validation.constraints.NotNull;
 @RequestMapping(value = "/wx/order")
 @RestController
 public class WxOrderController {
-		@Autowired
-		private WxOrderService wxOrderService;
+    @Autowired
+    private WxOrderService wxOrderService;
 
-		/**
-		 * 订单列表
-		 * @param userId
-		 * @param showType 订单状态 待付款，待收货，待评价。。。
-		 * @param page
-		 * @param limit
-		 * @param sort
-		 * @param order
-		 * @return
-		 */
-		@GetMapping(value = "/list")
-		public JSONObject list(@LoginUser Integer userId,
-		                       @RequestParam(defaultValue = "0") Integer showType,
-		                       @RequestParam(defaultValue = "1") Integer page,
-		                       @RequestParam(defaultValue = "10") Integer limit,
-		                       @Sort @RequestParam(defaultValue = "add_time") String sort,
-		                       @Order @RequestParam(defaultValue = "desc") String order) {
-				return wxOrderService.list(userId, showType, page, limit, sort, order);
-		}
+    /**
+     * 订单列表
+     *
+     * @param userId
+     * @param showType 订单状态 待付款，待收货，待评价。。。
+     * @param page
+     * @param limit
+     * @param sort
+     * @param order
+     * @return
+     */
+    @GetMapping(value = "/list")
+    public JSONObject list(@LoginUser Integer userId,
+                           @RequestParam(defaultValue = "0") Integer showType,
+                           @RequestParam(defaultValue = "1") Integer page,
+                           @RequestParam(defaultValue = "10") Integer limit,
+                           @Sort @RequestParam(defaultValue = "add_time") String sort,
+                           @Order @RequestParam(defaultValue = "desc") String order) {
+        return wxOrderService.list(userId, showType, page, limit, sort, order);
+    }
 
-		/**
-		 * 订单详情
-		 * @param userId
-		 * @param orderId
-		 * @return
-		 */
-		@GetMapping(value = "/detail")
-		public JSONObject detail(@LoginUser Integer userId, @NotNull Integer orderId) {
-				return wxOrderService.detail(userId, orderId);
-		}
+    /**
+     * 订单详情
+     *
+     * @param userId
+     * @param orderId
+     * @return
+     */
+    @GetMapping(value = "/detail")
+    public JSONObject detail(@LoginUser Integer userId, @NotNull Integer orderId) {
+        return wxOrderService.detail(userId, orderId);
+    }
 
-		/**
-		 * 取消订单
-		 * @param userId
-		 * @param body
-		 * @return
-		 */
-		@PostMapping(value = "/cancel")
-		@Log(desc = "取消订单")
-		public JSONObject cancel(@LoginUser Integer userId, @RequestBody String body) {
-				return wxOrderService.cancel(userId, body);
-		}
+    /**
+     * 取消订单
+     *
+     * @param userId
+     * @param body
+     * @return
+     */
+    @PostMapping(value = "/cancel")
+    @Log(desc = "取消订单")
+    public JSONObject cancel(@LoginUser Integer userId, @RequestBody String body) {
+        return wxOrderService.cancel(userId, body);
+    }
 
-		/**
-		 *
-		 * 提交订单
-		 * @param userId
-		 * @param body
-		 * @return
-		 */
-		@PostMapping(value = "/submit")
-		@Log(desc = "订单提交", clazz = WxOrderController.class)
-		public JSONObject submit(@LoginUser Integer userId, @RequestBody String body) {
-				return wxOrderService.submit(userId, body);
-		}
+    /**
+     * 提交订单
+     *
+     * @param userId
+     * @param body
+     * @return
+     */
+    @PostMapping(value = "/submit")
+    @Log(desc = "订单提交", clazz = WxOrderController.class)
+    public JSONObject submit(@LoginUser Integer userId, @RequestBody String body) {
+        return wxOrderService.submit(userId, body);
+    }
 
-		/**
-		 * 付款
-		 * 模拟付款成功
-		 * @param userId
-		 * @param body {orderId}
-		 * @param request
-		 * @return
-		 */
-		@PostMapping(value = "/prepay")
-		@Log(desc = "付款", clazz = WxOrderController.class)
-		public JSONObject prepay(@LoginUser Integer userId, @RequestBody String body, HttpServletRequest request) {
-				return wxOrderService.prepay(userId, body);
-		}
+    /**
+     * 付款
+     * 模拟付款成功
+     *
+     * @param userId
+     * @param body    {orderId}
+     * @param request
+     * @return
+     */
+    @PostMapping(value = "/prepay")
+    @Log(desc = "付款", clazz = WxOrderController.class)
+    public JSONObject prepay(@LoginUser Integer userId, @RequestBody String body, HttpServletRequest request) {
+        return wxOrderService.prepay(userId, body);
+    }
 
-		/**
-		 * 确认收货
-		 * @param userId
-		 * @param body
-		 * @return
-		 */
-		@PostMapping(value = "/confirm")
-		public JSONObject confirm(@LoginUser Integer userId, @RequestBody String body) {
-				return wxOrderService.confirm(userId, body);
-		}
+    /**
+     * 确认收货
+     *
+     * @param userId
+     * @param body
+     * @return
+     */
+    @PostMapping(value = "/confirm")
+    public JSONObject confirm(@LoginUser Integer userId, @RequestBody String body) {
+        return wxOrderService.confirm(userId, body);
+    }
 }

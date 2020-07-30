@@ -8,13 +8,13 @@
         <setting name="logImpl" value="LOG4J2"></setting>
 
         <!-- 使用jdbc的getGeneratedKeys获取数据库自增主键值 -->
-        <setting name="useGeneratedKeys" value="true" />
+        <setting name="useGeneratedKeys" value="true"/>
 
         <!-- 使用列别名替换列名 默认:true -->
         <!--  <setting name="useColumnLabel" value="true" />-->
 
         <!-- 开启驼峰命名转换:Table{create_time} -> Entity{createTime} -->
-        <setting name="mapUnderscoreToCamelCase" value="true" />
+        <setting name="mapUnderscoreToCamelCase" value="true"/>
     </settings>
 
 </configuration>

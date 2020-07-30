@@ -11,11 +11,13 @@ import org.springframework.util.StringUtils;
 import javax.annotation.Resource;
 import java.time.LocalDateTime;
 import java.util.List;
+
 @Service
 public class GoodsServiceImpl implements IGoodsService {
     Goods.Column[] columns = {Goods.Column.id, Goods.Column.name, Goods.Column.brief, Goods.Column.picUrl, Goods.Column.isHot, Goods.Column.isNew, Goods.Column.counterPrice, Goods.Column.retailPrice};
     @Resource
     private GoodsMapper goodsMapper;
+
     @Override
     public List<Goods> queryByHot(int offet, int limit) {
         GoodsExample example = new GoodsExample();

@@ -130,7 +130,7 @@ public class CommentExample {
      * @mbg.generated
      * @project https://github.com/itfsw/mybatis-generator-plugin
      */
-    public CommentExample orderBy(String ... orderByClauses) {
+    public CommentExample orderBy(String... orderByClauses) {
         StringBuffer sb = new StringBuffer();
         for (int i = 0; i < orderByClauses.length; i++) {
             sb.append(orderByClauses[i]);
@@ -232,7 +232,7 @@ public class CommentExample {
 
         public boolean isValid() {
             return criteria.size() > 0
-                || picUrlsCriteria.size() > 0;
+                    || picUrlsCriteria.size() > 0;
         }
 
         public List<Criterion> getAllCriteria() {

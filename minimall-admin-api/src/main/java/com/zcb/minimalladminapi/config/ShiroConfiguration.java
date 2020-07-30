@@ -23,6 +23,7 @@ public class ShiroConfiguration {
 
     /**
      * 加密方式
+     *
      * @return
      */
     @Bean
@@ -32,6 +33,7 @@ public class ShiroConfiguration {
         hashedCredentialsMatcher.setHashIterations(1024);
         return hashedCredentialsMatcher;
     }
+
     //将自己的验证方式加入容器
     @Bean
     public MyRealm myShiroRealm() {
@@ -40,17 +42,19 @@ public class ShiroConfiguration {
         LOGGER.info("md5");
         return myRealm;
     }
+
     //会话管理
     @Bean
     public SessionManager sessionManager() {
         AdminSessionManager adminSessionManager = new AdminSessionManager();
-        return  adminSessionManager;
+        return adminSessionManager;
     }
 
     //权限管理，配置主要是Realm的管理认证
 
     /**
      * 安全管理员
+     *
      * @return
      */
     @Bean
@@ -70,15 +74,15 @@ public class ShiroConfiguration {
         LOGGER.info("config shiro filter");
         ShiroFilterFactoryBean shiroFilterFactoryBean = new ShiroFilterFactoryBean();
         shiroFilterFactoryBean.setSecurityManager(securityManager);
-        Map<String,String> map = new HashMap<String, String>();
+        Map<String, String> map = new HashMap<String, String>();
         //登出
-        map.put("/logout","logout");
+        map.put("/logout", "logout");
         //登录 不验证
         map.put("/admin/auth/login", "anon");
 
 
         //对所有用户认证
-        map.put("/**","anon");
+        map.put("/**", "anon");
         shiroFilterFactoryBean.setFilterChainDefinitionMap(map);
         //登录
         shiroFilterFactoryBean.setLoginUrl("/unauth"); //跳转至登录接口

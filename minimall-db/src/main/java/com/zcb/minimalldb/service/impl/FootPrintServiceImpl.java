@@ -23,6 +23,7 @@ import java.util.List;
 public class FootPrintServiceImpl implements IFootPrintService {
     @Resource
     private FootprintMapper footprintMapper;
+
     @Override
     public List<Footprint> query(Integer userid, Integer goodid, Integer offset, Integer limit, String sort, String order) {
         FootprintExample example = new FootprintExample();

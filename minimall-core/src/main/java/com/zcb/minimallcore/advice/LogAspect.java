@@ -25,12 +25,14 @@ import java.util.Date;
 @Component
 public class LogAspect {
     private static final Logger LOGGER = LogManager.getLogger();
+
     //设置切入点：这里直接拦截被@RestController注解的类
     //@Pointcut("execution(* com.zcb.minimalladminapi.controller.*.*(..))")
     @Pointcut("@annotation(com.zcb.minimallcore.advice.Log)") //切入点
-    public void pointcut() {}
+    public void pointcut() {
+    }
 
-//    @Pointcut("execution(* com.zcb.minimalladminapi.controller.AdminAuthController(..))")
+    //    @Pointcut("execution(* com.zcb.minimalladminapi.controller.AdminAuthController(..))")
 //    public void p(){}
     /*@Before(value = "pointcut()")
     public void doBefore() {
@@ -40,7 +42,7 @@ public class LogAspect {
     public Object doAround(ProceedingJoinPoint joinPoint, Log log) throws Throwable {
         long beginTime = System.currentTimeMillis();//1、开始时间
         //利用RequestContextHolder获取requst对象
-        ServletRequestAttributes requestAttr = (ServletRequestAttributes)RequestContextHolder.currentRequestAttributes();
+        ServletRequestAttributes requestAttr = (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
         String uri = requestAttr.getRequest().getRequestURI();
         LOGGER.info("Log description：{}", log.desc());
         LOGGER.info("Start timing: {}, URI: {}", LocalDateTime.now(), uri);
@@ -51,7 +53,7 @@ public class LogAspect {
         LOGGER.info("Request method：{}.{}(), Request parameter: {}", log.clazz().getName(), methodName, Arrays.toString(args));
         Object obj = joinPoint.proceed();
         long endTime = System.currentTimeMillis();
-        LOGGER.info("End timing: {},  URI: {}, Time-consuming：{}ms", new Date(),uri,endTime - beginTime);
+        LOGGER.info("End timing: {},  URI: {}, Time-consuming：{}ms", new Date(), uri, endTime - beginTime);
 
         return obj;
     }

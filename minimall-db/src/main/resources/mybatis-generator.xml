@@ -56,17 +56,17 @@
         <javaClientGenerator type="XMLMAPPER" targetPackage="com.zcb.minimalldb.dao"
                              targetProject="src/main/java"/>
         <!--表名-->
-        <!--<table tableName="user">
+        <table tableName="user">
             <generatedKey column="id" sqlStatement="MySql" identity="true"/>
-        </table>-->
+        </table>
         <!--角色-->
-       <!-- <table tableName="role">
-            <generatedKey column="id" sqlStatement="MySql" identity="true"/>
-        </table>-->
+        <!-- <table tableName="role">
+             <generatedKey column="id" sqlStatement="MySql" identity="true"/>
+         </table>-->
         <!--权限-->
-       <!-- <table tableName="permission">
-            <generatedKey column="id" sqlStatement="MySql" identity="true"/>
-        </table>-->
+        <!-- <table tableName="permission">
+             <generatedKey column="id" sqlStatement="MySql" identity="true"/>
+         </table>-->
         <!--管理员-->
         <!--<table tableName="admin">
             <generatedKey column="id" sqlStatement="MySql" identity="true"/>
@@ -75,9 +75,9 @@
         </table>-->
         <!--商品表-->
         <!--<table tableName="goods">-->
-            <!--<generatedKey column="id" sqlStatement="MySql" identity="true"/>-->
-            <!--<columnOverride column="gallery" javaType="java.lang.String[]"-->
-                            <!--typeHandler="com.zcb.minimalldb.mybatis.JsonStringArrayTypeHandler"/>-->
+        <!--<generatedKey column="id" sqlStatement="MySql" identity="true"/>-->
+        <!--<columnOverride column="gallery" javaType="java.lang.String[]"-->
+        <!--typeHandler="com.zcb.minimalldb.mybatis.JsonStringArrayTypeHandler"/>-->
         <!--</table>-->
         <!--广告表-->
         <!--<table tableName="ad">
@@ -89,18 +89,18 @@
         </table>-->
         <!--收货地址表-->
         <!--<table tableName="address">-->
-            <!--<generatedKey column="id" sqlStatement="MySql" identity="true"/>-->
+        <!--<generatedKey column="id" sqlStatement="MySql" identity="true"/>-->
         <!--</table>-->
         <!--评论表-->
         <!--<table tableName="comment">-->
         <!--<generatedKey column="id" sqlStatement="MySql" identity="true"/>-->
         <!--<columnOverride column="pic_urls" javaType="java.lang.String[]"-->
-                        <!--typeHandler="com.zcb.minimalldb.mybatis.JsonStringArrayTypeHandler"/>-->
+        <!--typeHandler="com.zcb.minimalldb.mybatis.JsonStringArrayTypeHandler"/>-->
 
         <!--</table>-->
         <!--回复表-->
         <!--<table tableName="reply">-->
-            <!--<generatedKey column="id" sqlStatement="MySql" identity="true"/>-->
+        <!--<generatedKey column="id" sqlStatement="MySql" identity="true"/>-->
         <!--</table>-->
         <!--商品参数表-->
         <!--<table tableName="goods_attribute">-->
@@ -108,11 +108,11 @@
         <!--</table>-->
         <!--常见问题表-->
         <!--<table tableName="issue">-->
-            <!--<generatedKey column="id" sqlStatement="MySql" identity="true"/>-->
+        <!--<generatedKey column="id" sqlStatement="MySql" identity="true"/>-->
         <!--</table>-->
         <!--收藏表-->
         <!--<table tableName="collect">-->
-            <!--<generatedKey column="id" sqlStatement="MySql" identity="true"/>-->
+        <!--<generatedKey column="id" sqlStatement="MySql" identity="true"/>-->
         <!--</table>-->
         <!--购物车-->
         <!--<table tableName="cart">
@@ -122,30 +122,30 @@
         </table>-->
         <!--商品货品表-->
         <!--<table tableName="goods_product">-->
-            <!--<generatedKey column="id" sqlStatement="MySql" identity="true"/>-->
-            <!--<columnOverride column="specifications" javaType="java.lang.String[]"-->
-                        <!--typeHandler="com.zcb.minimalldb.mybatis.JsonStringArrayTypeHandler"/>-->
+        <!--<generatedKey column="id" sqlStatement="MySql" identity="true"/>-->
+        <!--<columnOverride column="specifications" javaType="java.lang.String[]"-->
+        <!--typeHandler="com.zcb.minimalldb.mybatis.JsonStringArrayTypeHandler"/>-->
         <!--</table>-->
         <!--商品规格-->
-       <!-- <table tableName="goods_specification">
-            <generatedKey column="id" sqlStatement="MySql" identity="true"/>
-        </table>-->
+        <!-- <table tableName="goods_specification">
+             <generatedKey column="id" sqlStatement="MySql" identity="true"/>
+         </table>-->
         <!--搜索历史-->
         <!--<table tableName="search_history">
             <generatedKey column="id" sqlStatement="MySql" identity="true"/>
         </table>-->
         <!--关键字表-->
-       <!-- <table tableName="keyword">
-            <generatedKey column="id" sqlStatement="MySql" identity="true"/>
-        </table>-->
+        <!-- <table tableName="keyword">
+             <generatedKey column="id" sqlStatement="MySql" identity="true"/>
+         </table>-->
         <!--操作日志-->
-       <!-- <table tableName="log">
-            <generatedKey column="id" sqlStatement="MySql" identity="true"/>
-        </table>-->
+        <!-- <table tableName="log">
+             <generatedKey column="id" sqlStatement="MySql" identity="true"/>
+         </table>-->
         <!--搜索历史-->
-       <!-- <table tableName="footprint">
-            <generatedKey column="id" sqlStatement="MySql" identity="true"/>
-        </table>-->
+        <!-- <table tableName="footprint">
+             <generatedKey column="id" sqlStatement="MySql" identity="true"/>
+         </table>-->
         <!--意见反馈表-->
         <!--<table tableName="feedback">
             <generatedKey column="id" sqlStatement="MySql" identity="true"/>
@@ -158,12 +158,12 @@
             <generatedKey column="id" sqlStatement="MySql" identity="true"/>
         </table>-->
         <!--行政区域-->
-       <!-- <table tableName="region">
-            <generatedKey column="id" sqlStatement="MySql" identity="true"/>
-        </table>-->
-        <table tableName="orders">
-            <generatedKey column="id" sqlStatement="MySql" identity="true"/>
-        </table>
+        <!-- <table tableName="region">
+             <generatedKey column="id" sqlStatement="MySql" identity="true"/>
+         </table>-->
+        <!--        <table tableName="orders">-->
+        <!--            <generatedKey column="id" sqlStatement="MySql" identity="true"/>-->
+        <!--        </table>-->
         <!--<table tableName="order_goods">
             <generatedKey column="id" sqlStatement="MySql" identity="true"/>
             <columnOverride column="specifications" javaType="java.lang.String[]"
@@ -172,5 +172,5 @@
                             typeHandler="com.zcb.minimalldb.mybatis.JsonIntegerArrayTypeHandler"/>
 
         </table>-->
-        </context>
-    </generatorConfiguration>
+    </context>
+</generatorConfiguration>

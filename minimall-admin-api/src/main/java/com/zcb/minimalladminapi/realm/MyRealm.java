@@ -39,6 +39,7 @@ public class MyRealm extends AuthorizingRealm {
 
     @Autowired
     private RedisUtil redisUtil;
+
     /**
      * 授权方法
      */
@@ -52,7 +53,7 @@ public class MyRealm extends AuthorizingRealm {
          * new SimpleAuthenticationInfo(user.getUserName(), user.getPassword(), getName())的第一个参数
          */
         String userName = (String) getAvailablePrincipal(principals);
-        System.out.println("-----------"+userName);
+        System.out.println("-----------" + userName);
 
         //从缓存中取数据，如果为空则从数据库取并加在到缓存
 
@@ -81,7 +82,7 @@ public class MyRealm extends AuthorizingRealm {
         //为当前用户赋予对应角色和权限
         info.setRoles(roles);
         info.setStringPermissions(permissions);
-        System.out.println("info=="+roles + "--"+permissions);
+        System.out.println("info==" + roles + "--" + permissions);
         return info;
     }
 
@@ -100,7 +101,7 @@ public class MyRealm extends AuthorizingRealm {
             throw new AccountException("密码不能为空");
         }
         //用户名
-       // String userName = (String) token.getPrincipal();
+        // String userName = (String) token.getPrincipal();
         //从数据库中查找用户信息
         List<Admin> adminList = adminService.findByUsername(userName);
         if (adminList == null || adminList.size() == 0) {
@@ -121,8 +122,9 @@ public class MyRealm extends AuthorizingRealm {
         redisUtil.set(userName, map, 3600); //有效期一小时
         return info;
     }
+
     public static void main(String[] args) {
-        Md5Hash md5Hash = new Md5Hash("123456","admin",1024);
+        Md5Hash md5Hash = new Md5Hash("123456", "admin", 1024);
         //Object md5Pwd = new SimpleHash("MD5","123456","084015124",1024);
         System.out.println(md5Hash);
     }

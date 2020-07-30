@@ -7,6 +7,7 @@ import java.util.List;
 public interface IAddressService {
     /**
      * 查询用户的所有收货地址
+     *
      * @param uid 用户id
      * @return
      */
@@ -14,6 +15,7 @@ public interface IAddressService {
 
     /**
      * 根据用户id和地址id查询
+     *
      * @param uid
      * @param id
      * @return
@@ -22,6 +24,7 @@ public interface IAddressService {
 
     /**
      * 新增收货地址
+     *
      * @param address
      * @return
      */
@@ -29,6 +32,7 @@ public interface IAddressService {
 
     /**
      * 修改收货地址
+     *
      * @param address
      * @return
      */
@@ -36,6 +40,7 @@ public interface IAddressService {
 
     /**
      * 删除收货地址
+     *
      * @param id
      * @return
      */
@@ -43,13 +48,13 @@ public interface IAddressService {
 
     /**
      * 查找默认地址
+     *
      * @param uid
      * @return
      */
     Address findDefault(Integer uid);
 
     /**
-     *
      * @param uid
      * @return
      */
@@ -57,6 +62,7 @@ public interface IAddressService {
 
     /**
      * 查询地址
+     *
      * @param userid
      * @param name
      * @param offset

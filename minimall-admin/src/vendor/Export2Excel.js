@@ -38,7 +38,8 @@ function generateArray(table) {
             c: outRow.length + colspan - 1
           }
         });
-      };
+      }
+      ;
 
       //Handle Value
       outRow.push(cellValue !== "" ? cellValue : null);
@@ -145,12 +146,12 @@ export function export_table_to_excel(id) {
 }
 
 export function export_json_to_excel({
-  header,
-  data,
-  filename,
-  autoWidth = true,
-  bookType=  'xlsx'
-} = {}) {
+                                       header,
+                                       data,
+                                       filename,
+                                       autoWidth = true,
+                                       bookType = 'xlsx'
+                                     } = {}) {
   /* original data */
   filename = filename || 'excel-list'
   data = [...data]
@@ -207,7 +208,7 @@ export function export_json_to_excel({
 
 function formatJson(jsonSource, jsonFillter) {
   return jsonSource.map(v => jsonFillter.map(j => {
-      return v[j]
+    return v[j]
   }))
 }
 

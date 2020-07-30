@@ -23,6 +23,7 @@ import java.util.List;
 public class LogServiceImpl implements ILogService {
     @Resource
     private LogMapper logMapper;
+
     @Override
     public int add(Log log) {
         log.setAddTime(LocalDateTime.now());

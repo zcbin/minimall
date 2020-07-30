@@ -38,19 +38,19 @@ const app = {
     }
   },
   actions: {
-    toggleSideBar({ commit }) {
+    toggleSideBar({commit}) {
       commit('TOGGLE_SIDEBAR')
     },
-    closeSideBar({ commit }, { withoutAnimation }) {
+    closeSideBar({commit}, {withoutAnimation}) {
       commit('CLOSE_SIDEBAR', withoutAnimation)
     },
-    toggleDevice({ commit }, device) {
+    toggleDevice({commit}, device) {
       commit('TOGGLE_DEVICE', device)
     },
-    setLanguage({ commit }, language) {
+    setLanguage({commit}, language) {
       commit('SET_LANGUAGE', language)
     },
-    setSize({ commit }, size) {
+    setSize({commit}, size) {
       commit('SET_SIZE', size)
     }
   }

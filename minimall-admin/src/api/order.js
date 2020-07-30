@@ -6,8 +6,8 @@ export function listOrder(query) {
     url: '/order/list',
     method: 'get',
     params: query,
-    paramsSerializer: function(params) {
-      return Qs.stringify(params, { arrayFormat: 'repeat' })
+    paramsSerializer: function (params) {
+      return Qs.stringify(params, {arrayFormat: 'repeat'})
     }
   })
 }
@@ -16,7 +16,7 @@ export function detailOrder(id) {
   return request({
     url: '/order/detail',
     method: 'get',
-    params: { id }
+    params: {id}
   })
 }
 

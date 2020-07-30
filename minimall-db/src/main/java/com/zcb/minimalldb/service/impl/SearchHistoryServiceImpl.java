@@ -28,6 +28,7 @@ import java.util.Map;
 public class SearchHistoryServiceImpl implements ISearchHistoryService {
     @Resource
     private SearchHistoryMapper searchHistoryMapper;
+
     @Override
     public List<String> queryHotSearch(String keyword, int limit) {
         LocalDateTime beginTime = LocalDateTime.now().minusHours(6);
@@ -51,7 +52,7 @@ public class SearchHistoryServiceImpl implements ISearchHistoryService {
     public List<SearchHistory> query(String keyword) {
         SearchHistoryExample example = new SearchHistoryExample();
         example.or().andKeywordLike(keyword + "%").andDeletedEqualTo(false);
-        PageHelper.startPage(1,5);
+        PageHelper.startPage(1, 5);
         return searchHistoryMapper.selectByExample(example);
     }
 

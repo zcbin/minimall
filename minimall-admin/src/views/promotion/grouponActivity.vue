@@ -4,7 +4,9 @@
     <!-- 查询和其他操作 -->
     <div class="filter-container">
       <el-input v-model="listQuery.goodsId" clearable class="filter-item" style="width: 200px;" placeholder="请输入商品编号"/>
-      <el-button v-permission="['GET /admin/groupon/listRecord']" class="filter-item" type="primary" icon="el-icon-search" @click="handleFilter">查找</el-button>
+      <el-button v-permission="['GET /admin/groupon/listRecord']" class="filter-item" type="primary"
+                 icon="el-icon-search" @click="handleFilter">查找
+      </el-button>
       <el-button
         :loading="downloadLoading"
         class="filter-item"
@@ -47,7 +49,8 @@
       <el-table-column align="center" label="结束时间" prop="rules.expireTime"/>
     </el-table>
 
-    <pagination v-show="total>0" :total="total" :page.sync="listQuery.page" :limit.sync="listQuery.limit" @pagination="getList" />
+    <pagination v-show="total>0" :total="total" :page.sync="listQuery.page" :limit.sync="listQuery.limit"
+                @pagination="getList"/>
 
     <el-tooltip placement="top" content="返回顶部">
       <back-to-top :visibility-height="100"/>
@@ -78,59 +81,59 @@
 </style>
 
 <script>
-import { listRecord } from '@/api/groupon'
-import BackToTop from '@/components/BackToTop'
-import Pagination from '@/components/Pagination' // Secondary package based on el-pagination
+  import {listRecord} from '@/api/groupon'
+  import BackToTop from '@/components/BackToTop'
+  import Pagination from '@/components/Pagination' // Secondary package based on el-pagination
 
-export default {
-  name: 'GrouponActivity',
-  components: { BackToTop, Pagination },
-  data() {
-    return {
-      list: [],
-      total: 0,
-      listLoading: true,
-      listQuery: {
-        page: 1,
-        limit: 20,
-        goodsId: undefined,
-        sort: 'add_time',
-        order: 'desc'
-      },
-      goodsDetail: '',
-      detailDialogVisible: false,
-      downloadLoading: false
-    }
-  },
-  created() {
-    this.getList()
-  },
-  methods: {
-    getList() {
-      this.listLoading = true
-      listRecord(this.listQuery).then(response => {
-        this.list = response.data.data.items
-        this.total = response.data.data.total
-        this.listLoading = false
-      }).catch(() => {
-        this.list = []
-        this.total = 0
-        this.listLoading = false
-      })
+  export default {
+    name: 'GrouponActivity',
+    components: {BackToTop, Pagination},
+    data() {
+      return {
+        list: [],
+        total: 0,
+        listLoading: true,
+        listQuery: {
+          page: 1,
+          limit: 20,
+          goodsId: undefined,
+          sort: 'add_time',
+          order: 'desc'
+        },
+        goodsDetail: '',
+        detailDialogVisible: false,
+        downloadLoading: false
+      }
     },
-    handleFilter() {
-      this.listQuery.page = 1
+    created() {
       this.getList()
     },
-    handleDownload() {
-      this.downloadLoading = true
+    methods: {
+      getList() {
+        this.listLoading = true
+        listRecord(this.listQuery).then(response => {
+          this.list = response.data.data.items
+          this.total = response.data.data.total
+          this.listLoading = false
+        }).catch(() => {
+          this.list = []
+          this.total = 0
+          this.listLoading = false
+        })
+      },
+      handleFilter() {
+        this.listQuery.page = 1
+        this.getList()
+      },
+      handleDownload() {
+        this.downloadLoading = true
         import('@/vendor/Export2Excel').then(excel => {
           const tHeader = ['商品ID', '名称', '首页主图', '折扣', '人数要求', '活动开始时间', '活动结束时间']
           const filterVal = ['id', 'name', 'pic_url', 'discount', 'discountMember', 'addTime', 'expireTime']
           excel.export_json_to_excel2(tHeader, this.list, filterVal, '商品信息')
           this.downloadLoading = false
         })
+      }
     }
   }
-}
 </script>

@@ -15,6 +15,7 @@ import org.springframework.context.annotation.Configuration;
 public class WxConfig {
     @Autowired
     private WxProperties properties;
+
     @Bean
     public WxMaConfig wxMaConfig() {
         WxMaInMemoryConfig config = new WxMaInMemoryConfig();

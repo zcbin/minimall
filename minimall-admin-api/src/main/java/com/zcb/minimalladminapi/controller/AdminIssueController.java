@@ -12,6 +12,7 @@ import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
+
 import javax.validation.constraints.NotNull;
 import java.util.HashMap;
 import java.util.List;
@@ -32,6 +33,7 @@ public class AdminIssueController {
 
     /**
      * 列表
+     *
      * @param question
      * @param page
      * @param limit
@@ -40,7 +42,7 @@ public class AdminIssueController {
      * @return
      */
     @RequiresPermissions("admin:issue:list")
-    @RequiresPermissionsDesc(menu={"商场管理" , "通用问题"}, button="查询")
+    @RequiresPermissionsDesc(menu = {"商场管理", "通用问题"}, button = "查询")
     @GetMapping(value = "/list")
     public JSONObject list(String question,
                            @RequestParam(defaultValue = "1") Integer page,
@@ -57,11 +59,12 @@ public class AdminIssueController {
 
     /**
      * 添加
+     *
      * @param issue
      * @return
      */
     @RequiresPermissions("admin:issue:create")
-    @RequiresPermissionsDesc(menu={"商场管理" , "通用问题"}, button="添加")
+    @RequiresPermissionsDesc(menu = {"商场管理", "通用问题"}, button = "添加")
     @PostMapping(value = "/create")
     public JSONObject create(@RequestBody Issue issue) {
         JSONObject json = this.validate(issue);
@@ -74,11 +77,12 @@ public class AdminIssueController {
 
     /**
      * 编辑
+     *
      * @param issue
      * @return
      */
     @RequiresPermissions("admin:issue:update")
-    @RequiresPermissionsDesc(menu={"商场管理" , "通用问题"}, button="编辑")
+    @RequiresPermissionsDesc(menu = {"商场管理", "通用问题"}, button = "编辑")
     @PostMapping(value = "/update")
     public JSONObject update(@RequestBody Issue issue) {
         JSONObject json = this.validate(issue);
@@ -93,11 +97,12 @@ public class AdminIssueController {
 
     /**
      * 删除
+     *
      * @param issue
      * @return
      */
     @RequiresPermissions("admin:issue:delete")
-    @RequiresPermissionsDesc(menu={"商场管理" , "通用问题"}, button="删除")
+    @RequiresPermissionsDesc(menu = {"商场管理", "通用问题"}, button = "删除")
     @PostMapping(value = "/delete")
     public JSONObject delete(@RequestBody Issue issue) {
         Integer id = issue.getId();
@@ -110,11 +115,12 @@ public class AdminIssueController {
 
     /**
      * 详情
+     *
      * @param id
      * @return
      */
     @RequiresPermissions("admin:issue:read")
-    @RequiresPermissionsDesc(menu={"商场管理" , "通用问题"}, button="详情")
+    @RequiresPermissionsDesc(menu = {"商场管理", "通用问题"}, button = "详情")
 
     @GetMapping(value = "/read")
     public JSONObject read(@NotNull Integer id) {

@@ -31,11 +31,12 @@ public class AdminCategoryController {
 
     /**
      * 列表
+     *
      * @return
      */
 
     @RequiresPermissions("admin:category:list")
-    @RequiresPermissionsDesc(menu={"商场管理" , "类目管理"}, button="查询")
+    @RequiresPermissionsDesc(menu = {"商场管理", "类目管理"}, button = "查询")
     @GetMapping(value = "/list")
     public JSONObject list() {
         List<CategoryVo> categoryVoList = new ArrayList<>();
@@ -74,11 +75,12 @@ public class AdminCategoryController {
 
     /**
      * 添加
+     *
      * @param category
      * @return
      */
     @RequiresPermissions("admin:category:create")
-    @RequiresPermissionsDesc(menu={"商场管理" , "类目管理"}, button="添加")
+    @RequiresPermissionsDesc(menu = {"商场管理", "类目管理"}, button = "添加")
     @PostMapping(value = "/create")
     public JSONObject add(@RequestBody Category category) {
         categoryService.add(category);
@@ -87,11 +89,12 @@ public class AdminCategoryController {
 
     /**
      * 编辑
+     *
      * @param category
      * @return
      */
     @RequiresPermissions("admin:category:update")
-    @RequiresPermissionsDesc(menu={"商场管理" , "类目管理"}, button="编辑")
+    @RequiresPermissionsDesc(menu = {"商场管理", "类目管理"}, button = "编辑")
     @PostMapping(value = "/update")
     public JSONObject update(@RequestBody Category category) {
         if (categoryService.update(category) == 0) {
@@ -102,11 +105,12 @@ public class AdminCategoryController {
 
     /**
      * 删除
+     *
      * @param category
      * @return
      */
     @RequiresPermissions("admin:category:delete")
-    @RequiresPermissionsDesc(menu={"商场管理" , "类目管理"}, button="删除")
+    @RequiresPermissionsDesc(menu = {"商场管理", "类目管理"}, button = "删除")
     @PostMapping(value = "/delete")
     public JSONObject delete(@RequestBody Category category) {
         Integer id = category.getId();
@@ -119,6 +123,7 @@ public class AdminCategoryController {
 
     /**
      * L1类目
+     *
      * @return
      */
     @RequiresPermissions("admin:category:list")

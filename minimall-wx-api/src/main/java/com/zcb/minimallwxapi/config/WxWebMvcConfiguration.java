@@ -15,12 +15,15 @@ import java.util.List;
 public class WxWebMvcConfiguration implements WebMvcConfigurer {
     @Autowired
     private LoginUserHandlerMethodArgumentResolver loginUserHandlerMethodArgumentResolver;
+
     @Override
     public void addArgumentResolvers(List<HandlerMethodArgumentResolver> argumentResolvers) {
         argumentResolvers.add(loginUserHandlerMethodArgumentResolver);
     }
+
     /**
      * 跨域
+     *
      * @param registry
      */
     @Override

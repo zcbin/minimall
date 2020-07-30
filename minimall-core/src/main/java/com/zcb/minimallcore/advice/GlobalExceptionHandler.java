@@ -17,15 +17,16 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 public class GlobalExceptionHandler {
 
 
-		@ExceptionHandler(value = UnauthenticatedException.class)
-		@Log(desc = "会话超时", clazz = GlobalExceptionHandler.class)
-		public JSONObject unauthenticatedException(UnauthenticatedException e) {
-				return ResponseUtil.unloginTimeOut();
-		}
-		@ExceptionHandler(value = Exception.class)
-		@Log(desc = "系统异常", clazz = GlobalExceptionHandler.class)
-		public JSONObject exception(Exception e) {
-				return ResponseUtil.serious();
-		}
+    @ExceptionHandler(value = UnauthenticatedException.class)
+    @Log(desc = "会话超时", clazz = GlobalExceptionHandler.class)
+    public JSONObject unauthenticatedException(UnauthenticatedException e) {
+        return ResponseUtil.unloginTimeOut();
+    }
+
+    @ExceptionHandler(value = Exception.class)
+    @Log(desc = "系统异常", clazz = GlobalExceptionHandler.class)
+    public JSONObject exception(Exception e) {
+        return ResponseUtil.serious();
+    }
 
 }

@@ -23,12 +23,13 @@ import java.util.List;
 public class KeywordServiceImpl implements IKeywordService {
     @Resource
     private KeywordMapper keywordMapper;
+
     @Override
     public List<Keyword> query(String keyword, int limit) {
         KeywordExample example = new KeywordExample();
         example.or().andKeywordLike(keyword + "%").andDeletedEqualTo(false);
         example.setOrderByClause("sort_order");
-        PageHelper.startPage(1,limit);
+        PageHelper.startPage(1, limit);
         return keywordMapper.selectByExample(example);
     }
 

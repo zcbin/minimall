@@ -41,10 +41,12 @@ public class WxCommentController {
 
     @Autowired
     private IReplyService replyService; //评价回复
+
     /**
      * 获取每类评论数量
+     *
      * @param type 类别
-     * @param gid 商品id
+     * @param gid  商品id
      * @return
      */
     @RequestMapping(value = "/count")
@@ -54,8 +56,9 @@ public class WxCommentController {
 
     /**
      * 评论列表
-     * @param type 评论类型 暂未使用
-     * @param gid 物品id
+     *
+     * @param type  评论类型 暂未使用
+     * @param gid   物品id
      * @param page
      * @param limit
      * @return
@@ -79,7 +82,7 @@ public class WxCommentController {
             map.put("avatar", user == null ? "" : user.getAvatar());
             Reply reply = replyService.queryBusiness(comment.getId(), "shop");
 
-            map.put("reply",reply == null ? "" : reply.getContent()); //回复
+            map.put("reply", reply == null ? "" : reply.getContent()); //回复
 
 
             commentsList.add(map);

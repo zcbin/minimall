@@ -26,43 +26,45 @@ import java.util.Map;
 @Configuration
 
 public class DruidConfig {
-		/**
-		 * 参考官网配置
-		 * https://github.com/alibaba/druid/tree/master/druid-spring-boot-starter
-		 * @return
-		 */
-		@Primary
-		@ConfigurationProperties(prefix = "spring.datasource.druid.one")
-		@Bean
-		public DataSource dataSourceOne() {
-				return  DruidDataSourceBuilder.create().build();
-		}
+    /**
+     * 参考官网配置
+     * https://github.com/alibaba/druid/tree/master/druid-spring-boot-starter
+     *
+     * @return
+     */
+    @Primary
+    @ConfigurationProperties(prefix = "spring.datasource.druid.one")
+    @Bean
+    public DataSource dataSourceOne() {
+        return DruidDataSourceBuilder.create().build();
+    }
 
-		@ConfigurationProperties(prefix = "spring.datasource.druid.two")
-		@Bean
-		public DataSource dataSourceTwo() {
-				return  DruidDataSourceBuilder.create().build();
-		}
-		@Bean
-		public ServletRegistrationBean druidStatViewServlet() {
-				ServletRegistrationBean servletRegistrationBean = new ServletRegistrationBean(new StatViewServlet(),"/druid/*");
-				Map<String, String> initParams = new HashMap<>();
-				//　可配的属性都在 StatViewServlet 和其父类下
-				initParams.put("loginUsername", "admin");
-				initParams.put("loginPassword", "123456");
-				servletRegistrationBean.setInitParameters(initParams);
-				return servletRegistrationBean;
-		}
+    @ConfigurationProperties(prefix = "spring.datasource.druid.two")
+    @Bean
+    public DataSource dataSourceTwo() {
+        return DruidDataSourceBuilder.create().build();
+    }
 
-		@Bean
-		public FilterRegistrationBean druidWebStatFilter() {
-				FilterRegistrationBean filterRegistrationBean = new FilterRegistrationBean(new WebStatFilter());
-				Map<String, String> initParams = new HashMap<>();
-				initParams.put("exclusions", "*.js,*.css,/druid/*");
-				filterRegistrationBean.setInitParameters(initParams);
-				filterRegistrationBean.setUrlPatterns(Arrays.asList("/*"));
-				return filterRegistrationBean;
-		}
+    @Bean
+    public ServletRegistrationBean druidStatViewServlet() {
+        ServletRegistrationBean servletRegistrationBean = new ServletRegistrationBean(new StatViewServlet(), "/druid/*");
+        Map<String, String> initParams = new HashMap<>();
+        //　可配的属性都在 StatViewServlet 和其父类下
+        initParams.put("loginUsername", "admin");
+        initParams.put("loginPassword", "123456");
+        servletRegistrationBean.setInitParameters(initParams);
+        return servletRegistrationBean;
+    }
+
+    @Bean
+    public FilterRegistrationBean druidWebStatFilter() {
+        FilterRegistrationBean filterRegistrationBean = new FilterRegistrationBean(new WebStatFilter());
+        Map<String, String> initParams = new HashMap<>();
+        initParams.put("exclusions", "*.js,*.css,/druid/*");
+        filterRegistrationBean.setInitParameters(initParams);
+        filterRegistrationBean.setUrlPatterns(Arrays.asList("/*"));
+        return filterRegistrationBean;
+    }
 
 
 }

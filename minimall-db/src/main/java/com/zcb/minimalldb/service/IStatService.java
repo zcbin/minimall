@@ -13,18 +13,21 @@ import java.util.Map;
 public interface IStatService {
     /**
      * 用户报表
+     *
      * @return
      */
     List<Map> statUser();
 
     /**
      * 订单
+     *
      * @return
      */
     List<Map> statOrder();
 
     /**
      * 商品
+     *
      * @return
      */
     List<Map> statGoods();

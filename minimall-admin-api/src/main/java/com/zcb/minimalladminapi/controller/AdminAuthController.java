@@ -56,7 +56,8 @@ public class AdminAuthController {
 
     /**
      * 登录
-     * @param body {username,password}
+     *
+     * @param body    {username,password}
      * @param request
      * @return {errno,errmsg}
      */
@@ -69,14 +70,14 @@ public class AdminAuthController {
         if (StringUtils.isEmpty(username) || StringUtils.isEmpty(password)) {
             return ResponseUtil.badArgument(); //用户名或密码为空
         }
-        Subject subject= SecurityUtils.getSubject();
+        Subject subject = SecurityUtils.getSubject();
         UsernamePasswordToken token = new UsernamePasswordToken(username, password);
-        try{
+        try {
             //为当前用户进行认证，授权
             subject.login(token);
             //登录成功则返回sessionId作为token给前端存储，
             //前端请求时将该token放入请求头，以此来鉴权
-            Session session=subject.getSession();
+            Session session = subject.getSession();
             Serializable sessionId = session.getId();
 
             logHelper.logAuthSucceed("登录");
@@ -101,10 +102,9 @@ public class AdminAuthController {
     }
 
 
-
-
     /**
      * 登出
+     *
      * @return
      */
     @RequestMapping("/logout")
@@ -119,6 +119,7 @@ public class AdminAuthController {
 
     /**
      * 登录用户信息
+     *
      * @param id userid
      * @return {name, avatar, roles, perms}
      */
@@ -126,12 +127,12 @@ public class AdminAuthController {
     @RequestMapping(value = "/info")
     @Log(desc = "用户信息", clazz = AdminAuthController.class)
     public JSONObject info(@LoginUser Integer id) {
-       if (id == null) {
-           return ResponseUtil.unloginTimeOut();
-       }
-       Admin admin = adminService.findById(id);
+        if (id == null) {
+            return ResponseUtil.unloginTimeOut();
+        }
+        Admin admin = adminService.findById(id);
 
-       // Admin admin = (Admin) currentUser.getPrincipal();
+        // Admin admin = (Admin) currentUser.getPrincipal();
 
         Map<String, Object> data = new HashMap<>();
         data.put("name", admin.getUsername());
@@ -147,6 +148,7 @@ public class AdminAuthController {
         LOGGER.info(data);
         return ResponseUtil.ok(data);
     }
+
     @Autowired
     private ApplicationContext context;
     private HashMap<String, String> systemPermissionsMap = null;

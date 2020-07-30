@@ -131,7 +131,7 @@ public class GoodsExample {
      * @mbg.generated
      * @project https://github.com/itfsw/mybatis-generator-plugin
      */
-    public GoodsExample orderBy(String ... orderByClauses) {
+    public GoodsExample orderBy(String... orderByClauses) {
         StringBuffer sb = new StringBuffer();
         for (int i = 0; i < orderByClauses.length; i++) {
             sb.append(orderByClauses[i]);
@@ -233,7 +233,7 @@ public class GoodsExample {
 
         public boolean isValid() {
             return criteria.size() > 0
-                || galleryCriteria.size() > 0;
+                    || galleryCriteria.size() > 0;
         }
 
         public List<Criterion> getAllCriteria() {

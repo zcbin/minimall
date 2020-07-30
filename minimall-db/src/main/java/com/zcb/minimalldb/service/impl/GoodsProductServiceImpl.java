@@ -21,6 +21,7 @@ import java.util.List;
 public class GoodsProductServiceImpl implements IGoodsProductService {
     @Resource
     private GoodsProductMapper goodsProductMapper;
+
     @Override
     public GoodsProduct findById(Integer id) {
         return goodsProductMapper.selectByPrimaryKey(id);

@@ -35,6 +35,7 @@ public class AdminLogController {
 
     /**
      * 列表
+     *
      * @param admin
      * @param page
      * @param limit
@@ -43,7 +44,7 @@ public class AdminLogController {
      * @return
      */
     @RequiresPermissions("admin:log:list")
-    @RequiresPermissionsDesc(menu={"系统管理" , "操作日志"}, button="查询")
+    @RequiresPermissionsDesc(menu = {"系统管理", "操作日志"}, button = "查询")
     @GetMapping(value = "/list")
     public JSONObject list(String admin,
                            @RequestParam(defaultValue = "1") Integer page,

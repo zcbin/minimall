@@ -16,17 +16,19 @@ public interface IPermissionService {
 
     /**
      * 查询角色权限
+     *
      * @param roleId
      * @return
      */
     Set<String> queryByRoleId(Integer roleId);
 
     /**
-     *
      * @param roleId
      * @return
      */
     boolean checkSuperPermission(Integer roleId);
+
     void deleteByRoleId(Integer roleId);
+
     void add(Permission permission);
 }

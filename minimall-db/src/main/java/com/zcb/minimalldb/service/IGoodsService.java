@@ -10,6 +10,7 @@ import java.util.List;
 public interface IGoodsService {
     /**
      * 获取热卖产品
+     *
      * @param offet
      * @param limit
      * @return
@@ -18,6 +19,7 @@ public interface IGoodsService {
 
     /**
      * 获取新上产品
+     *
      * @param offet
      * @param limit
      * @return
@@ -26,6 +28,7 @@ public interface IGoodsService {
 
     /**
      * 获取分类下的商品
+     *
      * @param catList
      * @param offet
      * @param limit
@@ -35,6 +38,7 @@ public interface IGoodsService {
 
     /**
      * 获取分类下产品
+     *
      * @param categoryId
      * @param offet
      * @param limit
@@ -44,6 +48,7 @@ public interface IGoodsService {
 
     /**
      * 根据商品id查找详细信息
+     *
      * @param id
      * @return
      */
@@ -51,12 +56,14 @@ public interface IGoodsService {
 
     /**
      * 商品总数
+     *
      * @return
      */
     Long goodsCount();
 
     /**
      * 搜索
+     *
      * @param keyword
      * @return
      */
@@ -64,6 +71,7 @@ public interface IGoodsService {
 
     /**
      * 列表
+     *
      * @param goodsSn
      * @param name
      * @param offset
@@ -75,6 +83,8 @@ public interface IGoodsService {
     List<Goods> query(String goodsSn, String name, Integer offset, Integer limit, String sort, String order);
 
     int add(Goods goods);
+
     int update(Goods goods);
+
     int delete(Integer id);
 }

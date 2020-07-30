@@ -24,6 +24,7 @@ import java.util.List;
 public class CommentServiceImpl implements ICommentService {
     @Resource
     private CommentMapper commentMapper;
+
     @Override
     public List<Comment> queryByGid(Integer gid, int offet, int limit) {
         CommentExample example = new CommentExample();

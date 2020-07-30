@@ -44,8 +44,9 @@ public class AdminGoodsController {
 
     /**
      * 列表
+     *
      * @param goodsSn 商品编号
-     * @param name 名称
+     * @param name    名称
      * @param page
      * @param limit
      * @param sort
@@ -70,6 +71,7 @@ public class AdminGoodsController {
 
     /**
      * 分类数据
+     *
      * @return
      */
     @GetMapping(value = "/catAndBrand")
@@ -100,6 +102,7 @@ public class AdminGoodsController {
 
     /**
      * 新增
+     *
      * @param goodsData
      * @return
      */
@@ -134,6 +137,7 @@ public class AdminGoodsController {
 
     /**
      * 更新
+     *
      * @param goodsData
      * @return
      */
@@ -168,6 +172,7 @@ public class AdminGoodsController {
 
     /**
      * 删除
+     *
      * @param goods
      * @return
      */
@@ -189,6 +194,7 @@ public class AdminGoodsController {
 
     /**
      * 详细信息
+     *
      * @param id
      * @return
      */
@@ -209,7 +215,7 @@ public class AdminGoodsController {
         Category category = categoryService.findById(categoryId);
         if (category != null) {
             Integer parentId = category.getPid();
-            categoryIds = new Integer[] {parentId, categoryId};
+            categoryIds = new Integer[]{parentId, categoryId};
         }
 
         Map<String, Object> data = new HashMap<>();

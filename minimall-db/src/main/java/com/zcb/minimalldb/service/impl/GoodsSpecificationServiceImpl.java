@@ -24,6 +24,7 @@ import java.util.Map;
 public class GoodsSpecificationServiceImpl implements IGoodsSpecificationService {
     @Resource
     private GoodsSpecificationMapper goodsSpecificationMapper;
+
     @Override
     public List<GoodsSpecification> queryByGid(Integer gid) {
         GoodsSpecificationExample example = new GoodsSpecificationExample();
