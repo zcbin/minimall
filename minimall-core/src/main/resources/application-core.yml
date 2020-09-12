@@ -43,7 +43,7 @@ spring:
     host: smtp.qq.com
     port: 465
     username: 1432419543@qq.com
-    password: iiufnsmeforwffed
+    password: **
     protocol: smtp
     test-connection: true
     default-encoding: UTF-8
