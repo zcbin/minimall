@@ -83,8 +83,8 @@
  * [mall](https://github.com/macrozheng/mall) 
     mall项目是一套电商系统 
 ---
-
-感谢[jetbrains](https://www.jetbrains.com/idea/ "jetbrains")提供的免费license
+![jetbrains](./file/pic/jetbrains.png)
+感谢[jetbrains](https://www.jetbrains.com/?from=minimall "jetbrains")提供的免费license
 
 ---
 ## 许可证
