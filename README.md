@@ -89,7 +89,6 @@
 ---
 ![jetbrains](./file/pic/jetbrains.png)
 感谢[jetbrains](https://www.jetbrains.com/?from=minimall "jetbrains")提供的免费license
-
 ---
 ## 许可证
 [GPL-3.0](https://github.com/zcbin/minimall/blob/master/LICENSE)
