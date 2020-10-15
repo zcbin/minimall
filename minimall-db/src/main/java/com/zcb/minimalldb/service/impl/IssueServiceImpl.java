@@ -24,6 +24,7 @@ import java.util.List;
 public class IssueServiceImpl implements IIssueService {
     @Resource
     private IssueMapper issueMapper;
+
     @Override
     public List<Issue> query(String question, int offset, int limit) {
         IssueExample example = new IssueExample();

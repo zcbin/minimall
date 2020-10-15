@@ -17,10 +17,11 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 public class MinimallAdminApiApplicationTests {
     @Autowired
     private RedisUtil redisUtil;
+
     @Test
-   public void redisTest() {
+    public void redisTest() {
         //RedisUtil redisUtil = new RedisUtil();
         redisUtil.set("key", "helloaa");
-   }
+    }
 
 }

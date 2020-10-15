@@ -14,6 +14,7 @@ import java.util.List;
 public interface IStorageService {
     /**
      * 列表
+     *
      * @param key
      * @param name
      * @param offset
@@ -23,20 +24,26 @@ public interface IStorageService {
      * @return
      */
     List<Storage> query(String key, String name, Integer offset, Integer limit, String sort, String order);
+
     /**
      * 保存
+     *
      * @param storage
      * @return
      */
     int add(Storage storage);
+
     int update(Storage storage);
+
     int delete(Integer id);
+
     int deleteByKey(String key);
+
     /**
-     *
      * @param key
      * @return
      */
     Storage findByKey(String key);
+
     Storage findById(Integer id);
 }

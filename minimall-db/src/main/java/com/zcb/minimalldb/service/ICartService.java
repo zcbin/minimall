@@ -14,6 +14,7 @@ import java.util.List;
 public interface ICartService {
     /**
      * 加入购物车
+     *
      * @param cart
      * @return
      */
@@ -21,6 +22,7 @@ public interface ICartService {
 
     /**
      * 更新购物车数量
+     *
      * @param cart
      * @return
      */
@@ -28,6 +30,7 @@ public interface ICartService {
 
     /**
      * 删除
+     *
      * @param productIds
      * @return
      */
@@ -35,12 +38,14 @@ public interface ICartService {
 
     /**
      * 购物车列表 参数待定
+     *
      * @return
      */
     List<Cart> query(Integer uid);
 
     /**
      * 查询购物车中是否已存在
+     *
      * @param gid
      * @param pid
      * @param uid
@@ -50,6 +55,7 @@ public interface ICartService {
 
     /**
      * 商品数量
+     *
      * @param uid
      * @return
      */
@@ -57,6 +63,7 @@ public interface ICartService {
 
     /**
      * 查询
+     *
      * @param id
      * @return
      */
@@ -64,6 +71,7 @@ public interface ICartService {
 
     /**
      * 更新选中状态
+     *
      * @param userId
      * @param productIds
      * @param checked
@@ -73,6 +81,7 @@ public interface ICartService {
 
     /**
      * 查询选中的购物车商品
+     *
      * @return
      */
     List<Cart> findByChecked();

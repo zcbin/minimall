@@ -18,26 +18,27 @@ import java.util.List;
  */
 @Service
 public class RegionServiceImpl implements IRegionService {
-		@Resource
-		private RegionMapper regionMapper;
-		@Override
-		public List<Region> getAll() {
-				RegionExample example = new RegionExample();
+    @Resource
+    private RegionMapper regionMapper;
 
-				return regionMapper.selectByExample(example);
-		}
+    @Override
+    public List<Region> getAll() {
+        RegionExample example = new RegionExample();
 
-		@Override
-		public List<Region> findByPid(Integer pid) {
-				RegionExample example = new RegionExample();
-				example.or().andPidEqualTo(pid);
-				return regionMapper.selectByExample(example);
-		}
+        return regionMapper.selectByExample(example);
+    }
 
-		@Override
-		public Region findById(Integer id) {
-				RegionExample example = new RegionExample();
-				example.or().andIdEqualTo(id);
-				return regionMapper.selectOneByExample(example);
-		}
+    @Override
+    public List<Region> findByPid(Integer pid) {
+        RegionExample example = new RegionExample();
+        example.or().andPidEqualTo(pid);
+        return regionMapper.selectByExample(example);
+    }
+
+    @Override
+    public Region findById(Integer id) {
+        RegionExample example = new RegionExample();
+        example.or().andIdEqualTo(id);
+        return regionMapper.selectOneByExample(example);
+    }
 }

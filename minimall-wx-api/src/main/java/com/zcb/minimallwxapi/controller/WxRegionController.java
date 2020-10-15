@@ -22,19 +22,19 @@ import java.util.List;
 @RequestMapping(value = "/wx/region")
 @RestController
 public class WxRegionController {
-		@Autowired
-		private IRegionService regionService;
+    @Autowired
+    private IRegionService regionService;
 
-		@GetMapping(value = "/list")
-		@Log(desc = "收货地址", clazz = WxRegionController.class)
-		public JSONObject getAll(Integer pid) {
-				if (pid == null) {
-						return ResponseUtil.badArgument();
-				}
-				List<Region> regionList = regionService.findByPid(pid);
+    @GetMapping(value = "/list")
+    @Log(desc = "收货地址", clazz = WxRegionController.class)
+    public JSONObject getAll(Integer pid) {
+        if (pid == null) {
+            return ResponseUtil.badArgument();
+        }
+        List<Region> regionList = regionService.findByPid(pid);
 
-				return ResponseUtil.ok(regionList);
+        return ResponseUtil.ok(regionList);
 
-		}
+    }
 
 }

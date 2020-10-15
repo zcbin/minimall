@@ -130,7 +130,7 @@ public class RoleExample {
      * @mbg.generated
      * @project https://github.com/itfsw/mybatis-generator-plugin
      */
-    public RoleExample orderBy(String ... orderByClauses) {
+    public RoleExample orderBy(String... orderByClauses) {
         StringBuffer sb = new StringBuffer();
         for (int i = 0; i < orderByClauses.length; i++) {
             sb.append(orderByClauses[i]);

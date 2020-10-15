@@ -32,6 +32,7 @@ public class AdminFeedbackController {
 
     /**
      * 列表
+     *
      * @param username
      * @param id
      * @param page
@@ -41,7 +42,7 @@ public class AdminFeedbackController {
      * @return
      */
     @RequiresPermissions("admin:feedback:list")
-    @RequiresPermissionsDesc(menu={"用户管理" , "意见反馈"}, button="查询")
+    @RequiresPermissionsDesc(menu = {"用户管理", "意见反馈"}, button = "查询")
     @GetMapping(value = "/list")
     public JSONObject list(String username, Integer id,
                            @RequestParam(defaultValue = "1") Integer page,

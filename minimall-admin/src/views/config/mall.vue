@@ -22,47 +22,47 @@
 </template>
 
 <script>
-import { listMall, updateMall } from '@/api/config'
+  import {listMall, updateMall} from '@/api/config'
 
-export default {
-  name: 'ConfigMail',
-  data() {
-    return {
-      dataForm: {
-        litemall_mall_name: '',
-        litemall_mall_address: '',
-        litemall_mall_phone: '',
-        litemall_mall_qq: ''
+  export default {
+    name: 'ConfigMail',
+    data() {
+      return {
+        dataForm: {
+          litemall_mall_name: '',
+          litemall_mall_address: '',
+          litemall_mall_phone: '',
+          litemall_mall_qq: ''
+        }
       }
-    }
-  },
-  created() {
-    this.init()
-  },
-  methods: {
-    init: function() {
-      listMall().then(response => {
-        this.dataForm = response.data.data
-      })
     },
-    cancel() {
+    created() {
       this.init()
     },
-    update() {
-      updateMall(this.dataForm)
-        .then(response => {
-          this.$notify.success({
-            title: '成功',
-            message: '商场配置成功'
-          })
+    methods: {
+      init: function () {
+        listMall().then(response => {
+          this.dataForm = response.data.data
         })
-        .catch(response => {
-          this.$notify.error({
-            title: '失败',
-            message: response.data.errmsg
+      },
+      cancel() {
+        this.init()
+      },
+      update() {
+        updateMall(this.dataForm)
+          .then(response => {
+            this.$notify.success({
+              title: '成功',
+              message: '商场配置成功'
+            })
           })
-        })
+          .catch(response => {
+            this.$notify.error({
+              title: '失败',
+              message: response.data.errmsg
+            })
+          })
+      }
     }
   }
-}
 </script>

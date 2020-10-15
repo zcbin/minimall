@@ -2,7 +2,7 @@
 const path = require('path')
 const utils = require('./utils')
 const config = require('../config')
-const { VueLoaderPlugin } = require('vue-loader')
+const {VueLoaderPlugin} = require('vue-loader')
 const vueLoaderConfig = require('./vue-loader.conf')
 
 function resolve(dir) {

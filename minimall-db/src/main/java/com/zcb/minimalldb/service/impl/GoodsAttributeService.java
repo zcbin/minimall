@@ -21,6 +21,7 @@ import java.util.List;
 public class GoodsAttributeService implements IGoodsAttributeService {
     @Resource
     private GoodsAttributeMapper goodsAttributeMapper;
+
     @Override
     public List<GoodsAttribute> queryByGid(Integer gid) {
         GoodsAttributeExample example = new GoodsAttributeExample();

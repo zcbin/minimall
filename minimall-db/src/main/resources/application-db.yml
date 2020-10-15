@@ -62,6 +62,6 @@ mybatis:
 # 打印sql语句
 logging:
   level:
-     com.zcb.minimalldb.dao: debug
+    com.zcb.minimalldb.dao: debug
 
 

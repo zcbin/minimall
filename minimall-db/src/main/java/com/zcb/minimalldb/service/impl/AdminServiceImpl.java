@@ -23,6 +23,7 @@ import java.util.List;
 public class AdminServiceImpl implements IAdminService {
     @Resource
     private AdminMapper adminMapper;
+
     @Override
     public Admin queryByUsername(String username) {
         AdminExample example = new AdminExample();

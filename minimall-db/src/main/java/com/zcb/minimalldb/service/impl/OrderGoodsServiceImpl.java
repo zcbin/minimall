@@ -19,30 +19,31 @@ import java.util.List;
  */
 @Service
 public class OrderGoodsServiceImpl implements IOrderGoodsService {
-		@Resource
-		private OrderGoodsMapper orderGoodsMapper;
-		@Override
-		public int add(OrderGoods orderGoods) {
-				orderGoods.setAddTime(LocalDateTime.now());
-				orderGoods.setUpdateTime(LocalDateTime.now());
-				return orderGoodsMapper.insertSelective(orderGoods);
-		}
+    @Resource
+    private OrderGoodsMapper orderGoodsMapper;
 
-		@Override
-		public int update(OrderGoods orderGoods) {
-				orderGoods.setUpdateTime(LocalDateTime.now());
-				return orderGoodsMapper.updateByPrimaryKey(orderGoods);
-		}
+    @Override
+    public int add(OrderGoods orderGoods) {
+        orderGoods.setAddTime(LocalDateTime.now());
+        orderGoods.setUpdateTime(LocalDateTime.now());
+        return orderGoodsMapper.insertSelective(orderGoods);
+    }
 
-		@Override
-		public int delete(Integer id) {
-				return orderGoodsMapper.logicalDeleteByPrimaryKey(id);
-		}
+    @Override
+    public int update(OrderGoods orderGoods) {
+        orderGoods.setUpdateTime(LocalDateTime.now());
+        return orderGoodsMapper.updateByPrimaryKey(orderGoods);
+    }
 
-		@Override
-		public List<OrderGoods> queryByOid(Integer oid) {
-				OrderGoodsExample example = new OrderGoodsExample();
-				example.or().andOrderIdEqualTo(oid).andDeletedEqualTo(false);
-				return orderGoodsMapper.selectByExample(example);
-		}
+    @Override
+    public int delete(Integer id) {
+        return orderGoodsMapper.logicalDeleteByPrimaryKey(id);
+    }
+
+    @Override
+    public List<OrderGoods> queryByOid(Integer oid) {
+        OrderGoodsExample example = new OrderGoodsExample();
+        example.or().andOrderIdEqualTo(oid).andDeletedEqualTo(false);
+        return orderGoodsMapper.selectByExample(example);
+    }
 }

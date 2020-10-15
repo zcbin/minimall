@@ -11,10 +11,12 @@ import org.springframework.util.StringUtils;
 import javax.annotation.Resource;
 import java.time.LocalDateTime;
 import java.util.List;
+
 @Service
 public class AdServiceImpl implements IAdService {
     @Resource
     private AdMapper adMapper;
+
     @Override
     public List<Ad> queryIndex() {
         AdExample example = new AdExample();

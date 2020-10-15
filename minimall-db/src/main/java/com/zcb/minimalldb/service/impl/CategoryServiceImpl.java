@@ -9,11 +9,13 @@ import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
 import java.time.LocalDateTime;
 import java.util.List;
+
 @Service
 public class CategoryServiceImpl implements ICategoryService {
     @Resource
     private CategoryMapper categoryMapper;
     private Category.Column[] CHANNEL = {Category.Column.id, Category.Column.name, Category.Column.desc, Category.Column.iconUrl};
+
     @Override
     public List<Category> queryChannel(String level) {
         CategoryExample example = new CategoryExample();

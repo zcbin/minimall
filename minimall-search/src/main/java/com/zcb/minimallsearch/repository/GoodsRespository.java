@@ -18,12 +18,13 @@ public interface GoodsRespository extends ElasticsearchRepository<Goods, Long> {
     /**
      * 搜索查询
      *
-     * @param name              商品名称
+     * @param name 商品名称
      * @param
-     * @param page              分页信息
+     * @param page 分页信息
      * @return
      */
     Page<Goods> findGoodsByNameMatches(String name, Pageable page);
+
     List<Goods> findGoodsByDeletedIs(Boolean delete);
 
     //List<Goods> findGoodsByName(String name, Pageable pageable);

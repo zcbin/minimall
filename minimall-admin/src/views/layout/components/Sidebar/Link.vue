@@ -1,4 +1,3 @@
-
 <template>
   <!-- eslint-disable vue/require-component-is-->
   <component v-bind="linkProps(to)">
@@ -7,33 +6,33 @@
 </template>
 
 <script>
-import { isExternal } from '@/utils'
+  import {isExternal} from '@/utils'
 
-export default {
-  props: {
-    to: {
-      type: String,
-      required: true
-    }
-  },
-  methods: {
-    isExternalLink(routePath) {
-      return isExternal(routePath)
-    },
-    linkProps(url) {
-      if (this.isExternalLink(url)) {
-        return {
-          is: 'a',
-          href: url,
-          target: '_blank',
-          rel: 'noopener'
-        }
+  export default {
+    props: {
+      to: {
+        type: String,
+        required: true
       }
-      return {
-        is: 'router-link',
-        to: url
+    },
+    methods: {
+      isExternalLink(routePath) {
+        return isExternal(routePath)
+      },
+      linkProps(url) {
+        if (this.isExternalLink(url)) {
+          return {
+            is: 'a',
+            href: url,
+            target: '_blank',
+            rel: 'noopener'
+          }
+        }
+        return {
+          is: 'router-link',
+          to: url
+        }
       }
     }
   }
-}
 </script>

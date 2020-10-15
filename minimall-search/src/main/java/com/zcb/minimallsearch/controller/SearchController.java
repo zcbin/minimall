@@ -40,6 +40,7 @@ public class SearchController {
 
 
     }
+
     @PostMapping(value = "/deleteAll")
     public JSONObject deleteAll() {
         goodsService.deleteAll();
@@ -48,11 +49,12 @@ public class SearchController {
         json.put("result", "deleteAll");
         return json;
     }
+
     @GetMapping(value = "/search")
     public JSONObject search(String name,
                              @RequestParam(defaultValue = "1") Integer page,
                              @RequestParam(defaultValue = "10") Integer limit) {
-        System.out.println("name="+name + ", page="+page + ", limit=" + limit);
+        System.out.println("name=" + name + ", page=" + page + ", limit=" + limit);
         Page<Goods> pageGoods = goodsService.search(name, page, limit);
         List<Goods> goodsList = pageGoods.getContent();
         JSONObject json = new JSONObject();
@@ -63,6 +65,7 @@ public class SearchController {
     /**
      * 小程序搜索接口
      * 检索推荐
+     *
      * @param keyword
      * @return
      */

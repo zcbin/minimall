@@ -10,7 +10,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @MapperScan("com.zcb.minimalldb.dao") //mybatis dao
 @EnableTransactionManagement //开启事务管理
 public class MinimallWxApiApplication {
-		//
+    //
     public static void main(String[] args) {
         SpringApplication.run(MinimallWxApiApplication.class, args);
     }

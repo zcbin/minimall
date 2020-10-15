@@ -13,6 +13,7 @@ import org.springframework.data.domain.Page;
  */
 public interface IKeywordService {
     void importAll();
+
     void deleteAll();
 
     Page<Keyword> search(String keyword, Integer pageNum, Integer pageSize);

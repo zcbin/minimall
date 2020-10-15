@@ -129,7 +129,7 @@ public class RegionExample {
      * @mbg.generated
      * @project https://github.com/itfsw/mybatis-generator-plugin
      */
-    public RegionExample orderBy(String ... orderByClauses) {
+    public RegionExample orderBy(String... orderByClauses) {
         StringBuffer sb = new StringBuffer();
         for (int i = 0; i < orderByClauses.length; i++) {
             sb.append(orderByClauses[i]);

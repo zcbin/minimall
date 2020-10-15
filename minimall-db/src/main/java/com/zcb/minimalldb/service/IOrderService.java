@@ -13,55 +13,62 @@ import java.util.List;
  */
 public interface IOrderService {
 
-		int add(Orders order);
+    int add(Orders order);
 
-		int update(Orders order);
+    int update(Orders order);
 
-		int delete(Integer id);
+    int delete(Integer id);
 
-		/**
-		 * 生成订单号
-		 * @param uid
-		 * @return
-		 */
-		String generateOrderSn(Integer uid);
+    /**
+     * 生成订单号
+     *
+     * @param uid
+     * @return
+     */
+    String generateOrderSn(Integer uid);
 
-		/**
-		 * 根据订单状态查询
-		 * @param userId
-		 * @param orderStatus
-		 * @param page
-		 * @param limit
-		 * @param sort
-		 * @param order
-		 * @return
-		 */
-		List<Orders> queryByOrderStatus(Integer userId, List<Short> orderStatus, Integer page, Integer limit, String sort, String order);
+    /**
+     * 根据订单状态查询
+     *
+     * @param userId
+     * @param orderStatus
+     * @param page
+     * @param limit
+     * @param sort
+     * @param order
+     * @return
+     */
+    List<Orders> queryByOrderStatus(Integer userId, List<Short> orderStatus, Integer page, Integer limit, String sort, String order);
 
-		/**
-		 * 订单详情
-		 * @param  userId
-		 * @param orderId
-		 * @return
-		 */
-		Orders findDetail(Integer userId, Integer orderId);
-		Orders findDetail(Integer orderId);
-		/**
-		 * 取消订单
-		 * @param orders
-		 * @return
-		 */
-		int updateWithOptimisticLocker(Orders orders);
+    /**
+     * 订单详情
+     *
+     * @param userId
+     * @param orderId
+     * @return
+     */
+    Orders findDetail(Integer userId, Integer orderId);
 
-		/**
-		 * 列表
-		 * @param userId
-		 * @param orderSn
-		 * @param page
-		 * @param limit
-		 * @param sort
-		 * @param order
-		 * @return
-		 */
-		List<Orders> list(Integer userId, String orderSn, List<Short> orderStatusArray, Integer page, Integer limit, String sort, String order);
+    Orders findDetail(Integer orderId);
+
+    /**
+     * 取消订单
+     *
+     * @param orders
+     * @return
+     */
+    int updateWithOptimisticLocker(Orders orders);
+
+    /**
+     * 列表
+     *
+     * @param userId
+     * @param orderSn
+     * @param page
+     * @param limit
+     * @param sort
+     * @param order
+     * @return
+     */
+    List<Orders> list(Integer userId, String orderSn, List<Short> orderStatusArray, Integer page, Integer limit, String sort, String order);
 }

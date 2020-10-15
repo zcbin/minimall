@@ -6,7 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 
 //@SpringBootApplication
-@SpringBootApplication(scanBasePackages = { "com.zcb.minimalldb","com.zcb.minimallcore"})
+@SpringBootApplication(scanBasePackages = {"com.zcb.minimalldb", "com.zcb.minimallcore"})
 //扫描注解元素
 @MapperScan("com.zcb.minimalldb.dao") //mybatis dao
 //@ComponentScan("com.zcb")

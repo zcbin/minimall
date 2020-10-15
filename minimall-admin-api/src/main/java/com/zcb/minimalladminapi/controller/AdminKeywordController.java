@@ -33,6 +33,7 @@ public class AdminKeywordController {
 
     /**
      * 列表
+     *
      * @param keyword
      * @param url
      * @param page
@@ -42,7 +43,7 @@ public class AdminKeywordController {
      * @return
      */
     @RequiresPermissions("admin:keyword:list")
-    @RequiresPermissionsDesc(menu={"商场管理" , "关键词"}, button="查询")
+    @RequiresPermissionsDesc(menu = {"商场管理", "关键词"}, button = "查询")
     @GetMapping(value = "/list")
     public JSONObject list(String keyword, String url,
                            @RequestParam(defaultValue = "1") Integer page,
@@ -59,11 +60,12 @@ public class AdminKeywordController {
 
     /**
      * 添加
+     *
      * @param keyword
      * @return
      */
     @RequiresPermissions("admin:keyword:create")
-    @RequiresPermissionsDesc(menu={"商场管理" , "关键词"}, button="添加")
+    @RequiresPermissionsDesc(menu = {"商场管理", "关键词"}, button = "添加")
     @PostMapping(value = "/create")
     public JSONObject create(@RequestBody Keyword keyword) {
         JSONObject json = this.validate(keyword);
@@ -76,11 +78,12 @@ public class AdminKeywordController {
 
     /**
      * 修改
+     *
      * @param keyword
      * @return
      */
     @RequiresPermissions("admin:keyword:update")
-    @RequiresPermissionsDesc(menu={"商场管理" , "关键词"}, button="编辑")
+    @RequiresPermissionsDesc(menu = {"商场管理", "关键词"}, button = "编辑")
     @PostMapping(value = "/update")
     public JSONObject update(@RequestBody Keyword keyword) {
         JSONObject json = this.validate(keyword);
@@ -95,11 +98,12 @@ public class AdminKeywordController {
 
     /**
      * 删除
+     *
      * @param keyword
      * @return
      */
     @RequiresPermissions("admin:keyword:delete")
-    @RequiresPermissionsDesc(menu={"商场管理" , "关键词"}, button="删除")
+    @RequiresPermissionsDesc(menu = {"商场管理", "关键词"}, button = "删除")
     @PostMapping(value = "/delete")
     public JSONObject delete(@RequestBody Keyword keyword) {
         Integer id = keyword.getId();
@@ -112,11 +116,12 @@ public class AdminKeywordController {
 
     /**
      * 详情
+     *
      * @param id
      * @return
      */
     @RequiresPermissions("admin:keyword:read")
-    @RequiresPermissionsDesc(menu={"商场管理" , "关键词"}, button="详情")
+    @RequiresPermissionsDesc(menu = {"商场管理", "关键词"}, button = "详情")
     @GetMapping(value = "/read")
     public JSONObject read(@NotNull Integer id) {
         Keyword keyword = keywordService.findById(id);

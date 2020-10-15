@@ -19,7 +19,7 @@ import java.util.Arrays;
  * @description
  * @date 2019/11/25 2:17 下午
  */
-@Document(indexName = "minimall",type = "goods", shards = 1, replicas = 0)
+@Document(indexName = "minimall", type = "goods", shards = 1, replicas = 0)
 public class Goods implements Serializable {
     public Goods() {
     }
@@ -30,7 +30,7 @@ public class Goods implements Serializable {
     @Field(type = FieldType.Keyword)
     private String goodsSn;
 
-    @Field(analyzer = "ik_max_word",type = FieldType.Text)
+    @Field(analyzer = "ik_max_word", type = FieldType.Text)
     private String name;
 
     @Field(type = FieldType.Integer)
@@ -41,7 +41,7 @@ public class Goods implements Serializable {
 
     @Field(type = FieldType.Keyword)
     private String[] gallery;
-    @Field(analyzer = "ik_max_word",type = FieldType.Text)
+    @Field(analyzer = "ik_max_word", type = FieldType.Text)
     private String keywords;
 
     @Field(type = FieldType.Keyword)

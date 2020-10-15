@@ -1,9 +1,8 @@
-
 import store from '@/store'
 
-export default{
+export default {
   inserted(el, binding, vnode) {
-    const { value } = binding
+    const {value} = binding
     const perms = store.getters && store.getters.perms
 
     if (value && value instanceof Array && value.length > 0) {

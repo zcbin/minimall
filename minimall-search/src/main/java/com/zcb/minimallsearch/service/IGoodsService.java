@@ -14,8 +14,11 @@ import java.util.List;
  */
 public interface IGoodsService {
     void deleteAll();
+
     Goods save(Goods goods);
+
     Long count();
+
     /**
      * 从数据库中导入所有商品到ES
      */
@@ -44,7 +47,7 @@ public interface IGoodsService {
     /**
      * 根据关键字搜索名称或者副标题复合查询
      */
-    Page<Goods> search(String keyword, Long brandId, Long productCategoryId, Integer pageNum, Integer pageSize,Integer sort);
+    Page<Goods> search(String keyword, Long brandId, Long productCategoryId, Integer pageNum, Integer pageSize, Integer sort);
 
     /**
      * 根据商品id推荐相关商品

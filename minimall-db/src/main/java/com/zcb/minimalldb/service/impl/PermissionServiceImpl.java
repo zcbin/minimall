@@ -24,6 +24,7 @@ import java.util.Set;
 public class PermissionServiceImpl implements IPermissionService {
     @Resource
     private PermissionMapper permissionMapper;
+
     @Override
     public Set<String> queryByIds(Integer[] roleIds) {
         Set<String> permissions = new HashSet<>();
@@ -38,10 +39,11 @@ public class PermissionServiceImpl implements IPermissionService {
         }
         return permissions;
     }
+
     @Override
     public Set<String> queryByRoleId(Integer roleId) {
         Set<String> permissions = new HashSet<String>();
-        if(roleId == null){
+        if (roleId == null) {
             return permissions;
         }
 
@@ -49,15 +51,16 @@ public class PermissionServiceImpl implements IPermissionService {
         example.or().andRoleIdEqualTo(roleId).andDeletedEqualTo(false);
         List<Permission> permissionList = permissionMapper.selectByExample(example);
 
-        for(Permission permission : permissionList){
+        for (Permission permission : permissionList) {
             permissions.add(permission.getPermission());
         }
 
         return permissions;
     }
+
     @Override
     public boolean checkSuperPermission(Integer roleId) {
-        if(roleId == null){
+        if (roleId == null) {
             return false;
         }
 
@@ -65,12 +68,14 @@ public class PermissionServiceImpl implements IPermissionService {
         example.or().andRoleIdEqualTo(roleId).andPermissionEqualTo("*").andDeletedEqualTo(false);
         return permissionMapper.countByExample(example) != 0;
     }
+
     @Override
     public void deleteByRoleId(Integer roleId) {
         PermissionExample example = new PermissionExample();
         example.or().andRoleIdEqualTo(roleId).andDeletedEqualTo(false);
         permissionMapper.logicalDeleteByExample(example);
     }
+
     @Override
     public void add(Permission permission) {
         permission.setAddTime(LocalDateTime.now());

@@ -9,13 +9,15 @@ import java.util.Set;
 public interface IUserService {
     /**
      * 根据wx openid查询用户
+     *
      * @param openId
      * @return
      */
-    User queryByOpenid(String openId) ;
+    User queryByOpenid(String openId);
 
     /**
      * 根据username查找用户
+     *
      * @param userName
      * @return
      */
@@ -23,18 +25,20 @@ public interface IUserService {
 
     /**
      * 根据用户名查找
+     *
      * @param userName
      * @return
      */
     List<User> queryByName(String userName);
+
     /**
      * 添加
+     *
      * @param user
      */
     void add(User user);
 
     /**
-     *
      * @param user
      * @return
      */
@@ -42,6 +46,7 @@ public interface IUserService {
 
     /**
      * 根据id查找
+     *
      * @param id
      * @return
      */
@@ -49,12 +54,14 @@ public interface IUserService {
 
     /**
      * 用户数量
+     *
      * @return
      */
     Long count();
 
     /**
      * 用户查找
+     *
      * @param nickname
      * @param mobile
      * @param order

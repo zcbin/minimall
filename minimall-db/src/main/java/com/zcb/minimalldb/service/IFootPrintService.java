@@ -15,6 +15,7 @@ import java.util.List;
 public interface IFootPrintService {
     /**
      * 浏览足迹列表
+     *
      * @param userid
      * @param goodid
      * @param offset

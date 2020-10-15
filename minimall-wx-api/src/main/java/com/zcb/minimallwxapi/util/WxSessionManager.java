@@ -30,7 +30,7 @@ public class WxSessionManager extends DefaultWebSessionManager {
             request.setAttribute(ShiroHttpServletRequest.REFERENCED_SESSION_ID_SOURCE, REFERENCED_SESSION_ID_SOURCE);
             request.setAttribute(ShiroHttpServletRequest.REFERENCED_SESSION_ID, id);
             request.setAttribute(ShiroHttpServletRequest.REFERENCED_SESSION_ID_IS_VALID, Boolean.TRUE);
-            System.out.println("Authorization="+id);
+            System.out.println("Authorization=" + id);
             return id;
         } else {
             //否则按默认规则从cookie取sessionId

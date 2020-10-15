@@ -19,6 +19,7 @@ import java.util.Map;
 public class StatServiceImpl implements IStatService {
     @Resource
     private StatMapper statMapper;
+
     @Override
     public List<Map> statUser() {
         return statMapper.statUser();

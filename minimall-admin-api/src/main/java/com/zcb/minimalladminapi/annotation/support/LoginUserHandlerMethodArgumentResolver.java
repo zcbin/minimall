@@ -21,6 +21,7 @@ import java.util.List;
 public class LoginUserHandlerMethodArgumentResolver implements HandlerMethodArgumentResolver {
     @Autowired
     private IAdminService adminService;
+
     @Override
     public boolean supportsParameter(MethodParameter parameter) {
         return parameter.getParameterType().isAssignableFrom(Integer.class) && parameter.hasParameterAnnotation(LoginUser.class);
@@ -28,6 +29,7 @@ public class LoginUserHandlerMethodArgumentResolver implements HandlerMethodArgu
 
     /**
      * 获取登录用户id
+     *
      * @param parameter
      * @param container
      * @param request

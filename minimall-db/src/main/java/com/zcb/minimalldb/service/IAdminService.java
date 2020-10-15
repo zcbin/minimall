@@ -14,6 +14,7 @@ import java.util.List;
 public interface IAdminService {
     /**
      * 查找管理员
+     *
      * @param username
      * @return
      */
@@ -21,12 +22,15 @@ public interface IAdminService {
 
     /**
      * 查找
+     *
      * @param id
      * @return
      */
     Admin findById(Integer id);
+
     /**
      * 查找
+     *
      * @param username
      * @return
      */
@@ -34,13 +38,16 @@ public interface IAdminService {
 
     /**
      * 统计,不包含id
+     *
      * @param id
      * @param username
      * @return
      */
     int findCountByUsername(Integer id, String username);
+
     /**
      * 查找
+     *
      * @param username
      * @param offset
      * @param limit
@@ -49,12 +56,14 @@ public interface IAdminService {
      * @return
      */
     List<Admin> query(String username, Integer offset, Integer limit, String sort, String order);
+
     /**
-     *
      * @param admin
      * @return
      */
     int add(Admin admin);
+
     int update(Admin admin);
+
     int delete(Integer id);
 }

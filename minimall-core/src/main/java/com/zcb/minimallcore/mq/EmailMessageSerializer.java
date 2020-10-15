@@ -16,6 +16,7 @@ import java.util.Map;
  */
 public class EmailMessageSerializer implements Serializer<EmailMessage> {
     private String encoding = "UTF-8";
+
     @Override
     public void configure(Map<String, ?> map, boolean b) {
 

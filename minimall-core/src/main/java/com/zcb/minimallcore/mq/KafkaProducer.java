@@ -22,6 +22,7 @@ public class KafkaProducer {
 
     @Resource
     private KafkaTemplate<String, Object> kafkaTemplate;
+
     public void sendMessage(String topic, JSONObject jsonObject) {
         if (topic == null) {
             LOGGER.info("topic为空,发送数据:" + jsonObject.toString());

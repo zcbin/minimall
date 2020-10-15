@@ -22,6 +22,7 @@ import java.util.List;
 public class CollectServiceImpl implements ICollectService {
     @Resource
     private CollectMapper collectMapper;
+
     @Override
     public int count(Integer uid, Integer gid) {
         CollectExample example = new CollectExample();

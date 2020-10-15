@@ -63,6 +63,7 @@ public class ResponseUtil {
         obj.put("data", data);
         return obj;
     }
+
     public static JSONObject okList(List list) {
         Map<String, Object> data = new HashMap<String, Object>();
         data.put("list", list);
@@ -102,6 +103,7 @@ public class ResponseUtil {
 
         return ok(data);
     }
+
     public static JSONObject fail() {
         JSONObject obj = new JSONObject();
         obj.put("errno", -1);
@@ -147,6 +149,7 @@ public class ResponseUtil {
     public static JSONObject unauthz() {
         return fail(506, "无操作权限");
     }
+
     public static JSONObject unloginTimeOut() {
         return fail(507, "会话超时，请重新登录");
     }

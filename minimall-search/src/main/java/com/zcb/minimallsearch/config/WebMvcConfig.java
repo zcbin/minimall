@@ -17,9 +17,9 @@ import java.util.List;
 public class WebMvcConfig implements WebMvcConfigurer {
 
 
-
     /**
      * 跨域
+     *
      * @param registry
      */
     @Override
@@ -31,6 +31,7 @@ public class WebMvcConfig implements WebMvcConfigurer {
 
     /**
      * 配置消息转换器
+     *
      * @param converters
      */
     @Override

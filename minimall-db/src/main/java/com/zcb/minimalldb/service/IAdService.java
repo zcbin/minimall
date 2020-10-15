@@ -10,12 +10,14 @@ import java.util.List;
 public interface IAdService {
     /**
      * 首页显示的广告
+     *
      * @return
      */
     List<Ad> queryIndex();
 
     /**
      * 广告列表
+     *
      * @param name
      * @param content
      * @param offset
@@ -25,7 +27,10 @@ public interface IAdService {
      * @return
      */
     List<Ad> query(String name, String content, Integer offset, Integer limit, String sort, String order);
+
     int add(Ad ad);
+
     int update(Ad ad);
+
     int delete(Integer id);
 }

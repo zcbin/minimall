@@ -130,7 +130,7 @@ public class SearchHistoryExample {
      * @mbg.generated
      * @project https://github.com/itfsw/mybatis-generator-plugin
      */
-    public SearchHistoryExample orderBy(String ... orderByClauses) {
+    public SearchHistoryExample orderBy(String... orderByClauses) {
         StringBuffer sb = new StringBuffer();
         for (int i = 0; i < orderByClauses.length; i++) {
             sb.append(orderByClauses[i]);

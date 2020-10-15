@@ -11,6 +11,7 @@ public interface ICommentService {
 
     /**
      * 查找某商品的评论
+     *
      * @param gid
      * @param offet
      * @param limit
@@ -20,6 +21,7 @@ public interface ICommentService {
 
     /**
      * 增加
+     *
      * @param comment
      * @return
      */
@@ -27,6 +29,7 @@ public interface ICommentService {
 
     /**
      * 修改
+     *
      * @param comment
      * @return
      */
@@ -34,6 +37,7 @@ public interface ICommentService {
 
     /**
      * 查询
+     *
      * @param id
      * @return
      */
@@ -41,6 +45,7 @@ public interface ICommentService {
 
     /**
      * 删除
+     *
      * @param id
      * @return
      */
@@ -48,8 +53,9 @@ public interface ICommentService {
 
     /**
      * 评论列表
-     * @param type 评论类型 全部，好评差评等
-     * @param gid 物品id
+     *
+     * @param type  评论类型 全部，好评差评等
+     * @param gid   物品id
      * @param offet
      * @param limit
      * @return
@@ -58,6 +64,7 @@ public interface ICommentService {
 
     /**
      * 评论列表
+     *
      * @param userId
      * @param goodId
      * @param offset

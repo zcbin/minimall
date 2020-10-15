@@ -14,6 +14,7 @@ import java.util.List;
 public interface IKeywordService {
     /**
      * 根据keyword模糊查询
+     *
      * @param keyword
      * @return
      */
@@ -22,7 +23,10 @@ public interface IKeywordService {
     List<Keyword> query(String keyword, String url, Integer offset, Integer limit, String sort, String order);
 
     int add(Keyword keyword);
+
     int update(Keyword keyword);
+
     int delete(Integer id);
+
     Keyword findById(Integer id);
 }

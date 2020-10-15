@@ -1,5 +1,5 @@
-import { loginByUsername, logout, getUserInfo } from '@/api/login'
-import { getToken, setToken, removeToken } from '@/utils/auth'
+import {loginByUsername, logout, getUserInfo} from '@/api/login'
+import {getToken, setToken, removeToken} from '@/utils/auth'
 
 const user = {
   state: {
@@ -49,7 +49,7 @@ const user = {
 
   actions: {
     // 用户名登录
-    LoginByUsername({ commit }, userInfo) {
+    LoginByUsername({commit}, userInfo) {
       const username = userInfo.username.trim()
       return new Promise((resolve, reject) => {
         loginByUsername(username, userInfo.password).then(response => {
@@ -64,7 +64,7 @@ const user = {
     },
 
     // 获取用户信息
-    GetUserInfo({ commit, state }) {
+    GetUserInfo({commit, state}) {
       return new Promise((resolve, reject) => {
         getUserInfo(state.token).then(response => {
           const data = response.data.data
@@ -101,7 +101,7 @@ const user = {
     // },
 
     // 登出
-    LogOut({ commit, state }) {
+    LogOut({commit, state}) {
       return new Promise((resolve, reject) => {
         logout(state.token).then(() => {
           commit('SET_TOKEN', '')
@@ -116,7 +116,7 @@ const user = {
     },
 
     // 前端 登出
-    FedLogOut({ commit }) {
+    FedLogOut({commit}) {
       return new Promise(resolve => {
         commit('SET_TOKEN', '')
         removeToken()
@@ -125,7 +125,7 @@ const user = {
     },
 
     // 动态修改权限
-    ChangeRoles({ commit, dispatch }, role) {
+    ChangeRoles({commit, dispatch}, role) {
       return new Promise(resolve => {
         commit('SET_TOKEN', role)
         setToken(role)

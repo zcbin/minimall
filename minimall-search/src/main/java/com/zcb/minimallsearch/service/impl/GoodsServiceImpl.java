@@ -59,7 +59,7 @@ public class GoodsServiceImpl implements IGoodsService {
         int result = 0;
         while (iterator.hasNext()) {
             iterator.next();
-            result ++;
+            result++;
         }
 
 

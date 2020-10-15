@@ -26,6 +26,7 @@ import java.util.Set;
 public class RolesServiceImpl implements IRolesService {
     @Resource
     private RoleMapper roleMapper;
+
     @Override
     public Set<String> queryByIds(Integer[] roleIds) {
         Set<String> roles = new HashSet<>();

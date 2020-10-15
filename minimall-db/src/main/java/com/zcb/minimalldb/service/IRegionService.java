@@ -12,23 +12,26 @@ import java.util.List;
  * @date 2019/9/7 16:23
  */
 public interface IRegionService {
-		/**
-		 * 查询所有
-		 * @return
-		 */
-		List<Region> getAll();
+    /**
+     * 查询所有
+     *
+     * @return
+     */
+    List<Region> getAll();
 
-		/**
-		 * 查询父id
-		 * @param pid
-		 * @return
-		 */
-		List<Region> findByPid(Integer pid);
+    /**
+     * 查询父id
+     *
+     * @param pid
+     * @return
+     */
+    List<Region> findByPid(Integer pid);
 
-		/**
-		 * 查询id
-		 * @param id
-		 * @return
-		 */
-		Region findById(Integer id);
+    /**
+     * 查询id
+     *
+     * @param id
+     * @return
+     */
+    Region findById(Integer id);
 }

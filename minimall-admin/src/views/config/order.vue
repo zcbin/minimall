@@ -28,49 +28,50 @@
 </template>
 
 <script>
-import { listOrder, updateOrder } from '@/api/config'
+  import {listOrder, updateOrder} from '@/api/config'
 
-export default {
-  name: 'ConfigOrder',
-  data() {
-    return {
-      dataForm: {}
-    }
-  },
-  created() {
-    this.init()
-  },
-  methods: {
-    init: function() {
-      listOrder().then(response => {
-        this.dataForm = response.data.data
-      })
+  export default {
+    name: 'ConfigOrder',
+    data() {
+      return {
+        dataForm: {}
+      }
     },
-    cancel() {
+    created() {
       this.init()
     },
-    update() {
-      updateOrder(this.dataForm)
-        .then(response => {
-          this.$notify.success({
-            title: '成功',
-            message: '订单参数配置成功'
-          })
+    methods: {
+      init: function () {
+        listOrder().then(response => {
+          this.dataForm = response.data.data
         })
-        .catch(response => {
-          this.$notify.error({
-            title: '失败',
-            message: response.data.errmsg
+      },
+      cancel() {
+        this.init()
+      },
+      update() {
+        updateOrder(this.dataForm)
+          .then(response => {
+            this.$notify.success({
+              title: '成功',
+              message: '订单参数配置成功'
+            })
           })
-        })
+          .catch(response => {
+            this.$notify.error({
+              title: '失败',
+              message: response.data.errmsg
+            })
+          })
+      }
     }
   }
-}
 </script>
 <style scoped>
   .input-width {
     width: 50%;
   }
+
   .info {
     margin-left: 15px;
   }

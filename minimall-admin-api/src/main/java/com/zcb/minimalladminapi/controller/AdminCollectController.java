@@ -31,6 +31,7 @@ public class AdminCollectController {
 
     /**
      * 列表
+     *
      * @param userId
      * @param goodId
      * @param page
@@ -40,7 +41,7 @@ public class AdminCollectController {
      * @return
      */
     @RequiresPermissions("admin:collect:list")
-    @RequiresPermissionsDesc(menu={"用户管理" , "用户收藏"}, button="查询")
+    @RequiresPermissionsDesc(menu = {"用户管理", "用户收藏"}, button = "查询")
     @GetMapping(value = "/list")
     public JSONObject list(Integer userId, Integer goodId,
                            @RequestParam(defaultValue = "1") Integer page,

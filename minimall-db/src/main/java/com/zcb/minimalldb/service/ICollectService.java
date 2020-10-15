@@ -14,6 +14,7 @@ import java.util.List;
 public interface ICollectService {
     /**
      * 有无收藏
+     *
      * @param uid userid
      * @param gid goodid
      * @return
@@ -22,6 +23,7 @@ public interface ICollectService {
 
     /**
      * 查询收藏
+     *
      * @param uid
      * @param gid
      * @return
@@ -30,6 +32,7 @@ public interface ICollectService {
 
     /**
      * 加入收藏
+     *
      * @param collect
      * @return
      */
@@ -37,6 +40,7 @@ public interface ICollectService {
 
     /**
      * 取消收藏
+     *
      * @param id
      * @return
      */
@@ -44,6 +48,7 @@ public interface ICollectService {
 
     /**
      * 查询
+     *
      * @param userId
      * @param goodId
      * @param offset

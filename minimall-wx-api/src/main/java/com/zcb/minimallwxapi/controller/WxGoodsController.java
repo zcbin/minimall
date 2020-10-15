@@ -58,8 +58,10 @@ public class WxGoodsController {
 
     @Autowired
     private ISearchHistoryService searchHistoryService; //搜索记录
+
     /**
      * 商品详情
+     *
      * @param id 物品id
      * @return
      */
@@ -73,7 +75,7 @@ public class WxGoodsController {
         //商品参数
         Callable<List> goodsAttributeCallable = () -> goodsAttributeService.queryByGid(id);
         //常见问题
-        Callable<List> issueCallable = () -> issueService.query(null,1,6);
+        Callable<List> issueCallable = () -> issueService.query(null, 1, 6);
         //商品规格
         Callable<Object> objectCallable = () -> goodsSpecificationService.getSpecificationVoList(id);
         //商品规格对应的价格和数量
@@ -81,7 +83,7 @@ public class WxGoodsController {
 
         //评论
         Callable<Map> commentsCallable = () -> {
-            List<Comment> comments = commentService.queryByGid(id, 0 , 2);
+            List<Comment> comments = commentService.queryByGid(id, 0, 2);
             List<Map<String, Object>> commentsList = new ArrayList<>(comments.size());
             long count = PageInfo.of(comments).getTotal();
             for (Comment comment : comments) {
@@ -139,6 +141,7 @@ public class WxGoodsController {
 
     /**
      * 看了又看
+     *
      * @param id 商品id
      * @return
      */
@@ -157,6 +160,7 @@ public class WxGoodsController {
 
     /**
      * 商品总数
+     *
      * @return
      */
     @RequestMapping(value = "/count")
@@ -169,6 +173,7 @@ public class WxGoodsController {
 
     /**
      * 分类目录详情
+     *
      * @param id 目录id
      * @return
      */
@@ -177,7 +182,7 @@ public class WxGoodsController {
         Category category = categoryService.findById(id);
         Category parentCategory = new Category();
         List<Category> childCategory = new ArrayList<>();
-        if (category.getPid() == 0 ) { //父目录进来
+        if (category.getPid() == 0) { //父目录进来
             parentCategory = category;
             childCategory = categoryService.queryByPid(category.getId());
             category = childCategory.size() > 0 ? childCategory.get(0) : category;
@@ -194,7 +199,8 @@ public class WxGoodsController {
 
     /**
      * 分类下的商品
-     * @param cid 类目id
+     *
+     * @param cid   类目id
      * @param page
      * @param limit
      * @return
@@ -211,6 +217,7 @@ public class WxGoodsController {
 
     /**
      * 热门搜索
+     *
      * @return
      */
     @RequestMapping(value = "/hotSearch")
@@ -230,6 +237,7 @@ public class WxGoodsController {
 
     /**
      * 搜索
+     *
      * @param id
      * @return
      */

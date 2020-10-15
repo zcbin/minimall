@@ -18,20 +18,26 @@ public class ParseJsonUtil {
         JSONObject json = JSONObject.parseObject(body);
         return json.getInteger(field);
     }
+
     public static BigDecimal parseBigDecimal(String body, String field) {
         JSONObject json = JSONObject.parseObject(body);
         return json.getBigDecimal(field);
     }
+
     public static String parseString(String body, String field) {
         JSONObject json = JSONObject.parseObject(body);
         return json.getString(field);
     }
+
     public static List<Integer> parseListInteger(String body, String field) {
         JSONObject json = JSONObject.parseObject(body);
-        return json.getObject(field, new TypeReference<List<Integer>>(){});
+        return json.getObject(field, new TypeReference<List<Integer>>() {
+        });
     }
+
     public static List<String> parseStringList(String body, String field) {
         JSONObject json = JSONObject.parseObject(body);
-        return json.getObject(field, new TypeReference<List<String>>(){});
+        return json.getObject(field, new TypeReference<List<String>>() {
+        });
     }
 }

@@ -30,8 +30,10 @@ public class WxCatalogController {
 
     @Autowired
     private ICategoryService categoryService; //分类服务
+
     /**
-     *分类
+     * 分类
+     *
      * @param id
      * @return
      */
@@ -63,6 +65,7 @@ public class WxCatalogController {
 
     /**
      * 二级分类
+     *
      * @param id
      * @return
      */

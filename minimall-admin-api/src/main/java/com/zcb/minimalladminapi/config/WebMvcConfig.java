@@ -20,6 +20,7 @@ public class WebMvcConfig implements WebMvcConfigurer {
 
     @Autowired
     private LoginUserHandlerMethodArgumentResolver loginUserHandlerMethodArgumentResolver;
+
     @Override
     public void addArgumentResolvers(List<HandlerMethodArgumentResolver> argumentResolvers) {
         argumentResolvers.add(loginUserHandlerMethodArgumentResolver);
@@ -27,6 +28,7 @@ public class WebMvcConfig implements WebMvcConfigurer {
 
     /**
      * 跨域
+     *
      * @param registry
      */
     @Override
@@ -38,6 +40,7 @@ public class WebMvcConfig implements WebMvcConfigurer {
 
     /**
      * 配置消息转换器
+     *
      * @param converters
      */
     @Override

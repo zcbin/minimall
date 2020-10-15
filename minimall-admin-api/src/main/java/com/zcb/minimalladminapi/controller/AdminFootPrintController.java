@@ -32,6 +32,7 @@ public class AdminFootPrintController {
 
     /**
      * 列表
+     *
      * @param userId
      * @param goodId
      * @param page
@@ -41,7 +42,7 @@ public class AdminFootPrintController {
      * @return
      */
     @RequiresPermissions("admin:footprint:list")
-    @RequiresPermissionsDesc(menu={"用户管理" , "用户足迹"}, button="查询")
+    @RequiresPermissionsDesc(menu = {"用户管理", "用户足迹"}, button = "查询")
     @GetMapping(value = "/list")
     public JSONObject list(Integer userId, Integer goodId,
                            @RequestParam(defaultValue = "1") Integer page,

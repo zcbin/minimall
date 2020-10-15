@@ -130,7 +130,7 @@ public class AdminExample {
      * @mbg.generated
      * @project https://github.com/itfsw/mybatis-generator-plugin
      */
-    public AdminExample orderBy(String ... orderByClauses) {
+    public AdminExample orderBy(String... orderByClauses) {
         StringBuffer sb = new StringBuffer();
         for (int i = 0; i < orderByClauses.length; i++) {
             sb.append(orderByClauses[i]);
@@ -232,7 +232,7 @@ public class AdminExample {
 
         public boolean isValid() {
             return criteria.size() > 0
-                || roleIdsCriteria.size() > 0;
+                    || roleIdsCriteria.size() > 0;
         }
 
         public List<Criterion> getAllCriteria() {

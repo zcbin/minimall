@@ -15,6 +15,7 @@ import java.util.Set;
 public interface IRolesService {
     /**
      * 查询角色
+     *
      * @param roleIds
      * @return
      */
@@ -22,6 +23,7 @@ public interface IRolesService {
 
     /**
      * 角色列表
+     *
      * @param name
      * @param offset
      * @param limit
@@ -33,16 +35,22 @@ public interface IRolesService {
 
     /**
      * 查询
+     *
      * @return
      */
     List<Role> queryAll();
+
     /**
      * 查找角色
+     *
      * @param name
      * @return
      */
     Role findByName(String name);
+
     int add(Role role);
+
     int update(Role role);
+
     int delete(Integer id);
 }

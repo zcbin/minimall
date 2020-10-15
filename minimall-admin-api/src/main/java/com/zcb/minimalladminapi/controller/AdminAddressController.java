@@ -31,6 +31,7 @@ public class AdminAddressController {
 
     /**
      * 列表
+     *
      * @param userId
      * @param name
      * @param page
@@ -40,7 +41,7 @@ public class AdminAddressController {
      * @return
      */
     @RequiresPermissions("admin:address:list")
-    @RequiresPermissionsDesc(menu={"用户管理" , "收货地址"}, button="查询")
+    @RequiresPermissionsDesc(menu = {"用户管理", "收货地址"}, button = "查询")
     @GetMapping(value = "/list")
     public JSONObject list(Integer userId, String name,
                            @RequestParam(defaultValue = "1") Integer page,

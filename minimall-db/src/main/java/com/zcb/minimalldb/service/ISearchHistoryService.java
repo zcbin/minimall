@@ -16,12 +16,14 @@ public interface ISearchHistoryService {
 
     /**
      * 热搜榜
+     *
      * @return
      */
     List<String> queryHotSearch(String keyword, int limit);
 
     /**
      * 搜索历史记录
+     *
      * @param uid
      * @return
      */
@@ -29,6 +31,7 @@ public interface ISearchHistoryService {
 
     /**
      * 关键字搜索
+     *
      * @param keyword
      * @return
      */
@@ -36,12 +39,14 @@ public interface ISearchHistoryService {
 
     /**
      * 保存
+     *
      * @return
      */
     int add(SearchHistory searchHistory);
 
     /**
      * 删除搜索历史
+     *
      * @param uid
      * @return
      */
@@ -49,6 +54,7 @@ public interface ISearchHistoryService {
 
     /**
      * 搜索历史 列表
+     *
      * @param userid
      * @param keyword
      * @param offset

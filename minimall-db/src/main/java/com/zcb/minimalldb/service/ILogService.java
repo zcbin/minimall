@@ -17,8 +17,9 @@ public interface ILogService {
 
     /**
      * 查询
-     * @param admin 管理员
-     * @param type 操作类型
+     *
+     * @param admin  管理员
+     * @param type   操作类型
      * @param offset
      * @param limit
      * @return
@@ -27,6 +28,7 @@ public interface ILogService {
 
     /**
      * 查询
+     *
      * @param admin
      * @param offset
      * @param limit

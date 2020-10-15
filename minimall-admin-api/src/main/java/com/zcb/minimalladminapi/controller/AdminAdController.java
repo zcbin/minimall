@@ -31,7 +31,8 @@ public class AdminAdController {
 
     /**
      * 广告列表
-     * @param name 广告名
+     *
+     * @param name    广告名
      * @param content 内容
      * @param page
      * @param limit
@@ -40,7 +41,7 @@ public class AdminAdController {
      * @return {total, items}
      */
     @RequiresPermissions("admin:ad:list")
-    @RequiresPermissionsDesc(menu={"推广管理" , "广告管理"}, button="查询")
+    @RequiresPermissionsDesc(menu = {"推广管理", "广告管理"}, button = "查询")
     @GetMapping(value = "/list")
     public JSONObject list(String name, String content,
                            @RequestParam(defaultValue = "1") Integer page,
@@ -57,11 +58,12 @@ public class AdminAdController {
 
     /**
      * 广告添加
+     *
      * @param ad
      * @return
      */
     @RequiresPermissions("admin:ad:create")
-    @RequiresPermissionsDesc(menu={"推广管理" , "广告管理"}, button="添加")
+    @RequiresPermissionsDesc(menu = {"推广管理", "广告管理"}, button = "添加")
     @PostMapping(value = "/create")
     public JSONObject create(@RequestBody Ad ad) {
         adService.add(ad);
@@ -70,11 +72,12 @@ public class AdminAdController {
 
     /**
      * 更新
+     *
      * @param ad
      * @return
      */
     @RequiresPermissions("admin:ad:update")
-    @RequiresPermissionsDesc(menu={"推广管理" , "广告管理"}, button="编辑")
+    @RequiresPermissionsDesc(menu = {"推广管理", "广告管理"}, button = "编辑")
     @PostMapping(value = "/update")
     public JSONObject update(@RequestBody Ad ad) {
         if (adService.update(ad) == 0) {
@@ -85,11 +88,12 @@ public class AdminAdController {
 
     /**
      * 删除
+     *
      * @param ad
      * @return
      */
     @RequiresPermissions("admin:ad:delete")
-    @RequiresPermissionsDesc(menu={"推广管理" , "广告管理"}, button="删除")
+    @RequiresPermissionsDesc(menu = {"推广管理", "广告管理"}, button = "删除")
     @PostMapping(value = "/delete")
     public JSONObject delete(@RequestBody Ad ad) {
         Integer id = ad.getId();

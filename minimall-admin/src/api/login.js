@@ -23,7 +23,7 @@ export function getUserInfo(token) {
   return request({
     url: '/auth/info',
     method: 'get',
-    params: { token }
+    params: {token}
   })
 }
 

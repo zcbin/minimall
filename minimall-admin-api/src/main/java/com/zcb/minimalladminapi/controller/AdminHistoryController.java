@@ -33,6 +33,7 @@ public class AdminHistoryController {
 
     /**
      * 列表
+     *
      * @param userId
      * @param keyword
      * @param page
@@ -42,7 +43,7 @@ public class AdminHistoryController {
      * @return
      */
     @RequiresPermissions("admin:history:list")
-    @RequiresPermissionsDesc(menu={"用户管理" , "搜索历史"}, button="查询")
+    @RequiresPermissionsDesc(menu = {"用户管理", "搜索历史"}, button = "查询")
     @GetMapping(value = "/list")
     public JSONObject list(Integer userId, String keyword,
                            @RequestParam(defaultValue = "1") Integer page,

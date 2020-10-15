@@ -12,16 +12,17 @@ import java.util.List;
  * @date 2019/9/9 21:41
  */
 public interface IOrderGoodsService {
-		int add(OrderGoods orderGoods);
+    int add(OrderGoods orderGoods);
 
-		int update(OrderGoods orderGoods);
+    int update(OrderGoods orderGoods);
 
-		int delete(Integer id);
+    int delete(Integer id);
 
-		/**
-		 * 根据订单id查
-		 * param oid
-		 * @return
-		 */
-		List<OrderGoods> queryByOid(Integer oid);
+    /**
+     * 根据订单id查
+     * param oid
+     *
+     * @return
+     */
+    List<OrderGoods> queryByOid(Integer oid);
 }

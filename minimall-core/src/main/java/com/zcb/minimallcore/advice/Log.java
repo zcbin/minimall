@@ -17,6 +17,7 @@ import java.lang.annotation.*;
 public @interface Log {
     /**
      * 日志描述
+     *
      * @return
      */
     @AliasFor("desc")
@@ -26,6 +27,7 @@ public @interface Log {
 
     /**
      * 是否不记录日志
+     *
      * @return
      */
     boolean ignore() default false;

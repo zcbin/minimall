@@ -22,6 +22,7 @@ import java.util.List;
 public class FeedbackServiceImpl implements IFeedbackService {
     @Resource
     private FeedbackMapper feedbackMapper;
+
     @Override
     public List<Feedback> query(String username, Integer id, Integer offset, Integer limit, String sort, String order) {
         FeedbackExample example = new FeedbackExample();

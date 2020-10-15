@@ -42,7 +42,9 @@
       <el-select v-model="listQuery.status" clearable style="width: 200px" class="filter-item" placeholder="请选择使用状态">
         <el-option v-for="type in useStatusOptions" :key="type.value" :label="type.label" :value="type.value"/>
       </el-select>
-      <el-button v-permission="['GET /admin/coupon/listuser']" class="filter-item" type="primary" icon="el-icon-search" @click="handleFilter">查找</el-button>
+      <el-button v-permission="['GET /admin/coupon/listuser']" class="filter-item" type="primary" icon="el-icon-search"
+                 @click="handleFilter">查找
+      </el-button>
     </div>
 
     <!-- 查询结果 -->
@@ -64,156 +66,157 @@
 
     </el-table>
 
-    <pagination v-show="total>0" :total="total" :page.sync="listQuery.page" :limit.sync="listQuery.limit" @pagination="getList" />
+    <pagination v-show="total>0" :total="total" :page.sync="listQuery.page" :limit.sync="listQuery.limit"
+                @pagination="getList"/>
 
   </div>
 </template>
 
 <script>
-import { readCoupon, listCouponUser } from '@/api/coupon'
-import Pagination from '@/components/Pagination' // Secondary package based on el-pagination
+  import {readCoupon, listCouponUser} from '@/api/coupon'
+  import Pagination from '@/components/Pagination' // Secondary package based on el-pagination
 
-const defaultTypeOptions = [
-  {
-    label: '通用领券',
-    value: 0
-  },
-  {
-    label: '注册赠券',
-    value: 1
-  },
-  {
-    label: '兑换码',
-    value: 2
-  }
-]
+  const defaultTypeOptions = [
+    {
+      label: '通用领券',
+      value: 0
+    },
+    {
+      label: '注册赠券',
+      value: 1
+    },
+    {
+      label: '兑换码',
+      value: 2
+    }
+  ]
 
-const defaultUseStatusOptions = [
-  {
-    label: '未使用',
-    value: 0
-  },
-  {
-    label: '已使用',
-    value: 1
-  },
-  {
-    label: '已过期',
-    value: 2
-  },
-  {
-    label: '已下架',
-    value: 3
-  }
-]
+  const defaultUseStatusOptions = [
+    {
+      label: '未使用',
+      value: 0
+    },
+    {
+      label: '已使用',
+      value: 1
+    },
+    {
+      label: '已过期',
+      value: 2
+    },
+    {
+      label: '已下架',
+      value: 3
+    }
+  ]
 
-export default {
-  name: 'CouponDetail',
-  components: { Pagination },
-  filters: {
-    formatType(type) {
-      for (let i = 0; i < defaultTypeOptions.length; i++) {
-        if (type === defaultTypeOptions[i].value) {
-          return defaultTypeOptions[i].label
+  export default {
+    name: 'CouponDetail',
+    components: {Pagination},
+    filters: {
+      formatType(type) {
+        for (let i = 0; i < defaultTypeOptions.length; i++) {
+          if (type === defaultTypeOptions[i].value) {
+            return defaultTypeOptions[i].label
+          }
+        }
+        return ''
+      },
+      formatGoodsType(goodsType) {
+        if (goodsType === 0) {
+          return '全场通用'
+        } else if (goodsType === 1) {
+          return '指定分类'
+        } else {
+          return '指定商品'
+        }
+      },
+      formatStatus(status) {
+        if (status === 0) {
+          return '正常'
+        } else if (status === 1) {
+          return '已过期'
+        } else {
+          return '已下架'
+        }
+      },
+      formatUseStatus(status) {
+        if (status === 0) {
+          return '未使用'
+        } else if (status === 1) {
+          return '已使用'
+        } else if (status === 3) {
+          return '已过期'
+        } else {
+          return '已下架'
         }
       }
-      return ''
     },
-    formatGoodsType(goodsType) {
-      if (goodsType === 0) {
-        return '全场通用'
-      } else if (goodsType === 1) {
-        return '指定分类'
-      } else {
-        return '指定商品'
+    data() {
+      return {
+        typeOptions: Object.assign({}, defaultTypeOptions),
+        useStatusOptions: Object.assign({}, defaultUseStatusOptions),
+        coupon: {},
+        list: undefined,
+        total: 0,
+        listLoading: true,
+        listQuery: {
+          page: 1,
+          limit: 20,
+          couponId: 0,
+          userId: undefined,
+          status: undefined,
+          sort: 'add_time',
+          order: 'desc'
+        },
+        downloadLoading: false
       }
     },
-    formatStatus(status) {
-      if (status === 0) {
-        return '正常'
-      } else if (status === 1) {
-        return '已过期'
-      } else {
-        return '已下架'
-      }
+    created() {
+      this.init()
     },
-    formatUseStatus(status) {
-      if (status === 0) {
-        return '未使用'
-      } else if (status === 1) {
-        return '已使用'
-      } else if (status === 3) {
-        return '已过期'
-      } else {
-        return '已下架'
-      }
-    }
-  },
-  data() {
-    return {
-      typeOptions: Object.assign({}, defaultTypeOptions),
-      useStatusOptions: Object.assign({}, defaultUseStatusOptions),
-      coupon: {},
-      list: undefined,
-      total: 0,
-      listLoading: true,
-      listQuery: {
-        page: 1,
-        limit: 20,
-        couponId: 0,
-        userId: undefined,
-        status: undefined,
-        sort: 'add_time',
-        order: 'desc'
+    methods: {
+      init: function () {
+        if (this.$route.query.id == null) {
+          return
+        }
+        readCoupon(this.$route.query.id).then(response => {
+          this.coupon = response.data.data
+        })
+        this.listQuery.couponId = this.$route.query.id
+        this.getList()
       },
-      downloadLoading: false
-    }
-  },
-  created() {
-    this.init()
-  },
-  methods: {
-    init: function() {
-      if (this.$route.query.id == null) {
-        return
+      getList() {
+        this.listLoading = true
+        listCouponUser(this.listQuery)
+          .then(response => {
+            this.list = response.data.data.items
+            this.total = response.data.data.total
+            this.listLoading = false
+          })
+          .catch(() => {
+            this.list = []
+            this.total = 0
+            this.listLoading = false
+          })
+      },
+      handleFilter() {
+        this.listQuery.page = 1
+        this.getList()
+      },
+      getTimeScope() {
+        if (this.coupon.timeType === 0) {
+          return '领取' + this.coupon.days + '天有效'
+        } else if (this.coupon.timeType === 1) {
+          return '自' + this.coupon.startTime + '至' + this.coupon.endTime + '有效'
+        } else {
+          return '未知'
+        }
+      },
+      getGoodsScope() {
       }
-      readCoupon(this.$route.query.id).then(response => {
-        this.coupon = response.data.data
-      })
-      this.listQuery.couponId = this.$route.query.id
-      this.getList()
-    },
-    getList() {
-      this.listLoading = true
-      listCouponUser(this.listQuery)
-        .then(response => {
-          this.list = response.data.data.items
-          this.total = response.data.data.total
-          this.listLoading = false
-        })
-        .catch(() => {
-          this.list = []
-          this.total = 0
-          this.listLoading = false
-        })
-    },
-    handleFilter() {
-      this.listQuery.page = 1
-      this.getList()
-    },
-    getTimeScope() {
-      if (this.coupon.timeType === 0) {
-        return '领取' + this.coupon.days + '天有效'
-      } else if (this.coupon.timeType === 1) {
-        return '自' + this.coupon.startTime + '至' + this.coupon.endTime + '有效'
-      } else {
-        return '未知'
-      }
-    },
-    getGoodsScope() {
     }
   }
-}
 </script>
 <style scoped>
   .filter-container {
@@ -225,6 +228,7 @@ export default {
     border-left: 1px solid #DCDFE6;
     border-top: 1px solid #DCDFE6;
   }
+
   .table-cell {
     height: 60px;
     line-height: 40px;
@@ -236,6 +240,7 @@ export default {
     text-align: center;
     overflow: hidden;
   }
+
   .table-cell-title {
     border-right: 1px solid #DCDFE6;
     border-bottom: 1px solid #DCDFE6;

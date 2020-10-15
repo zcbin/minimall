@@ -11,10 +11,12 @@ import org.springframework.util.StringUtils;
 import javax.annotation.Resource;
 import java.time.LocalDateTime;
 import java.util.List;
+
 @Service
 public class AddressServiceImpl implements IAddressService {
     @Resource
     private AddressMapper addressMapper;
+
     @Override
     public List<Address> queryByUid(Integer uid) {
         AddressExample example = new AddressExample();

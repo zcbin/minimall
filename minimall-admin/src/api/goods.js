@@ -28,7 +28,7 @@ export function detailGoods(id) {
   return request({
     url: '/goods/detail',
     method: 'get',
-    params: { id }
+    params: {id}
   })
 }
 

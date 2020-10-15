@@ -8,6 +8,9 @@ import com.zcb.minimalldb.domain.*;
 import com.zcb.minimalldb.service.*;
 import com.zcb.minimallwxapi.annotation.LoginUser;
 import com.zcb.minimallwxapi.util.ParseJsonUtil;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiOperation;
 import org.apache.commons.lang3.ObjectUtils;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.subject.Subject;
@@ -26,6 +29,7 @@ import java.util.Map;
  * @description: 购物车
  * @date 2019/6/19 16:34
  */
+@Api(value = "购物车")
 @RestController
 @RequestMapping(value = "/wx/cart")
 public class WxCartController {
@@ -44,7 +48,8 @@ public class WxCartController {
     @Resource
     private IAddressService addressService; //收货地址
 
-    @RequestMapping(value = "/index")
+    @ApiOperation(value = "购物车首页", notes = "购物车首页")
+    @RequestMapping(value = "/index", method = {RequestMethod.GET, RequestMethod.POST})
     public JSONObject index(@LoginUser Integer userId) {
         if (userId == null) {
             return ResponseUtil.unlogin();
@@ -74,11 +79,14 @@ public class WxCartController {
 
         return ResponseUtil.ok(result);
     }
+
     /**
      * 加入购物车
+     *
      * @param cart
      * @return
      */
+    @ApiOperation(value = "加入购物车", notes = "加入购物车")
     @PostMapping(value = "/add")
     public JSONObject add(@LoginUser Integer userId, @RequestBody Cart cart) {
         if (userId == null) {
@@ -144,6 +152,7 @@ public class WxCartController {
 
     /**
      * 购物车中商品数量修改
+     *
      * @param userId
      * @param cart
      * @return
@@ -183,6 +192,7 @@ public class WxCartController {
 
     /**
      * 购物车商品删除
+     *
      * @param userId
      * @param
      * @return
@@ -207,6 +217,7 @@ public class WxCartController {
 
     /**
      * 选中/取消选中
+     *
      * @param userId
      * @param body
      * @return
@@ -234,8 +245,10 @@ public class WxCartController {
         //重新获取购物车数据
         return this.index(userId);
     }
+
     /**
      * 商品数量
+     *
      * @param
      * @return
      */
@@ -254,10 +267,11 @@ public class WxCartController {
 
     /**
      * 购物车下单
-     * @param userId 用户id
-     * @param cartId 购物车商品id
-     * @param addressId 地址id
-     * @param couponId 优惠券id
+     *
+     * @param userId         用户id
+     * @param cartId         购物车商品id
+     * @param addressId      地址id
+     * @param couponId       优惠券id
      * @param grouponRulesId
      * @return
      */
@@ -328,9 +342,6 @@ public class WxCartController {
         data.put("orderTotalPrice", orderTotalPrice); //订单费用
         data.put("actualPrice", actualPrice); //减去积分价格
         data.put("checkedGoodsList", cartList); //购物车商品
-
-
-
 
 
         return ResponseUtil.ok(data);

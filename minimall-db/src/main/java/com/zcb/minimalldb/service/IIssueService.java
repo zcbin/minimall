@@ -14,6 +14,7 @@ import java.util.List;
 public interface IIssueService {
     /**
      * 常见问题（各种说明）
+     *
      * @return
      */
     List<Issue> query(String question, int offset, int limit);
@@ -22,11 +23,15 @@ public interface IIssueService {
 
     /**
      * 增
+     *
      * @param issue
      * @return
      */
     int add(Issue issue);
+
     int update(Issue issue);
+
     int delete(Integer id);
+
     Issue findById(Integer id);
 }

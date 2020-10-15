@@ -7,6 +7,7 @@ import java.util.List;
 public interface ICategoryService {
     /**
      * 查找分类
+     *
      * @param level
      * @return
      */
@@ -14,12 +15,14 @@ public interface ICategoryService {
 
     /**
      * 查询所有L1分类
+     *
      * @return
      */
     List<Category> queryL1();
 
     /**
      * 根据父级节点id查找二级分类
+     *
      * @param id
      * @return
      */
@@ -27,6 +30,7 @@ public interface ICategoryService {
 
     /**
      * 根据id查询
+     *
      * @param id
      * @return
      */
@@ -34,6 +38,7 @@ public interface ICategoryService {
 
     /**
      * 新增
+     *
      * @param category
      * @return
      */
@@ -41,6 +46,7 @@ public interface ICategoryService {
 
     /**
      * 修改
+     *
      * @param category
      * @return
      */
@@ -48,6 +54,7 @@ public interface ICategoryService {
 
     /**
      * 删除
+     *
      * @param id
      * @return
      */

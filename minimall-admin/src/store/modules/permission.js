@@ -1,4 +1,4 @@
-import { asyncRouterMap, constantRouterMap } from '@/router'
+import {asyncRouterMap, constantRouterMap} from '@/router'
 
 /**
  * 通过meta.perms判断是否与当前用户权限匹配
@@ -22,7 +22,7 @@ function filterAsyncRouter(routes, perms) {
   const res = []
 
   routes.forEach(route => {
-    const tmp = { ...route }
+    const tmp = {...route}
     if (tmp.children) {
       tmp.children = filterAsyncRouter(tmp.children, perms)
       if (tmp.children && tmp.children.length > 0) {
@@ -50,9 +50,9 @@ const permission = {
     }
   },
   actions: {
-    GenerateRoutes({ commit }, data) {
+    GenerateRoutes({commit}, data) {
       return new Promise(resolve => {
-        const { perms } = data
+        const {perms} = data
         let accessedRouters
         if (perms.includes('*')) {
           accessedRouters = asyncRouterMap
